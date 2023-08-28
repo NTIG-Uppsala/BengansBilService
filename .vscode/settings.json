@@ -2,7 +2,7 @@
     "python.testing.unittestArgs": [
         "-v",
         "-s",
-        "./begansbilservice",
+        "./testes",
         "-p",
         "test*.py"
     ],
