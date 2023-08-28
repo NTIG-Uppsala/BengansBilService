@@ -1,6 +1,7 @@
 from unittest import TestCase, main
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.by import By
 from os import path, getcwd
 
 
@@ -31,6 +32,7 @@ class TestHemsida(TestCase):
 
     # setUp körs INNAN VARJE TEST
     def setUp(self):
+        
         pass  # gör ingenting
 
     # tearDown körs EFTER VARJE TEST
@@ -46,6 +48,10 @@ class TestHemsida(TestCase):
     def testPageNumber(self):
         self.browser.get(path.join((getcwd()), 'app.js'))
         self.assertIn("018-123456", self.browser.page_source)
+
+    def testButton(self):
+        self.browser.get(path.join((getcwd()),"app.js"))
+        self.browser.find_element(By.LINK_TEXT,"Link").click()
 
 
 print(getcwd())
