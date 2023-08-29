@@ -52,7 +52,7 @@ class TestHemsida(TestCase):
         self.assertIn("Fjällgatan 32H",self.browser.page_source)
 
     def testOpeningHours(self):
-        self.assertIn("Öppetider",self.browser.page_source)
+        self.assertIn("Öppettider",self.browser.page_source)
 
 
 
