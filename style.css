@@ -18,7 +18,7 @@
         height: 20px;
     }
     @media screen and (max-width:100px) {
-        font-size: 40%;
+        font-size: 50%;
         height: 25px;
     }
 }
@@ -28,4 +28,60 @@
     align-items: center;
     justify-content: center;
     display: flex;
+
+    @media screen and (max-width:1000px) {
+        font-size: 120%;
+    }
+    @media screen and (max-width:500px) {
+        font-size: 100%;
+    }
+    @media screen and (max-width:200px) {
+        font-size: 60%;
+        height: 20px;
+    }
+    @media screen and (max-width:100px) {
+        font-size: 50%;
+        height: 25px;
+    }
+}
+
+.foot {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    height: 200px;
+    clear: both;
+    background-color: white;
+    color: white;
+    flex-shrink: 0;
+    margin-bottom: 0;
+  }
+
+.contact{
+    margin-left: 5%;
+}
+
+a:link{
+    color: black;
+}
+a:visited{
+    color: black;
+}
+
+#email{
+    color: black;
+}
+
+#number{
+    color: black;
+}
+
+.address{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.buisnesshours{
+    
 }
