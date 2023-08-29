@@ -7,6 +7,7 @@
     display: flex;
     font-style: italic;
 
+    /*Responsive*/
     @media screen and (max-width:1000px) {
         font-size: 180%;
     }
@@ -23,63 +24,13 @@
     }
 }
 
-.phoneNumber{
-    font-size: 150%;
-    align-items: center;
-    justify-content: center;
-    display: flex;
-
-    @media screen and (max-width:1000px) {
-        font-size: 120%;
-    }
-    @media screen and (max-width:500px) {
-        font-size: 100%;
-    }
-    @media screen and (max-width:200px) {
-        font-size: 60%;
-        height: 20px;
-    }
-    @media screen and (max-width:100px) {
-        font-size: 50%;
-        height: 25px;
-    }
-}
-
 .container{
     margin-bottom: 3%;
 }
 
-.contact{
-    margin-left: 5%;
-    background-color: red;
-    width: 15%;
-}
 
-a:link{
+.blackLink{
     color: black;
-}
-a:visited{
-    color: black;
-}
-
-#email{
-    color: black;
-}
-
-#number{
-    color: black;
-}
-
-.address{
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    background-color: blue;
-    height: 40%;
-}
-
-.buisnesshours{
-    background-color: red;
 }
 
 .col{
@@ -91,12 +42,36 @@ a:visited{
     }
 }
 
-#title{
+/*For the subtitles sizes (Kontakta oss,Adress,Öppettider) */
+.subtitle{
     @media screen and (max-width:1000px) {
-        font-size: 80%;
+        font-size: 110%;
     }
     @media screen and (max-width:400px) {
-        font-size: 50%;
+        font-size: 100%;
     }
 
 }
+
+/*Holds the info about Bengans in the center*/
+.centeringInfo{
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
+
+#closedColor{
+    color: red;
+}
+
+#title{
+    margin-bottom: 10%;
+    text-decoration: underline;
+    @media screen and (max-width:350px){
+        font-size: 100%;
+    }
+}
+

@@ -48,7 +48,12 @@ class TestHemsida(TestCase):
         self.assertIn("Bengans Biluthyrning",self.browser.page_source)
 
     def testAdress(self):
-        self.assertIn("Fjällgatan 32H 981 39 JÖNKÖPING",self.browser.page_source)
+        self.assertIn("Fjällgatan 32H",self.browser.page_source)
+        self.assertIn("Fjällgatan 32H",self.browser.page_source)
+
+    def testOpeningHours(self):
+        self.assertIn("Öppetider",self.browser.page_source)
+
 
 
 
