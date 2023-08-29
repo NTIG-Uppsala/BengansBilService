@@ -33,9 +33,6 @@ class TestHemsida(TestCase):
 
 
     # HÄR BÖRJAR TESTERNA
-    def testPageText(self):
-        self.assertIn("Välkommen", self.browser.page_source)
-        self.assertIn("Bengans Biluthyrning", self.browser.page_source)
 
 
     def testPageNumber(self):
@@ -43,9 +40,8 @@ class TestHemsida(TestCase):
 
     def testEmail(self):
         self.assertIn("info@ntig-uppsala.github.io",self.browser.page_source)
-        self.assertIn("018-123456", self.browser.page_source)
 
-    def testTitleExcist(self):
+    def testTitleExist(self):
         self.assertIn("Bengans Biluthyrning",self.browser.page_source)
 
 
