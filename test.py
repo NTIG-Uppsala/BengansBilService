@@ -35,8 +35,11 @@ class TestHemsida(TestCase):
     # HÄR BÖRJAR TESTERNA
 
 
-    def testPageNumber(self):
+    def testNumber(self):
         self.assertIn("0630-555-555", self.browser.page_source)
+        
+    def testlinkNumber(self):
+        self.assertIn("0630555555", self.browser.page_source)
 
     def testEmail(self):
         self.assertIn("info@ntig-uppsala.github.io",self.browser.page_source)
