@@ -1,0 +1,11 @@
+name: Main Test
+on: 
+  [pull_request]
+jobs:
+  Explore-GitHub-Actions:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: pip install selenium
+      - run: python test.py
+     
