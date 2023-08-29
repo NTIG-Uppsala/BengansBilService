@@ -1,6 +1,6 @@
 name: Main Test
 on: 
-  [pull_request]
+  pull_request
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
