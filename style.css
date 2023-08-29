@@ -75,3 +75,17 @@
     }
 }
 
+.icon-link {
+    margin-top: 4%;
+    display: inline-block;
+    margin-right: 10px;
+    font-size: 36px; 
+
+    @media screen and (max-width: 450px) {
+        font-size: 20px;
+    }
+    @media screen and (max-width: 250px) {
+        font-size: 20px;
+        margin-bottom: 10%;
+    }
+}
