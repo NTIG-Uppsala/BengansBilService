@@ -14,15 +14,9 @@ class TestHemsida(TestCase):
     # setUpClass körs INNAN FÖRSTA testet
     @classmethod
     def setUpClass(cls):
-        chr_options = Options()
+        cls.browser = webdriver.Chrome()
 
-        if cls.stangintebrowsern:
-            chr_options.add_experimental_option("detach", True)
-
-        if cls.gomfonstret:
-            chr_options.add_argument("--headless")
-
-        cls.browser = webdriver.Chrome(options=chr_options)
+        
 
     # tearDownClass körs EFTER SISTA testet
     @classmethod
@@ -31,7 +25,7 @@ class TestHemsida(TestCase):
 
     # setUp körs INNAN VARJE TEST
     def setUp(self):
-        pass  # gör ingenting
+        self.browser.get(path.join((getcwd()), 'index.html'))
 
     # tearDown körs EFTER VARJE TEST
     def tearDown(self):
@@ -40,16 +34,19 @@ class TestHemsida(TestCase):
 
     # HÄR BÖRJAR TESTERNA
     def testPageText(self):
-        self.browser.get(path.join((getcwd()), 'index.html'))
+        self.assertIn("Välkommen", self.browser.page_source)
         self.assertIn("Bengans Biluthyrning", self.browser.page_source)
 
+
     def testPageNumber(self):
-        self.browser.get(path.join((getcwd()), 'index.html'))
         self.assertIn("0630-555-555", self.browser.page_source)
 
     def testEmail(self):
-        self.browser.get(path.join((getcwd()),"index.html"))
         self.assertIn("info@ntig-uppsala.github.io",self.browser.page_source)
+        self.assertIn("018-123456", self.browser.page_source)
+
+    def testTitleExcist(self):
+        self.assertIn("Bengans Biluthyrning",self.browser.page_source)
 
 
 
