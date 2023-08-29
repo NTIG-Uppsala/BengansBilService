@@ -44,7 +44,8 @@ class TestHemsida(TestCase):
     def testTitleExist(self):
         self.assertIn("Bengans Biluthyrning",self.browser.page_source)
 
-
+    def testAdress(self):
+        self.assertIn("Fjällgatan 32H 981 39 JÖNKÖPING",self.browser.page_source)
 
 
 
