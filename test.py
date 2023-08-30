@@ -44,7 +44,7 @@ class TestHemsida(TestCase):
     def testNumber(self):
         self.assertIn("0630-555-555", self.browser.page_source)
         self.browser.get(path.join((getcwd()), 'index.html'))
-        self.browser.find_element(By.LINK_TEXT, "0630-555-555").click()
+        self.browser.find_element(By.LINK_TEXT, "0630-555-555")
 
     def testlinkNumber(self):
         self.assertIn("0630555555", self.browser.page_source)
@@ -52,7 +52,7 @@ class TestHemsida(TestCase):
     def testEmail(self):
        self.assertIn("info@ntig-uppsala.github.io",self.browser.page_source)
        self.browser.get(path.join((getcwd()), 'index.html'))
-       self.browser.find_element(By.LINK_TEXT, "info@ntig‑uppsala.github.io").click()
+       self.browser.find_element(By.LINK_TEXT, "info@ntig‑uppsala.github.io")
 
 
     def testTitleExist(self):
@@ -74,9 +74,51 @@ class TestHemsida(TestCase):
 
     def testSocialmediaLinks(self):
         self.browser.get(path.join((getcwd()), 'index.html'))
-        self.browser.find_element(By.ID, "Instagram").click()
-        self.browser.find_element(By.ID, "X").click()
-        self.browser.find_element(By.ID, "Facebook").click()
+        self.browser.find_element(By.ID, "Instagram")
+        self.browser.find_element(By.ID, "X")
+        self.browser.find_element(By.ID, "Facebook")
+
+    def testcars(self):
+        car_list = [
+            {'car': 'Audi A6', 'model': '2011', 'price': 800},
+            {'car': 'Renault Kadjar', 'model': '2016', 'price': 450},
+            {'car': 'Kia Soul', 'model': '2020', 'price': 400},
+            {'car': 'Subaru','model':'2020','price':300},
+            {'car': 'Caddilac Escalade','model':'1999','price':500},
+            {'car': 'Mitsubichi Outlander','model':'2018','price':450},
+            {'car': 'Volvo XC40','model':'2018','price':800},
+            {'car': 'VW Polo','model':'2022','price':300},
+            {'car': 'Kia Carens','model':'2022','price':400},
+            {'car': 'Audi S3','model':'2015','price':450},
+
+        ]
+
+        for car_info in car_list:
+            car = car_info['car']
+            model = car_info['model']
+            price = car_info['price']
+
+            self.assertIn(car, self.browser.page_source)
+            self.assertIn(model, self.browser.page_source)
+            self.assertIn(str(price), self.browser.page_source) 
+
+                
+        
+
+
+    def testImageLoading(self):
+        self.browser.get(path.join((getcwd()), 'index.html'))
+        image_elements = self.browser.find_elements(By.TAG_NAME, "img")
+
+        for image_element in image_elements:
+            is_loaded = self.browser.execute_script("return arguments[0].complete && typeof arguments[0].naturalWidth != 'undefined' && arguments[0].naturalWidth > 0;", image_element)
+
+            if is_loaded:
+                print(f"Image '{image_element.get_attribute('src')}' is loaded.")
+            else:
+                self.fail(f"Image '{image_element.get_attribute('src')}' is not loaded.")
+
+
 
     
 # denna bit finns här så att testerna körs om filen körs som vanligt python-program
