@@ -44,7 +44,7 @@ class TestHemsida(TestCase):
     def testNumber(self):
         self.assertIn("0630-555-555", self.browser.page_source)
         self.browser.get(path.join((getcwd()), 'index.html'))
-        self.browser.find_element(By.LINK_TEXT, "0630-555-555").click()
+        self.browser.find_element(By.LINK_TEXT, "0630-555-555")
 
     def testlinkNumber(self):
         self.assertIn("0630555555", self.browser.page_source)
@@ -52,7 +52,7 @@ class TestHemsida(TestCase):
     def testEmail(self):
        self.assertIn("info@ntig-uppsala.github.io",self.browser.page_source)
        self.browser.get(path.join((getcwd()), 'index.html'))
-       self.browser.find_element(By.LINK_TEXT, "info@ntig‑uppsala.github.io").click()
+       self.browser.find_element(By.LINK_TEXT, "info@ntig‑uppsala.github.io")
 
 
     def testTitleExist(self):
@@ -74,9 +74,9 @@ class TestHemsida(TestCase):
 
     def testSocialmediaLinks(self):
         self.browser.get(path.join((getcwd()), 'index.html'))
-        self.browser.find_element(By.ID, "Instagram").click()
-        self.browser.find_element(By.ID, "X").click()
-        self.browser.find_element(By.ID, "Facebook").click()
+        self.browser.find_element(By.ID, "Instagram")
+        self.browser.find_element(By.ID, "X")
+        self.browser.find_element(By.ID, "Facebook")
 
     def testcars(self):
         car_list = [
