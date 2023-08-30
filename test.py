@@ -1,5 +1,6 @@
 from unittest import TestCase, main
 from selenium import webdriver
+from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 from os import path, getcwd
 
@@ -49,10 +50,26 @@ class TestHemsida(TestCase):
 
     def testAdress(self):
         self.assertIn("Fjällgatan 32H",self.browser.page_source)
-        self.assertIn("Fjällgatan 32H",self.browser.page_source)
+        self.assertIn("981 39 JÖNKÖPING",self.browser.page_source)
 
     def testOpeningHours(self):
         self.assertIn("Öppettider",self.browser.page_source)
+        self.assertIn("Måndag 10-16",self.browser.page_source)
+        self.assertIn("Tisdag 10-16",self.browser.page_source)
+        self.assertIn("Onsdag 10-16",self.browser.page_source)
+        self.assertIn("Torsdag 10-16",self.browser.page_source)
+        self.assertIn("Fredag 10-16",self.browser.page_source)
+        self.assertIn("Lördag 12-15",self.browser.page_source)
+        self.assertIn("Söndag STÄNGT",self.browser.page_source)
+
+    # def testPageNumber2(self):
+      #  self.browser.get(path.join((getcwd()), 'index.html'))
+      #  self.browser.find_element(By.LINK_TEXT, "Sida 2"    ).click()
+        self.assertIn("Tjena", self.browser.page_source)
+
+
+
+
 
 
 
