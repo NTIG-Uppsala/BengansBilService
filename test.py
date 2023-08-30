@@ -8,8 +8,8 @@ from os import path, getcwd
 class TestHemsida(TestCase):
 
     # inställningar för hur testerna körs
-    stangintebrowsern = False  # om True så hålls webbläsaren öppen efter testerna är klara, annars stängs den
-    gomfonstret = True  # visar webbläsaren medan testerna körs
+    stangintebrowsern = True  # om True så hålls webbläsaren öppen efter testerna är klara, annars stängs den
+    gomfonstret = False  # visar webbläsaren medan testerna körs
 
     # setUpClass körs INNAN FÖRSTA testet
     @classmethod
