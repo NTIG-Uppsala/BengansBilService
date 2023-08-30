@@ -1,18 +1,20 @@
+body{
+    background-color: white;
+}
+
 .websiteTitle{
-    font-size: 250%;
+    font-size: 2.5rem;
     color: white;
     background-color: black;
     align-items: center;
     justify-content: center;
     display: flex;
-    font-style: italic;
-
     /*Responsive*/
     @media screen and (max-width:1000px) {
         font-size: 180%;
     }
     @media screen and (max-width:500px) {
-        font-size: 100%;;
+        font-size: 100%;
     }
     @media screen and (max-width:200px) {
         font-size: 60%;
@@ -24,8 +26,20 @@
     }
 }
 
+#BengansTitle{
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+}
+
 .container{
     margin-bottom: 3%;
+    margin-top: 13vh;
+    
+    @media screen and (max-width:1500px) {
+        margin-bottom: 0;
+
+    }
 }
 
 
@@ -40,10 +54,12 @@
     @media screen and (max-width:400px){
         font-size: 55%;
     }
+
 }
 
 /*For the subtitles sizes (Kontakta oss,Adress,Öppettider) */
 .subtitle{
+
     @media screen and (max-width:1000px) {
         font-size: 110%;
     }
@@ -53,15 +69,6 @@
 
 }
 
-/*Holds the info about Bengans in the center*/
-.centeringInfo{
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-  }
 
 #closedColor{
     color: red;
@@ -69,9 +76,11 @@
 
 #title{
     position: absolute;
-    top: 10%;
+    top: 7%;
     left: 50%;
+    background-color: gray;
     color: white;
+    margin-top: 1   vh;
     transform: translate(-50%, -50%);
     text-decoration: underline;
     @media screen and (max-width:350px){
@@ -107,10 +116,74 @@
 }
 
 .backgroundPictures{
-    width: 100%;
+    width: 50%;
     height: 60vh;
-    background-image: url("/images/bild2.jpg");
-
+    position: relative;
+    background-image: url("/images/bild3.jpg");
     background-size: cover;
     background-position: center;
+
+    @media screen and (max-width:1500px) {
+        width: 100%;
+
+    }
+}
+
+.imageWrapper{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    margin-top: 3%;
+
+    @media screen and (max-width:1500px) {
+        margin-top: 0;
+
+    }
+}
+
+.goLeftSlideShow{
+    background-color: transparent;
+    border: none;
+    margin: 0;
+    color: white;  
+    position: absolute;
+    top: 45%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    font-size: 30px;
+}
+
+.goRightSlideShow{
+    background-color: transparent;
+    border: none;
+    margin: 0;
+    color: white;  
+    position: absolute;
+    top:45%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    right: 0;
+    font-size: 30px;
+}
+
+
+@media screen and (max-width:1920px) {
+    #title{
+        margin-top: 2vh;
+    }
+}
+
+@media screen and (max-height:1000px) {
+    #title{
+        margin-top: 4vh;
+    }
+}
+
+@media screen and (min-width:2000px) {
+    .websiteTitle{
+        font-size: 2vw;
+    }
+    .col{
+        font-size: 170%;
+    }
 }
