@@ -102,9 +102,6 @@ class TestHemsida(TestCase):
             self.assertIn(model, self.browser.page_source)
             self.assertIn(str(price), self.browser.page_source) 
 
-                
-        
-
 
     def testImageLoading(self):
         self.browser.get(path.join((getcwd()), 'index.html'))
