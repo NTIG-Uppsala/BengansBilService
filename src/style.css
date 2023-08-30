@@ -149,3 +149,11 @@ body{
      margin-top: 0.5vw;   
     }
 }
+
+.heightControl{
+    height: 80vh;
+
+    @media screen and (max-width:1000px) {
+        height:100%;
+    }
+}
