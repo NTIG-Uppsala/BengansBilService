@@ -113,59 +113,6 @@ body{
         margin-bottom: 10%;
     }
 }
-
-.backgroundPictures{
-    width: 50%;
-    height: 60vh;
-    position: relative;
-    background-image: url("images/bild3.jpg");
-    background-size: cover;
-    background-position: center;
-
-    @media screen and (max-width:1500px) {
-        width: 100%;
-
-    }
-}
-
-.imageWrapper{
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    margin-top: 3%;
-
-    @media screen and (max-width:1500px) {
-        margin-top: 0;
-
-    }
-}
-
-.goLeftSlideShow{
-    background-color: transparent;
-    border: none;
-    margin: 0;
-    color: white;  
-    position: absolute;
-    top: 45%;
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
-    font-size: 30px;
-}
-
-.goRightSlideShow{
-    background-color: transparent;
-    border: none;
-    margin: 0;
-    color: white;  
-    position: absolute;
-    top:45%;
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
-    right: 0;
-    font-size: 30px;
-}
-
-
 @media screen and (max-width:1920px) {
     #title{
         margin-top: 2vh;
