@@ -78,6 +78,33 @@ class TestHemsida(TestCase):
         self.browser.find_element(By.ID, "X").click()
         self.browser.find_element(By.ID, "Facebook").click()
 
+    def testcars(self):
+        car_list = [
+            {'car': 'Audi A6', 'model': '2011', 'price': 800},
+            {'car': 'Renault Kadjar', 'model': '2016', 'price': 450},
+            {'car': 'Kia Soul', 'model': '2020', 'price': 400},
+            {'car': 'Subaru','model':'2020','price':300},
+            {'car': 'Caddilac Escalade','model':'1999','price':500},
+            {'car': 'Mitsubichi Outlander','model':'2018','price':450},
+            {'car': 'Volvo XC40','model':'2018','price':800},
+            {'car': 'VW Polo','model':'2022','price':300},
+            {'car': 'Kia Carens','model':'2022','price':400},
+            {'car': 'Audi S3','model':'2015','price':450},
+
+        ]
+
+        for car_info in car_list:
+            car = car_info['car']
+            model = car_info['model']
+            price = car_info['price']
+
+            self.assertIn(car, self.browser.page_source)
+            self.assertIn(model, self.browser.page_source)
+            self.assertIn(str(price), self.browser.page_source) 
+
+                
+        
+
     
 # denna bit finns här så att testerna körs om filen körs som vanligt python-program
 if __name__ == '__main__':
