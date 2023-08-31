@@ -6,10 +6,11 @@ body{
     padding: 10px;
     font-size: 2.5rem;
     font-style: italic;
+    position: relative;
     color: white;
     background-color: black;
-    align-items: center;
-    justify-content: center;
+    align-items: start;
+    justify-content: start;
     display: flex;
     padding:10px;
     /*Responsive*/
@@ -32,7 +33,6 @@ body{
 #BengansTitle{
     background-color: transparent;
     color: white;
-    border: 2px solid white;
     padding-left: 10px;
     padding-right: 10px;
     font-style: italic;
@@ -48,6 +48,26 @@ body{
     }
 }
 
+.subnav{
+    font-size: 2vh;
+    position: absolute;
+    right: 0;
+    margin-right: 3%;
+    margin-top: 0.6%;
+}
+
+.navButton{
+    background-color: transparent;
+    color: white;
+    border: none;
+    margin-left: 1vw;
+    text-decoration: none;
+    font-style:normal;
+}
+
+.navButton:hover{
+    color: lightblue;
+}
 
 .blackLink{
     color: black;
@@ -148,4 +168,10 @@ body{
 
 .chartItem{
     font-size: 1.5vh !important;
+}
+
+.storeState{
+    margin-left: 5%;
+    font-size: vw !important;
+
 }
