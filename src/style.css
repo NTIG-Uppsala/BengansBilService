@@ -147,8 +147,7 @@ body{
 }
 
 .chartItem{
-    color: red;
-    font-size: 1rem !important;
+    font-size: 1.5rem !important;
 
    
 }
@@ -157,7 +156,6 @@ body{
 @media screen and (max-width:500px) {
     .chartItem{
         font-size: 0.6rem !important; 
-        color: blue !important;
     }
 }
 
