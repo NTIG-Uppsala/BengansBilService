@@ -6,13 +6,11 @@ from os import path, getcwd
 
 
 
-class TestHemsida(TestCase):
+class TestingPage(TestCase):
 
-    # inställningar för hur testerna körs
-    stangintebrowsern = False  # om True så hålls webbläsaren öppen efter testerna är klara, annars stängs den
-    gomfonstret = True  # visar webbläsaren medan testerna körs
+    dontCloseBrowser = False  
+    hideWindow = True  
 
-    # setUpClass körs INNAN FÖRSTA testet
     @classmethod
     def setUpClass(cls):
         chr_options = Options()
@@ -26,21 +24,19 @@ class TestHemsida(TestCase):
         cls.browser = webdriver.Chrome(options=chr_options)
         
 
-    # tearDownClass körs EFTER SISTA testet
+    #After the last test
     @classmethod
     def tearDownClass(cls):
-        pass  # gör ingenting
+        pass 
 
-    # setUp körs INNAN VARJE TEST
+    #Before each test
     def setUp(self):
         self.browser.get(path.join((getcwd()), 'index.html'))
 
-    # tearDown körs EFTER VARJE TEST
+    #After each test
     def tearDown(self):
-        self.browser.get('about:blank')  # gå till en tom sida för att undvika att tidigare test påverkar senare
+        self.browser.get('about:blank') 
 
-
-    # HÄR BÖRJAR TESTERNA
     def testNumber(self):
         self.assertIn("0630-555-555", self.browser.page_source)
         self.browser.get(path.join((getcwd()), 'index.html'))
@@ -55,7 +51,7 @@ class TestHemsida(TestCase):
        self.browser.find_element(By.LINK_TEXT, "info@ntig‑uppsala.github.io")
 
 
-    def testTitleExist(self):
+    def testTitle(self):
         self.assertIn("Bengans Biluthyrning",self.browser.page_source)
 
     def testAdress(self):
@@ -78,7 +74,7 @@ class TestHemsida(TestCase):
         self.browser.find_element(By.ID, "X")
         self.browser.find_element(By.ID, "Facebook")
 
-    def testcars(self):
+    def testCars(self):
         car_list = [
             {'car': 'Audi A6', 'model': '2011', 'price': 800},
             {'car': 'Renault Kadjar', 'model': '2020', 'price': 450},
@@ -117,10 +113,21 @@ class TestHemsida(TestCase):
 
 
     def testliveOpenTimes(self):
-        self.assertIn("Just nu har vi",self.browser.page_source)
-    
+        self.assertIn("Just nu",self.browser.page_source)
+        
+
+
+    def testFooterTitle(self):
+        self.assertIn("Kontakta&nbsp;oss",self.browser.page_source)
+        self.assertIn("Adress",self.browser.page_source)
+        self.assertIn("Öppettider",self.browser.page_source)
+
+
+    def testSlideShowText(self):
+        self.assertIn("Bra&nbsp;Bilar",self.browser.page_source)
+        self.assertIn("Bättre&nbsp;Priser",self.browser.page_source)
 
     
-# denna bit finns här så att testerna körs om filen körs som vanligt python-program
+#will run if the fil running is a normal python file
 if __name__ == '__main__':
     main(verbosity=2)

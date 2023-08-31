@@ -88,8 +88,8 @@ body{
 
 }
 
-/*For the subtitles sizes (Kontakta oss,Adress,Öppettider) */
-.subtitle{
+/*For the footerInfos sizes (Kontakta oss,Adress,Öppettider) */
+.footerInfo{
 
     font-size: 3vh !important;
 
@@ -178,10 +178,6 @@ body{
     font-size: 1.5vh !important;
 }
 
-.storeState{
-    font-size: vw !important;
-
-}
 .carousel-content {
     position: absolute;
     top: 30%;
@@ -195,9 +191,5 @@ body{
     text-align: center;
 }
 
-
-.bg-success {
-    background-color: red;
-  }
 
 
