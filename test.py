@@ -81,7 +81,7 @@ class TestHemsida(TestCase):
     def testcars(self):
         car_list = [
             {'car': 'Audi A6', 'model': '2011', 'price': 800},
-            {'car': 'Renault Kadjar', 'model': '2016', 'price': 450},
+            {'car': 'Renault Kadjar', 'model': '2020', 'price': 450},
             {'car': 'Kia Soul', 'model': '2020', 'price': 400},
             {'car': 'Subaru','model':'2020','price':300},
             {'car': 'Caddilac Escalade','model':'1999','price':500},
@@ -116,6 +116,9 @@ class TestHemsida(TestCase):
                 self.fail(f"Image '{image_element.get_attribute('src')}' is not loaded.")
 
 
+    def testliveOpenTimes(self):
+        self.assertIn("Just nu har vi",self.browser.page_source)
+    
 
     
 # denna bit finns här så att testerna körs om filen körs som vanligt python-program
