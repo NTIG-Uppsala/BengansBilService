@@ -147,15 +147,5 @@ body{
 }
 
 .chartItem{
-    font-size: 1.5rem !important;
-
-   
+    font-size: 1.5vh !important;
 }
-
-
-@media screen and (max-width:500px) {
-    .chartItem{
-        font-size: 0.6rem !important; 
-    }
-}
-
