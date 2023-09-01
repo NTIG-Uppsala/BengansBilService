@@ -15,10 +15,10 @@ class TestingPage(TestCase):
     def setUpClass(cls):
         chr_options = Options()
 
-        if cls.stangintebrowsern:
+        if cls.dontCloseBrowser:
             chr_options.add_experimental_option("detach", True)
 
-        if cls.gomfonstret:
+        if cls.hideWindow:
             chr_options.add_argument("--headless")
 
         cls.browser = webdriver.Chrome(options=chr_options)
@@ -103,7 +103,7 @@ class TestingPage(TestCase):
         self.browser.get(path.join((getcwd()), 'index.html'))
         image_elements = self.browser.find_elements(By.TAG_NAME, "img")
 
-        for image_element in image_elements:
+        for image_element in image_elements: 
             is_loaded = self.browser.execute_script("return arguments[0].complete && typeof arguments[0].naturalWidth != 'undefined' && arguments[0].naturalWidth > 0;", image_element)
 
             if is_loaded:
@@ -114,7 +114,7 @@ class TestingPage(TestCase):
 
     def testliveOpenTimes(self):
         self.assertIn("Just nu",self.browser.page_source)
-        
+
 
 
     def testFooterTitle(self):
