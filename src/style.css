@@ -51,11 +51,9 @@ body{
 }
 
 .subnav{
-    font-size: 2vh;
     position: absolute;
-    right: 0;
-    margin-right: 3%;
-    margin-top: 0.6%;
+    right: 20px;
+    
 }
 
 .navButton{
@@ -83,7 +81,7 @@ body{
 
 .col{
 
-    font-size: 2vh !important;
+    font-size: 2rem !important;
 
 
 }
@@ -91,7 +89,7 @@ body{
 /*For the footerInfos sizes (Kontakta oss,Adress,Öppettider) */
 .footerInfo{
 
-    font-size: 3vh !important;
+    font-size: 3rem !important;
 
     @media screen and (max-width:1000px) {
         font-size: 110%;
@@ -175,7 +173,7 @@ body{
 }
 
 .chartItem{
-    font-size: 1.5vh !important;
+    font-size: 1rem !important;
 }
 
 .carousel-content {
