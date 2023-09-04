@@ -5,33 +5,33 @@ const day = date.getDay();
 //If weekday
 if (day < 6) {
   if (hour >= 10 && hour < 16) {
-	document.addEventListener("DOMContentLoaded", function () {
-	  document.getElementsByClassName("storeState")[0].innerHTML = "Öppet";
-	  document.getElementsByClassName("storeState")[0].style.color = "green";
-	});
+    document.addEventListener("DOMContentLoaded", function () {
+      document.getElementsByClassName("storeState")[0].innerHTML = "Öppet";
+      document.getElementsByClassName("storeState")[0].style.color = "green";
+    });
   } else {
-	document.addEventListener("DOMContentLoaded", function () {
-	  document.getElementsByClassName("storeState")[0].innerHTML = "Stängt";
-	  document.getElementsByClassName("storeState")[0].style.color = "red";
-	});
+    document.addEventListener("DOMContentLoaded", function () {
+      document.getElementsByClassName("storeState")[0].innerHTML = "Stängt";
+      document.getElementsByClassName("storeState")[0].style.color = "red";
+    });
   }
 } //Saturday
 else if (day == 6) {
   if (hour >= 12 && hour < 15) {
-	document.addEventListener("DOMContentLoaded", function () {
-	  document.getElementsByClassName("storeState")[0].innerHTML = "Öppet";
-	  document.getElementsByClassName("storeState")[0].style.color = "green";
-	});
+    document.addEventListener("DOMContentLoaded", function () {
+      document.getElementsByClassName("storeState")[0].innerHTML = "Öppet";
+      document.getElementsByClassName("storeState")[0].style.color = "green";
+    });
   } else {
-	document.addEventListener("DOMContentLoaded", function () {
-	  document.getElementsByClassName("storeState")[0].innerHTML = "Stängt";
-	  document.getElementsByClassName("storeState")[0].style.color = "red";
-	});
+    document.addEventListener("DOMContentLoaded", function () {
+      document.getElementsByClassName("storeState")[0].innerHTML = "Stängt";
+      document.getElementsByClassName("storeState")[0].style.color = "red";
+    });
   }
 } //Sunday
 else if (day == 7) {
   document.addEventListener("DOMContentLoaded", function () {
-	document.getElementsByClassName("storeState")[0].innerHTML = "Stängt";
-	document.getElementsByClassName("storeState")[0].style.color = "red";
+    document.getElementsByClassName("storeState")[0].innerHTML = "Stängt";
+    document.getElementsByClassName("storeState")[0].style.color = "red";
   });
 }
