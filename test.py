@@ -39,7 +39,7 @@ class TestingPage(TestCase):
         self.assertIn("0630-555-555", self.browser.page_source)
         self.browser.find_element(By.LINK_TEXT, "0630-555-555")
 
-    def testlinkNumber(self):
+    def testLinkNumber(self):
         self.assertIn("0630555555", self.browser.page_source)
 
     def testEmail(self):
@@ -110,10 +110,15 @@ class TestingPage(TestCase):
 
     def helperLiveOpening(self, date, results):
         self.browser.execute_script("setLiveOpeningHours(new Date('" + date + "'))")
+        element = self.browser.find_element(By.CLASS_NAME, "storeState")
+        self.assertIn(results, element.text)
 
     def testLiveOpeningHours(self):
+        self.helperLiveOpening("2023-09-04T16:05:55", "Stängt")
         self.helperLiveOpening("2023-09-04T09:59:00", "Stängt")
         self.helperLiveOpening("2023-09-04T10:59:00", "Öppet")
+        self.helperLiveOpening("2023-09-10T09:00:00", "Stängt")
+        self.helperLiveOpening("2023-09-09T12:05:55", "Öppet")
 
     def testFooterTitle(self):
         self.assertIn("Kontakta&nbsp;oss", self.browser.page_source)
@@ -123,6 +128,12 @@ class TestingPage(TestCase):
     def testSlideShowText(self):
         self.assertIn("Bra&nbsp;Bilar", self.browser.page_source)
         self.assertIn("Bättre&nbsp;Priser", self.browser.page_source)
+
+    def testMapLink(self):
+        self.assertIn(
+            "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2127.594234558012!2d14.134204777783458!3d57.77429073450839!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x465a6dfced2b078d%3A0x5e530219f0ce4a2!2zRmrDpGxsZ2F0YW4gMzIsIDU1NCAzOSBKw7Zua8O2cGluZw!5e0!3m2!1ssv!2sse!4v1693829622306!5m2!1ssv!2sse",
+            self.browser.page_source,
+        )
 
 
 # will run if the fil running is a normal python file

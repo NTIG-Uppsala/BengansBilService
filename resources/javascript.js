@@ -1,4 +1,3 @@
-const date = new Date();
 function setLiveOpeningHours(date) {
   const hour = date.getHours();
   const day = date.getDay();
