@@ -1,37 +1,34 @@
 const date = new Date();
-const hour = date.getHours();
-const day = date.getDay();
+function setLiveOpeningHours(date) {
+  const hour = date.getHours();
+  const day = date.getDay();
 
-//If weekday
-if (day < 6) {
-  if (hour >= 10 && hour < 16) {
-    document.addEventListener("DOMContentLoaded", function () {
-      document.getElementsByClassName("storeState")[0].innerHTML = "Öppet";
-      document.getElementsByClassName("storeState")[0].style.color = "green";
-    });
-  } else {
-    document.addEventListener("DOMContentLoaded", function () {
-      document.getElementsByClassName("storeState")[0].innerHTML = "Stängt";
-      document.getElementsByClassName("storeState")[0].style.color = "red";
-    });
+  //If weekday
+  if (day < 6) {
+    if (hour >= 10 && hour < 16) {
+      storeOpen();
+    } else {
+      storeClosed();
+    }
+  } //Saturday
+  else if (day == 6) {
+    if (hour >= 12 && hour < 15) {
+      storeOpen();
+    } else {
+      storeClosed();
+    }
+  } //Sunday
+  else if (day == 7) {
+    storeClosed();
   }
-} //Saturday
-else if (day == 6) {
-  if (hour >= 12 && hour < 15) {
-    document.addEventListener("DOMContentLoaded", function () {
-      document.getElementsByClassName("storeState")[0].innerHTML = "Öppet";
-      document.getElementsByClassName("storeState")[0].style.color = "green";
-    });
-  } else {
-    document.addEventListener("DOMContentLoaded", function () {
-      document.getElementsByClassName("storeState")[0].innerHTML = "Stängt";
-      document.getElementsByClassName("storeState")[0].style.color = "red";
-    });
+
+  function storeOpen() {
+    document.getElementsByClassName("storeState")[0].innerHTML = "Öppet";
+    document.getElementsByClassName("storeState")[0].style.color = "green";
   }
-} //Sunday
-else if (day == 7) {
-  document.addEventListener("DOMContentLoaded", function () {
+
+  function storeClosed() {
     document.getElementsByClassName("storeState")[0].innerHTML = "Stängt";
     document.getElementsByClassName("storeState")[0].style.color = "red";
-  });
+  }
 }

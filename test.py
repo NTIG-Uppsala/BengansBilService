@@ -108,6 +108,13 @@ class TestingPage(TestCase):
     def testliveOpenTimes(self):
         self.assertIn("Just nu", self.browser.page_source)
 
+    def helperLiveOpening(self, date, results):
+        self.browser.execute_script("setLiveOpeningHours(new Date('" + date + "'))")
+
+    def testLiveOpeningHours(self):
+        self.helperLiveOpening("2023-09-04T09:59:00", "Stängt")
+        self.helperLiveOpening("2023-09-04T10:59:00", "Öppet")
+
     def testFooterTitle(self):
         self.assertIn("Kontakta&nbsp;oss", self.browser.page_source)
         self.assertIn("Adress", self.browser.page_source)
