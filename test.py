@@ -129,6 +129,12 @@ class TestingPage(TestCase):
         self.assertIn("Bra&nbsp;Bilar", self.browser.page_source)
         self.assertIn("Bättre&nbsp;Priser", self.browser.page_source)
 
+    def testMapLink(self):
+        self.assertIn(
+            "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2127.594234558012!2d14.134204777783458!3d57.77429073450839!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x465a6dfced2b078d%3A0x5e530219f0ce4a2!2zRmrDpGxsZ2F0YW4gMzIsIDU1NCAzOSBKw7Zua8O2cGluZw!5e0!3m2!1ssv!2sse!4v1693829622306!5m2!1ssv!2sse",
+            self.browser.page_source,
+        )
+
 
 # will run if the fil running is a normal python file
 if __name__ == "__main__":
