@@ -80,11 +80,12 @@ body{
 }
 
 .col{
+    font-size: 1.4rem !important;
 
-    font-size: 1.5rem !important;
+    @media screen and (max-width:1000px) {
+        font-size: 80% !important;
+    }
 
-
-    
 }
 
 /*For the footerInfos sizes (Kontakta oss,Adress,Öppettider) */
@@ -171,10 +172,18 @@ body{
     @media screen and (max-width:950px){
      margin-top: 0.5vw;   
     }
+    
 }
 
 .chartItem{
     font-size: 1rem !important;
+    @media screen and (max-width:600px) {
+        font-size: 0.8rem !important;
+        margin: 0 auto;
+    }
+    @media screen and (max-width:300px) {
+        font-size: 0.6rem !important;
+    }
 }
 
 .carousel-content {
@@ -216,4 +225,10 @@ body{
 
 .textRight{
     float: right;
+}
+
+@media screen and (max-width:600px) {
+    .productCharts{
+        margin: 0 0 !important;
+    }
 }

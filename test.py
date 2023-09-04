@@ -104,21 +104,6 @@ class TestingPage(TestCase):
                 self.fail(
                     f"Image '{image_element.get_attribute('src')}' is not loaded."
                 )
-     def testiframeLoading(self):
-        iframe_elements = self.browser.find_elements(By.TAG_NAME, "iframe")
-
-        for iframee_element in iframe_elements:
-            is_loaded = self.browser.execute_script(
-                "return arguments[0].complete && typeof arguments[0].naturalWidth != 'undefined' && arguments[0].naturalWidth > 0;",
-                iframe_elements,
-            )
-
-            if is_loaded:
-                print(f"iframe '{iframe_element.get_attribute('src')}' is loaded.")
-            else:
-                self.fail(
-                    f"iframe '{iframe_element.get_attribute('src')}' is not loaded."
-                )
 
     def testliveOpenTimes(self):
         self.assertIn("Just nu", self.browser.page_source)
