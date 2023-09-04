@@ -1,8 +1,9 @@
+from os import getcwd, path
 from unittest import TestCase, main
+
 from selenium import webdriver
-from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
-from os import path, getcwd
+from selenium.webdriver.common.by import By
 
 
 class TestingPage(TestCase):
