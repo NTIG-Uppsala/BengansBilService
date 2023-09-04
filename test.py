@@ -39,7 +39,6 @@ class TestingPage(TestCase):
 
     def testNumber(self):
         self.assertIn("0630-555-555", self.browser.page_source)
-        self.browser.get(path.join((getcwd()), 'index.html'))
         self.browser.find_element(By.LINK_TEXT, "0630-555-555")
 
     def testlinkNumber(self):
@@ -47,14 +46,13 @@ class TestingPage(TestCase):
 
     def testEmail(self):
        self.assertIn("info@ntig-uppsala.github.io",self.browser.page_source)
-       self.browser.get(path.join((getcwd()), 'index.html'))
        self.browser.find_element(By.LINK_TEXT, "info@ntig‑uppsala.github.io")
 
 
     def testTitle(self):
         self.assertIn("Bengans Biluthyrning",self.browser.page_source)
 
-    def testAdress(self):
+    def testAddress(self):
         self.assertIn("Fjällgatan 32H",self.browser.page_source)
         self.assertIn("981 39 JÖNKÖPING",self.browser.page_source)
 
@@ -69,7 +67,6 @@ class TestingPage(TestCase):
         self.assertIn("Söndag",self.browser.page_source)
 
     def testSocialmediaLinks(self):
-        self.browser.get(path.join((getcwd()), 'index.html'))
         self.browser.find_element(By.ID, "Instagram")
         self.browser.find_element(By.ID, "X")
         self.browser.find_element(By.ID, "Facebook")
@@ -100,7 +97,6 @@ class TestingPage(TestCase):
 
 
     def testImageLoading(self):
-        self.browser.get(path.join((getcwd()), 'index.html'))
         image_elements = self.browser.find_elements(By.TAG_NAME, "img")
 
         for image_element in image_elements: 
