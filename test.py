@@ -58,12 +58,10 @@ class TestingPage(TestCase):
 
     def testOpeningHours(self):
         self.assertIn("Öppettider",self.browser.page_source)
-        self.assertIn("Måndag 10-16",self.browser.page_source)
-        self.assertIn("Tisdag 10-16",self.browser.page_source)
-        self.assertIn("Onsdag 10-16",self.browser.page_source)
-        self.assertIn("Torsdag 10-16",self.browser.page_source)
-        self.assertIn("Fredag 10-16",self.browser.page_source)
-        self.assertIn("Lördag 12-15",self.browser.page_source)
+        self.assertIn("Vardagar",self.browser.page_source)
+        self.assertIn("10-16",self.browser.page_source)
+        self.assertIn("Lördag",self.browser.page_source)
+        self.assertIn("12-15",self.browser.page_source)
         self.assertIn("Söndag",self.browser.page_source)
 
     def testSocialmediaLinks(self):

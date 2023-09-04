@@ -103,7 +103,7 @@ body{
 }
 
 .closedColor{
-    color: red;
+    color: rgb(247, 77, 77);
 }
 
 #title{
@@ -191,5 +191,15 @@ body{
     text-align: center;
 }
 
+.openHours{
+    width: 50%;  
+    margin: 0 auto;
+}
 
+.openHours p{
+    margin-bottom: 0;
+}
 
+.textRight{
+    float: right;
+}
