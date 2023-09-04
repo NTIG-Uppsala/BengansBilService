@@ -39,7 +39,7 @@ class TestingPage(TestCase):
         self.assertIn("0630-555-555", self.browser.page_source)
         self.browser.find_element(By.LINK_TEXT, "0630-555-555")
 
-    def testlinkNumber(self):
+    def testLinkNumber(self):
         self.assertIn("0630555555", self.browser.page_source)
 
     def testEmail(self):
