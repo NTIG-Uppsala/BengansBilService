@@ -123,6 +123,21 @@ class TestingPage(TestCase):
         self.helperLiveOpening("2023-09-04T10:59:00", "Öppet")
         self.helperLiveOpening("2023-09-10T09:00:00", "Stängt")
         self.helperLiveOpening("2023-09-09T12:05:55", "Öppet")
+        self.helperLiveOpening("2023-09-05T15:30:00", "Stänger snart")
+        self.helperLiveOpening("2023-09-05T15:41:20", "Stänger snart")
+        self.helperLiveOpening("2023-09-10T15:01:00", "Öppnar Måndag 10:00")
+        self.helperLiveOpening("2023-09-04T16:41:00", "Öppnar Tisdag 10:00")
+        self.helperLiveOpening("2023-09-05T16:55:10", "Öppnar Onsdag 10:00")
+        self.helperLiveOpening("2023-09-06T17:30:00", "Öppnar Torsdag 10:00")
+        self.helperLiveOpening("2023-09-07T20:00:10", "Öppnar Fredag 10:00")
+        self.helperLiveOpening("2023-09-08T16:30:00", "Öppnar Lördag 12:00")
+        self.helperLiveOpening("2023-09-09T15:01:00", "Öppnar Måndag 10:00")
+
+
+
+
+
+
 
     def testFooterTitle(self):
         self.assertIn("Kontakta&nbsp;oss", self.browser.page_source)
