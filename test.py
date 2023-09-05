@@ -128,11 +128,13 @@ class TestingPage(TestCase):
     def testSlideShowText(self):
         element = self.browser.find_element(By.CLASS_NAME, "carousel-content")
         self.assertIn("Välkommen", element.text)
-        self.assertIn("Välkommen", element.text)
         self.assertIn("Ring", element.text)
-        self.assertIn("tel:0630555555", element.get_attribute())
-        self.assertIn("0630&#8209;555&#8209;555", element.text)
-        self.assertIn("vid&nbsp;bokning", element.text)
+        self.assertIn("0630‑555‑555", element.text)
+        self.assertIn("vid bokning", element.text)
+
+    def testSlideShowLink(self):
+        phone_link = self.browser.find_element(By.ID, "whiteLink")
+        self.assertIn("tel:0630555555", phone_link.get_attribute("href"))
 
     def testMapLink(self):
         self.assertIn(
