@@ -2,7 +2,22 @@ name: Main Test
 on: [pull_request]
 
 jobs:
-  build:
+  validate_code:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v2
+
+      - name: ✔ HTML5 Validator
+        uses: NTIG-Uppsala/html5validator-action@master
+        with:
+          root: |
+            resources/style.css
+            index.html
+          css: true
+
+  run_tests:
     runs-on: windows-latest
 
     steps:
