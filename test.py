@@ -89,6 +89,10 @@ class TestingPage(TestCase):
             self.assertIn(model, self.browser.page_source)
             self.assertIn(str(price), self.browser.page_source)
 
+    def testWrongCars(self):
+        self.assertNotIn("Caddilac Escalade", self.browser.page_source)
+        self.assertNotIn("Mitsubichi Outlander", self.browser.page_source)
+
     def testImageLoading(self):
         image_elements = self.browser.find_elements(By.TAG_NAME, "img")
 
@@ -126,8 +130,15 @@ class TestingPage(TestCase):
         self.assertIn("Öppettider", self.browser.page_source)
 
     def testSlideShowText(self):
-        self.assertIn("Bra&nbsp;Bilar", self.browser.page_source)
-        self.assertIn("Bättre&nbsp;Priser", self.browser.page_source)
+        element = self.browser.find_element(By.CLASS_NAME, "carousel-content")
+        self.assertIn("Välkommen", element.text)
+        self.assertIn("Ring", element.text)
+        self.assertIn("0630‑555‑555", element.text)
+        self.assertIn("vid bokning", element.text)
+
+    def testSlideShowLink(self):
+        phone_link = self.browser.find_element(By.ID, "whiteLink")
+        self.assertIn("tel:0630555555", phone_link.get_attribute("href"))
 
     def testMapLink(self):
         self.assertIn(

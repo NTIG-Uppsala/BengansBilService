@@ -2,7 +2,7 @@ name: Main Test
 on: [pull_request]
 
 jobs:
-  build:
+  run_tests:
     runs-on: windows-latest
 
     steps:
