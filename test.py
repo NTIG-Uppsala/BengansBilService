@@ -126,8 +126,13 @@ class TestingPage(TestCase):
         self.assertIn("Öppettider", self.browser.page_source)
 
     def testSlideShowText(self):
-        self.assertIn("Bra&nbsp;Bilar", self.browser.page_source)
-        self.assertIn("Bättre&nbsp;Priser", self.browser.page_source)
+        element = self.browser.find_element(By.CLASS_NAME, "carousel-content")
+        self.assertIn("Välkommen", element.text)
+        self.assertIn("Välkommen", element.text)
+        self.assertIn("Ring", element.text)
+        self.assertIn("tel:0630555555", element.get_attribute())
+        self.assertIn("0630&#8209;555&#8209;555", element.text)
+        self.assertIn("vid&nbsp;bokning", element.text)
 
     def testMapLink(self):
         self.assertIn(
