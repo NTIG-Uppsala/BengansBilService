@@ -13,9 +13,19 @@ body {
     justify-content: flex-start;
     display: flex;
     padding: 10px;
-    /* Responsive */
+    
 }
 
+.subnav {
+    position: absolute;
+    right: 20px;
+    font-size: 2.1rem;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+/* Responsive */
 @media screen and (max-width: 1000px) {
     .websiteTitle {
         font-size: 180%;
@@ -42,6 +52,8 @@ body {
     }
 }
 
+
+
 #Title {
     background-color: transparent;
     color: white;
@@ -62,10 +74,6 @@ body {
     }
 }
 
-.subnav {
-    position: absolute;
-    right: 20px;
-}
 
 .navButton {
     background-color: transparent;
@@ -280,4 +288,8 @@ body {
     .productCharts {
         margin: 0 0 !important;
     }
+}
+
+.navbar-toggler-icon{
+    color:white;
 }
