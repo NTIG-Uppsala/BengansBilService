@@ -14,16 +14,14 @@ body {
     justify-content: flex-start;
     display: flex;
     padding: 10px;
-    
 }
 
-.subnav {
-    position: absolute;
-    right: 20px;
-    font-size: 2.1rem;
-    top: 50%;
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
+.subnav{
+    right: 0 !important;
+    position: absolute !important; 
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
 }
 
 /* Responsive */
@@ -83,6 +81,12 @@ body {
     margin-left: 1vw;
     text-decoration: none;
     font-style: normal;
+}
+
+@media screen and (max-width:1100px) {
+    .navButton{
+        font-size: 2rem;
+    }
 }
 
 .navButton:hover {
