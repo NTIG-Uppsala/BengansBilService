@@ -1,3 +1,4 @@
+*{margin: 0; padding: 0;}
 body {
     background-color: white;
 }
@@ -13,7 +14,16 @@ body {
     justify-content: flex-start;
     display: flex;
     padding: 10px;
+}
 
+#storeOpen{
+    color: green;
+    opacity: 1 !important;
+}
+
+#storeClosed{
+    opacity: 1 !important;
+    color: red;
 }
 
 .subnav{
@@ -25,7 +35,6 @@ body {
 }
 
 /* Responsive */
-
 @media screen and (max-width: 1000px) {
     .websiteTitle {
         font-size: 180%;
@@ -52,6 +61,8 @@ body {
     }
 }
 
+
+
 #Title {
     background-color: transparent;
     color: white;
@@ -72,10 +83,6 @@ body {
     }
 }
 
-.subnav {
-    position: absolute;
-    right: 20px;
-}
 
 .navButton {
     background-color: transparent;
@@ -84,6 +91,8 @@ body {
     margin-left: 1vw;
     text-decoration: none;
     font-style: normal;
+    font-size: 2.5rem;
+    text-align: center;
 }
 
 @media screen and (max-width:1100px) {
@@ -296,4 +305,8 @@ body {
     .productCharts {
         margin: 0 0 !important;
     }
+}
+
+.navbar-toggler-icon{
+    color:white;
 }
