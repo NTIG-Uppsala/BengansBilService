@@ -128,3 +128,46 @@ function scrollToInfo() {
     document.getElementById("storeState").scrollIntoView();
   }, 500);
 }
+zipCodeList = [
+  "98132",
+  "98135",
+  "98136",
+  "98138",
+  "98137",
+  "98139",
+  "98140",
+  "98142",
+  "98143",
+  "98144",
+  "98146",
+  "98147",
+];
+
+document.addEventListener("DOMContentLoaded", (event) => {
+  let ZipcodeCheck =
+    '<p>Skriv ditt postnummer för att se om vi kör ut till dig!</p><form action=""><input type="text" inputmode="numeric" id="number" placeholder="123 45"><input class="checkNumber" id="submit" type="submit" value="Kolla"></form><p id="output"></p>';
+  document.querySelector("#jsCheck").innerHTML = ZipcodeCheck;
+
+  document
+    .querySelector("#zipCodeCheck form")
+    .addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      // event.submitter.parentNode.querySelector("#number").value
+      // is what is written in the input
+      let zipInput = event.submitter.parentNode.querySelector("#number").value;
+      zipInput = zipInput.split(" ").join(""); //removes spaces from string
+
+      if (zipInput.match(/\D/) != null) {
+        document.querySelector("#output").innerHTML = "Inte ett postnummer.";
+      } else if (zipInput.length != 5) {
+        document.querySelector("#output").innerHTML = "Inte ett postnummer.";
+      } else if (zipCodeList.includes(zipInput)) {
+        document.querySelector("#output").innerHTML =
+          "Vi kör ut, ring telefonnumret ovan!";
+      } else {
+        document.querySelector("#output").innerHTML =
+          "Vi kör tyvärr inte ut till dig.";
+      }
+    });
+});
