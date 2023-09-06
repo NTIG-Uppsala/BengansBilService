@@ -35,34 +35,36 @@
   <script src="resources/javascript.js"></script>
 
   <div class="websiteTitle">
-    <b id="Title">NTB Biluthyrning
+    <div id="Title"><b>NTB Biluthyrning</b>
       <span style="font-size: 1rem;">
         <span id="storeOpen" class="storeOpen" style="opacity: 0.2;">öppet</span>&nbsp;|&nbsp;<span class="storeClosed"
-          id="storeClosed" style="opacity: 0.2;">stängt</b></span>
-    </span>
+          id="storeClosed" style="opacity: 0.2;">stängt</span>
+      </span>
+    </div>
     <nav class="navbar navbar-expand-lg bg-body-tertiary--bs-body-bg subnav" data-bs-theme="dark">
       <div class=".container-sm">
         <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
           aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar">
           <div class="offcanvas-header">
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
           </div>
           <div class="offcanvas-body-bs-body-bg" style="margin-right: 5%;">
             <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
               <li class="nav-item">
-                <a class="navButton"><button class="sideNavButton" data-bs-dismiss="offcanvas" onclick="scrollToInfo()"
-                    style="padding-left: 5%;">Kontakta&nbsp;oss</button></a>
+                <button class="navButton sideNavButton" data-bs-dismiss="offcanvas" onclick="scrollToInfo()"
+                  style="padding-left: 5%;">Kontakts&nbsp;oss</button>
               </li>
               <li class="nav-item">
-                <a class="navButton"><button class="sideNavButton" data-bs-dismiss="offcanvas" onclick="scrollToInfo()"
-                    style="padding-left: 5%;">Hitta&nbsp;hit</button></a>
+                <button class="navButton sideNavButton" data-bs-dismiss="offcanvas" onclick="scrollToInfo()"
+                  style="padding-left: 5%;">Hitta&nbsp;hit</button>
+
               </li>
               <li class="nav-item">
-                <a class="navButton"><button class="sideNavButton" data-bs-dismiss="offcanvas" onclick="scrollToInfo()"
-                    style="padding-left: 5%;">Öppettider</button></a>
+                <button class="navButton sideNavButton" data-bs-dismiss="offcanvas" onclick="scrollToInfo()"
+                  style="padding-left: 5%;">Öppettider</button>
               </li>
             </ul>
           </div>
