@@ -35,7 +35,10 @@
   <script src="resources/javascript.js"></script>
 
   <div class="websiteTitle">
-    <b id="Title">Bengans Biluthyrning</b>
+    <b id="Title">Bengans Biluthyrning
+      <span style="font-size: 1rem;">
+        <span id="storeOpen">öppet</span>|<span id="storeClosed" style="font-size: 1rem;">stängt</b></span>
+    </span>
     <nav class="navbar navbar-expand-lg bg-body-tertiary--bs-body-bg subnav" data-bs-theme="dark">
       <div class=".container-sm">
         <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
@@ -49,10 +52,10 @@
           <div class="offcanvas-body-bs-body-bg ">
             <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
               <li class="nav-item">
-                <a href="#openingHours" class="navButton">Kontakta oss</a>
+                <a href="#openingHours" class="navButton">Kontakta&nbsp;oss</a>
               </li>
               <li class="nav-item">
-                <a href="#openingHours" class="navButton">Hitta hit</a>
+                <a href="#openingHours" class="navButton">Hitta&nbsp;hit</a>
               </li>
               <li class="nav-item">
                 <a href="#openingHours" class="navButton">Öppettider</a>
@@ -203,7 +206,7 @@
       </div>
       <div class="col">
         <h3 class="footerInfo" id="openingHours">Öppettider</h3>
-        <p>Just nu: <span class="storeState"></span></p>
+        <p class="storeState"></p>
         <div class="text-start openHours">
           <p>Vardagar <span class="text-end textRight">10-16</span></p>
           <p>Lördag <span class="text-end textRight">12-15</span></p>
