@@ -26,6 +26,12 @@ body {
     color: red;
 }
 
+.sideNavButton{
+    background-color: transparent;
+    border: none;
+}
+
+
 .subnav{
     right: 0 !important;
     position: absolute !important; 
@@ -33,6 +39,7 @@ body {
     bottom: 0;
     margin: auto 0;
 }
+
 
 /* Responsive */
 @media screen and (max-width: 1000px) {
@@ -309,4 +316,13 @@ body {
 
 .navbar-toggler-icon{
     color:white;
+}
+
+.zipInput{
+    margin-top:1rem;
+    background-color: transparent;
+    margin-left:auto;
+    margin-right:auto;
+    text-align:center;
+    font-weight: bold;
 }

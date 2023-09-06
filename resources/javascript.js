@@ -11,10 +11,6 @@ function setLiveOpeningHours(date) {
   const storeOpenElements = document.getElementsByClassName("storeOpen");
   const storeClosedElements = document.getElementsByClassName("storeClosed");
 
-  const w = document.getElementById("closedOrOpen");
-
-  console.log(w);
-
   const openingHours = {
     weekdays: { open: 10, close: 16 },
     saturday: { open: 12, close: 15 },
@@ -126,3 +122,52 @@ function setLiveOpeningHours(date) {
     }
   }
 }
+
+function scrollToInfo() {
+  setTimeout(() => {
+    document.getElementById("storeState").scrollIntoView();
+  }, 500);
+}
+zipCodeList = [
+  "98132",
+  "98135",
+  "98136",
+  "98138",
+  "98137",
+  "98139",
+  "98140",
+  "98142",
+  "98143",
+  "98144",
+  "98146",
+  "98147",
+];
+
+document.addEventListener("DOMContentLoaded", (event) => {
+  let ZipcodeCheck =
+    '<p>Kör vi ut till dig?</p><form action=""><input type="text" style="height:2.2rem; font-size:1.2rem;" inputmode="numeric" id="number" placeholder="123 45"><input class="checkNumber" style="height:2.2rem;  font-size:1.2rem;" id="submit" type="submit" value="Kolla"></form><p id="output"></p>';
+  document.querySelector("#jsCheck").innerHTML = ZipcodeCheck;
+
+  document
+    .querySelector("#zipCodeCheck form")
+    .addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      // event.submitter.parentNode.querySelector("#number").value
+      // is what is written in the input
+      let zipInput = event.submitter.parentNode.querySelector("#number").value;
+      zipInput = zipInput.split(" ").join(""); //removes spaces from string
+
+      if (zipInput.match(/\D/) != null) {
+        document.querySelector("#output").innerHTML = "Inte ett postnummer.";
+      } else if (zipInput.length != 5) {
+        document.querySelector("#output").innerHTML = "Inte ett postnummer.";
+      } else if (zipCodeList.includes(zipInput)) {
+        document.querySelector("#output").innerHTML =
+          "Vi kör ut, ring telefonnumret ovan!";
+      } else {
+        document.querySelector("#output").innerHTML =
+          "Vi kör tyvärr inte ut till dig.";
+      }
+    });
+});
