@@ -38,18 +38,18 @@ function setLiveOpeningHours(date) {
       hour >= openingHours.weekdays.open &&
       hour < openingHours.weekdays.close
     ) {
-      var justNuSpan = document.createElement("span");
-      justNuSpan.innerText = "Just nu: ";
-      justNuSpan.style.color = "black";
+      var rightNowSpan = document.createElement("span");
+      rightNowSpan.innerText = "Just nu: ";
+      rightNowSpan.style.color = "black";
 
-      var oppetSpan = document.createElement("span");
-      oppetSpan.innerText = "Öppet";
-      oppetSpan.style.color = "green";
+      var openSpan = document.createElement("span");
+      openSpan.innerText = "Öppet";
+      openSpan.style.color = "green";
 
       element.innerHTML = "";
 
-      element.appendChild(justNuSpan);
-      element.appendChild(oppetSpan);
+      element.appendChild(rightNowSpan);
+      element.appendChild(openSpan);
       storeIsOpen = true;
     } else if (hour < openingHours.weekdays.open) {
       element.innerText = `Öppnar 10:00 idag`;
@@ -78,18 +78,18 @@ function setLiveOpeningHours(date) {
       hour >= openingHours.saturday.open &&
       hour < openingHours.saturday.close
     ) {
-      var justNuSpan = document.createElement("span");
-      justNuSpan.innerText = "Just nu: ";
-      justNuSpan.style.color = "black";
+      var rightNowSpan = document.createElement("span");
+      rightNowSpan.innerText = "Just nu: ";
+      rightNowSpan.style.color = "black";
 
-      var oppetSpan = document.createElement("span");
-      oppetSpan.innerText = "Öppet";
-      oppetSpan.style.color = "green";
+      var openSpan = document.createElement("span");
+      openSpan.innerText = "Öppet";
+      openSpan.style.color = "green";
 
       element.innerHTML = "";
 
-      element.appendChild(justNuSpan);
-      element.appendChild(oppetSpan);
+      element.appendChild(rightNowSpan);
+      element.appendChild(openSpan);
       storeIsOpen = true;
     } else if (hour < openingHours.saturday.open) {
       element.innerText = `Öppnar ${openingHours.saturday.open} idag`;

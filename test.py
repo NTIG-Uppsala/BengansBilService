@@ -153,6 +153,10 @@ class TestingPage(TestCase):
             self.browser.page_source,
         )
 
+    def testZipCodeText(self):
+        self.assertIn("Kör vi ut till dig?", self.browser.page_source)
+        self.assertIn("Kolla", self.browser.page_source)
+
 
 # will run if the fil running is a normal python file
 if __name__ == "__main__":
