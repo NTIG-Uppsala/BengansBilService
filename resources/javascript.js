@@ -11,10 +11,6 @@ function setLiveOpeningHours(date) {
   const storeOpenElements = document.getElementsByClassName("storeOpen");
   const storeClosedElements = document.getElementsByClassName("storeClosed");
 
-  const w = document.getElementById("closedOrOpen");
-
-  console.log(w);
-
   const openingHours = {
     weekdays: { open: 10, close: 16 },
     saturday: { open: 12, close: 15 },
@@ -125,4 +121,10 @@ function setLiveOpeningHours(date) {
       element.removeAttribute("id");
     }
   }
+}
+
+function scrollToInfo() {
+  setTimeout(() => {
+    document.getElementById("storeState").scrollIntoView();
+  }, 500);
 }

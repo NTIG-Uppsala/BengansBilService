@@ -26,6 +26,12 @@ body {
     color: red;
 }
 
+.sideNavButton{
+    background-color: transparent;
+    border: none;
+}
+
+
 .subnav{
     right: 0 !important;
     position: absolute !important; 
@@ -33,6 +39,7 @@ body {
     bottom: 0;
     margin: auto 0;
 }
+
 
 /* Responsive */
 @media screen and (max-width: 1000px) {
