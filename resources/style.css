@@ -18,11 +18,12 @@ body {
 
 #storeOpen{
     color: green;
-
+    opacity: 1 !important;
 }
 
 #storeClosed{
-    opacity: 0.2;
+    opacity: 1 !important;
+    color: red;
 }
 
 .subnav{

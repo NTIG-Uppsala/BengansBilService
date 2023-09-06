@@ -37,7 +37,8 @@
   <div class="websiteTitle">
     <b id="Title">NTB Biluthyrning
       <span style="font-size: 1rem;">
-        <span id="storeOpen">öppet</span>|<span id="storeClosed" style="font-size: 1rem;">stängt</b></span>
+        <span id="storeOpen" class="storeOpen" style="opacity: 0.2;">öppet</span> | <span class="storeClosed"
+          id="storeClosed" style="opacity: 0.2;">stängt</b></span>
     </span>
     <nav class="navbar navbar-expand-lg bg-body-tertiary--bs-body-bg subnav" data-bs-theme="dark">
       <div class=".container-sm">
@@ -52,7 +53,7 @@
           <div class="offcanvas-body-bs-body-bg ">
             <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
               <li class="nav-item">
-                <a href="#openingHours" class="navButton">Kontakta&nbsp;oss</a>
+                <button href="#openingHours" data-bs-dismiss="offcanvas" class="navButton">Kontakta&nbsp;oss</button>
               </li>
               <li class="nav-item">
                 <a href="#openingHours" class="navButton">Hitta&nbsp;hit</a>
@@ -204,14 +205,13 @@
 
         </p>
       </div>
-      <div class="col">
+      <div class="col" style="padding-bottom: 7% !important;">
         <h3 class="footerInfo" id="openingHours">Öppettider</h3>
-        <p class="storeState"></p>
+        <p id="storeState"></p>
         <div class="text-start openHours">
           <p>Vardagar <span class="text-end textRight">10-16</span></p>
           <p>Lördag <span class="text-end textRight">12-15</span></p>
           <p>Söndag <span class="text-end closedColor textRight">Stängt</span></p>
-
         </div>
       </div>
     </div>

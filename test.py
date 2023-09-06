@@ -109,25 +109,22 @@ class TestingPage(TestCase):
                     f"Image '{image_element.get_attribute('src')}' is not loaded."
                 )
 
-    def testliveOpenTimes(self):
-        self.assertIn("Just nu", self.browser.page_source)
-
     def helperLiveOpening(self, date, results):
         self.browser.execute_script("setLiveOpeningHours(new Date('" + date + "'))")
-        element = self.browser.find_element(By.CLASS_NAME, "storeState")
+        element = self.browser.find_element(By.ID, "storeState")
         self.assertIn(results, element.text)
 
     def testLiveOpeningHours(self):
         self.helperLiveOpening("2023-09-04T10:59:00", "Just nu: Öppet")
         self.helperLiveOpening("2023-09-09T12:05:55", "Just nu: Öppet")
         self.helperLiveOpening("2023-09-05T15:45:00", "Stänger snart")
-        self.helperLiveOpening("2023-09-09T15:01:00", "Öppnar måndag 10:00")
-        self.helperLiveOpening("2023-09-04T16:41:00", "Öppnar tisdag 10:00")
-        self.helperLiveOpening("2023-09-05T16:55:10", "Öppnar onsdag 10:00")
-        self.helperLiveOpening("2023-09-06T17:30:00", "Öppnar torsdag 10:00")
-        self.helperLiveOpening("2023-09-07T20:00:10", "Öppnar fredag 10:00")
-        self.helperLiveOpening("2023-09-08T16:30:00", "Öppnar lördag 12:00")
-        self.helperLiveOpening("2023-09-09T15:01:00", "Öppnar måndag 10:00")
+        self.helperLiveOpening("2023-09-09T15:01:00", "Öppnar måndag kl 10")
+        self.helperLiveOpening("2023-09-04T16:41:00", "Öppnar tisdag kl 10")
+        self.helperLiveOpening("2023-09-05T16:55:10", "Öppnar onsdag kl 10")
+        self.helperLiveOpening("2023-09-06T17:30:00", "Öppnar torsdag kl 10")
+        self.helperLiveOpening("2023-09-07T20:00:10", "Öppnar fredag kl 10")
+        self.helperLiveOpening("2023-09-08T16:30:00", "Öppnar lördag kl 12")
+        self.helperLiveOpening("2023-09-09T15:01:00", "Öppnar måndag kl 10")
         self.helperLiveOpening("2023-09-11T09:50:00", "Öppnar om 10 minuter")
 
     def testFooterTitle(self):
