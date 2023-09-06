@@ -144,7 +144,7 @@ zipCodeList = [
 
 document.addEventListener("DOMContentLoaded", (event) => {
   let ZipcodeCheck =
-    '<p>Skriv ditt postnummer för att se om vi kör ut till dig!</p><form action=""><input type="text" inputmode="numeric" id="number" placeholder="123 45"><input class="checkNumber" id="submit" type="submit" value="Kolla"></form><p id="output"></p>';
+    '<p>Kör vi ut till dig?</p><form action=""><input type="text" style="height:2.2rem; font-size:1.2rem;" inputmode="numeric" id="number" placeholder="123 45"><input class="checkNumber" style="height:2.2rem;  font-size:1.2rem;" id="submit" type="submit" value="Kolla"></form><p id="output"></p>';
   document.querySelector("#jsCheck").innerHTML = ZipcodeCheck;
 
   document

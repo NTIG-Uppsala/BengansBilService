@@ -310,3 +310,12 @@ body {
 .navbar-toggler-icon{
     color:white;
 }
+
+.zipInput{
+    margin-top:1rem;
+    background-color: transparent;
+    margin-left:auto;
+    margin-right:auto;
+    text-align:center;
+    font-weight: bold;
+}
