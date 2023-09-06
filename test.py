@@ -47,7 +47,7 @@ class TestingPage(TestCase):
         self.browser.find_element(By.LINK_TEXT, "info@ntig‑uppsala.github.io")
 
     def testTitle(self):
-        self.assertIn("Bengans Biluthyrning", self.browser.page_source)
+        self.assertIn("NTB Biluthyrning", self.browser.page_source)
 
     def testAddress(self):
         self.assertIn("Fjällgatan 32H", self.browser.page_source)
@@ -118,8 +118,8 @@ class TestingPage(TestCase):
         self.assertIn(results, element.text)
 
     def testLiveOpeningHours(self):
-        self.helperLiveOpening("2023-09-04T10:59:00", "Öppet")
-        self.helperLiveOpening("2023-09-09T12:05:55", "Öppet")
+        self.helperLiveOpening("2023-09-04T10:59:00", "Just nu: Öppet")
+        self.helperLiveOpening("2023-09-09T12:05:55", "Just nu: Öppet")
         self.helperLiveOpening("2023-09-05T15:45:00", "Stänger snart")
         self.helperLiveOpening("2023-09-09T15:01:00", "Öppnar måndag 10:00")
         self.helperLiveOpening("2023-09-04T16:41:00", "Öppnar tisdag 10:00")

@@ -1,3 +1,4 @@
+*{margin: 0; padding: 0;}
 body {
     background-color: white;
 }
@@ -13,7 +14,6 @@ body {
     justify-content: flex-start;
     display: flex;
     padding: 10px;
-
 }
 
 #storeOpen{
@@ -34,7 +34,6 @@ body {
 }
 
 /* Responsive */
-
 @media screen and (max-width: 1000px) {
     .websiteTitle {
         font-size: 180%;
@@ -61,6 +60,8 @@ body {
     }
 }
 
+
+
 #Title {
     background-color: transparent;
     color: white;
@@ -81,10 +82,6 @@ body {
     }
 }
 
-.subnav {
-    position: absolute;
-    right: 20px;
-}
 
 .navButton {
     background-color: transparent;
@@ -307,4 +304,8 @@ body {
     .productCharts {
         margin: 0 0 !important;
     }
+}
+
+.navbar-toggler-icon{
+    color:white;
 }
