@@ -157,6 +157,12 @@ class TestingPage(TestCase):
         self.assertIn("Kör vi ut till dig?", self.browser.page_source)
         self.assertIn("Kolla", self.browser.page_source)
 
+    def testZipCode(self):
+        self.browser.find_element(By.ID, "zipNumber").send_keys("98132")
+        self.browser.find_element(By.ID, "submit").click()
+        zipOutput = self.browser.find_element(By.ID, "zipCodeCheck")
+        self.assertIn("Vi kör ut, ring telefonnumret ovan!", zipOutput.text)
+
 
 # will run if the fil running is a normal python file
 if __name__ == "__main__":

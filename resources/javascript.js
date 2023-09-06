@@ -145,7 +145,7 @@ zipCodeList = [
 
 document.addEventListener("DOMContentLoaded", (event) => {
   let ZipcodeCheck =
-    '<p>Kör vi ut till dig?</p><form action=""><input type="text" style="height:2.2rem; font-size:1.2rem;" inputmode="numeric" id="number" placeholder="123 45"><input class="checkNumber" style="height:2.2rem;  font-size:1.2rem;" id="submit" type="submit" value="Kolla"></form><p id="output"></p>';
+    '<p>Kör vi ut till dig?</p><form action=""><input type="text" style="height:2.2rem; font-size:1.2rem;" inputmode="numeric" id="zipNumber" placeholder="123 45"><input class="checkNumber" style="height:2.2rem;  font-size:1.2rem;" id="submit" type="submit" value="Kolla"></form><p id="output"></p>';
   document.querySelector("#jsCheck").innerHTML = ZipcodeCheck;
 
   document
@@ -155,7 +155,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
       // event.submitter.parentNode.querySelector("#number").value
       // is what is written in the input
-      let zipInput = event.submitter.parentNode.querySelector("#number").value;
+      let zipInput =
+        event.submitter.parentNode.querySelector("#zipNumber").value;
       zipInput = zipInput.split(" ").join(""); //removes spaces from string
 
       if (zipInput.match(/\D/) != null) {
