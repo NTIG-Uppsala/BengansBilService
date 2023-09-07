@@ -29,8 +29,27 @@ body {
 .sideNavButton{
     background-color: transparent;
     border: none;
+    font-size: 1.7rem !important;
 }
 
+.nav-item{
+    text-align: center !important;
+    align-items: center !important;
+    display: flex !important;
+    justify-content: center !important;
+}
+
+@media screen and (max-width:991px) {
+    .nav-item{
+        text-align: unset !important;
+        align-items: unset !important;
+        display: unset !important;
+        justify-content: unset !important;
+    }
+    .navbar-toggler{
+        margin: auto auto;
+    }
+}
 
 .subnav{
     right: 0 !important;
@@ -67,8 +86,6 @@ body {
         height: 25px;
     }
 }
-
-
 
 #Title {
     background-color: transparent;
@@ -123,7 +140,7 @@ body {
 }
 
 .col {
-    font-size: 1.4rem !important;
+    font-size: 1rem !important;
 }
 
 @media screen and (max-width: 1000px) {
@@ -134,7 +151,7 @@ body {
 
 /* For the footerInfos sizes (Kontakta oss, Adress, Öppettider) */
 .footerInfo {
-    font-size: 2.5rem !important;
+    font-size: 1.5rem !important;
 }
 
 @media screen and (max-width: 1000px) {

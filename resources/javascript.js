@@ -1,13 +1,34 @@
 window.setInterval(function () {
   setLiveOpeningHours(new Date());
-}, 10000);
+}, 30000); //Every 30 sec
+
+function isDateClosed(month, day) {
+  const closedDays = [
+    { month: 1, day: 1 },
+    { month: 1, day: 6 },
+    { month: 6, day: 6 },
+    { month: 5, day: 1 },
+    { month: 12, day: 24 },
+    { month: 12, day: 25 },
+    { month: 12, day: 26 },
+    { month: 12, day: 31 },
+  ];
+
+  for (const closedDay of closedDays) {
+    if (closedDay.month === month && closedDay.day === day) {
+      return true;
+    }
+  }
+  return false;
+}
 
 function setLiveOpeningHours(date) {
   const hour = date.getHours();
   const day = date.getDay();
+  const month = date.getMonth();
   const minute = date.getMinutes();
   const element = document.getElementById("storeState");
-  var storeIsOpen = true;
+  let storeIsOpen = true;
   const storeOpenElements = document.getElementsByClassName("storeOpen");
   const storeClosedElements = document.getElementsByClassName("storeClosed");
 
@@ -26,12 +47,17 @@ function setLiveOpeningHours(date) {
     "lördag",
   ];
 
+  const isDateClose = isDateClosed(month, date.getDate());
+  console.log(isDateClose);
+
   //If weekday
   if (day < 6) {
     if (hour === openingHours.weekdays.open - 1 && minute >= 30) {
+      //30 min before opening
       element.innerText = `Öppnar om ${60 - minute} minuter`;
       storeIsOpen = false;
     } else if (hour === openingHours.weekdays.close - 1 && minute >= 45) {
+      //15 min before closing
       element.innerText = `Stänger snart`;
       storeIsOpen = true;
     } else if (
@@ -52,7 +78,7 @@ function setLiveOpeningHours(date) {
       element.appendChild(openSpan);
       storeIsOpen = true;
     } else if (hour < openingHours.weekdays.open) {
-      element.innerText = `Öppnar 10:00 idag`;
+      element.innerText = `Öppnar kl ${openingHours.weekdays.open} idag`;
     } else {
       if (day === 5) {
         element.innerText = `Öppnar ${days[day + 1]} kl ${

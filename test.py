@@ -127,6 +127,7 @@ class TestingPage(TestCase):
         self.helperLiveOpening("2023-09-07T20:00:10", "Öppnar fredag kl 10")
         self.helperLiveOpening("2023-09-08T16:30:00", "Öppnar lördag kl 12")
         self.helperLiveOpening("2023-09-09T15:01:00", "Öppnar måndag kl 10")
+        self.helperLiveOpening("2023-09-07T09:01:00", "Öppnar kl 10 idag")
         self.helperLiveOpening("2023-09-11T09:50:00", "Öppnar om 10 minuter")
 
     def teststoreStateNextToTitle(self):
@@ -218,6 +219,11 @@ class TestingPage(TestCase):
             self.assertIn("Inte ett postnummer.", zipOutput.text)
             self.browser.get("about:blank")
             self.browser.get(path.join((getcwd()), "index.html"))
+
+    def testIsDateClosed(self, date, results):
+        self.browser.execute_script("isDateClosed(new Date('" + date + "'))")
+        element = self.browser.find_element(By.ID, "storeState")
+        self.assertIn(results, element.text)
 
 
 # will run if the fil running is a normal python file
