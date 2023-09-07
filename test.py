@@ -53,7 +53,7 @@ class TestingPage(TestCase):
 
     def testAddress(self):
         self.assertIn("Fjällgatan 32H", self.browser.page_source)
-        self.assertIn("981 39 JÖNKÖPING", self.browser.page_source)
+        self.assertIn("981 39 Jönköping", self.browser.page_source)
 
     def testOpeningHours(self):
         self.assertIn("Öppettider", self.browser.page_source)
@@ -166,7 +166,9 @@ class TestingPage(TestCase):
         )
 
     def testZipCodeText(self):
-        self.assertIn("Kör vi ut till dig?", self.browser.page_source)
+        self.assertIn(
+            "Kolla om vi kör bil direkt hem till dig", self.browser.page_source
+        )
         self.assertIn("Kolla", self.browser.page_source)
 
     def testZipCode(self):
@@ -216,7 +218,7 @@ class TestingPage(TestCase):
             self.browser.find_element(By.ID, "zipNumber").send_keys(currentZip)
             self.browser.find_element(By.ID, "submit").click()
             zipOutput = self.browser.find_element(By.ID, "zipCodeCheck")
-            self.assertIn("Inte ett postnummer.", zipOutput.text)
+            self.assertIn("Inte ett giltigt postnummer.", zipOutput.text)
             self.browser.get("about:blank")
             self.browser.get(path.join((getcwd()), "index.html"))
 
