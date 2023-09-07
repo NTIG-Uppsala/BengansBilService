@@ -164,6 +164,11 @@ class TestingPage(TestCase):
         zipOutput = self.browser.find_element(By.ID, "zipCodeCheck")
         self.assertIn("Vi kör ut, ring telefonnumret ovan!", zipOutput.text)
 
+    def testIsDateClosed(self, date, results):
+        self.browser.execute_script("isDateClosed(new Date('" + date + "'))")
+        element = self.browser.find_element(By.ID, "storeState")
+        self.assertIn(results, element.text)
+
 
 # will run if the fil running is a normal python file
 if __name__ == "__main__":

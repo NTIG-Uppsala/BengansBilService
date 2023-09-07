@@ -2,9 +2,30 @@ window.setInterval(function () {
   setLiveOpeningHours(new Date());
 }, 30000); //Every 30 sec
 
+function isDateClosed(month, day) {
+  const closedDays = [
+    { month: 1, day: 1 },
+    { month: 1, day: 6 },
+    { month: 6, day: 6 },
+    { month: 5, day: 1 },
+    { month: 12, day: 24 },
+    { month: 12, day: 25 },
+    { month: 12, day: 26 },
+    { month: 12, day: 31 },
+  ];
+
+  for (const closedDay of closedDays) {
+    if (closedDay.month === month && closedDay.day === day) {
+      return true;
+    }
+  }
+  return false;
+}
+
 function setLiveOpeningHours(date) {
   const hour = date.getHours();
   const day = date.getDay();
+  const month = date.getMonth();
   const minute = date.getMinutes();
   const element = document.getElementById("storeState");
   let storeIsOpen = true;
@@ -25,6 +46,9 @@ function setLiveOpeningHours(date) {
     "fredag",
     "lördag",
   ];
+
+  const isDateClose = isDateClosed(month, date.getDate());
+  console.log(isDateClose);
 
   //If weekday
   if (day < 6) {
