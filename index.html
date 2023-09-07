@@ -55,16 +55,16 @@
             <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
               <li class="nav-item">
                 <button class="navButton sideNavButton" data-bs-dismiss="offcanvas" onclick="scrollToInfo()"
-                  style="padding-left: 5%;">Kontakta&nbsp;oss</button>
+                  style="padding-left: 5%;" id="navbarContact">Kontakta&nbsp;oss</button>
               </li>
               <li class="nav-item">
                 <button class="navButton sideNavButton" data-bs-dismiss="offcanvas" onclick="scrollToInfo()"
-                  style="padding-left: 5%;">Hitta&nbsp;hit</button>
+                  style="padding-left: 5%;" id="navbarFind">Hitta&nbsp;hit</button>
 
               </li>
               <li class="nav-item">
                 <button class="navButton sideNavButton" data-bs-dismiss="offcanvas" onclick="scrollToInfo()"
-                  style="padding-left: 5%;">Öppettider</button>
+                  style="padding-left: 5%;" id="navbarOpen">Öppettider</button>
               </li>
             </ul>
           </div>
@@ -115,10 +115,12 @@
         <tr>
           <th scope="col" class="chartItem">Bilar</th>
           <th scope="col" class="chartItem">Årsmodell</th>
-          <th scope="col" class="chartItem">Dags&nbsp;pris</th>
+          <th scope="col" class="chartItem">Dag&nbsp;pris</th>
         </tr>
       </thead>
       <tbody id="carList">
+
+
       </tbody>
     </table>
 
@@ -131,7 +133,6 @@
 
         <h3 class="footerInfo">Kontakta&nbsp;oss</h3>
         <a href="tel:0630555555" class="blackLink">0630-555-555</a>
-        <br>
         <a href="mailto:info@ntig-uppsala.github.io" class="blackLink">info@ntig&#8209;uppsala.github.io</a>
 
         <br>
@@ -168,6 +169,16 @@
           <p>Vardagar <span class="text-end textRight">10-16</span></p>
           <p>Lördag <span class="text-end textRight">12-15</span></p>
           <p>Söndag <span class="text-end closedColor textRight">Stängt</span></p>
+          <h5>Stängda&nbsp;Dagar</h5>
+          <p>Nyårsdagen<span class="closedDays">1&nbsp;Januari</span></p>
+          <p>Trettondedag&nbsp;jul<span class="closedDays">6&nbsp;Januari</span></p>
+          <p>Sveriges&nbsp;nationaldag<span class="closedDays">6&nbsp;Juni</span></p>
+          <p>Första&nbsp;maj<span class="closedDays">1&nbsp;Maj</span></p>
+          <p>Julafton<span class="closedDays">24&nbsp;December</span></p>
+          <p>Juldagen<span class="closedDays">25&nbsp;December</span></p>
+          <p>Annandag&nbsp;jul<span class="closedDays">26&nbsp;December</span></p>
+          <p>Nyårsafton<span class="closedDays">31&nbsp;December</span></p>
+          </p>
         </div>
       </div>
     </div>

@@ -51,6 +51,9 @@ class TestingPage(TestCase):
     def testTitle(self):
         self.assertIn("NTB Biluthyrning", self.browser.page_source)
 
+    def testNotTitle(self):
+        self.assertNotIn("Bengans Biluthyrning", self.browser.page_source)
+
     def testAddress(self):
         self.assertIn("Fjällgatan 32H", self.browser.page_source)
         self.assertIn("981 39 Jönköping", self.browser.page_source)
