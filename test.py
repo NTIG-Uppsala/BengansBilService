@@ -4,6 +4,8 @@ from unittest import TestCase, main
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait
 
 
 class TestingPage(TestCase):
@@ -49,9 +51,12 @@ class TestingPage(TestCase):
     def testTitle(self):
         self.assertIn("NTB Biluthyrning", self.browser.page_source)
 
+    def testNotTitle(self):
+        self.assertNotIn("Bengans Biluthyrning", self.browser.page_source)
+
     def testAddress(self):
         self.assertIn("Fjällgatan 32H", self.browser.page_source)
-        self.assertIn("981 39 JÖNKÖPING", self.browser.page_source)
+        self.assertIn("981 39 Jönköping", self.browser.page_source)
 
     def testOpeningHours(self):
         self.assertIn("Öppettider", self.browser.page_source)
@@ -68,13 +73,13 @@ class TestingPage(TestCase):
 
     def testCars(self):
         car_list = [
-            {"car": "Audi A6", "model": "2011", "price": 800},
-            {"car": "Renault Kadjar", "model": "2020", "price": 450},
-            {"car": "Kia Soul", "model": "2020", "price": 400},
-            {"car": "Subaru", "model": "2020", "price": 300},
-            {"car": "Cadillac Escalade", "model": "1999", "price": 500},
-            {"car": "Mitsubishi Outlander", "model": "2018", "price": 450},
-            {"car": "Volvo XC40", "model": "2018", "price": 800},
+            {"car": "Audi A6", "model": "2011", "price": "800"},
+            {"car": "Renault Kadjar", "model": "2020", "price": "450"},
+            {"car": "Kia Soul", "model": "2020", "price": "400"},
+            {"car": "Subaru", "model": "2020", "price": "300"},
+            {"car": "Cadillac Escalade", "model": "1999", "price": "500"},
+            {"car": "Mitsubishi Outlander", "model": "2018", "price": "450"},
+            {"car": "Volvo XC40", "model": "2018", "price": "800"},
             {"car": "VW Polo", "model": "2022", "price": 300},
             {"car": "Kia Carens", "model": "2022", "price": 400},
             {"car": "Audi S3", "model": "2015", "price": 450},
@@ -132,10 +137,17 @@ class TestingPage(TestCase):
         self.assertIn("öppet", self.browser.page_source)
         self.assertIn("stängt", self.browser.page_source)
 
+    def testNavBarTitle(self):
+        element = self.browser.find_element(By.CLASS_NAME, "navbar-nav")
+        self.assertIn("Kontakta&nbsp;oss", element.get_attribute("innerHTML"))
+        self.assertIn("Hitta&nbsp;hit", element.get_attribute("innerHTML"))
+        self.assertIn("Öppettider", element.get_attribute("innerHTML"))
+
     def testFooterTitle(self):
-        self.assertIn("Kontakta&nbsp;oss", self.browser.page_source)
-        self.assertIn("Adress", self.browser.page_source)
-        self.assertIn("Öppettider", self.browser.page_source)
+        element = self.browser.find_element(By.CLASS_NAME, "text-center")
+        self.assertIn("Kontakta&nbsp;oss", element.get_attribute("innerHTML"))
+        self.assertIn("Adress", element.get_attribute("innerHTML"))
+        self.assertIn("Öppettider", element.get_attribute("innerHTML"))
 
     def testSlideShowText(self):
         element = self.browser.find_element(By.CLASS_NAME, "carousel-content")
@@ -155,19 +167,67 @@ class TestingPage(TestCase):
         )
 
     def testZipCodeText(self):
-        self.assertIn("Kör vi ut till dig?", self.browser.page_source)
+        self.assertIn(
+            "Kolla om vi kör bil direkt hem till dig", self.browser.page_source
+        )
         self.assertIn("Kolla", self.browser.page_source)
 
     def testZipCode(self):
-        self.browser.find_element(By.ID, "zipNumber").send_keys("98132")
-        self.browser.find_element(By.ID, "submit").click()
-        zipOutput = self.browser.find_element(By.ID, "zipCodeCheck")
-        self.assertIn("Vi kör ut, ring telefonnumret ovan!", zipOutput.text)
+        zipCodeList = [
+            "98132",
+            "98135",
+            "98136",
+            "98138",
+            "98137",
+            "98139",
+            "98140",
+            "98142",
+            "98143",
+            "98144",
+            "98146",
+            "98147",
+        ]
+        for currentZip in zipCodeList:
+            self.browser.find_element(By.ID, "zipNumber").send_keys(currentZip)
+            self.browser.find_element(By.ID, "submit").click()
+            zipOutput = self.browser.find_element(By.ID, "zipCodeCheck")
+            self.assertIn("Vi kör ut, ring telefonnumret ovan!", zipOutput.text)
+            self.browser.get("about:blank")
+            self.browser.get(path.join((getcwd()), "index.html"))
 
-    def testIsDateClosed(self, date, results):
-        self.browser.execute_script("isDateClosed(new Date('" + date + "'))")
-        element = self.browser.find_element(By.ID, "storeState")
-        self.assertIn(results, element.text)
+    def testWrongZipCode(self):
+        zipCodeList = [
+            "12345",
+            "55555",
+            "92347",
+        ]
+        for currentZip in zipCodeList:
+            self.browser.find_element(By.ID, "zipNumber").send_keys(currentZip)
+            self.browser.find_element(By.ID, "submit").click()
+            zipOutput = self.browser.find_element(By.ID, "zipCodeCheck")
+            self.assertIn("Vi kör tyvärr inte ut till dig.", zipOutput.text)
+            self.browser.get("about:blank")
+            self.browser.get(path.join((getcwd()), "index.html"))
+
+    def testNotAZipCode(self):
+        zipCodeList = [
+            "1234",
+            "hej",
+            "xxxxx",
+        ]
+        for currentZip in zipCodeList:
+            self.browser.find_element(By.ID, "zipNumber").send_keys(currentZip)
+            self.browser.find_element(By.ID, "submit").click()
+            zipOutput = self.browser.find_element(By.ID, "zipCodeCheck")
+            self.assertIn("Inte ett giltigt postnummer.", zipOutput.text)
+            self.browser.get("about:blank")
+            self.browser.get(path.join((getcwd()), "index.html"))
+
+    def testIsDateClosed(self):
+        result = self.browser.execute_script("return isDateClosed(1, 1);")
+        self.assertTrue(result, "Expected date to be closed: 1/1")
+        result = self.browser.execute_script("return isDateClosed(1, 2);")
+        self.assertFalse(result, "Expected date to be open: 1/2")
 
 
 # will run if the fil running is a normal python file

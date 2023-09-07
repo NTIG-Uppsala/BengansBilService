@@ -154,6 +154,7 @@ body {
     font-size: 1.5rem !important;
 }
 
+
 @media screen and (max-width: 1000px) {
     .footerInfo {
         font-size: 110%;
@@ -342,4 +343,12 @@ body {
     margin-right:auto;
     text-align:center;
     font-weight: bold;
+}
+
+.infoToRight{
+    float:right;
+}
+
+.closedDates{
+    text-align: center  !important;
 }

@@ -36,7 +36,7 @@
 
   <div class="websiteTitle">
     <div id="Title"><b>NTB Biluthyrning</b>
-      <span style="font-size: 1rem;">
+      <span style="font-size: 1.2rem;">
         <span id="storeOpen" class="storeOpen" style="opacity: 0.2;">öppet</span>&nbsp;|&nbsp;<span class="storeClosed"
           id="storeClosed" style="opacity: 0.2;">stängt</span>
       </span>
@@ -55,16 +55,16 @@
             <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
               <li class="nav-item">
                 <button class="navButton sideNavButton" data-bs-dismiss="offcanvas" onclick="scrollToInfo()"
-                  style="padding-left: 5%;">Kontakts&nbsp;oss</button>
+                  style="padding-left: 5%;" id="navbarContact">Kontakta&nbsp;oss</button>
               </li>
               <li class="nav-item">
                 <button class="navButton sideNavButton" data-bs-dismiss="offcanvas" onclick="scrollToInfo()"
-                  style="padding-left: 5%;">Hitta&nbsp;hit</button>
+                  style="padding-left: 5%;" id="navbarFind">Hitta&nbsp;hit</button>
 
               </li>
               <li class="nav-item">
                 <button class="navButton sideNavButton" data-bs-dismiss="offcanvas" onclick="scrollToInfo()"
-                  style="padding-left: 5%;">Öppettider</button>
+                  style="padding-left: 5%;" id="navbarOpen">Öppettider</button>
               </li>
             </ul>
           </div>
@@ -115,60 +115,11 @@
         <tr>
           <th scope="col" class="chartItem">Bilar</th>
           <th scope="col" class="chartItem">Årsmodell</th>
-          <th scope="col" class="chartItem">Pris per dag</th>
+          <th scope="col" class="chartItem">Dag&nbsp;pris</th>
         </tr>
       </thead>
-      <tbody>
-        <tr>
-          <td class="chartItem">Audi A6</td>
-          <td class="chartItem">2011</td>
-          <td class="chartItem">800&nbsp;kr</td>
-        </tr>
-        <tr>
-          <td class="chartItem">Audi S3</td>
-          <td class="chartItem">2015</td>
-          <td class="chartItem">450&nbsp;kr</td>
-        </tr>
-        <tr>
-          <td class="chartItem">Cadillac Escalade</td>
-          <td class="chartItem">1999</td>
-          <td class="chartItem">500&nbsp;kr</td>
-        </tr>
-        <tr>
-          <td class="chartItem">Kia Carens</td>
-          <td class="chartItem">2022</td>
-          <td class="chartItem">400&nbsp;kr</td>
-        </tr>
-        <tr>
-          <td class="chartItem">Kia Soul</td>
-          <td class="chartItem">2020</td>
-          <td class="chartItem">400&nbsp;kr</td>
-        </tr>
-        <tr>
-          <td class="chartItem">Mitsubishi Outlander</td>
-          <td class="chartItem">2018</td>
-          <td class="chartItem">450&nbsp;kr</td>
-        </tr>
-        <tr>
-          <td class="chartItem">Renault Kadjar</td>
-          <td class="chartItem">2020</td>
-          <td class="chartItem">250&nbsp;kr</td>
-        </tr>
-        <tr>
-          <td class="chartItem">Subaru Outback</td>
-          <td class="chartItem">2020</td>
-          <td class="chartItem">300&nbsp;kr</td>
-        </tr>
-        <tr>
-          <td class="chartItem">Volvo XC40</td>
-          <td class="chartItem">2018</td>
-          <td class="chartItem">800&nbsp;kr</td>
-        </tr>
-        <tr>
-          <td class="chartItem">VW Polo</td>
-          <td class="chartItem">2022</td>
-          <td class="chartItem">300&nbsp;kr</td>
-        </tr>
+      <tbody id="carList">
+
 
       </tbody>
     </table>
@@ -182,6 +133,7 @@
 
         <h3 class="footerInfo">Kontakta&nbsp;oss</h3>
         <a href="tel:0630555555" class="blackLink">0630-555-555</a>
+        <br>
         <a href="mailto:info@ntig-uppsala.github.io" class="blackLink">info@ntig&#8209;uppsala.github.io</a>
 
         <br>
@@ -203,7 +155,7 @@
         <p>
           Fjällgatan 32H
           <br>
-          981 39 JÖNKÖPING
+          981 39 Jönköping
           <br>
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2127.594234558012!2d14.134204777783458!3d57.77429073450839!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x465a6dfced2b078d%3A0x5e530219f0ce4a2!2zRmrDpGxsZ2F0YW4gMzIsIDU1NCAzOSBKw7Zua8O2cGluZw!5e0!3m2!1ssv!2sse!4v1693829622306!5m2!1ssv!2sse"
@@ -218,6 +170,15 @@
           <p>Vardagar <span class="text-end textRight">10-16</span></p>
           <p>Lördag <span class="text-end textRight">12-15</span></p>
           <p>Söndag <span class="text-end closedColor textRight">Stängt</span></p>
+          <h5 style="text-align: center;">Stängda&nbsp;dagar</h5>
+          <p class="closedDates">Nyårsdagen&nbsp;1&nbsp;Januari</p>
+          <p class="closedDates">Trettondedag&nbsp;jul&nbsp;6&nbsp;Januari</p>
+          <p class="closedDates">Sveriges&nbsp;nationaldag&nbsp;6&nbsp;Juni</p>
+          <p class="closedDates">Första&nbsp;maj&nbsp;1&nbsp;Maj</p>
+          <p class="closedDates">Julafton&nbsp;24&nbsp;December</p>
+          <p class="closedDates">Juldagen&nbsp;25&nbsp;December</p>
+          <p class="closedDates">Annandag&nbsp;jul&nbsp;26&nbsp;December</p>
+          <p class="closedDates">Nyårsafton&nbsp;31&nbsp;December</p>
         </div>
       </div>
     </div>
