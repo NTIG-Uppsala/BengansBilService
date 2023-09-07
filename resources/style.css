@@ -154,6 +154,7 @@ body {
     font-size: 1.5rem !important;
 }
 
+
 @media screen and (max-width: 1000px) {
     .footerInfo {
         font-size: 110%;
@@ -325,25 +326,6 @@ body {
     float: right;
 }
 
-.openHours {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start; /* Align items at the top */
-    flex-wrap: nowrap; /* Prevent items from wrapping */
-  }
-  
-  .day-labels, .hours {
-    flex: 0 0 calc(50% - 5px); /* Each section occupies 50% of the container width with a small margin in between */
-    white-space: nowrap; /* Prevents text from wrapping */
-    margin: 0; /* Removes default margin to avoid extra space */
-  }
-  
-  .text-start {
-    margin-right: 5px; /* Adjust as needed for spacing between labels and hours */
-  }
-  
-  
-
 @media screen and (max-width: 600px) {
     .productCharts {
         margin: 0 0 !important;
@@ -363,11 +345,10 @@ body {
     font-weight: bold;
 }
 
-h5{
-    text-align:center; 
-    margin-top:1rem !important;
+.infoToRight{
+    float:right;
 }
 
-.closedDays{
-    float:right;
+.closedDates{
+    text-align: center  !important;
 }
