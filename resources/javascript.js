@@ -1,13 +1,13 @@
 window.setInterval(function () {
   setLiveOpeningHours(new Date());
-}, 10000);
+}, 30000); //Every 30 sec
 
 function setLiveOpeningHours(date) {
   const hour = date.getHours();
   const day = date.getDay();
   const minute = date.getMinutes();
   const element = document.getElementById("storeState");
-  var storeIsOpen = true;
+  let storeIsOpen = true;
   const storeOpenElements = document.getElementsByClassName("storeOpen");
   const storeClosedElements = document.getElementsByClassName("storeClosed");
 
@@ -29,9 +29,11 @@ function setLiveOpeningHours(date) {
   //If weekday
   if (day < 6) {
     if (hour === openingHours.weekdays.open - 1 && minute >= 30) {
+      //30 min before opening
       element.innerText = `Öppnar om ${60 - minute} minuter`;
       storeIsOpen = false;
     } else if (hour === openingHours.weekdays.close - 1 && minute >= 45) {
+      //15 min before closing
       element.innerText = `Stänger snart`;
       storeIsOpen = true;
     } else if (
@@ -52,7 +54,7 @@ function setLiveOpeningHours(date) {
       element.appendChild(openSpan);
       storeIsOpen = true;
     } else if (hour < openingHours.weekdays.open) {
-      element.innerText = `Öppnar 10:00 idag`;
+      element.innerText = `Öppnar kl ${openingHours.weekdays.open} idag`;
     } else {
       if (day === 5) {
         element.innerText = `Öppnar ${days[day + 1]} kl ${

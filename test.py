@@ -125,6 +125,7 @@ class TestingPage(TestCase):
         self.helperLiveOpening("2023-09-07T20:00:10", "Öppnar fredag kl 10")
         self.helperLiveOpening("2023-09-08T16:30:00", "Öppnar lördag kl 12")
         self.helperLiveOpening("2023-09-09T15:01:00", "Öppnar måndag kl 10")
+        self.helperLiveOpening("2023-09-07T09:01:00", "Öppnar kl 10 idag")
         self.helperLiveOpening("2023-09-11T09:50:00", "Öppnar om 10 minuter")
 
     def teststoreStateNextToTitle(self):
