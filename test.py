@@ -229,6 +229,22 @@ class TestingPage(TestCase):
         result = self.browser.execute_script("return isDateClosed(1, 2);")
         self.assertFalse(result, "Expected date to be open: 1/2")
 
+    def testclosedDays(self):
+        self.assertIn("Nyårsdagen&nbsp;1&nbsp;Januari", self.browser.page_source)
+        self.assertIn(
+            "Trettondedag&nbsp;jul&nbsp;6&nbsp;Januari", self.browser.page_source
+        )
+        self.assertIn(
+            "Sveriges&nbsp;nationaldag&nbsp;6&nbsp;Juni", self.browser.page_source
+        )
+        self.assertIn("Första&nbsp;maj&nbsp;1&nbsp;Maj", self.browser.page_source)
+        self.assertIn("Julafton&nbsp;24&nbsp;December", self.browser.page_source)
+        self.assertIn("Juldagen&nbsp;25&nbsp;December", self.browser.page_source)
+        self.assertIn(
+            "Annandag&nbsp;jul&nbsp;26&nbsp;December", self.browser.page_source
+        )
+        self.assertIn("Nyårsafton&nbsp;31&nbsp;December", self.browser.page_source)
+
 
 # will run if the fil running is a normal python file
 if __name__ == "__main__":
