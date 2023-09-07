@@ -135,11 +135,9 @@ class TestingPage(TestCase):
         self.assertIn("stängt", self.browser.page_source)
 
     def testNavBarTitle(self):
-        element = self.browser.find_element(By.ID, "navbarContact")
+        element = self.browser.find_element(By.CLASS_NAME, "navbar-nav")
         self.assertIn("Kontakta&nbsp;oss", element.get_attribute("innerHTML"))
-        element = self.browser.find_element(By.ID, "navbarFind")
         self.assertIn("Hitta&nbsp;hit", element.get_attribute("innerHTML"))
-        element = self.browser.find_element(By.ID, "navbarOpen")
         self.assertIn("Öppettider", element.get_attribute("innerHTML"))
 
     def testFooterTitle(self):
