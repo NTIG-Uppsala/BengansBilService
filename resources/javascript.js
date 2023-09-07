@@ -50,6 +50,12 @@ function setLiveOpeningHours(date) {
   const isDateClose = isDateClosed(month, date.getDate());
   console.log(isDateClose);
 
+  if (isDateClose === true) {
+    element.innerText = "Stängt";
+    element.style.color = "red";
+    return;
+  }
+
   //If weekday
   if (day < 6) {
     if (hour === openingHours.weekdays.open - 1 && minute >= 30) {
@@ -171,7 +177,7 @@ zipCodeList = [
 
 document.addEventListener("DOMContentLoaded", (event) => {
   let ZipcodeCheck =
-    '<p>Kör vi ut till dig?</p><form action=""><input type="text" style="height:2.2rem; font-size:1.2rem;" inputmode="numeric" id="zipNumber" placeholder="123 45"><input class="checkNumber" style="height:2.2rem;  font-size:1.2rem;" id="submit" type="submit" value="Kolla"></form><p id="output"></p>';
+    '<p>Kolla om vi kör bil direkt hem till dig</p><form action=""><input type="text" style="height:2.2rem; font-size:1.2rem;" inputmode="numeric" id="zipNumber" placeholder="Post nummer"><input class="checkNumber" style="height:2.2rem;  font-size:1.2rem;" id="submit" type="submit" value="Kolla"></form><p id="output"></p>';
   document.querySelector("#jsCheck").innerHTML = ZipcodeCheck;
 
   document
@@ -186,9 +192,11 @@ document.addEventListener("DOMContentLoaded", (event) => {
       zipInput = zipInput.split(" ").join(""); //removes spaces from string
 
       if (zipInput.match(/\D/) != null) {
-        document.querySelector("#output").innerHTML = "Inte ett postnummer.";
+        document.querySelector("#output").innerHTML =
+          "Inte ett giltigt postnummer.";
       } else if (zipInput.length != 5) {
-        document.querySelector("#output").innerHTML = "Inte ett postnummer.";
+        document.querySelector("#output").innerHTML =
+          "Inte ett giltigt postnummer.";
       } else if (zipCodeList.includes(zipInput)) {
         document.querySelector("#output").innerHTML =
           "Vi kör ut, ring telefonnumret ovan!";
