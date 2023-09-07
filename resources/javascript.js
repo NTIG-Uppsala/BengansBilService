@@ -2,6 +2,39 @@ window.setInterval(function () {
   setLiveOpeningHours(new Date());
 }, 30000); //Every 30 sec
 
+document.addEventListener("DOMContentLoaded", function () {
+  const cars = [
+    { name: "Audi A6", year: "2011", price: "800\u00A0kr" },
+    { name: "Audi S3", year: "2015", price: "450\u00A0kr" },
+    { name: "Cadillac Escalade", year: "1999", price: "500\u00A0kr" },
+    { name: "Kia Carens", year: "2022", price: "400\u00A0kr" },
+    { name: "Kia Soul", year: "2020", price: "400\u00A0kr" },
+    { name: "Mitsubishi Outlander", year: "2018", price: "450\u00A0kr" },
+    { name: "Renault Kadjar", year: "2020", price: "250\u00A0kr" },
+    { name: "Subaru Outback", year: "2020", price: "300\u00A0kr" },
+    { name: "Volvo XC40", year: "2018", price: "800\u00A0kr" },
+    { name: "VW Polo", year: "2022", price: "300\u00A0kr" },
+  ];
+  const tableBody = document.getElementById("carList");
+
+  cars.forEach(function (car) {
+    const row = document.createElement("tr");
+    const nameCell = document.createElement("td");
+    const yearCell = document.createElement("td");
+    const priceCell = document.createElement("td");
+
+    nameCell.textContent = car.name;
+    yearCell.textContent = car.year;
+    priceCell.textContent = car.price;
+
+    row.appendChild(nameCell);
+    row.appendChild(yearCell);
+    row.appendChild(priceCell);
+
+    tableBody.appendChild(row);
+  });
+});
+
 function isDateClosed(month, day) {
   const closedDays = [
     { month: 1, day: 1 },
@@ -29,8 +62,8 @@ function setLiveOpeningHours(date) {
   const minute = date.getMinutes();
   const element = document.getElementById("storeState");
   let storeIsOpen = true;
-  const storeOpenElements = document.getElementsByClassName("storeOpen");
-  const storeClosedElements = document.getElementsByClassName("storeClosed");
+  const rightNowSpan = document.createElement("span");
+  const openSpan = document.createElement("span");
 
   const openingHours = {
     weekdays: { open: 10, close: 16 },
@@ -53,6 +86,7 @@ function setLiveOpeningHours(date) {
   if (isDateClose === true) {
     element.innerText = "Stängt";
     element.style.color = "red";
+    liveStoreStateHeader(false);
     return;
   }
 
@@ -70,11 +104,9 @@ function setLiveOpeningHours(date) {
       hour >= openingHours.weekdays.open &&
       hour < openingHours.weekdays.close
     ) {
-      var rightNowSpan = document.createElement("span");
       rightNowSpan.innerText = "Just nu: ";
       rightNowSpan.style.color = "black";
 
-      var openSpan = document.createElement("span");
       openSpan.innerText = "Öppet";
       openSpan.style.color = "green";
 
@@ -110,11 +142,9 @@ function setLiveOpeningHours(date) {
       hour >= openingHours.saturday.open &&
       hour < openingHours.saturday.close
     ) {
-      var rightNowSpan = document.createElement("span");
       rightNowSpan.innerText = "Just nu: ";
       rightNowSpan.style.color = "black";
 
-      var openSpan = document.createElement("span");
       openSpan.innerText = "Öppet";
       openSpan.style.color = "green";
 
@@ -135,6 +165,13 @@ function setLiveOpeningHours(date) {
     element.innerText = `Öppnar måndag kl ${openingHours.weekdays.open}`;
     storeIsOpen = false;
   }
+
+  liveStoreStateHeader(storeIsOpen);
+}
+
+function liveStoreStateHeader(storeIsOpen) {
+  const storeOpenElements = document.getElementsByClassName("storeOpen");
+  const storeClosedElements = document.getElementsByClassName("storeClosed");
 
   if (storeIsOpen === false) {
     for (const element of storeClosedElements) {

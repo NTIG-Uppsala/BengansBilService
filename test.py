@@ -56,7 +56,7 @@ class TestingPage(TestCase):
 
     def testAddress(self):
         self.assertIn("Fjällgatan 32H", self.browser.page_source)
-        self.assertIn("981 39 JÖNKÖPING", self.browser.page_source)
+        self.assertIn("981 39 Jönköping", self.browser.page_source)
 
     def testOpeningHours(self):
         self.assertIn("Öppettider", self.browser.page_source)
@@ -120,6 +120,7 @@ class TestingPage(TestCase):
         self.assertIn(results, element.text)
 
     def testLiveOpeningHours(self):
+        self.helperLiveOpening("2023-01-01T10:00:00", "Stängt")
         self.helperLiveOpening("2023-09-04T10:59:00", "Just nu: Öppet")
         self.helperLiveOpening("2023-09-09T12:05:55", "Just nu: Öppet")
         self.helperLiveOpening("2023-09-05T15:45:00", "Stänger snart")
@@ -138,11 +139,9 @@ class TestingPage(TestCase):
         self.assertIn("stängt", self.browser.page_source)
 
     def testNavBarTitle(self):
-        element = self.browser.find_element(By.ID, "navbarContact")
+        element = self.browser.find_element(By.CLASS_NAME, "navbar-nav")
         self.assertIn("Kontakta&nbsp;oss", element.get_attribute("innerHTML"))
-        element = self.browser.find_element(By.ID, "navbarFind")
         self.assertIn("Hitta&nbsp;hit", element.get_attribute("innerHTML"))
-        element = self.browser.find_element(By.ID, "navbarOpen")
         self.assertIn("Öppettider", element.get_attribute("innerHTML"))
 
     def testFooterTitle(self):
@@ -169,7 +168,9 @@ class TestingPage(TestCase):
         )
 
     def testZipCodeText(self):
-        self.assertIn("Kör vi ut till dig?", self.browser.page_source)
+        self.assertIn(
+            "Kolla om vi kör bil direkt hem till dig", self.browser.page_source
+        )
         self.assertIn("Kolla", self.browser.page_source)
 
     def testZipCode(self):
@@ -219,14 +220,9 @@ class TestingPage(TestCase):
             self.browser.find_element(By.ID, "zipNumber").send_keys(currentZip)
             self.browser.find_element(By.ID, "submit").click()
             zipOutput = self.browser.find_element(By.ID, "zipCodeCheck")
-            self.assertIn("Inte ett postnummer.", zipOutput.text)
+            self.assertIn("Inte ett giltigt postnummer.", zipOutput.text)
             self.browser.get("about:blank")
             self.browser.get(path.join((getcwd()), "index.html"))
-
-    def testIsDateClosed(self, date, results):
-        self.browser.execute_script("isDateClosed(new Date('" + date + "'))")
-        element = self.browser.find_element(By.ID, "storeState")
-        self.assertIn(results, element.text)
 
 
 # will run if the fil running is a normal python file
