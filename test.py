@@ -70,13 +70,13 @@ class TestingPage(TestCase):
 
     def testCars(self):
         car_list = [
-            {"car": "Audi A6", "model": "2011", "price": 800},
-            {"car": "Renault Kadjar", "model": "2020", "price": 450},
-            {"car": "Kia Soul", "model": "2020", "price": 400},
-            {"car": "Subaru", "model": "2020", "price": 300},
-            {"car": "Cadillac Escalade", "model": "1999", "price": 500},
-            {"car": "Mitsubishi Outlander", "model": "2018", "price": 450},
-            {"car": "Volvo XC40", "model": "2018", "price": 800},
+            {"car": "Audi A6", "model": "2011", "price": "800"},
+            {"car": "Renault Kadjar", "model": "2020", "price": "450"},
+            {"car": "Kia Soul", "model": "2020", "price": "400"},
+            {"car": "Subaru", "model": "2020", "price": "300"},
+            {"car": "Cadillac Escalade", "model": "1999", "price": "500"},
+            {"car": "Mitsubishi Outlander", "model": "2018", "price": "450"},
+            {"car": "Volvo XC40", "model": "2018", "price": "800"},
             {"car": "VW Polo", "model": "2022", "price": 300},
             {"car": "Kia Carens", "model": "2022", "price": 400},
             {"car": "Audi S3", "model": "2015", "price": 450},
@@ -117,7 +117,6 @@ class TestingPage(TestCase):
         self.assertIn(results, element.text)
 
     def testLiveOpeningHours(self):
-        self.helperLiveOpening("2023-01-01T10:00:00", "Stängt")
         self.helperLiveOpening("2023-09-04T10:59:00", "Just nu: Öppet")
         self.helperLiveOpening("2023-09-09T12:05:55", "Just nu: Öppet")
         self.helperLiveOpening("2023-09-05T15:45:00", "Stänger snart")
@@ -220,6 +219,12 @@ class TestingPage(TestCase):
             self.assertIn("Inte ett giltigt postnummer.", zipOutput.text)
             self.browser.get("about:blank")
             self.browser.get(path.join((getcwd()), "index.html"))
+
+    def testIsDateClosed(self):
+        result = self.browser.execute_script("return isDateClosed(1, 1);")
+        self.assertTrue(result, "Expected date to be closed: 1/1")
+        result = self.browser.execute_script("return isDateClosed(1, 2);")
+        self.assertFalse(result, "Expected date to be open: 1/2")
 
 
 # will run if the fil running is a normal python file

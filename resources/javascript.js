@@ -81,7 +81,6 @@ function setLiveOpeningHours(date) {
   ];
 
   const isDateClose = isDateClosed(month, date.getDate());
-  console.log(isDateClose);
 
   if (isDateClose === true) {
     element.innerText = "Stängt";
