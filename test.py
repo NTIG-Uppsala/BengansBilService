@@ -4,6 +4,8 @@ from unittest import TestCase, main
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait
 
 
 class TestingPage(TestCase):
@@ -131,10 +133,19 @@ class TestingPage(TestCase):
         self.assertIn("öppet", self.browser.page_source)
         self.assertIn("stängt", self.browser.page_source)
 
+    def testNavBarTitle(self):
+        element = self.browser.find_element(By.ID, "navbarContact")
+        self.assertIn("Kontakta&nbsp;oss", element.get_attribute("innerHTML"))
+        element = self.browser.find_element(By.ID, "navbarFind")
+        self.assertIn("Hitta&nbsp;hit", element.get_attribute("innerHTML"))
+        element = self.browser.find_element(By.ID, "navbarOpen")
+        self.assertIn("Öppettider", element.get_attribute("innerHTML"))
+
     def testFooterTitle(self):
-        self.assertIn("Kontakta&nbsp;oss", self.browser.page_source)
-        self.assertIn("Adress", self.browser.page_source)
-        self.assertIn("Öppettider", self.browser.page_source)
+        element = self.browser.find_element(By.CLASS_NAME, "text-center")
+        self.assertIn("Kontakta&nbsp;oss", element.get_attribute("innerHTML"))
+        self.assertIn("Adress", element.get_attribute("innerHTML"))
+        self.assertIn("Öppettider", element.get_attribute("innerHTML"))
 
     def testSlideShowText(self):
         element = self.browser.find_element(By.CLASS_NAME, "carousel-content")
@@ -158,10 +169,55 @@ class TestingPage(TestCase):
         self.assertIn("Kolla", self.browser.page_source)
 
     def testZipCode(self):
-        self.browser.find_element(By.ID, "zipNumber").send_keys("98132")
-        self.browser.find_element(By.ID, "submit").click()
-        zipOutput = self.browser.find_element(By.ID, "zipCodeCheck")
-        self.assertIn("Vi kör ut, ring telefonnumret ovan!", zipOutput.text)
+        zipCodeList = [
+            "98132",
+            "98135",
+            "98136",
+            "98138",
+            "98137",
+            "98139",
+            "98140",
+            "98142",
+            "98143",
+            "98144",
+            "98146",
+            "98147",
+        ]
+        for currentZip in zipCodeList:
+            self.browser.find_element(By.ID, "zipNumber").send_keys(currentZip)
+            self.browser.find_element(By.ID, "submit").click()
+            zipOutput = self.browser.find_element(By.ID, "zipCodeCheck")
+            self.assertIn("Vi kör ut, ring telefonnumret ovan!", zipOutput.text)
+            self.browser.get("about:blank")
+            self.browser.get(path.join((getcwd()), "index.html"))
+
+    def testWrongZipCode(self):
+        zipCodeList = [
+            "12345",
+            "55555",
+            "92347",
+        ]
+        for currentZip in zipCodeList:
+            self.browser.find_element(By.ID, "zipNumber").send_keys(currentZip)
+            self.browser.find_element(By.ID, "submit").click()
+            zipOutput = self.browser.find_element(By.ID, "zipCodeCheck")
+            self.assertIn("Vi kör tyvärr inte ut till dig.", zipOutput.text)
+            self.browser.get("about:blank")
+            self.browser.get(path.join((getcwd()), "index.html"))
+
+    def testNotAZipCode(self):
+        zipCodeList = [
+            "1234",
+            "hej",
+            "xxxxx",
+        ]
+        for currentZip in zipCodeList:
+            self.browser.find_element(By.ID, "zipNumber").send_keys(currentZip)
+            self.browser.find_element(By.ID, "submit").click()
+            zipOutput = self.browser.find_element(By.ID, "zipCodeCheck")
+            self.assertIn("Inte ett postnummer.", zipOutput.text)
+            self.browser.get("about:blank")
+            self.browser.get(path.join((getcwd()), "index.html"))
 
 
 # will run if the fil running is a normal python file
