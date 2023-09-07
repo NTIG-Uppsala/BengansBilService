@@ -1,13 +1,34 @@
 window.setInterval(function () {
   setLiveOpeningHours(new Date());
-}, 10000);
+}, 30000); //Every 30 sec
+
+function isDateClosed(month, day) {
+  const closedDays = [
+    { month: 1, day: 1 },
+    { month: 1, day: 6 },
+    { month: 6, day: 6 },
+    { month: 5, day: 1 },
+    { month: 12, day: 24 },
+    { month: 12, day: 25 },
+    { month: 12, day: 26 },
+    { month: 12, day: 31 },
+  ];
+
+  for (const closedDay of closedDays) {
+    if (closedDay.month === month && closedDay.day === day) {
+      return true;
+    }
+  }
+  return false;
+}
 
 function setLiveOpeningHours(date) {
   const hour = date.getHours();
   const day = date.getDay();
+  const month = date.getMonth();
   const minute = date.getMinutes();
   const element = document.getElementById("storeState");
-  var storeIsOpen = true;
+  let storeIsOpen = true;
   const storeOpenElements = document.getElementsByClassName("storeOpen");
   const storeClosedElements = document.getElementsByClassName("storeClosed");
 
@@ -26,33 +47,38 @@ function setLiveOpeningHours(date) {
     "lördag",
   ];
 
+  const isDateClose = isDateClosed(month, date.getDate());
+  console.log(isDateClose);
+
   //If weekday
   if (day < 6) {
     if (hour === openingHours.weekdays.open - 1 && minute >= 30) {
+      //30 min before opening
       element.innerText = `Öppnar om ${60 - minute} minuter`;
       storeIsOpen = false;
     } else if (hour === openingHours.weekdays.close - 1 && minute >= 45) {
+      //15 min before closing
       element.innerText = `Stänger snart`;
       storeIsOpen = true;
     } else if (
       hour >= openingHours.weekdays.open &&
       hour < openingHours.weekdays.close
     ) {
-      var justNuSpan = document.createElement("span");
-      justNuSpan.innerText = "Just nu: ";
-      justNuSpan.style.color = "black";
+      var rightNowSpan = document.createElement("span");
+      rightNowSpan.innerText = "Just nu: ";
+      rightNowSpan.style.color = "black";
 
-      var oppetSpan = document.createElement("span");
-      oppetSpan.innerText = "Öppet";
-      oppetSpan.style.color = "green";
+      var openSpan = document.createElement("span");
+      openSpan.innerText = "Öppet";
+      openSpan.style.color = "green";
 
       element.innerHTML = "";
 
-      element.appendChild(justNuSpan);
-      element.appendChild(oppetSpan);
+      element.appendChild(rightNowSpan);
+      element.appendChild(openSpan);
       storeIsOpen = true;
     } else if (hour < openingHours.weekdays.open) {
-      element.innerText = `Öppnar 10:00 idag`;
+      element.innerText = `Öppnar kl ${openingHours.weekdays.open} idag`;
     } else {
       if (day === 5) {
         element.innerText = `Öppnar ${days[day + 1]} kl ${
@@ -78,18 +104,18 @@ function setLiveOpeningHours(date) {
       hour >= openingHours.saturday.open &&
       hour < openingHours.saturday.close
     ) {
-      var justNuSpan = document.createElement("span");
-      justNuSpan.innerText = "Just nu: ";
-      justNuSpan.style.color = "black";
+      var rightNowSpan = document.createElement("span");
+      rightNowSpan.innerText = "Just nu: ";
+      rightNowSpan.style.color = "black";
 
-      var oppetSpan = document.createElement("span");
-      oppetSpan.innerText = "Öppet";
-      oppetSpan.style.color = "green";
+      var openSpan = document.createElement("span");
+      openSpan.innerText = "Öppet";
+      openSpan.style.color = "green";
 
       element.innerHTML = "";
 
-      element.appendChild(justNuSpan);
-      element.appendChild(oppetSpan);
+      element.appendChild(rightNowSpan);
+      element.appendChild(openSpan);
       storeIsOpen = true;
     } else if (hour < openingHours.saturday.open) {
       element.innerText = `Öppnar ${openingHours.saturday.open} idag`;
@@ -145,7 +171,7 @@ zipCodeList = [
 
 document.addEventListener("DOMContentLoaded", (event) => {
   let ZipcodeCheck =
-    '<p>Kör vi ut till dig?</p><form action=""><input type="text" style="height:2.2rem; font-size:1.2rem;" inputmode="numeric" id="number" placeholder="123 45"><input class="checkNumber" style="height:2.2rem;  font-size:1.2rem;" id="submit" type="submit" value="Kolla"></form><p id="output"></p>';
+    '<p>Kör vi ut till dig?</p><form action=""><input type="text" style="height:2.2rem; font-size:1.2rem;" inputmode="numeric" id="zipNumber" placeholder="123 45"><input class="checkNumber" style="height:2.2rem;  font-size:1.2rem;" id="submit" type="submit" value="Kolla"></form><p id="output"></p>';
   document.querySelector("#jsCheck").innerHTML = ZipcodeCheck;
 
   document
@@ -155,7 +181,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
       // event.submitter.parentNode.querySelector("#number").value
       // is what is written in the input
-      let zipInput = event.submitter.parentNode.querySelector("#number").value;
+      let zipInput =
+        event.submitter.parentNode.querySelector("#zipNumber").value;
       zipInput = zipInput.split(" ").join(""); //removes spaces from string
 
       if (zipInput.match(/\D/) != null) {

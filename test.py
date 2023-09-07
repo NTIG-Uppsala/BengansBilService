@@ -125,6 +125,7 @@ class TestingPage(TestCase):
         self.helperLiveOpening("2023-09-07T20:00:10", "Öppnar fredag kl 10")
         self.helperLiveOpening("2023-09-08T16:30:00", "Öppnar lördag kl 12")
         self.helperLiveOpening("2023-09-09T15:01:00", "Öppnar måndag kl 10")
+        self.helperLiveOpening("2023-09-07T09:01:00", "Öppnar kl 10 idag")
         self.helperLiveOpening("2023-09-11T09:50:00", "Öppnar om 10 minuter")
 
     def teststoreStateNextToTitle(self):
@@ -152,6 +153,21 @@ class TestingPage(TestCase):
             "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2127.594234558012!2d14.134204777783458!3d57.77429073450839!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x465a6dfced2b078d%3A0x5e530219f0ce4a2!2zRmrDpGxsZ2F0YW4gMzIsIDU1NCAzOSBKw7Zua8O2cGluZw!5e0!3m2!1ssv!2sse!4v1693829622306!5m2!1ssv!2sse",
             self.browser.page_source,
         )
+
+    def testZipCodeText(self):
+        self.assertIn("Kör vi ut till dig?", self.browser.page_source)
+        self.assertIn("Kolla", self.browser.page_source)
+
+    def testZipCode(self):
+        self.browser.find_element(By.ID, "zipNumber").send_keys("98132")
+        self.browser.find_element(By.ID, "submit").click()
+        zipOutput = self.browser.find_element(By.ID, "zipCodeCheck")
+        self.assertIn("Vi kör ut, ring telefonnumret ovan!", zipOutput.text)
+
+    def testIsDateClosed(self, date, results):
+        self.browser.execute_script("isDateClosed(new Date('" + date + "'))")
+        element = self.browser.find_element(By.ID, "storeState")
+        self.assertIn(results, element.text)
 
 
 # will run if the fil running is a normal python file
