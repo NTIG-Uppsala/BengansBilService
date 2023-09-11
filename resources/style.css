@@ -1,4 +1,8 @@
-*{margin: 0; padding: 0;}
+* {
+    margin: 0;
+    padding: 0;
+}
+
 body {
     background-color: white;
 }
@@ -16,84 +20,28 @@ body {
     padding: 10px;
 }
 
-#storeOpen{
+#storeOpen {
     color: green;
     opacity: 1 !important;
 }
 
-#storeClosed{
+#storeClosed {
     opacity: 1 !important;
     color: red;
 }
 
-.sideNavButton{
+.sideNavButton {
     background-color: transparent;
     border: none;
     font-size: 1.7rem !important;
 }
 
-.nav-item{
-    text-align: center !important;
-    align-items: center !important;
-    display: flex !important;
-    justify-content: center !important;
+.navButton:hover {
+    color: lightblue;
 }
 
-@media screen and (max-width:991px) {
-    .nav-item{
-        text-align: unset !important;
-        align-items: unset !important;
-        display: unset !important;
-        justify-content: unset !important;
-    }
-    .navbar-toggler{
-        margin: auto auto;
-    }
-}
-
-.subnav{
-    right: 0 !important;
-    position: absolute !important; 
-    top: 0;
-    bottom: 0;
-    margin: auto 0;
-}
-
-
-/* Responsive */
-@media screen and (max-width: 1000px) {
-    .websiteTitle {
-        font-size: 180%;
-    }
-}
-
-@media screen and (max-width: 500px) {
-    .websiteTitle {
-        font-size: 100%;
-    }
-}
-
-@media screen and (max-width: 200px) {
-    .websiteTitle {
-        font-size: 60%;
-        height: 20px;
-    }
-}
-
-@media screen and (max-width: 100px) {
-    .websiteTitle {
-        font-size: 50%;
-        height: 25px;
-    }
-}
-
-#Title {
-    background-color: transparent;
-    color: white;
-    padding-left: 10px;
-    padding-right: 10px;
-    font-style: italic;
-    font-family: 'Maven Pro', sans-serif;
+.blackLink {
+    color: black;
 }
 
 .container {
@@ -101,12 +49,20 @@ body {
     margin-top: 13vh;
 }
 
-@media screen and (max-width: 1500px) {
-    .container {
-        margin-bottom: 0;
-    }
+.nav-item {
+    text-align: center !important;
+    align-items: center !important;
+    display: flex !important;
+    justify-content: center !important;
 }
 
+.subnav {
+    right: 0 !important;
+    position: absolute !important;
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+}
 
 .navButton {
     background-color: transparent;
@@ -119,73 +75,17 @@ body {
     text-align: center;
 }
 
-@media screen and (max-width:1100px) {
-    .navButton{
-        font-size: 2rem;
-    }
-}
-
-.navButton:hover {
-    color: lightblue;
-}
-
-.blackLink {
-    color: black;
-}
-
-#whiteLink {
-    color: white;
-    text-decoration: none;
-    z-index: 21;
+.closedColor {
+    color: rgb(247, 77, 77);
 }
 
 .col {
     font-size: 1rem !important;
 }
 
-@media screen and (max-width: 1000px) {
-    .col {
-        font-size: 80% !important;
-    }
-}
-
 /* For the footerInfos sizes (Kontakta oss, Adress, Öppettider) */
 .footerInfo {
     font-size: 1.5rem !important;
-}
-
-
-@media screen and (max-width: 1000px) {
-    .footerInfo {
-        font-size: 110%;
-    }
-}
-
-@media screen and (max-width: 400px) {
-    .footerInfo {
-        font-size: 100%;
-    }
-}
-
-.closedColor {
-    color: rgb(247, 77, 77);
-}
-
-#title {
-    position: absolute;
-    top: 7%;
-    left: 50%;
-    background-color: gray;
-    color: white;
-    margin-top: 1vh;
-    transform: translate(-50%, -50%);
-    text-decoration: underline;
-}
-
-@media screen and (max-width: 350px) {
-    #title {
-        font-size: 100%;
-    }
 }
 
 .icon-link {
@@ -195,83 +95,13 @@ body {
     font-size: 36px;
 }
 
-@media screen and (max-width: 450px) {
-    .icon-link {
-        font-size: 20px;
-    }
-}
-
-@media screen and (max-width: 250px) {
-    .icon-link {
-        font-size: 20px;
-        margin-bottom: 10%;
-    }
-}
-
 .icon {
     width: 36px;
     height: 36px;
 }
 
-@media screen and (max-width: 450px) {
-    .icon {
-        width: 20px;
-    }
-}
-
-@media screen and (max-width: 250px) {
-    .icon {
-        width: 15px;
-        margin-bottom: 10%;
-    }
-}
-
-@media screen and (max-width: 1920px) {
-    #title {
-        margin-top: 2vh;
-    }
-}
-
-@media screen and (max-height: 1000px) {
-    #title {
-        margin-top: 4vh;
-    }
-}
-
-@media screen and (min-width: 2000px) {
-    .websiteTitle {
-        font-size: 2vw;
-    }
-}
-
-#productChart {
-    width: 50vw;
-    margin-top: 2vw;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-@media screen and (max-width: 950px) {
-    #productChart {
-        margin-top: 0.5vw;
-    }
-}
-
 .chartItem {
     font-size: 1rem !important;
-}
-
-@media screen and (max-width: 600px) {
-    .chartItem {
-        font-size: 0.8rem !important;
-        margin: 0 auto;
-    }
-}
-
-@media screen and (max-width: 300px) {
-    .chartItem {
-        font-size: 0.6rem !important;
-    }
 }
 
 .carousel-content {
@@ -287,32 +117,6 @@ body {
     text-align: center;
 }
 
-@media screen and (max-width: 1000px) {
-    .carousel-content {
-        font-size: 180%;
-    }
-}
-
-@media screen and (max-width: 500px) {
-    .carousel-content {
-        font-size: 100%;
-    }
-}
-
-@media screen and (max-width: 200px) {
-    .carousel-content {
-        font-size: 60%;
-        height: 20px;
-    }
-}
-
-@media screen and (max-width: 100px) {
-    .carousel-content {
-        font-size: 50%;
-        height: 25px;
-    }
-}
-
 .openHours {
     width: 50%;
     margin: 0 auto;
@@ -326,29 +130,207 @@ body {
     float: right;
 }
 
+.navbar-toggler-icon {
+    color: white;
+}
+
+.zipInput {
+    margin-top: 1rem;
+    background-color: transparent;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-weight: bold;
+}
+
+.infoToRight {
+    float: right;
+}
+
+.closedDates {
+    text-align: center !important;
+}
+
+#Title {
+    background-color: transparent;
+    color: white;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-style: italic;
+    font-family: 'Maven Pro', sans-serif;
+}
+
+#whiteLink {
+    color: white;
+    text-decoration: none;
+    z-index: 21;
+}
+
+#title {
+    position: absolute;
+    top: 7%;
+    left: 50%;
+    background-color: gray;
+    color: white;
+    margin-top: 1vh;
+    transform: translate(-50%, -50%);
+    text-decoration: underline;
+}
+
+#productChart {
+    width: 50vw;
+    margin-top: 2vw;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media screen and (max-width:991px) {
+    .nav-item {
+        text-align: unset !important;
+        align-items: unset !important;
+        display: unset !important;
+        justify-content: unset !important;
+    }
+
+    .navbar-toggler {
+        margin: auto auto;
+    }
+}
+
+/* Responsive */
+@media screen and (max-width: 1000px) {
+    .websiteTitle {
+        font-size: 180%;
+    }
+
+    .col {
+        font-size: 80% !important;
+    }
+
+    .footerInfo {
+        font-size: 110%;
+    }
+
+    .carousel-content {
+        font-size: 180%;
+    }
+
+    #title {
+        margin-top: 4vh;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .websiteTitle {
+        font-size: 100%;
+    }
+
+    .carousel-content {
+        font-size: 100%;
+    }
+}
+
+@media screen and (max-width: 200px) {
+    .websiteTitle {
+        font-size: 60%;
+        height: 20px;
+    }
+
+    .carousel-content {
+        font-size: 60%;
+        height: 20px;
+    }
+}
+
+@media screen and (max-width: 100px) {
+    .websiteTitle {
+        font-size: 50%;
+        height: 25px;
+    }
+
+    .carousel-content {
+        font-size: 50%;
+        height: 25px;
+    }
+}
+
+@media screen and (max-width: 1500px) {
+    .container {
+        margin-bottom: 0;
+    }
+}
+
+@media screen and (max-width:1100px) {
+    .navButton {
+        font-size: 2rem;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .footerInfo {
+        font-size: 100%;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    #title {
+        font-size: 100%;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .icon-link {
+        font-size: 20px;
+    }
+
+    .icon {
+        width: 20px;
+    }
+}
+
+@media screen and (max-width: 250px) {
+    .icon-link {
+        font-size: 20px;
+        margin-bottom: 10%;
+    }
+
+    .icon {
+        width: 15px;
+        margin-bottom: 10%;
+    }
+}
+
+@media screen and (max-width: 1920px) {
+    #title {
+        margin-top: 2vh;
+    }
+}
+
+@media screen and (min-width: 2000px) {
+    .websiteTitle {
+        font-size: 2vw;
+    }
+}
+
+@media screen and (max-width: 950px) {
+    #productChart {
+        margin-top: 0.5vw;
+    }
+}
+
 @media screen and (max-width: 600px) {
+    .chartItem {
+        font-size: 0.8rem !important;
+        margin: 0 auto;
+    }
+
     .productCharts {
         margin: 0 0 !important;
     }
 }
 
-.navbar-toggler-icon{
-    color:white;
-}
-
-.zipInput{
-    margin-top:1rem;
-    background-color: transparent;
-    margin-left:auto;
-    margin-right:auto;
-    text-align:center;
-    font-weight: bold;
-}
-
-.infoToRight{
-    float:right;
-}
-
-.closedDates{
-    text-align: center  !important;
+@media screen and (max-width: 300px) {
+    .chartItem {
+        font-size: 0.6rem !important;
+    }
 }
