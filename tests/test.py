@@ -95,8 +95,8 @@ class TestingPage(TestCase):
             self.assertIn(str(price), self.browser.page_source)
 
     def testWrongCars(self):
-        self.assertNotIn("Caddilac Escalade", self.browser.page_source)
-        self.assertNotIn("Mitsubichi Outlander", self.browser.page_source)
+        self.assertNotIn("Caddilac", self.browser.page_source)
+        self.assertNotIn("Mitsubichi", self.browser.page_source)
 
     def testImageLoading(self):
         image_elements = self.browser.find_elements(By.TAG_NAME, "img")
