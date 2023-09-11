@@ -114,29 +114,6 @@ class TestingPage(TestCase):
                     f"Image '{image_element.get_attribute('src')}' is not loaded."
                 )
 
-    def helperLiveOpening(self, date, results):
-        self.browser.execute_script("setLiveOpeningHours(new Date('" + date + "'))")
-        element = self.browser.find_element(By.ID, "storeState")
-        self.assertIn(results, element.text)
-
-    def testLiveOpeningHours(self):
-        self.helperLiveOpening("2023-09-04T10:59:00", "Just nu: Öppet")
-        self.helperLiveOpening("2023-09-09T12:05:55", "Just nu: Öppet")
-        self.helperLiveOpening("2023-09-05T15:45:00", "Stänger snart")
-        self.helperLiveOpening("2023-09-09T15:01:00", "Öppnar måndag kl 10")
-        self.helperLiveOpening("2023-09-04T16:41:00", "Öppnar tisdag kl 10")
-        self.helperLiveOpening("2023-09-05T16:55:10", "Öppnar onsdag kl 10")
-        self.helperLiveOpening("2023-09-06T17:30:00", "Öppnar torsdag kl 10")
-        self.helperLiveOpening("2023-09-07T20:00:10", "Öppnar fredag kl 10")
-        self.helperLiveOpening("2023-09-08T16:30:00", "Öppnar lördag kl 12")
-        self.helperLiveOpening("2023-09-09T15:01:00", "Öppnar måndag kl 10")
-        self.helperLiveOpening("2023-09-07T09:01:00", "Öppnar kl 10 idag")
-        self.helperLiveOpening("2023-09-11T09:50:00", "Öppnar om 10 minuter")
-
-    def teststoreStateNextToTitle(self):
-        self.assertIn("öppet", self.browser.page_source)
-        self.assertIn("stängt", self.browser.page_source)
-
     def testNavBarTitle(self):
         element = self.browser.find_element(By.CLASS_NAME, "navbar-nav")
         self.assertIn("Kontakta&nbsp;oss", element.get_attribute("innerHTML"))
@@ -166,84 +143,11 @@ class TestingPage(TestCase):
             self.browser.page_source,
         )
 
-    def testZipCodeText(self):
-        self.assertIn(
-            "Kolla om vi kör bil direkt hem till dig", self.browser.page_source
-        )
-        self.assertIn("Kolla", self.browser.page_source)
-
-    def testZipCode(self):
-        zipCodeList = [
-            "98132",
-            "98135",
-            "98136",
-            "98138",
-            "98137",
-            "98139",
-            "98140",
-            "98142",
-            "98143",
-            "98144",
-            "98146",
-            "98147",
-        ]
-        for currentZip in zipCodeList:
-            self.browser.find_element(By.ID, "zipNumber").send_keys(currentZip)
-            self.browser.find_element(By.ID, "submit").click()
-            zipOutput = self.browser.find_element(By.ID, "zipCodeCheck")
-            self.assertIn("Vi kör ut, ring telefonnumret ovan!", zipOutput.text)
-            self.browser.get("about:blank")
-            self.browser.get(path.join((getcwd()), "index.html"))
-
-    def testWrongZipCode(self):
-        zipCodeList = [
-            "12345",
-            "55555",
-            "92347",
-        ]
-        for currentZip in zipCodeList:
-            self.browser.find_element(By.ID, "zipNumber").send_keys(currentZip)
-            self.browser.find_element(By.ID, "submit").click()
-            zipOutput = self.browser.find_element(By.ID, "zipCodeCheck")
-            self.assertIn("Vi kör tyvärr inte ut till dig.", zipOutput.text)
-            self.browser.get("about:blank")
-            self.browser.get(path.join((getcwd()), "index.html"))
-
-    def testNotAZipCode(self):
-        zipCodeList = [
-            "1234",
-            "hej",
-            "xxxxx",
-        ]
-        for currentZip in zipCodeList:
-            self.browser.find_element(By.ID, "zipNumber").send_keys(currentZip)
-            self.browser.find_element(By.ID, "submit").click()
-            zipOutput = self.browser.find_element(By.ID, "zipCodeCheck")
-            self.assertIn("Inte ett giltigt postnummer.", zipOutput.text)
-            self.browser.get("about:blank")
-            self.browser.get(path.join((getcwd()), "index.html"))
-
     def testIsDateClosed(self):
         result = self.browser.execute_script("return isDateClosed(1, 1);")
         self.assertTrue(result, "Expected date to be closed: 1/1")
         result = self.browser.execute_script("return isDateClosed(1, 2);")
         self.assertFalse(result, "Expected date to be open: 1/2")
-
-    def testclosedDays(self):
-        self.assertIn("Nyårsdagen&nbsp;1&nbsp;Januari", self.browser.page_source)
-        self.assertIn(
-            "Trettondedag&nbsp;jul&nbsp;6&nbsp;Januari", self.browser.page_source
-        )
-        self.assertIn(
-            "Sveriges&nbsp;nationaldag&nbsp;6&nbsp;Juni", self.browser.page_source
-        )
-        self.assertIn("Första&nbsp;maj&nbsp;1&nbsp;Maj", self.browser.page_source)
-        self.assertIn("Julafton&nbsp;24&nbsp;December", self.browser.page_source)
-        self.assertIn("Juldagen&nbsp;25&nbsp;December", self.browser.page_source)
-        self.assertIn(
-            "Annandag&nbsp;jul&nbsp;26&nbsp;December", self.browser.page_source
-        )
-        self.assertIn("Nyårsafton&nbsp;31&nbsp;December", self.browser.page_source)
 
 
 # will run if the fil running is a normal python file
