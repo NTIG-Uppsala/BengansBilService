@@ -92,6 +92,7 @@ function checkNextOpen(month, dayOfMonth, dayOfWeek, element, days, openingHours
 		}
 
 	} else if (isDateClosed(month, dayOfMonth + 2)) { // if next monday is closed
+
 		while (isDateClosed(month, dayOfMonth + daysTillOpen + 1) || getDayWeekLoop(dayOfWeek + daysTillOpen) === 0) {
 			daysTillOpen++
 

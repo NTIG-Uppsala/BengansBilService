@@ -220,7 +220,8 @@ class TestingPage(TestCase):
 
         # New year
         self.helperLiveOpening("2023-12-31T10:10:00", "Öppnar tisdag kl 10")
-        self.helperLiveOpening("2023-1-1T10:10:00", "Öppnar tisdag kl 10")
+        self.helperLiveOpening("2024-01-01T16:10:00", "Öppnar tisdag kl 10")
+        self.helperLiveOpening("2024-01-06T14:10:00", "Öppnar måndag kl 10")
 
         # Christmas
         self.helperLiveOpening("2023-12-23T15:50:00", "Öppnar onsdag kl 10")
