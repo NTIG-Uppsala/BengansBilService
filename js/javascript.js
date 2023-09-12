@@ -56,6 +56,7 @@ function isDateClosed(month, day) {
 	return false;
 }
 
+// Check if there is a week change and if so returns the right day of the new week
 function getDayWeekLoop(day, additionalDays) {
 	if (day + additionalDays > 6) {
 		return day + additionalDays - 7
@@ -64,11 +65,15 @@ function getDayWeekLoop(day, additionalDays) {
 	}
 }
 
+
+// look for next open day
 function checkNextOpen(month, dayOfMonth, dayOfWeek, element, days, openingHours) {
 	let daysTillOpen = 0
 
 
-	if (dayOfWeek !== 6) {
+	if (dayOfWeek !== 6) { // If not saturday
+
+		// Checks how many days untill next open day
 		while (isDateClosed(month, dayOfMonth + daysTillOpen + 1) || getDayWeekLoop(dayOfWeek + daysTillOpen) === 0) {
 			daysTillOpen++
 
@@ -76,7 +81,7 @@ function checkNextOpen(month, dayOfMonth, dayOfWeek, element, days, openingHours
 
 		const nextOpenDay = getDayWeekLoop(dayOfWeek, daysTillOpen)
 
-		if (nextOpenDay === 5) {
+		if (nextOpenDay === 5) { //if friday
 			element.innerText = `Öppnar ${days[nextOpenDay + 1]} kl ${openingHours.saturday.open
 				}`;
 			storeIsOpen = false;
@@ -85,7 +90,8 @@ function checkNextOpen(month, dayOfMonth, dayOfWeek, element, days, openingHours
 				}`;
 			storeIsOpen = false;
 		}
-	} else if (isDateClosed(month, dayOfMonth + 2)) {
+
+	} else if (isDateClosed(month, dayOfMonth + 2)) { // if next monday is closed
 		while (isDateClosed(month, dayOfMonth + daysTillOpen + 1) || getDayWeekLoop(dayOfWeek + daysTillOpen) === 0) {
 			daysTillOpen++
 
@@ -109,6 +115,7 @@ function checkNextOpen(month, dayOfMonth, dayOfWeek, element, days, openingHours
 		storeIsOpen = false;
 	}
 }
+
 function setLiveOpeningHours(date) {
 	const hour = date.getHours();
 	const dayOfWeek = date.getDay(); // Gets day of week
