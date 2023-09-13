@@ -279,10 +279,6 @@ zipCodeList = [
 ];
 
 document.addEventListener("DOMContentLoaded", (event) => {
-	let ZipcodeCheck =
-		'<p>Kolla om vår hemleverans når dig</p><form action=""><input type="text" style="height:2.2rem; font-size:1.2rem;" inputmode="numeric" id="zipNumber" placeholder="Postnummer"><input class="checkNumber" style="height:2.2rem;  font-size:1.2rem;" id="submit" type="submit" value="Kolla"></form><p id="output"></p>';
-	document.querySelector("#jsCheck").innerHTML = ZipcodeCheck;
-
 	document
 		.querySelector("#zipCodeCheck form")
 		.addEventListener("submit", (event) => {
