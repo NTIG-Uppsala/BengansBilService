@@ -8,8 +8,6 @@ body {
 }
 
 .websiteTitle {
-    padding: 10px;
-    font-size: 2.5rem;
     font-style: italic;
     position: relative;
     color: white;
@@ -17,23 +15,31 @@ body {
     align-items: flex-start;
     justify-content: flex-start;
     display: flex;
-    padding: 10px;
+    padding: 5px;
+}
+
+#title {
+    position: absolute;
+    top: 7%;
+    left: 50%;
+    background-color: gray;
+    color: white;
+    margin-top: 1vh;
+    transform: translate(-50%, -50%);
+    text-decoration: underline;
 }
 
 #storeOpen {
-    color: green;
     opacity: 1 !important;
 }
 
 #storeClosed {
     opacity: 1 !important;
-    color: red;
 }
 
 .sideNavButton {
     background-color: transparent;
     border: none;
-    font-size: 1.7rem !important;
 }
 
 .navButton:hover {
@@ -134,6 +140,10 @@ body {
     color: white;
 }
 
+.navbar-brand {
+    font-family: 'Maven Pro', sans-serif;
+}
+
 .zipInput {
     margin-top: 1rem;
     background-color: transparent;
@@ -151,30 +161,10 @@ body {
     text-align: center !important;
 }
 
-#Title {
-    background-color: transparent;
-    color: white;
-    padding-left: 10px;
-    padding-right: 10px;
-    font-style: italic;
-    font-family: 'Maven Pro', sans-serif;
-}
-
 #whiteLink {
     color: white;
     text-decoration: none;
     z-index: 21;
-}
-
-#title {
-    position: absolute;
-    top: 7%;
-    left: 50%;
-    background-color: gray;
-    color: white;
-    margin-top: 1vh;
-    transform: translate(-50%, -50%);
-    text-decoration: underline;
 }
 
 #productChart {
@@ -182,6 +172,10 @@ body {
     margin-top: 2vw;
     margin-left: auto;
     margin-right: auto;
+}
+
+.headerBreak {
+    display: none;
 }
 
 @media screen and (max-width:991px) {
@@ -285,6 +279,10 @@ body {
 
     .icon {
         width: 20px;
+    }
+
+    .headerBreak {
+        display: initial;
     }
 }
 

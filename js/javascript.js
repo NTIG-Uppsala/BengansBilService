@@ -155,7 +155,7 @@ function setLiveOpeningHours(date) {
 	const element = document.getElementById("storeState");
 	const rightNowSpan = document.createElement("span");
 	const openSpan = document.createElement("span");
-	let storeIsOpen = true;
+	let storeIsOpen;
 
 
 	const openingHours = {
@@ -245,30 +245,20 @@ function setLiveOpeningHours(date) {
 };
 
 function liveStoreStateHeader(storeIsOpen) {
-	const storeOpenElements = document.getElementsByClassName("storeOpen");
-	const storeClosedElements = document.getElementsByClassName("storeClosed");
+	const storeOpenElement = document.getElementById("storeOpen");
+	const storeClosedElement = document.getElementById("storeClosed");
 
 	if (storeIsOpen === false) {
-		for (const element of storeClosedElements) {
-			element.setAttribute("id", "storeClosed");
-		}
-
-		for (const element of storeOpenElements) {
-			element.removeAttribute("id");
-		}
+		storeClosedElement.style.color = "red";
+		storeOpenElement.style.color = "white";
 	} else {
-		for (const element of storeOpenElements) {
-			element.setAttribute("id", "storeOpen");
-		}
-
-		for (const element of storeClosedElements) {
-			element.removeAttribute("id");
-		};
-	};
+		storeClosedElement.style.color = "white";
+		storeOpenElement.style.color = "green";
+	}
 };
 
-function scrollToInfo() {
+function scrollToInfo(id) {
 	setTimeout(() => {
-		document.getElementById("openingHours").scrollIntoView();
+		document.getElementById(id).scrollIntoView();
 	}, 500);
 };

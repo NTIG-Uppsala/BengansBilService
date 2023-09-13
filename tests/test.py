@@ -117,7 +117,7 @@ class TestingPage(TestCase):
     def testNavBarTitle(self):
         element = self.browser.find_element(By.CLASS_NAME, "navbar-nav")
         self.assertIn("Kontakta&nbsp;oss", element.get_attribute("innerHTML"))
-        self.assertIn("Hitta&nbsp;hit", element.get_attribute("innerHTML"))
+        self.assertIn("Adress", element.get_attribute("innerHTML"))
         self.assertIn("Öppettider", element.get_attribute("innerHTML"))
 
     def testFooterTitle(self):
@@ -219,6 +219,7 @@ class TestingPage(TestCase):
         # Closed days
 
         # New year
+        self.helperLiveOpening("2023-12-30T16:10:00", "Öppnar tisdag kl 10")
         self.helperLiveOpening("2023-12-31T10:10:00", "Öppnar tisdag kl 10")
         self.helperLiveOpening("2024-01-01T16:10:00", "Öppnar tisdag kl 10")
         self.helperLiveOpening("2024-01-06T14:10:00", "Öppnar måndag kl 10")
