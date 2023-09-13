@@ -177,6 +177,25 @@ body {
     display: none;
 }
 
+.checkNumber {
+    height: 2.2rem;
+    font-size: 1.2rem;
+    border-radius: 0%;
+    border: 0.1em solid;
+    border-left: 0;
+    padding: 0;
+    width: 4em;
+}
+
+.zipCodeInput {
+    height: 2.2rem;
+    font-size: 1.2rem;
+    border-radius: 0%;
+    border: 0.1em solid;
+    padding: 0;
+    outline: none;
+}
+
 @media screen and (max-width:991px) {
     .nav-item {
         text-align: unset !important;
