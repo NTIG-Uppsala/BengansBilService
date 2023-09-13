@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
 function isDateClosed(year, month, day) {
 
 	if (!(isValid(day, month, year))) {
-		month = (month + 1) % 12 + 1;
+		month = (month + 1) % 12;
 		day -= daysInMonth(month - 1, day);
 	};
 
@@ -98,7 +98,7 @@ function checkNextOpen(year, month, dayOfMonth, dayOfWeek, days, openingHours, e
 		while (isDateClosed(year, month, dayOfMonth + daysTillOpen + 1) || getDayWeekLoop(dayOfWeek + daysTillOpen) == 0 || (month == 11 && dayOfMonth == 31)) {
 			daysTillOpen++;
 			if (!(isValid(dayOfMonth + daysTillOpen, month, year))) {
-				month = (month + 1) % 12 + 1;
+				month = (month + 1) % 12;
 				dayOfMonth = 1;
 			};
 		};
@@ -120,7 +120,7 @@ function checkNextOpen(year, month, dayOfMonth, dayOfWeek, days, openingHours, e
 		while (isDateClosed(year, month, dayOfMonth + daysTillOpen + 1) || getDayWeekLoop(dayOfWeek + daysTillOpen) === 0) {
 			daysTillOpen++;
 			if (!(isValid(dayOfMonth + daysTillOpen, month, year))) {
-				month = (month + 1) % 12 + 1;
+				month = (month + 1) % 12;
 				dayOfMonth = 1;
 			};
 		};
