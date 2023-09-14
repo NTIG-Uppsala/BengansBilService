@@ -166,8 +166,12 @@ body {
     display: none;
 }
 
+#zipCodeCheck {
+    height: auto;
+}
+
 .checkNumber {
-    height: 2.2rem;
+    height: inherit;
     font-size: 1.2rem;
     border-radius: 0%;
     border: 0.1em solid;
@@ -180,7 +184,7 @@ body {
 }
 
 .zipCodeInput {
-    height: 2.2rem;
+    height: inherit;
     font-size: 1.2rem;
     border-radius: 0%;
     border: 0.1em solid;
