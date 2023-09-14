@@ -307,30 +307,25 @@ document.addEventListener("DOMContentLoaded", (event) => {
 });
 
 // Closed days automatic order
-
 function getNewClosedDaysList(date) {
-
 	let month = date.getMonth();
+	let closedDaysList = Array.from(document.getElementById('closedDaysList').children);
 	let dayOfMonth = date.getDate();
-	let closedDaysList = Array.from(document.getElementById("closedDaysList").children);
 	let dateRegex = /[0-9]{1,2}/g
 
 	for (let i = 0; i < closedDaysList.length; i++) {
-		let itemMonth = closedDaysList[i].innerHTML.match(dateRegex)[0];
-		let itemDayOfMonth = closedDaysList[i].innerHTML.match(dateRegex)[1];
+		let itemDayOfMonth = closedDaysList[i].innerHTML.match(dateRegex)[0];
+		let itemMonth = closedDaysList[i].innerHTML.match(dateRegex)[1];
 
-		if (itemMonth < month) {
+		if (itemMonth < month + 1) {
 			let parent = closedDaysList[i].parentNode;
 			parent.removeChild(closedDaysList[i]);
 			parent.appendChild(closedDaysList[i]);
-		} else if (itemMonth == month && itemDayOfMonth < dayOfMonth) {
+		} else if (itemMonth == month + 1 && itemDayOfMonth < dayOfMonth) {
 			let parent = closedDaysList[i].parentNode;
 			parent.removeChild(closedDaysList[i]);
 			parent.appendChild(closedDaysList[i]);
 		}
 	}
 }
-
-
-
 
