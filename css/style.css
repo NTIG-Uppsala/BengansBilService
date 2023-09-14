@@ -18,17 +18,6 @@ body {
     padding: 5px;
 }
 
-#title {
-    position: absolute;
-    top: 7%;
-    left: 50%;
-    background-color: gray;
-    color: white;
-    margin-top: 1vh;
-    transform: translate(-50%, -50%);
-    text-decoration: underline;
-}
-
 #storeOpen {
     opacity: 1 !important;
 }
@@ -272,6 +261,11 @@ body {
     .footerInfo {
         font-size: 100%;
     }
+
+    .checkNumber {
+        border-left: 0.1em solid;
+        margin-top: 0.5em;
+    }
 }
 
 @media screen and (max-width: 350px) {
@@ -283,10 +277,6 @@ body {
 @media screen and (max-width: 450px) {
     .icon-link {
         font-size: 20px;
-    }
-
-    .icon {
-        width: 20px;
     }
 
     .headerBreak {
@@ -328,10 +318,6 @@ body {
     .chartItem {
         font-size: 0.8rem !important;
         margin: 0 auto;
-    }
-
-    .productCharts {
-        margin: 0 0 !important;
     }
 }
 
