@@ -23,7 +23,7 @@
 	<link rel="icon" type="image/x-icon" href="images/ntb-favicon.ico">
 </head>
 
-<body onload="setLiveOpeningHours(new Date())">
+<body onload="setLiveOpeningHours(new Date()); getNewClosedDaysList(new Date());">
 	<!--To run bootstrap-->
 	<script src="js/bootstrap.min.js"></script>
 
@@ -149,7 +149,7 @@
 						<div class="d-flex justify-content-center">
 							<div id="opening-hours" class="flex-grow-1">
 								<h5 class="pt-3" style="text-align: center;">Stängda&nbsp;dagar</h5>
-								<ul class="list-unstyled text-start">
+								<ul id="closedDaysList" class="list-unstyled text-start">
 									<li class="my-2">
 										Nyårsdagen
 										<span class="float-end">1/1</span>
