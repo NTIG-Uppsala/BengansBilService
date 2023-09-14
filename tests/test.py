@@ -1,3 +1,4 @@
+import time
 from os import getcwd, path
 from unittest import TestCase, main
 
@@ -147,8 +148,18 @@ class TestingPage(TestCase):
         self.assertIn("Kolla om vår hemleverans når dig", self.browser.page_source)
         self.assertIn("Kolla", self.browser.page_source)
 
-    def testZipCode(self):
-        zipCodeList = [
+    def helperZipCode(self, zipCodeList, message):
+        for currentZip in zipCodeList:
+            self.browser.find_element(By.ID, "zipNumber").send_keys(currentZip)
+            time.sleep(0.5)
+            self.browser.find_element(By.ID, "submit").click()
+            zipOutput = self.browser.find_element(By.ID, "zipCodeCheck")
+            self.assertIn(message, zipOutput.text)
+            self.browser.get("about:blank")
+            self.browser.get(path.join((getcwd()), "index.html"))
+
+    def testZipCodes(self):
+        zipCodeList1 = [
             "98132",
             "98135",
             "98136",
@@ -162,41 +173,19 @@ class TestingPage(TestCase):
             "98146",
             "98147",
         ]
-        for currentZip in zipCodeList:
-            self.browser.find_element(By.ID, "zipNumber").send_keys(currentZip)
-            self.browser.find_element(By.ID, "submit").click()
-            zipOutput = self.browser.find_element(By.ID, "zipCodeCheck")
-            self.assertIn("Vi kör ut, ring telefonnumret ovan!", zipOutput.text)
-            self.browser.get("about:blank")
-            self.browser.get(path.join((getcwd()), "index.html"))
-
-    def testWrongZipCode(self):
-        zipCodeList = [
+        zipCodeList2 = [
             "12345",
             "55555",
             "92347",
         ]
-        for currentZip in zipCodeList:
-            self.browser.find_element(By.ID, "zipNumber").send_keys(currentZip)
-            self.browser.find_element(By.ID, "submit").click()
-            zipOutput = self.browser.find_element(By.ID, "zipCodeCheck")
-            self.assertIn("Vi kör tyvärr inte ut till dig.", zipOutput.text)
-            self.browser.get("about:blank")
-            self.browser.get(path.join((getcwd()), "index.html"))
-
-    def testNotAZipCode(self):
-        zipCodeList = [
+        zipCodeList3 = [
             "1234",
             "hej",
             "xxxxx",
         ]
-        for currentZip in zipCodeList:
-            self.browser.find_element(By.ID, "zipNumber").send_keys(currentZip)
-            self.browser.find_element(By.ID, "submit").click()
-            zipOutput = self.browser.find_element(By.ID, "zipCodeCheck")
-            self.assertIn("Inte ett giltigt postnummer.", zipOutput.text)
-            self.browser.get("about:blank")
-            self.browser.get(path.join((getcwd()), "index.html"))
+        self.helperZipCode(zipCodeList1, "Vi kör ut, ring telefonnumret ovan!")
+        self.helperZipCode(zipCodeList2, "Vi kör tyvärr inte ut till dig.")
+        self.helperZipCode(zipCodeList3, "Inte ett giltigt postnummer.")
 
     def testIsDateClosed(self):
         result = self.browser.execute_script("return isDateClosed(2023, 0, 1);")

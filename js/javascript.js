@@ -305,3 +305,27 @@ document.addEventListener("DOMContentLoaded", (event) => {
 			}
 		});
 });
+
+// Closed days automatic order
+function getNewClosedDaysList(date) {
+	let month = date.getMonth();
+	let closedDaysList = Array.from(document.getElementById('closedDaysList').children);
+	let dayOfMonth = date.getDate();
+	let dateRegex = /[0-9]{1,2}/g
+
+	for (let i = 0; i < closedDaysList.length; i++) {
+		let itemDayOfMonth = closedDaysList[i].innerHTML.match(dateRegex)[0];
+		let itemMonth = closedDaysList[i].innerHTML.match(dateRegex)[1];
+
+		if (itemMonth < month + 1) {
+			let parent = closedDaysList[i].parentNode;
+			parent.removeChild(closedDaysList[i]);
+			parent.appendChild(closedDaysList[i]);
+		} else if (itemMonth == month + 1 && itemDayOfMonth < dayOfMonth) {
+			let parent = closedDaysList[i].parentNode;
+			parent.removeChild(closedDaysList[i]);
+			parent.appendChild(closedDaysList[i]);
+		}
+	}
+}
+
