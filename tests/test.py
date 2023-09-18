@@ -81,9 +81,9 @@ class TestingPage(TestCase):
             {"car": "Cadillac Escalade", "model": "1999", "price": "500"},
             {"car": "Mitsubishi Outlander", "model": "2018", "price": "450"},
             {"car": "Volvo XC40", "model": "2018", "price": "800"},
-            {"car": "VW Polo", "model": "2022", "price": 300},
-            {"car": "Kia Carens", "model": "2022", "price": 400},
-            {"car": "Audi S3", "model": "2015", "price": 450},
+            {"car": "VW Polo", "model": "2022", "price": "300"},
+            {"car": "Kia Carens", "model": "2022", "price": "400"},
+            {"car": "Audi S3", "model": "2015", "price": "450"},
         ]
 
         for car_info in car_list:
@@ -146,7 +146,7 @@ class TestingPage(TestCase):
 
     def testZipCodeText(self):
         self.assertIn("Kolla om vår hemleverans når dig", self.browser.page_source)
-        self.assertIn("Kolla", self.browser.page_source)
+        self.browser.find_element(By.CLASS_NAME, "checkNumber")
 
     def helperZipCode(self, zipCodeList, message):
         for currentZip in zipCodeList:
