@@ -274,6 +274,66 @@ class TestingPage(TestCase):
         self.helperLiveOpening("2023-12-25T02:50:00", "Öppnar onsdag kl 10")
         self.helperLiveOpening("2023-12-26T10:50:00", "Öppnar onsdag kl 10")
 
+    def helperLiveOpeningHeader(self, date, expectedResult):
+        self.browser.execute_script("setLiveOpeningHours(new Date('" + date + "'))")
+        headerOpen = self.browser.find_element(By.ID, "storeOpen")
+        result = False
+        if headerOpen.get_attribute("color") == "green":
+            result = True
+        else:
+            result = False
+
+        self.assertEqual(expectedResult, result)
+
+    def testLiveOpeningHoursHeader(self):
+        # Monday
+        self.helperLiveOpeningHeader("2023-09-11T09:05:00", False)
+        self.helperLiveOpeningHeader("2023-09-11T09:09:00", False)
+        self.helperLiveOpeningHeader("2023-09-11T09:10:00", True)
+        self.helperLiveOpeningHeader("2023-09-11T09:15:00", True)
+        self.helperLiveOpeningHeader("2023-09-11T09:17:00", False)
+        self.helperLiveOpeningHeader("2023-09-11T09:22:00", False)
+
+        # Tuesday
+        self.helperLiveOpeningHeader("2023-09-12T09:05:00", False)
+        self.helperLiveOpeningHeader("2023-09-12T09:09:00", False)
+        self.helperLiveOpeningHeader("2023-09-12T09:10:00", True)
+        self.helperLiveOpeningHeader("2023-09-12T09:15:00", True)
+        self.helperLiveOpeningHeader("2023-09-12T09:17:00", False)
+        self.helperLiveOpeningHeader("2023-09-12T09:22:00", False)
+
+        # Wednesday
+        self.helperLiveOpeningHeader("2023-09-13T09:05:00", False)
+        self.helperLiveOpeningHeader("2023-09-13T09:09:00", False)
+        self.helperLiveOpeningHeader("2023-09-13T09:10:00", True)
+        self.helperLiveOpeningHeader("2023-09-13T09:15:00", True)
+        self.helperLiveOpeningHeader("2023-09-13T09:17:00", False)
+        self.helperLiveOpeningHeader("2023-09-13T09:22:00", False)
+
+        # Thursday
+        self.helperLiveOpeningHeader("2023-09-14T09:05:00", False)
+        self.helperLiveOpeningHeader("2023-09-14T09:09:00", False)
+        self.helperLiveOpeningHeader("2023-09-14T09:10:00", True)
+        self.helperLiveOpeningHeader("2023-09-14T09:15:00", True)
+        self.helperLiveOpeningHeader("2023-09-14T09:17:00", False)
+        self.helperLiveOpeningHeader("2023-09-14T09:22:00", False)
+
+        # Friday
+        self.helperLiveOpeningHeader("2023-09-15T09:05:00", False)
+        self.helperLiveOpeningHeader("2023-09-15T09:09:00", False)
+        self.helperLiveOpeningHeader("2023-09-15T09:10:00", True)
+        self.helperLiveOpeningHeader("2023-09-15T09:15:00", True)
+        self.helperLiveOpeningHeader("2023-09-15T09:17:00", False)
+        self.helperLiveOpeningHeader("2023-09-15T09:22:00", False)
+
+        # Saturday
+        self.helperLiveOpeningHeader("2023-09-16T09:05:00", False)
+        self.helperLiveOpeningHeader("2023-09-16T09:09:00", False)
+        self.helperLiveOpeningHeader("2023-09-16T09:10:00", True)
+        self.helperLiveOpeningHeader("2023-09-16T09:15:00", True)
+        self.helperLiveOpeningHeader("2023-09-16T09:17:00", False)
+        self.helperLiveOpeningHeader("2023-09-16T09:22:00", False)
+
 
 # will run if the fil running is a normal python file
 if __name__ == "__main__":
