@@ -122,9 +122,8 @@ class TestingPage(TestCase):
         self.assertIn("Öppettider", element.get_attribute("innerHTML"))
 
     def testFooterTitle(self):
-        element = self.browser.find_element(By.CLASS_NAME, "text-center")
-        self.assertIn("Kontakta&nbsp;oss", element.get_attribute("innerHTML"))
-        self.assertIn("Adress", element.get_attribute("innerHTML"))
+        element = self.browser.find_element(By.CLASS_NAME, "info-section")
+        self.assertIn("Hitta hit", element.get_attribute("innerHTML"))
         self.assertIn("Öppettider", element.get_attribute("innerHTML"))
 
     def testSlideShowText(self):
