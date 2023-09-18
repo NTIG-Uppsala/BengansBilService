@@ -108,11 +108,11 @@ function checkNextOpen(year, month, dayOfMonth, dayOfWeek, days, openingHours, e
 		if (nextOpenDay === 5) { //if friday
 			element.innerText = `Öppnar ${days[nextOpenDay + 1]} kl ${openingHours.saturday.open
 				}`;
-			storeIsOpen = false;
+			return false;
 		} else {
 			element.innerText = `Öppnar ${days[nextOpenDay + 1]} kl ${openingHours.weekdays.open
 				}`;
-			storeIsOpen = false;
+			return false;
 		};
 
 	} else if (isDateClosed(year, month, dayOfMonth + 2)) { // if next monday is closed
@@ -130,17 +130,17 @@ function checkNextOpen(year, month, dayOfMonth, dayOfWeek, days, openingHours, e
 		if (nextOpenDay === 5) {
 			element.innerText = `Öppnar ${days[nextOpenDay + 1]} kl ${openingHours.saturday.open
 				}`;
-			storeIsOpen = false;
+			return false;
 		} else {
 			element.innerText = `Öppnar ${days[nextOpenDay + 1]} kl ${openingHours.weekdays.open
 				}`;
-			storeIsOpen = false;
+			return false;
 		};
 	}
 
 	else {
 		element.innerText = `Öppnar måndag kl ${openingHours.weekdays.open}`;
-		storeIsOpen = false;
+		return false;
 	}
 }
 
@@ -174,7 +174,7 @@ function setLiveOpeningHours(date) {
 	];
 
 	if (isDateClosed(year, month, dayOfMonth)) {
-		checkNextOpen(year, month, dayOfMonth, dayOfWeek, days, openingHours, element)
+		storeIsOpen = checkNextOpen(year, month, dayOfMonth, dayOfWeek, days, openingHours, element)
 	}
 
 	//If weekday
@@ -204,8 +204,9 @@ function setLiveOpeningHours(date) {
 			storeIsOpen = true;
 		} else if (hour < openingHours.weekdays.open) {
 			element.innerText = `Öppnar idag kl ${openingHours.weekdays.open}`;
+			storeIsOpen = false
 		} else {
-			checkNextOpen(year, month, dayOfMonth, dayOfWeek, days, openingHours, element);
+			storeIsOpen = checkNextOpen(year, month, dayOfMonth, dayOfWeek, days, openingHours, element);
 		};
 	} //Saturday
 	else if (dayOfWeek == 6) {
@@ -234,11 +235,11 @@ function setLiveOpeningHours(date) {
 			element.innerText = `Öppnar idag kl ${openingHours.saturday.open}`;
 			storeIsOpen = false;
 		} else {
-			checkNextOpen(year, month, dayOfMonth, dayOfWeek, days, openingHours, element);
+			storeIsOpen = checkNextOpen(year, month, dayOfMonth, dayOfWeek, days, openingHours, element);
 		};
 	} //Sunday
 	else if (dayOfWeek == 0) {
-		checkNextOpen(year, month, dayOfMonth, dayOfWeek, days, openingHours, element);
+		storeIsOpen = checkNextOpen(year, month, dayOfMonth, dayOfWeek, days, openingHours, element);
 	};
 
 	liveStoreStateHeader(storeIsOpen);
@@ -251,7 +252,7 @@ function liveStoreStateHeader(storeIsOpen) {
 	if (storeIsOpen === false) {
 		storeClosedElement.style.color = "red";
 		storeOpenElement.style.color = "white";
-	} else {
+	} else if (storeIsOpen === true) {
 		storeClosedElement.style.color = "white";
 		storeOpenElement.style.color = "green";
 	}
