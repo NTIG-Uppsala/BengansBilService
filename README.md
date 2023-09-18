@@ -19,3 +19,9 @@ Website for NTB Biluthyrning 2023/2024
 * Bootstrap 5.3.1
 * Python 3.11
 * Selenium 4.11.2
+
+## Licenses
+
+### Fonts
+  * [Maven Pro](https://fonts.google.com/specimen/Maven+Pro/about?query=maven+pro)
+  
