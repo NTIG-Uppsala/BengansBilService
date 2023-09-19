@@ -2,34 +2,34 @@
    
     {
         "text": "Nyårsdagen",
-        "date": "00-01"
+        "date": "1-1"
     },
     {
         "text": "Trettondedag jul",
-        "date": "00-06"
+        "date": "1-6"
     },
     {
         "text": "Första maj",
-        "date": "04-01"
+        "date": "5-1"
     },
     {
         "text": "Sveriges<br>nationaldag&nbsp;",
-        "date": "05-06"
+        "date": "6-6"
     },
     {
         "text": "Julafton",
-        "date": "11-24"
+        "date": "12-24"
     },
     {
         "text": "Juldagen",
-        "date": "11-25"
+        "date": "12-25"
     },
     {
         "text": "Annandag jul",
-        "date": "11-26"
+        "date": "12-26"
     },
     {
         "text": "Nyårsafton",
-        "date": "11-31"
+        "date": "12-31"
     }
 ]
