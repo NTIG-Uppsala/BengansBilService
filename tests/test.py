@@ -1,4 +1,5 @@
 import time
+import unittest
 from os import getcwd, path
 from unittest import TestCase, main
 
@@ -336,7 +337,16 @@ class TestingPage(TestCase):
         self.helperLiveOpeningHeader("2023-09-16T17:00:00", False)
         self.helperLiveOpeningHeader("2023-09-16T22:00:00", False)
 
+    def helperClosedDaysAutomaticOrder(self, date, expectedDate):
+        self.browser.execute_script("getNewClosedDaysList('" + date + "')")
+        firstDate = self.browser.execute_script(
+            "return Array.from(document.getElementById('closedDaysList'))[0].match(/[0-9]{1,2}/g)"
+        )
+        self.assertEqual(firstDate, expectedDate)
 
-# will run if the fil running is a normal python file
-if __name__ == "__main__":
-    main(verbosity=2)
+    def testClosedDaysAutomaticOrder(self):
+        self.helperClosedDaysAutomaticOrder("2023-09-16T14:00:00", ["11", "24"])
+
+    # will run if the fil running is a normal python file
+    if __name__ == "__main__":
+        main(verbosity=2)
