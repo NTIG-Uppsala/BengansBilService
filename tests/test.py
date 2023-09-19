@@ -338,14 +338,16 @@ class TestingPage(TestCase):
         self.helperLiveOpeningHeader("2023-09-16T22:00:00", False)
 
     def helperClosedDaysAutomaticOrder(self, date, expectedDate):
-        self.browser.execute_script("getNewClosedDaysList('" + date + "')")
+        time.sleep(2)
+        self.browser.execute_script("sortClosedDays(new Date('" + date + "'))")
+
         firstDate = self.browser.execute_script(
-            "return Array.from(document.getElementById('closedDaysList'))[0].match(/[0-9]{1,2}/g)"
+            "return document.getElementById('closedDaysList').getElementsByTagName('li')[0].textContent.match(/[0-9]{1,2}/g)"
         )
         self.assertEqual(firstDate, expectedDate)
 
     def testClosedDaysAutomaticOrder(self):
-        self.helperClosedDaysAutomaticOrder("2023-09-16T14:00:00", ["11", "24"])
+        self.helperClosedDaysAutomaticOrder("2023-09-16T14:00:00", ["12", "24"])
 
     # will run if the fil running is a normal python file
     if __name__ == "__main__":
