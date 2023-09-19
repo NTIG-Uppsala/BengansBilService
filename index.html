@@ -24,11 +24,7 @@
 </head>
 
 <body onload="setLiveOpeningHours(new Date()); getNewClosedDaysList(new Date());">
-    <!--To run bootstrap-->
-    <script src="js/bootstrap.min.js"></script>
 
-    <!--Our javascript-->
-    <script src="js/javascript.js"></script>
 
     <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top" data-bs-theme="dark">
         <div class="container-fluid">
@@ -98,21 +94,36 @@
         </div>
     </div>
 
-    <!--Product Chart-->
-    <table id="productChart" class="table">
-        <thead>
-            <tr>
-                <th scope="col" class="chartItem">Bilar</th>
-                <th scope="col" class="chartItem">Årsmodell</th>
-                <th scope="col" class="chartItem">Dagspris</th>
-            </tr>
-        </thead>
-        <tbody id="carList">
+    <div class="container mt-5">
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Dropdown button
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+        </div>
 
 
-        </tbody>
-    </table>
+        <!--Product Chart-->
+        <table id="productChart" class="table">
+            <thead>
+                <tr>
+                    <th scope="col" class="chartItem">Bilar</th>
+                    <th scope="col" class="chartItem">Årsmodell</th>
+                    <th scope="col" class="chartItem">Dagspris</th>
 
+                </tr>
+            </thead>
+            <tbody id="carList">
+
+
+            </tbody>
+        </table>
+    </div>
 
     <div class="container-fluid text-center mt-5d info-section">
         <div class="row justify-content-evenly d-flex">
@@ -224,7 +235,11 @@
             </div>
         </div>
     </div>
+    <!--To run bootstrap-->
+    <script src="js/bootstrap.min.js"></script>
 
+    <!--Our javascript-->
+    <script src="js/javascript.js"></script>
 </body>
 
 </html>
