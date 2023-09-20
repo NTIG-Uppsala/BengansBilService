@@ -3,34 +3,80 @@ window.setInterval(function () {
 }, 30000); //Every 30 sec
 
 document.addEventListener("DOMContentLoaded", function () {
-    fetch("../json/cars.json")
-        .then((res) => {
-            return res.json()
-        })
-        .then((cars) => {
+    let cars = [
+        {
+            "name": "Audi A6",
+            "year": "2011",
+            "price": "800\u00A0kr"
+        },
+        {
+            "name": "Audi S3",
+            "year": "2015",
+            "price": "450\u00A0kr"
+        },
+        {
+            "name": "Cadillac Escalade",
+            "year": "1999",
+            "price": "500\u00A0kr"
+        },
+        {
+            "name": "Kia Carens",
+            "year": "2022",
+            "price": "400\u00A0kr"
+        },
+        {
+            "name": "Kia Soul",
+            "year": "2020",
+            "price": "400\u00A0kr"
+        },
+        {
+            "name": "Mitsubishi Outlander",
+            "year": "2018",
+            "price": "450\u00A0kr"
+        },
+        {
+            "name": "Renault Kadjar",
+            "year": "2020",
+            "price": "250\u00A0kr"
+        },
+        {
+            "name": "Subaru Outback",
+            "year": "2020",
+            "price": "300\u00A0kr"
+        },
+        {
+            "name": "Volvo XC40",
+            "year": "2018",
+            "price": "800\u00A0kr"
+        },
+        {
+            "name": "VW Polo",
+            "year": "2022",
+            "price": "300\u00A0kr"
+        }
+    ]
 
-            const tableBody = document.getElementById("carList");
+    const tableBody = document.getElementById("carList");
 
-            cars.forEach(function (car) {
-                const row = document.createElement("tr");
-                const nameCell = document.createElement("td");
-                const yearCell = document.createElement("td");
-                const priceCell = document.createElement("td");
+    cars.forEach(function (car) {
+        const row = document.createElement("tr");
+        const nameCell = document.createElement("td");
+        const yearCell = document.createElement("td");
+        const priceCell = document.createElement("td");
 
-                nameCell.textContent = car.name;
-                yearCell.textContent = car.year;
-                priceCell.textContent = car.price;
+        nameCell.textContent = car.name;
+        yearCell.textContent = car.year;
+        priceCell.textContent = car.price;
 
-                row.appendChild(nameCell);
-                row.appendChild(yearCell);
-                row.appendChild(priceCell);
+        row.appendChild(nameCell);
+        row.appendChild(yearCell);
+        row.appendChild(priceCell);
 
-                tableBody.appendChild(row);
-            });
+        tableBody.appendChild(row);
+    });
 
-        })
+})
 
-});
 let nameClicks = 0;
 let priceClicks = 0;
 let yearClicks = 0;
@@ -43,98 +89,136 @@ function clickCounter(clicks) {
 
 
 function sortCars(buttonInput) {
+    let cars = [
+        {
+            "name": "Audi A6",
+            "year": "2011",
+            "price": "800\u00A0kr"
+        },
+        {
+            "name": "Audi S3",
+            "year": "2015",
+            "price": "450\u00A0kr"
+        },
+        {
+            "name": "Cadillac Escalade",
+            "year": "1999",
+            "price": "500\u00A0kr"
+        },
+        {
+            "name": "Kia Carens",
+            "year": "2022",
+            "price": "400\u00A0kr"
+        },
+        {
+            "name": "Kia Soul",
+            "year": "2020",
+            "price": "400\u00A0kr"
+        },
+        {
+            "name": "Mitsubishi Outlander",
+            "year": "2018",
+            "price": "450\u00A0kr"
+        },
+        {
+            "name": "Renault Kadjar",
+            "year": "2020",
+            "price": "250\u00A0kr"
+        },
+        {
+            "name": "Subaru Outback",
+            "year": "2020",
+            "price": "300\u00A0kr"
+        },
+        {
+            "name": "Volvo XC40",
+            "year": "2018",
+            "price": "800\u00A0kr"
+        },
+        {
+            "name": "VW Polo",
+            "year": "2022",
+            "price": "300\u00A0kr"
+        }
+    ]
+
+
+
+
     let productChart = document.getElementById("productChart").getElementsByTagName("tr");
     let arrows = document.getElementsByClassName("sortArrow")
     let sortText = document.getElementById("currentSorting")
     switch (buttonInput) {
         case "price":
             priceClicks = clickCounter(priceClicks)
-            fetch("../json/cars.json")
-                .then((res) => {
-                    return res.json()
-                })
 
-                .then((cars) => {
+            sortedPrice = cars.sort(function (a, b) {
+                sortText.innerText = "Pris"
+                if (priceClicks % 2 == 0) {
+                    arrows[0].src = "images/arrowdown.svg"
+                    return a["price"].match(/[0-9]+/) - b["price"].match(/[0-9]+/);
+                } else {
+                    arrows[0].src = "images/arrowup.svg"
+                    return b["price"].match(/[0-9]+/) - a["price"].match(/[0-9]+/);
+                }
 
-                    sortedPrice = cars.sort(function (a, b) {
-                        sortText.innerText = "Pris"
-                        if (priceClicks % 2 == 0) {
-                            arrows[0].src = "images/arrowdown.svg"
-                            return a["price"].match(/[0-9]+/) - b["price"].match(/[0-9]+/);
-                        } else {
-                            arrows[0].src = "images/arrowup.svg"
-                            return b["price"].match(/[0-9]+/) - a["price"].match(/[0-9]+/);
-                        }
-
-                    });
-                    for (let i = 0; i < sortedPrice.length; i++) {
-                        let elements = Array.from(productChart[i + 1].children);
-                        elements[0].textContent = sortedPrice[i]["name"];
-                        elements[1].textContent = sortedPrice[i]["year"];
-                        elements[2].textContent = sortedPrice[i]["price"];
-                    }
-                })
+            });
+            for (let i = 0; i < sortedPrice.length; i++) {
+                let elements = Array.from(productChart[i + 1].children);
+                elements[0].textContent = sortedPrice[i]["name"];
+                elements[1].textContent = sortedPrice[i]["year"];
+                elements[2].textContent = sortedPrice[i]["price"];
+            }
 
 
             break;
         case "year":
             yearClicks = clickCounter(yearClicks)
 
-            fetch("../json/cars.json")
-                .then((res) => {
-                    return res.json()
-                })
 
-                .then((cars) => {
-                    sortedYear = cars.sort(function (a, b) {
-                        sortText.innerText = "Årsgång"
-                        if (yearClicks % 2 == 0) {
-                            arrows[1].src = "images/arrowdown.svg"
-                            return a["year"].match(/[0-9]+/) - b["year"].match(/[0-9]+/);
-                        } else {
-                            arrows[1].src = "images/arrowup.svg"
-                            return b["year"].match(/[0-9]+/) - a["year"].match(/[0-9]+/);
-                        }
+            sortedYear = cars.sort(function (a, b) {
+                sortText.innerText = "Årsgång"
+                if (yearClicks % 2 == 0) {
+                    arrows[1].src = "images/arrowdown.svg"
+                    return a["year"].match(/[0-9]+/) - b["year"].match(/[0-9]+/);
+                } else {
+                    arrows[1].src = "images/arrowup.svg"
+                    return b["year"].match(/[0-9]+/) - a["year"].match(/[0-9]+/);
+                }
 
-                    });
+            });
 
-                    for (let i = 0; i < sortedYear.length; i++) {
-                        let elements = Array.from(productChart[i + 1].children);
-                        elements[0].textContent = sortedYear[i]["name"];
-                        elements[1].textContent = sortedYear[i]["year"];
-                        elements[2].textContent = sortedYear[i]["price"];
-                    }
-                })
+            for (let i = 0; i < sortedYear.length; i++) {
+                let elements = Array.from(productChart[i + 1].children);
+                elements[0].textContent = sortedYear[i]["name"];
+                elements[1].textContent = sortedYear[i]["year"];
+                elements[2].textContent = sortedYear[i]["price"];
+            }
+
 
             break;
         case "name":
             nameClicks = clickCounter(nameClicks)
 
-            fetch("../json/cars.json")
-                .then((res) => {
-                    return res.json()
-                })
 
-                .then((cars) => {
-                    sortedName = cars.sort(function (a, b) {
-                        sortText.innerText = "Modell"
-                        if (nameClicks % 2 == 0) {
-                            arrows[2].src = "images/arrowdown.svg"
-                            return a.name.localeCompare(b.name);
-                        } else {
-                            arrows[2].src = "images/arrowup.svg"
-                            return b.name.localeCompare(a.name);
-                        }
+            sortedName = cars.sort(function (a, b) {
+                sortText.innerText = "Modell"
+                if (nameClicks % 2 == 0) {
+                    arrows[2].src = "images/arrowdown.svg"
+                    return a.name.localeCompare(b.name);
+                } else {
+                    arrows[2].src = "images/arrowup.svg"
+                    return b.name.localeCompare(a.name);
+                }
 
 
-                    });
-                    for (let i = 0; i < sortedName.length; i++) {
-                        let elements = Array.from(productChart[i + 1].children);
-                        elements[0].textContent = sortedName[i]["name"];
-                        elements[1].textContent = sortedName[i]["year"];
-                        elements[2].textContent = sortedName[i]["price"];
-                    }
-                })
+            });
+            for (let i = 0; i < sortedName.length; i++) {
+                let elements = Array.from(productChart[i + 1].children);
+                elements[0].textContent = sortedName[i]["name"];
+                elements[1].textContent = sortedName[i]["year"];
+                elements[2].textContent = sortedName[i]["price"];
+            }
 
 
 

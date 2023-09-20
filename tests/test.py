@@ -4,7 +4,6 @@ from unittest import TestCase, main
 
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.by import By
 
 
@@ -334,32 +333,6 @@ class TestingPage(TestCase):
         self.helperLiveOpeningHeader("2023-09-16T14:00:00", True)
         self.helperLiveOpeningHeader("2023-09-16T17:00:00", False)
         self.helperLiveOpeningHeader("2023-09-16T22:00:00", False)
-
-
-class TestLiveServer(TestCase):
-    dontCloseBrowser = True
-    hideWindow = False
-
-    @classmethod
-    def setUpClass(cls):
-        chr_options = Options()
-
-        if cls.dontCloseBrowser:
-            chr_options.add_experimental_option("detach", True)
-
-        if cls.hideWindow:
-            chr_options.add_argument("--headless")
-
-        cls.browser = webdriver.Chrome(options=chr_options)
-
-    # After the last test
-    @classmethod
-    def tearDownClass(cls):
-        pass
-
-    # Before each test
-    def setUp(self):
-        self.browser.get("http://127.0.0.1:8000/")
 
     def helperProductSort(self, sortOption, expectedFirst, expectedLast, clicks):
         for n in range(clicks):
