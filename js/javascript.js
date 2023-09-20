@@ -562,31 +562,98 @@ document.addEventListener("DOMContentLoaded", (event) => {
             }
         });
 });
+// Checks what year it is, and adjusts accordingly
+function checkYearChange(date, closedDate) {
+    if (date.getMonth() < closedDate.split("-")[0] - 1) {
+        // If the month of the current date is less than the month of the closed date
+        // Return a new date for the current year with the month and day from the closed date
+        return new Date(
+            date.getFullYear(),
+            closedDate.split("-")[0] - 1,
+            closedDate.split("-")[1]
+        );
+    } else if (
+        date.getMonth() == closedDate.split("-")[0] - 1 &&
+        date.getDate() < closedDate.split("-")[1]
+    ) {
+        // If the month of the current date is the same as the month of the closed date,
+        // but the day is less than the day of the closed date
+        // Return a new date for the current year with the month and day from the closed date
+        return new Date(
+            date.getFullYear(),
+            closedDate.split("-")[0] - 1,
+            closedDate.split("-")[1]
+        );
+    } else {
+        // If neither of the above conditions are met, it means the closed date is in the future year
+        // Return a new date for the next year with the month and day from the closed date
+        return new Date(
+            parseInt(date.getFullYear()) + 1,
+            closedDate.split("-")[0] - 1,
+            closedDate.split("-")[1]
+        );
+    }
+}
 
 // Closed days automatic order
-function getNewClosedDaysList(date) {
-    let month = date.getMonth();
-    let dayOfMonth = date.getDate();
-    let closedDaysList = Array.from(
-        document.getElementById("closedDaysList").children
-    );
-    let dateRegex = /[0-9]{1,2}/g; // Regular expression used to find all combinations of 1 or 2 numbers in a string
+function sortClosedDays(date) {
+    let sortedHolidays;
+    let data = [
+        {
+            text: "Nyårsdagen",
+            date: "1-1",
+        },
+        {
+            text: "Trettondedag jul",
+            date: "1-6",
+        },
+        {
+            text: "Första maj",
+            date: "5-1",
+        },
+        {
+            text: "Sveriges<br>nationaldag&nbsp;",
+            date: "6-6",
+        },
+        {
+            text: "Julafton",
+            date: "12-24",
+        },
+        {
+            text: "Juldagen",
+            date: "12-25",
+        },
+        {
+            text: "Annandag jul",
+            date: "12-26",
+        },
+        {
+            text: "Nyårsafton",
+            date: "12-31",
+        },
+    ];
 
-    for (let i = 0; i < closedDaysList.length; i++) {
-        // Loops through the list of closed days
-        let itemMonth = closedDaysList[i].innerHTML.match(dateRegex)[1];
-        let itemDayOfMonth = closedDaysList[i].innerHTML.match(dateRegex)[0];
+    sortedHolidays = data.sort((a, b) => {
+        let dateA = checkYearChange(date, a.date);
+        let dateB = checkYearChange(date, b.date);
 
-        if (itemMonth < month + 1) {
-            // 1 is added to month since Date.getMonth() gets a value between 0-11
-            let parent = closedDaysList[i].parentNode;
-            parent.removeChild(closedDaysList[i]);
-            parent.appendChild(closedDaysList[i]);
-        } else if (itemMonth == month + 1 && itemDayOfMonth < dayOfMonth) {
-            // If it is the same month it checks if the date has passed
-            let parent = closedDaysList[i].parentNode;
-            parent.removeChild(closedDaysList[i]);
-            parent.appendChild(closedDaysList[i]);
-        }
+        const diffA = Math.abs(dateA - date);
+        const diffB = Math.abs(dateB - date);
+
+        return diffA - diffB;
+    });
+    // Gets the HTML list
+    let closedDaysList = document
+        .getElementById("closedDaysList")
+        .getElementsByTagName("li");
+
+    // Sets the value
+    for (let i = 0; i < sortedHolidays.length; i++) {
+        console.log("HOLIDAY" + (i + 1).toString());
+        closedDaysList[i].innerHTML = sortedHolidays[i]["text"];
+        elementDate = document.createElement("span");
+        elementDate.className = "float-end";
+        elementDate.innerHTML = sortedHolidays[i]["date"].replace("-", "/");
+        closedDaysList[i].appendChild(elementDate);
     }
 }
