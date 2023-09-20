@@ -3,61 +3,23 @@ window.setInterval(function () {
 }, 30000); //Every 30 sec
 
 document.addEventListener("DOMContentLoaded", function () {
+    // Lists all cars
     let cars = [
-        {
-            "name": "Audi A6",
-            "year": "2011",
-            "price": "800\u00A0kr"
-        },
-        {
-            "name": "Audi S3",
-            "year": "2015",
-            "price": "450\u00A0kr"
-        },
-        {
-            "name": "Cadillac Escalade",
-            "year": "1999",
-            "price": "500\u00A0kr"
-        },
-        {
-            "name": "Kia Carens",
-            "year": "2022",
-            "price": "400\u00A0kr"
-        },
-        {
-            "name": "Kia Soul",
-            "year": "2020",
-            "price": "400\u00A0kr"
-        },
-        {
-            "name": "Mitsubishi Outlander",
-            "year": "2018",
-            "price": "450\u00A0kr"
-        },
-        {
-            "name": "Renault Kadjar",
-            "year": "2020",
-            "price": "250\u00A0kr"
-        },
-        {
-            "name": "Subaru Outback",
-            "year": "2020",
-            "price": "300\u00A0kr"
-        },
-        {
-            "name": "Volvo XC40",
-            "year": "2018",
-            "price": "800\u00A0kr"
-        },
-        {
-            "name": "VW Polo",
-            "year": "2022",
-            "price": "300\u00A0kr"
-        }
+        { "name": "Audi A6", "year": "2011", "price": "800\u00A0kr" },
+        { "name": "Audi S3", "year": "2015", "price": "450\u00A0kr" },
+        { "name": "Cadillac Escalade", "year": "1999", "price": "500\u00A0kr" },
+        { "name": "Kia Carens", "year": "2022", "price": "400\u00A0kr" },
+        { "name": "Kia Soul", "year": "2020", "price": "400\u00A0kr" },
+        { "name": "Mitsubishi Outlander", "year": "2018", "price": "450\u00A0kr" },
+        { "name": "Renault Kadjar", "year": "2020", "price": "250\u00A0kr" },
+        { "name": "Subaru Outback", "year": "2020", "price": "300\u00A0kr" },
+        { "name": "Volvo XC40", "year": "2018", "price": "800\u00A0kr" },
+        { "name": "VW Polo", "year": "2022", "price": "300\u00A0kr" }
     ]
 
     const tableBody = document.getElementById("carList");
 
+    // Adds the cars to the HTML
     cars.forEach(function (car) {
         const row = document.createElement("tr");
         const nameCell = document.createElement("td");
@@ -77,6 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 })
 
+// Defines clicks and click counter for the buttons
 let nameClicks = 0;
 let priceClicks = 0;
 let yearClicks = 0;
@@ -90,80 +53,40 @@ function clickCounter(clicks) {
 
 function sortCars(buttonInput) {
     let cars = [
-        {
-            "name": "Audi A6",
-            "year": "2011",
-            "price": "800\u00A0kr"
-        },
-        {
-            "name": "Audi S3",
-            "year": "2015",
-            "price": "450\u00A0kr"
-        },
-        {
-            "name": "Cadillac Escalade",
-            "year": "1999",
-            "price": "500\u00A0kr"
-        },
-        {
-            "name": "Kia Carens",
-            "year": "2022",
-            "price": "400\u00A0kr"
-        },
-        {
-            "name": "Kia Soul",
-            "year": "2020",
-            "price": "400\u00A0kr"
-        },
-        {
-            "name": "Mitsubishi Outlander",
-            "year": "2018",
-            "price": "450\u00A0kr"
-        },
-        {
-            "name": "Renault Kadjar",
-            "year": "2020",
-            "price": "250\u00A0kr"
-        },
-        {
-            "name": "Subaru Outback",
-            "year": "2020",
-            "price": "300\u00A0kr"
-        },
-        {
-            "name": "Volvo XC40",
-            "year": "2018",
-            "price": "800\u00A0kr"
-        },
-        {
-            "name": "VW Polo",
-            "year": "2022",
-            "price": "300\u00A0kr"
-        }
+        { "name": "Audi A6", "year": "2011", "price": "800\u00A0kr" },
+        { "name": "Audi S3", "year": "2015", "price": "450\u00A0kr" },
+        { "name": "Cadillac Escalade", "year": "1999", "price": "500\u00A0kr" },
+        { "name": "Kia Carens", "year": "2022", "price": "400\u00A0kr" },
+        { "name": "Kia Soul", "year": "2020", "price": "400\u00A0kr" },
+        { "name": "Mitsubishi Outlander", "year": "2018", "price": "450\u00A0kr" },
+        { "name": "Renault Kadjar", "year": "2020", "price": "250\u00A0kr" },
+        { "name": "Subaru Outback", "year": "2020", "price": "300\u00A0kr" },
+        { "name": "Volvo XC40", "year": "2018", "price": "800\u00A0kr" },
+        { "name": "VW Polo", "year": "2022", "price": "300\u00A0kr" }
     ]
-
-
-
 
     let productChart = document.getElementById("productChart").getElementsByTagName("tr");
     let arrows = document.getElementsByClassName("sortArrow")
     let sortText = document.getElementById("currentSorting")
+
+    // Switch statement for dropdown buttons
     switch (buttonInput) {
         case "price":
             priceClicks = clickCounter(priceClicks)
 
-            sortedPrice = cars.sort(function (a, b) {
+            sortedPrice = cars.sort(function (a, b) { // Sorts the list
                 sortText.innerText = "Pris"
                 if (priceClicks % 2 == 0) {
                     arrows[0].src = "images/arrowdown.svg"
-                    return a["price"].match(/[0-9]+/) - b["price"].match(/[0-9]+/);
+                    return a["price"].match(/[0-9]+/) - b["price"].match(/[0-9]+/); // Orders list so that lowest value comes first
                 } else {
                     arrows[0].src = "images/arrowup.svg"
-                    return b["price"].match(/[0-9]+/) - a["price"].match(/[0-9]+/);
+                    return b["price"].match(/[0-9]+/) - a["price"].match(/[0-9]+/); // Orders list so that highest value comes first
                 }
 
             });
-            for (let i = 0; i < sortedPrice.length; i++) {
+
+            for (let i = 0; i < sortedPrice.length; i++) { // Reorders the list of cars
                 let elements = Array.from(productChart[i + 1].children);
                 elements[0].textContent = sortedPrice[i]["name"];
                 elements[1].textContent = sortedPrice[i]["year"];
@@ -180,15 +103,15 @@ function sortCars(buttonInput) {
                 sortText.innerText = "Årsgång"
                 if (yearClicks % 2 == 0) {
                     arrows[1].src = "images/arrowdown.svg"
-                    return a["year"].match(/[0-9]+/) - b["year"].match(/[0-9]+/);
+                    return a["year"].match(/[0-9]+/) - b["year"].match(/[0-9]+/); // Orders list so that lowest value comes first
                 } else {
                     arrows[1].src = "images/arrowup.svg"
-                    return b["year"].match(/[0-9]+/) - a["year"].match(/[0-9]+/);
+                    return b["year"].match(/[0-9]+/) - a["year"].match(/[0-9]+/); // Orders list so that highest value comes first
                 }
 
             });
 
-            for (let i = 0; i < sortedYear.length; i++) {
+            for (let i = 0; i < sortedYear.length; i++) { // Reorders the list of cars
                 let elements = Array.from(productChart[i + 1].children);
                 elements[0].textContent = sortedYear[i]["name"];
                 elements[1].textContent = sortedYear[i]["year"];
@@ -205,15 +128,15 @@ function sortCars(buttonInput) {
                 sortText.innerText = "Modell"
                 if (nameClicks % 2 == 0) {
                     arrows[2].src = "images/arrowdown.svg"
-                    return a.name.localeCompare(b.name);
+                    return a.name.localeCompare(b.name); // Orders list so that earlier letter comes first
                 } else {
                     arrows[2].src = "images/arrowup.svg"
-                    return b.name.localeCompare(a.name);
+                    return b.name.localeCompare(a.name); // Orders list so that later letter comes first
                 }
 
 
             });
-            for (let i = 0; i < sortedName.length; i++) {
+            for (let i = 0; i < sortedName.length; i++) { //  Reorders the list of cars
                 let elements = Array.from(productChart[i + 1].children);
                 elements[0].textContent = sortedName[i]["name"];
                 elements[1].textContent = sortedName[i]["year"];
