@@ -234,10 +234,10 @@ function sortCars(buttonInput) {
 // Checks if the store is closed on the given date
 function isDateClosed(year, month, day) {
     // Uses the isValid function to see if the month changes and if it does sets the correct values
-    if (!(isValid(day, month, year))) {
+    if (!isValid(day, month, year)) {
         month = (month + 1) % 12;
         day -= daysInMonth(month - 1, day);
-    };
+    }
 
     const closedDays = [
         { month: 0, day: 1 },
@@ -266,18 +266,21 @@ function getDayWeekLoop(day, additionalDays) {
         return 0;
     } else {
         return day + additionalDays;
-    };
-};
+    }
+}
 
 // Gets the amount of days in the given month with consideration for leap years
 function daysInMonth(m, y) {
     switch (m) {
         case 1:
             return (y % 4 == 0 && y % 100) || y % 400 == 0 ? 29 : 28;
-        case 8: case 3: case 5: case 10:
+        case 8:
+        case 3:
+        case 5:
+        case 10:
             return 30;
         default:
-            return 31
+            return 31;
     }
 }
 // Checks if the given date is valid in the given month with consideration for leap years
@@ -286,24 +289,37 @@ function isValid(d, m, y) {
 }
 
 // Look for next open day
-function checkNextOpen(year, month, dayOfMonth, dayOfWeek, days, openingHours, element) {
+function checkNextOpen(
+    year,
+    month,
+    dayOfMonth,
+    dayOfWeek,
+    days,
+    openingHours,
+    element
+) {
     let daysTillOpen = 0;
 
-
-    if (dayOfWeek !== 6) { // If not saturday
+    if (dayOfWeek !== 6) {
+        // If not saturday
 
         // Checks how many days untill next open day
-        while (isDateClosed(year, month, dayOfMonth + daysTillOpen + 1) || getDayWeekLoop(dayOfWeek + daysTillOpen) == 0 || (month == 11 && dayOfMonth == 31)) {
+        while (
+            isDateClosed(year, month, dayOfMonth + daysTillOpen + 1) ||
+            getDayWeekLoop(dayOfWeek + daysTillOpen) == 0 ||
+            (month == 11 && dayOfMonth == 31)
+        ) {
             daysTillOpen++;
-            if (!(isValid(dayOfMonth + daysTillOpen, month, year))) {
+            if (!isValid(dayOfMonth + daysTillOpen, month, year)) {
                 month = (month + 1) % 12;
                 dayOfMonth = 1;
-            };
-        };
+            }
+        }
 
         const nextOpenDay = getDayWeekLoop(dayOfWeek, daysTillOpen);
 
-        if (nextOpenDay === 5) { //If friday
+        if (nextOpenDay === 5) {
+            //If friday
             element.innerText = `Öppnar ${days[nextOpenDay + 1]} kl ${openingHours.saturday.open
                 }`;
             return false;
@@ -311,19 +327,22 @@ function checkNextOpen(year, month, dayOfMonth, dayOfWeek, days, openingHours, e
             element.innerText = `Öppnar ${days[nextOpenDay + 1]} kl ${openingHours.weekdays.open
                 }`;
             return false;
-        };
+        }
+    } else if (isDateClosed(year, month, dayOfMonth + 2)) {
+        // If saturday and next monday is closed
 
-    } else if (isDateClosed(year, month, dayOfMonth + 2)) { // If saturday and next monday is closed
-
-        while (isDateClosed(year, month, dayOfMonth + daysTillOpen + 1) || getDayWeekLoop(dayOfWeek + daysTillOpen) === 0) {
+        while (
+            isDateClosed(year, month, dayOfMonth + daysTillOpen + 1) ||
+            getDayWeekLoop(dayOfWeek + daysTillOpen) === 0
+        ) {
             daysTillOpen++;
-            if (!(isValid(dayOfMonth + daysTillOpen, month, year))) {
+            if (!isValid(dayOfMonth + daysTillOpen, month, year)) {
                 month = (month + 1) % 12;
                 dayOfMonth = 1;
-            };
-        };
+            }
+        }
 
-        const nextOpenDay = getDayWeekLoop(dayOfWeek, daysTillOpen)
+        const nextOpenDay = getDayWeekLoop(dayOfWeek, daysTillOpen);
 
         if (nextOpenDay === 5) {
             element.innerText = `Öppnar ${days[nextOpenDay + 1]} kl ${openingHours.saturday.open
@@ -333,17 +352,16 @@ function checkNextOpen(year, month, dayOfMonth, dayOfWeek, days, openingHours, e
             element.innerText = `Öppnar ${days[nextOpenDay + 1]} kl ${openingHours.weekdays.open
                 }`;
             return false;
-        };
-    }
-
-    else { // If saturday and the next monday is open
+        }
+    } else {
+        // If saturday and the next monday is open
         element.innerText = `Öppnar måndag kl ${openingHours.weekdays.open}`;
         return false;
     }
 }
 
 function setLiveOpeningHours(date) {
-    const year = date.getFullYear()
+    const year = date.getFullYear();
     const month = date.getMonth();
     const dayOfMonth = date.getDate();
     const dayOfWeek = date.getDay();
@@ -354,7 +372,6 @@ function setLiveOpeningHours(date) {
     const rightNowSpan = document.createElement("span");
     const openSpan = document.createElement("span");
     let storeIsOpen;
-
 
     const openingHours = {
         weekdays: { open: 10, close: 16 },
@@ -372,18 +389,30 @@ function setLiveOpeningHours(date) {
     ];
 
     if (isDateClosed(year, month, dayOfMonth)) {
-        storeIsOpen = checkNextOpen(year, month, dayOfMonth, dayOfWeek, days, openingHours, element)
-    } else if (dayOfWeek < 6 && dayOfWeek > 0) { // Weekday
-        if (hour === openingHours.weekdays.open - 1 && minute >= 30) { // 30 min before opening
+        storeIsOpen = checkNextOpen(
+            year,
+            month,
+            dayOfMonth,
+            dayOfWeek,
+            days,
+            openingHours,
+            element
+        );
+    } else if (dayOfWeek < 6 && dayOfWeek > 0) {
+        // Weekday
+        if (hour === openingHours.weekdays.open - 1 && minute >= 30) {
+            // 30 min before opening
             element.innerText = `Öppnar om ${60 - minute} minuter`;
             storeIsOpen = false;
-        } else if (hour === openingHours.weekdays.close - 1 && minute >= 45) { // 15 min before closing
+        } else if (hour === openingHours.weekdays.close - 1 && minute >= 45) {
+            // 15 min before closing
             element.innerText = `Stänger snart`;
             storeIsOpen = true;
         } else if (
             hour >= openingHours.weekdays.open &&
             hour < openingHours.weekdays.close
-        ) { // The store is open
+        ) {
+            // The store is open
             rightNowSpan.innerText = "Just nu: ";
             rightNowSpan.style.color = "black";
 
@@ -395,13 +424,24 @@ function setLiveOpeningHours(date) {
             element.appendChild(rightNowSpan);
             element.appendChild(openSpan);
             storeIsOpen = true;
-        } else if (hour < openingHours.weekdays.open) { // Earlier than one hour before opening
+        } else if (hour < openingHours.weekdays.open) {
+            // Earlier than one hour before opening
             element.innerText = `Öppnar idag kl ${openingHours.weekdays.open}`;
-            storeIsOpen = false
-        } else { // The store is closed 
-            storeIsOpen = checkNextOpen(year, month, dayOfMonth, dayOfWeek, days, openingHours, element);
-        };
-    } else if (dayOfWeek == 6) { // Saturday
+            storeIsOpen = false;
+        } else {
+            // The store is closed
+            storeIsOpen = checkNextOpen(
+                year,
+                month,
+                dayOfMonth,
+                dayOfWeek,
+                days,
+                openingHours,
+                element
+            );
+        }
+    } else if (dayOfWeek == 6) {
+        // Saturday
         if (hour === openingHours.saturday.open - 1 && minute >= 30) {
             element.innerText = `Öppnar om ${60 - minute} minuter`;
             storeIsOpen = false;
@@ -427,14 +467,31 @@ function setLiveOpeningHours(date) {
             element.innerText = `Öppnar idag kl ${openingHours.saturday.open}`;
             storeIsOpen = false;
         } else {
-            storeIsOpen = checkNextOpen(year, month, dayOfMonth, dayOfWeek, days, openingHours, element);
-        };
-    } else if (dayOfWeek == 0) { // Sunday
-        storeIsOpen = checkNextOpen(year, month, dayOfMonth, dayOfWeek, days, openingHours, element);
-    };
+            storeIsOpen = checkNextOpen(
+                year,
+                month,
+                dayOfMonth,
+                dayOfWeek,
+                days,
+                openingHours,
+                element
+            );
+        }
+    } else if (dayOfWeek == 0) {
+        // Sunday
+        storeIsOpen = checkNextOpen(
+            year,
+            month,
+            dayOfMonth,
+            dayOfWeek,
+            days,
+            openingHours,
+            element
+        );
+    }
 
     liveStoreStateHeader(storeIsOpen);
-};
+}
 
 // Updates the header status
 function liveStoreStateHeader(storeIsOpen) {
@@ -448,14 +505,14 @@ function liveStoreStateHeader(storeIsOpen) {
         storeClosedElement.style.color = "white";
         storeOpenElement.style.color = "green";
     }
-};
+}
 
 // Scrolls to the object of the pressed navbar button
 function scrollToInfo(id) {
     setTimeout(() => {
         document.getElementById(id).scrollIntoView();
     }, 500);
-};
+}
 
 // List of accepted zip codes
 zipCodeList = [
@@ -481,21 +538,25 @@ document.addEventListener("DOMContentLoaded", (event) => {
             event.preventDefault(); // Prevents the default action
 
             // event.submitter.parentNode.querySelector("#number").value
-            // is what is written in the input
+            // Is what is written in the input
             let zipInput =
                 event.submitter.parentNode.querySelector("#zipNumber").value;
             zipInput = zipInput.split(" ").join(""); //removes spaces from string
 
-            if (zipInput.match(/\D/) != null) { // If there are no numbers
+            if (zipInput.match(/\D/) != null) {
+                // If there are no numbers
                 document.querySelector("#output").innerHTML =
                     "Inte ett giltigt postnummer.";
-            } else if (zipInput.length != 5) { // If there are more or less then 5 numbers
+            } else if (zipInput.length != 5) {
+                // If there are more or less then 5 numbers
                 document.querySelector("#output").innerHTML =
                     "Inte ett giltigt postnummer.";
-            } else if (zipCodeList.includes(zipInput)) { // If the zip code is valid
+            } else if (zipCodeList.includes(zipInput)) {
+                // If the zip code is valid
                 document.querySelector("#output").innerHTML =
                     "Vi kör ut, ring telefonnumret ovan!";
-            } else { // If the zip code is invalid
+            } else {
+                // If the zip code is invalid
                 document.querySelector("#output").innerHTML =
                     "Vi kör tyvärr inte ut till dig.";
             }
@@ -506,22 +567,26 @@ document.addEventListener("DOMContentLoaded", (event) => {
 function getNewClosedDaysList(date) {
     let month = date.getMonth();
     let dayOfMonth = date.getDate();
-    let closedDaysList = Array.from(document.getElementById('closedDaysList').children);
-    let dateRegex = /[0-9]{1,2}/g // Regular expression used to find all combinations of 1 or 2 numbers in a string
+    let closedDaysList = Array.from(
+        document.getElementById("closedDaysList").children
+    );
+    let dateRegex = /[0-9]{1,2}/g; // Regular expression used to find all combinations of 1 or 2 numbers in a string
 
-    for (let i = 0; i < closedDaysList.length; i++) { // Loops through the list of closed days
+    for (let i = 0; i < closedDaysList.length; i++) {
+        // Loops through the list of closed days
         let itemMonth = closedDaysList[i].innerHTML.match(dateRegex)[1];
         let itemDayOfMonth = closedDaysList[i].innerHTML.match(dateRegex)[0];
 
-        if (itemMonth < month + 1) { // 1 is added to month since Date.getMonth() gets a value between 0-11
+        if (itemMonth < month + 1) {
+            // 1 is added to month since Date.getMonth() gets a value between 0-11
             let parent = closedDaysList[i].parentNode;
             parent.removeChild(closedDaysList[i]);
             parent.appendChild(closedDaysList[i]);
-        } else if (itemMonth == month + 1 && itemDayOfMonth < dayOfMonth) { // If it is the same month it checks if the date has passed
+        } else if (itemMonth == month + 1 && itemDayOfMonth < dayOfMonth) {
+            // If it is the same month it checks if the date has passed
             let parent = closedDaysList[i].parentNode;
             parent.removeChild(closedDaysList[i]);
             parent.appendChild(closedDaysList[i]);
         }
     }
 }
-
