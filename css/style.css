@@ -154,6 +154,18 @@ iframe {
 	margin-right: auto;
 }
 
+.btn {
+	border-radius: 0 !important;
+	border-color: black !important;
+	color: black !important;
+	border: 0.1em solid !important;
+	background-color: #efefef !important;
+}
+
+.dropdown-menu {
+	border-radius: 0 !important;
+}
+
 .headerBreak {
 	display: none;
 }
