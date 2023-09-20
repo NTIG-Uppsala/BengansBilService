@@ -378,6 +378,12 @@ class TestingPage(TestCase):
     def testClosedDaysAutomaticOrder(self):
         self.helperClosedDaysAutomaticOrder(
             "2023-09-16T14:00:00", ["12", "24"])
+        self.helperClosedDaysAutomaticOrder(
+            "2023-01-02T14:00:00", ["1", "6"])
+        self.helperClosedDaysAutomaticOrder(
+            "2023-04-13T14:00:00", ["5", "1"])
+        self.helperClosedDaysAutomaticOrder(
+            "2023-12-25T14:00:00", ["12", "26"])
 
 
 # will run if the fil running is a normal python file

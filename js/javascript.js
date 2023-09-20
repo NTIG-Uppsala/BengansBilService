@@ -562,6 +562,38 @@ document.addEventListener("DOMContentLoaded", (event) => {
             }
         });
 });
+// Checks what year it is, and adjusts accordingly
+function checkYearChange(date, closedDate) {
+    if (date.getMonth() < closedDate.split("-")[0] - 1) {
+        // If the month of the current date is less than the month of the closed date
+        // Return a new date for the current year with the month and day from the closed date
+        return new Date(
+            date.getFullYear(),
+            closedDate.split("-")[0] - 1,
+            closedDate.split("-")[1]
+        );
+    } else if (
+        date.getMonth() == closedDate.split("-")[0] - 1 &&
+        date.getDate() < closedDate.split("-")[1]
+    ) {
+        // If the month of the current date is the same as the month of the closed date,
+        // but the day is less than the day of the closed date
+        // Return a new date for the current year with the month and day from the closed date
+        return new Date(
+            date.getFullYear(),
+            closedDate.split("-")[0] - 1,
+            closedDate.split("-")[1]
+        );
+    } else {
+        // If neither of the above conditions are met, it means the closed date is in the future year
+        // Return a new date for the next year with the month and day from the closed date
+        return new Date(
+            parseInt(date.getFullYear()) + 1,
+            closedDate.split("-")[0] - 1,
+            closedDate.split("-")[1]
+        );
+    }
+}
 
 // Closed days automatic order
 function sortClosedDays(date) {
