@@ -406,35 +406,62 @@ function checkYearChange(date, closedDate) {
 
 function sortClosedDays(date) {
   let sortedHolidays;
-  // Imports JSON file
-  fetch("../closedDays.json")
-    .then((res) => {
-      return res.json();
-    })
-    // Calculates the difference between dates to determine which one comes first
-    .then((data) => {
-      sortedHolidays = data.sort((a, b) => {
-        let dateA = checkYearChange(date, a.date);
-        let dateB = checkYearChange(date, b.date);
+  let data = [
+    {
+      text: "Nyårsdagen",
+      date: "1-1",
+    },
+    {
+      text: "Trettondedag jul",
+      date: "1-6",
+    },
+    {
+      text: "Första maj",
+      date: "5-1",
+    },
+    {
+      text: "Sveriges<br>nationaldag&nbsp;",
+      date: "6-6",
+    },
+    {
+      text: "Julafton",
+      date: "12-24",
+    },
+    {
+      text: "Juldagen",
+      date: "12-25",
+    },
+    {
+      text: "Annandag jul",
+      date: "12-26",
+    },
+    {
+      text: "Nyårsafton",
+      date: "12-31",
+    },
+  ];
 
-        const diffA = Math.abs(dateA - date);
-        const diffB = Math.abs(dateB - date);
+  sortedHolidays = data.sort((a, b) => {
+    let dateA = checkYearChange(date, a.date);
+    let dateB = checkYearChange(date, b.date);
 
-        return diffA - diffB;
-      });
-      // Gets the HTML list
-      let closedDaysList = document
-        .getElementById("closedDaysList")
-        .getElementsByTagName("li");
+    const diffA = Math.abs(dateA - date);
+    const diffB = Math.abs(dateB - date);
 
-      // Sets the value
-      for (let i = 0; i < sortedHolidays.length; i++) {
-        console.log("HOLIDAY" + (i + 1).toString());
-        closedDaysList[i].innerHTML = sortedHolidays[i]["text"];
-        elementDate = document.createElement("span");
-        elementDate.className = "float-end";
-        elementDate.innerHTML = sortedHolidays[i]["date"].replace("-", "/");
-        closedDaysList[i].appendChild(elementDate);
-      }
-    });
+    return diffA - diffB;
+  });
+  // Gets the HTML list
+  let closedDaysList = document
+    .getElementById("closedDaysList")
+    .getElementsByTagName("li");
+
+  // Sets the value
+  for (let i = 0; i < sortedHolidays.length; i++) {
+    console.log("HOLIDAY" + (i + 1).toString());
+    closedDaysList[i].innerHTML = sortedHolidays[i]["text"];
+    elementDate = document.createElement("span");
+    elementDate.className = "float-end";
+    elementDate.innerHTML = sortedHolidays[i]["date"].replace("-", "/");
+    closedDaysList[i].appendChild(elementDate);
+  }
 }
