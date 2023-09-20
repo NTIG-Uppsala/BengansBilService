@@ -5,8 +5,6 @@ from unittest import TestCase, main
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.support.ui import WebDriverWait
 
 
 class TestingPage(TestCase):
@@ -335,6 +333,31 @@ class TestingPage(TestCase):
         self.helperLiveOpeningHeader("2023-09-16T14:00:00", True)
         self.helperLiveOpeningHeader("2023-09-16T17:00:00", False)
         self.helperLiveOpeningHeader("2023-09-16T22:00:00", False)
+
+    def helperProductSort(self, sortOption, expectedFirst, expectedLast, clicks):
+        for n in range(clicks):
+            self.browser.execute_script("window.scrollTo(0, 450);")
+            time.sleep(1)
+            self.browser.find_element(By.CLASS_NAME, "dropdown-toggle").click()
+            self.browser.find_element(By.ID, sortOption).click()
+        sortedCarList = self.browser.execute_script(
+            "return Array.from(document.getElementById('productChart').children)"
+        )
+        self.assertIn(expectedFirst, sortedCarList[1].text)
+        self.assertIn(expectedLast, sortedCarList[len(sortedCarList) - 1].text)
+
+    def testProductSort(self):
+        self.helperProductSort("price", "800", "250", 1)
+
+        self.helperProductSort("year", "2022", "1999", 1)
+
+        self.helperProductSort("name", "Audi A6", "VW Polo", 1)
+
+        self.helperProductSort("price", "250", "800", 2)
+
+        self.helperProductSort("year", "1999", "2022", 2)
+
+        self.helperProductSort("name", "VW Polo", "Audi A6", 2)
 
 
 # will run if the fil running is a normal python file
