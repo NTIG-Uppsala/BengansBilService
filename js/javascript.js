@@ -2,20 +2,82 @@ window.setInterval(function () {
   setLiveOpeningHours(new Date());
 }, 30000); //Every 30 sec
 
+var isCompanyPriceGlobal = false;
+
+let carsList = [
+  {
+    name: "Audi A6",
+    year: "2011",
+    price: "800\u00A0kr",
+    companyPrice: "640\u00A0kr",
+  },
+
+  {
+    name: "Audi S3",
+    year: "2015",
+    price: "450\u00A0kr",
+    companyPrice: "360\u00A0kr",
+  },
+
+  {
+    name: "Cadillac Escalade",
+    year: "1999",
+    price: "500\u00A0kr",
+    companyPrice: "400\u00A0kr",
+  },
+
+  {
+    name: "Kia Carens",
+    year: "2022",
+    price: "400\u00A0kr",
+    companyPrice: "320\u00A0kr",
+  },
+
+  {
+    name: "Kia Soul",
+    year: "2020",
+    price: "400\u00A0kr",
+    companyPrice: "320\u00A0kr",
+  },
+
+  {
+    name: "Mitsubishi Outlander",
+    year: "2018",
+    price: "450\u00A0kr",
+    companyPrice: "360\u00A0kr",
+  },
+
+  {
+    name: "Renault Kadjar",
+    year: "2020",
+    price: "250\u00A0kr",
+    companyPrice: "200\u00A0kr",
+  },
+
+  {
+    name: "Subaru Outback",
+    year: "2020",
+    price: "300\u00A0kr",
+    companyPrice: "240\u00A0kr",
+  },
+
+  {
+    name: "Volvo XC40",
+    year: "2018",
+    price: "800\u00A0kr",
+    companyPrice: "640\u00A0kr",
+  },
+  {
+    name: "VW Polo",
+    year: "2022",
+    price: "300\u00A0kr",
+    companyPrice: "240\u00A0kr",
+  },
+];
+
 document.addEventListener("DOMContentLoaded", function () {
   // Lists all cars
-  let cars = [
-    { name: "Audi A6", year: "2011", price: "800\u00A0kr" },
-    { name: "Audi S3", year: "2015", price: "450\u00A0kr" },
-    { name: "Cadillac Escalade", year: "1999", price: "500\u00A0kr" },
-    { name: "Kia Carens", year: "2022", price: "400\u00A0kr" },
-    { name: "Kia Soul", year: "2020", price: "400\u00A0kr" },
-    { name: "Mitsubishi Outlander", year: "2018", price: "450\u00A0kr" },
-    { name: "Renault Kadjar", year: "2020", price: "250\u00A0kr" },
-    { name: "Subaru Outback", year: "2020", price: "300\u00A0kr" },
-    { name: "Volvo XC40", year: "2018", price: "800\u00A0kr" },
-    { name: "VW Polo", year: "2022", price: "300\u00A0kr" },
-  ];
+  let cars = carsList;
 
   const tableBody = document.getElementById("carList");
 
@@ -28,7 +90,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     nameCell.textContent = car.name;
     yearCell.textContent = car.year;
-    priceCell.textContent = car.price;
+    if (isCompanyPriceGlobal == true) {
+      priceCell.textContent = car.companyPrice;
+    } else {
+      priceCell.textContent = car.price;
+    }
 
     row.appendChild(nameCell);
     row.appendChild(yearCell);
@@ -49,18 +115,7 @@ function clickCounter(clicks) {
 }
 
 function sortCars(buttonInput) {
-  let cars = [
-    { name: "Audi A6", year: "2011", price: "800\u00A0kr" },
-    { name: "Audi S3", year: "2015", price: "450\u00A0kr" },
-    { name: "Cadillac Escalade", year: "1999", price: "500\u00A0kr" },
-    { name: "Kia Carens", year: "2022", price: "400\u00A0kr" },
-    { name: "Kia Soul", year: "2020", price: "400\u00A0kr" },
-    { name: "Mitsubishi Outlander", year: "2018", price: "450\u00A0kr" },
-    { name: "Renault Kadjar", year: "2020", price: "250\u00A0kr" },
-    { name: "Subaru Outback", year: "2020", price: "300\u00A0kr" },
-    { name: "Volvo XC40", year: "2018", price: "800\u00A0kr" },
-    { name: "VW Polo", year: "2022", price: "300\u00A0kr" },
-  ];
+  let cars = carsList;
 
   let productChart = document
     .getElementById("productChart")
@@ -78,10 +133,24 @@ function sortCars(buttonInput) {
         sortText.innerText = "Pris";
         if (priceClicks % 2 == 0) {
           arrows[0].src = "images/arrowdown.svg";
-          return a["price"].match(/[0-9]+/) - b["price"].match(/[0-9]+/); // Orders list so that lowest value comes first
+          if (isCompanyPriceGlobal == true) {
+            return (
+              a["companyPrice"].match(/[0-9]+/) -
+              b["companyPrice"].match(/[0-9]+/)
+            ); // Orders list so that lowest value comes first
+          } else {
+            return a["price"].match(/[0-9]+/) - b["price"].match(/[0-9]+/); // Orders list so that lowest value comes first
+          }
         } else {
           arrows[0].src = "images/arrowup.svg";
-          return b["price"].match(/[0-9]+/) - a["price"].match(/[0-9]+/); // Orders list so that highest value comes first
+          if (isCompanyPriceGlobal == true) {
+            return (
+              b["companyPrice"].match(/[0-9]+/) -
+              a["companyPrice"].match(/[0-9]+/)
+            ); // Orders list so that highest value comes first
+          } else {
+            return b["price"].match(/[0-9]+/) - a["price"].match(/[0-9]+/); // Orders list so that highest value comes first
+          }
         }
       });
 
@@ -574,81 +643,11 @@ function sortClosedDays(date) {
 }
 
 function priceChangeVAT(isCompany) {
-  let carsList = [
-    {
-      name: "Audi A6",
-      year: "2011",
-      price: "800\u00A0kr",
-      companyPrice: "640\u00A0kr",
-    },
-
-    {
-      name: "Audi S3",
-      year: "2015",
-      price: "450\u00A0kr",
-      companyPrice: "360\u00A0kr",
-    },
-
-    {
-      name: "Cadillac Escalade",
-      year: "1999",
-      price: "500\u00A0kr",
-      companyPrice: "400\u00A0kr",
-    },
-
-    {
-      name: "Kia Carens",
-      year: "2022",
-      price: "400\u00A0kr",
-      companyPrice: "320\u00A0kr",
-    },
-
-    {
-      name: "Kia Soul",
-      year: "2020",
-      price: "400\u00A0kr",
-      companyPrice: "320\u00A0kr",
-    },
-
-    {
-      name: "Mitsubishi Outlander",
-      year: "2018",
-      price: "450\u00A0kr",
-      companyPrice: "360\u00A0kr",
-    },
-
-    {
-      name: "Renault Kadjar",
-      year: "2020",
-      price: "250\u00A0kr",
-      companyPrice: "200\u00A0kr",
-    },
-
-    {
-      name: "Subaru Outback",
-      year: "2020",
-      price: "300\u00A0kr",
-      companyPrice: "240\u00A0kr",
-    },
-
-    {
-      name: "Volvo XC40",
-      year: "2018",
-      price: "800\u00A0kr",
-      companyPrice: "640\u00A0kr",
-    },
-    {
-      name: "VW Polo",
-      year: "2022",
-      price: "300\u00A0kr",
-      companyPrice: "240\u00A0kr",
-    },
-  ];
-
   let productChart = document
     .getElementById("productChart")
     .getElementsByTagName("tr");
   if (isCompany == true) {
+    isCompanyPriceGlobal = true; // This will modify the global variable
     for (let i = 0; i < carsList.length; i++) {
       for (let n = 0; n < carsList.length; n++) {
         let elements = Array.from(productChart[i + 1].children);
@@ -658,6 +657,7 @@ function priceChangeVAT(isCompany) {
       }
     }
   } else if (isCompany == false) {
+    isCompanyPriceGlobal = false; // This will modify the global variable.
     for (let i = 0; i < carsList.length; i++) {
       for (let n = 0; n < carsList.length; n++) {
         let elements = Array.from(productChart[i + 1].children);
