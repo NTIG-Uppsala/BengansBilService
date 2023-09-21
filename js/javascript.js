@@ -2,7 +2,7 @@ window.setInterval(function () {
   setLiveOpeningHours(new Date());
 }, 30000); //Every 30 sec
 
-var isCompanyPriceGlobal = false;
+let isCompanyPriceGlobal = false;
 
 let carsList = [
   {
@@ -133,24 +133,10 @@ function sortCars(buttonInput) {
         sortText.innerText = "Pris";
         if (priceClicks % 2 == 0) {
           arrows[0].src = "images/arrowdown.svg";
-          if (isCompanyPriceGlobal == true) {
-            return (
-              a["companyPrice"].match(/[0-9]+/) -
-              b["companyPrice"].match(/[0-9]+/)
-            ); // Orders list so that lowest value comes first
-          } else {
-            return a["price"].match(/[0-9]+/) - b["price"].match(/[0-9]+/); // Orders list so that lowest value comes first
-          }
+          return a["price"].match(/[0-9]+/) - b["price"].match(/[0-9]+/); // Orders list so that lowest value comes first
         } else {
           arrows[0].src = "images/arrowup.svg";
-          if (isCompanyPriceGlobal == true) {
-            return (
-              b["companyPrice"].match(/[0-9]+/) -
-              a["companyPrice"].match(/[0-9]+/)
-            ); // Orders list so that highest value comes first
-          } else {
-            return b["price"].match(/[0-9]+/) - a["price"].match(/[0-9]+/); // Orders list so that highest value comes first
-          }
+          return b["price"].match(/[0-9]+/) - a["price"].match(/[0-9]+/); // Orders list so that highest value comes first
         }
       });
 
@@ -159,7 +145,12 @@ function sortCars(buttonInput) {
         let elements = Array.from(productChart[i + 1].children);
         elements[0].textContent = sortedPrice[i]["name"];
         elements[1].textContent = sortedPrice[i]["year"];
-        elements[2].textContent = sortedPrice[i]["price"];
+        if (isCompanyPriceGlobal == true) {
+          elements[2].textContent =
+            sortedPrice[i]["companyPrice"] + " (exkl. moms)";
+        } else {
+          elements[2].textContent = sortedPrice[i]["price"];
+        }
       }
 
       break;
@@ -182,7 +173,12 @@ function sortCars(buttonInput) {
         let elements = Array.from(productChart[i + 1].children);
         elements[0].textContent = sortedYear[i]["name"];
         elements[1].textContent = sortedYear[i]["year"];
-        elements[2].textContent = sortedYear[i]["price"];
+        if (isCompanyPriceGlobal == true) {
+          elements[2].textContent =
+            sortedYear[i]["companyPrice"] + " (exkl. moms)";
+        } else {
+          elements[2].textContent = sortedYear[i]["price"];
+        }
       }
 
       break;
@@ -204,7 +200,12 @@ function sortCars(buttonInput) {
         let elements = Array.from(productChart[i + 1].children);
         elements[0].textContent = sortedName[i]["name"];
         elements[1].textContent = sortedName[i]["year"];
-        elements[2].textContent = sortedName[i]["price"];
+        if (isCompanyPriceGlobal == true) {
+          elements[2].textContent =
+            sortedName[i]["companyPrice" + " (exkl. moms)"];
+        } else {
+          elements[2].textContent = sortedName[i]["price"];
+        }
       }
 
       break;
