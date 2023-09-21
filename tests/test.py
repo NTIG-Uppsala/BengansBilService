@@ -375,6 +375,7 @@ class TestingPage(TestCase):
         self.helperClosedDaysAutomaticOrder("2023-12-25T14:00:00", ["12", "26"])
 
     def testCompanyPrices(self):
+        self.browser.execute_script("window.scrollTo(0, 450);")
         self.browser.find_element(By.ID, "companyPriceButton").click()
         productList = self.browser.execute_script(
             "return Array.from(document.getElementById('productChart').children)"
