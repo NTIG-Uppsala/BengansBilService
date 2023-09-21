@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (isCompanyPriceGlobal == true) {
             priceCell.textContent = car.price * 0.8 + "\u00A0kr (exkl. moms)";
         } else {
-            priceCell.textContent = car.price;
+            priceCell.textContent = car.price + "\u00A0kr";
         }
 
         row.appendChild(nameCell);
