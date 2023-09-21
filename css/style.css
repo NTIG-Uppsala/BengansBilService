@@ -161,13 +161,20 @@ iframe {
 	border-color: black !important;
 	color: black !important;
 	border: 0.1em solid !important;
-	background-color: #efefef !important;
+	background-color: transparent !important;
+}
+
+.btn:hover {
+	background-color: lightGrey !important;
+}
+
+.btn:active {
+	background-color: lightGrey !important;
 }
 
 .dropdown-item {
 	color: black !important;
 }
-
 
 .dropdown-toggle {
 	width: 12em !important;
@@ -355,6 +362,13 @@ iframe {
 @media screen and (max-width:300px) {
 	.chartItem {
 		font-size: 0.6rem !important;
+	}
+
+}
+
+@media screen and (max-width:500px) {
+	.btn {
+		font-size: 0.7em !important;
 	}
 
 }
