@@ -573,13 +573,13 @@ function sortClosedDays(date) {
   }
 }
 
-function priceTaxes(isCompany) {
+function priceChangeVAT(isCompany) {
   let carsList = [
     {
       name: "Audi A6",
       year: "2011",
       price: "800\u00A0kr",
-      companyPrice: "650\u00A0kr",
+      companyPrice: "640\u00A0kr",
     },
 
     {
@@ -635,9 +635,8 @@ function priceTaxes(isCompany) {
       name: "Volvo XC40",
       year: "2018",
       price: "800\u00A0kr",
-      companyPrice: "650\u00A0kr",
+      companyPrice: "640\u00A0kr",
     },
-
     {
       name: "VW Polo",
       year: "2022",
@@ -650,10 +649,22 @@ function priceTaxes(isCompany) {
     .getElementById("productChart")
     .getElementsByTagName("tr");
   if (isCompany == true) {
-    for (let i = 1; i < productChart.length; i++) {
-      let elements = Array.from(productChart[i + 1].children);
-      elements[3].match(/[0-9]+/);
+    for (let i = 0; i < carsList.length; i++) {
+      for (let n = 0; n < carsList.length; n++) {
+        let elements = Array.from(productChart[i + 1].children);
+        if (elements[0].innerText == carsList[n]["name"]) {
+          elements[2].innerText = carsList[n]["companyPrice"] + " (exkl. moms)";
+        }
+      }
     }
   } else if (isCompany == false) {
+    for (let i = 0; i < carsList.length; i++) {
+      for (let n = 0; n < carsList.length; n++) {
+        let elements = Array.from(productChart[i + 1].children);
+        if (elements[0].innerText == carsList[n]["name"]) {
+          elements[2].innerText = carsList[n]["price"];
+        }
+      }
+    }
   }
 }
