@@ -161,9 +161,10 @@ iframe {
 	border-color: black !important;
 	color: black !important;
 	border: 0.1em solid !important;
-	background-color: #efefef !important;
+	background-color: transparent !important;
 }
 
+<<<<<<< HEAD
 .dropdown-item {
 	color: black !important;
 }
@@ -173,6 +174,17 @@ iframe {
 	width: 12em !important;
 }
 
+=======
+.btn:hover{
+	background-color: lightGrey!important;
+}
+
+.btn:active{
+	background-color: lightGrey!important;
+}
+
+
+>>>>>>> 33b2360 (first sample code)
 .dropdown-menu {
 	border-radius: 0 !important;
 }
@@ -358,3 +370,8 @@ iframe {
 	}
 
 }
+
+/* @media screen and (max-width:) {
+	
+
+} */
