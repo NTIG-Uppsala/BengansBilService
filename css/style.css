@@ -164,17 +164,6 @@ iframe {
 	background-color: transparent !important;
 }
 
-<<<<<<< HEAD
-.dropdown-item {
-	color: black !important;
-}
-
-
-.dropdown-toggle {
-	width: 12em !important;
-}
-
-=======
 .btn:hover{
 	background-color: lightGrey!important;
 }
@@ -183,8 +172,17 @@ iframe {
 	background-color: lightGrey!important;
 }
 
+.dropdown-item {
 
->>>>>>> 33b2360 (first sample code)
+    color: black !important;
+
+}
+
+.dropdown-toggle {
+
+    width: 12em !important;
+
+}
 .dropdown-menu {
 	border-radius: 0 !important;
 }
