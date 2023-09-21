@@ -1,3 +1,39 @@
+// Creates a global list for closed days
+let closedDays = [
+    {
+        text: "Nyårsdagen",
+        date: "1-1",
+    },
+    {
+        text: "Trettondedag jul",
+        date: "1-6",
+    },
+    {
+        text: "Första maj",
+        date: "5-1",
+    },
+    {
+        text: "Sveriges<br>nationaldag&nbsp;",
+        date: "6-6",
+    },
+    {
+        text: "Julafton",
+        date: "12-24",
+    },
+    {
+        text: "Juldagen",
+        date: "12-25",
+    },
+    {
+        text: "Annandag jul",
+        date: "12-26",
+    },
+    {
+        text: "Nyårsafton",
+        date: "12-31",
+    },
+];
+
 // Checks what year it is, and adjusts accordingly
 function checkYearChange(date, closedDate) {
     if (date.getMonth() < closedDate.split("-")[0] - 1) {
@@ -31,45 +67,9 @@ function checkYearChange(date, closedDate) {
     }
 }
 
-// Closed days automatic order
-function sortClosedDays(date) {
-    let sortedHolidays;
-    let data = [
-        {
-            text: "Nyårsdagen",
-            date: "1-1",
-        },
-        {
-            text: "Trettondedag jul",
-            date: "1-6",
-        },
-        {
-            text: "Första maj",
-            date: "5-1",
-        },
-        {
-            text: "Sveriges<br>nationaldag&nbsp;",
-            date: "6-6",
-        },
-        {
-            text: "Julafton",
-            date: "12-24",
-        },
-        {
-            text: "Juldagen",
-            date: "12-25",
-        },
-        {
-            text: "Annandag jul",
-            date: "12-26",
-        },
-        {
-            text: "Nyårsafton",
-            date: "12-31",
-        },
-    ];
-
-    sortedHolidays = data.sort((a, b) => {
+// Creates a list for closed days
+function sortHolidays(date) {
+    let sortedHolidays = closedDays.sort((a, b) => {
         let dateA = checkYearChange(date, a.date);
         let dateB = checkYearChange(date, b.date);
 
@@ -78,6 +78,15 @@ function sortClosedDays(date) {
 
         return diffA - diffB;
     });
+
+    return sortedHolidays
+}
+
+// Sorts the closed days
+function sortClosedDays(date) {
+    // Gets a sorted list of holidays through the sortHolidays function
+    let sortedHolidays = sortHolidays(date)
+
     // Gets the HTML list
     let closedDaysList = document
         .getElementById("closedDaysList")
