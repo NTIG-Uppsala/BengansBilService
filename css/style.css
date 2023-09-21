@@ -164,25 +164,22 @@ iframe {
 	background-color: transparent !important;
 }
 
-.btn:hover{
-	background-color: lightGrey!important;
+.btn:hover {
+	background-color: lightGrey !important;
 }
 
-.btn:active{
-	background-color: lightGrey!important;
+.btn:active {
+	background-color: lightGrey !important;
 }
 
 .dropdown-item {
-
-    color: black !important;
-
+	color: black !important;
 }
 
 .dropdown-toggle {
-
-    width: 12em !important;
-
+	width: 12em !important;
 }
+
 .dropdown-menu {
 	border-radius: 0 !important;
 }
@@ -369,7 +366,9 @@ iframe {
 
 }
 
-/* @media screen and (max-width:) {
-	
+@media screen and (max-width:500px) {
+	.btn {
+		font-size: 0.7em !important;
+	}
 
-} */
+}
