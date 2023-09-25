@@ -107,7 +107,8 @@ class TestingPage(TestCase):
             )
 
             if is_loaded:
-                print(f"Image '{image_element.get_attribute('src')}' is loaded.")
+                print(
+                    f"Image '{image_element.get_attribute('src')}' is loaded.")
             else:
                 self.fail(
                     f"Image '{image_element.get_attribute('src')}' is not loaded."
@@ -142,7 +143,8 @@ class TestingPage(TestCase):
         )
 
     def testZipCodeText(self):
-        self.assertIn("Kolla om vår hemleverans når dig", self.browser.page_source)
+        self.assertIn("Kolla om vår hemleverans når dig",
+                      self.browser.page_source)
         self.browser.find_element(By.CLASS_NAME, "checkNumber")
 
     def helperZipCode(self, zipCodeList, message):
@@ -185,13 +187,16 @@ class TestingPage(TestCase):
         self.helperZipCode(zipCodeList3, "Inte ett giltigt postnummer.")
 
     def testIsDateClosed(self):
-        result = self.browser.execute_script("return isDateClosed(2023, 0, 1);")
+        result = self.browser.execute_script(
+            "return isDateClosed(2023, 0, 1);")
         self.assertTrue(result, "Expected date to be closed: 0/1")
-        result = self.browser.execute_script("return isDateClosed(2023, 0, 2);")
+        result = self.browser.execute_script(
+            "return isDateClosed(2023, 0, 2);")
         self.assertFalse(result, "Expected date to be open: 0/2")
 
     def helperLiveOpening(self, date, results):
-        self.browser.execute_script("setLiveOpeningHours(new Date('" + date + "'))")
+        self.browser.execute_script(
+            "setLiveOpeningHours(new Date('" + date + "'))")
         element = self.browser.find_element(By.ID, "storeState")
         self.assertIn(results, element.text)
 
@@ -270,19 +275,6 @@ class TestingPage(TestCase):
         self.helperLiveOpening("2023-12-24T16:50:00", "Öppnar onsdag kl 10")
         self.helperLiveOpening("2023-12-25T02:50:00", "Öppnar onsdag kl 10")
         self.helperLiveOpening("2023-12-26T10:50:00", "Öppnar onsdag kl 10")
-
-    def helperLiveOpeningHeader(self, date, expectedResult):
-        self.browser.execute_script("setLiveOpeningHours(new Date('" + date + "'));")
-        headerOpenColor = self.browser.execute_script(
-            "return document.getElementById('storeOpen').style.color;"
-        )
-        result = False
-        if headerOpenColor == "green":
-            result = True
-        else:
-            result = False
-
-        self.assertEqual(expectedResult, result)
 
     def testLiveOpeningHoursHeader(self):
         # Monday
@@ -369,10 +361,12 @@ class TestingPage(TestCase):
         self.assertEqual(firstDate, expectedDate)
 
     def testClosedDaysAutomaticOrder(self):
-        self.helperClosedDaysAutomaticOrder("2023-09-16T14:00:00", ["12", "24"])
+        self.helperClosedDaysAutomaticOrder(
+            "2023-09-16T14:00:00", ["12", "24"])
         self.helperClosedDaysAutomaticOrder("2023-01-02T14:00:00", ["1", "6"])
         self.helperClosedDaysAutomaticOrder("2023-04-13T14:00:00", ["5", "1"])
-        self.helperClosedDaysAutomaticOrder("2023-12-25T14:00:00", ["12", "26"])
+        self.helperClosedDaysAutomaticOrder(
+            "2023-12-25T14:00:00", ["12", "26"])
 
     def testCompanyPrices(self):
         self.browser.execute_script("window.scrollTo(0, 450);")
