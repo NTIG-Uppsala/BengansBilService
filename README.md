@@ -8,9 +8,11 @@ Website for NTB Biluthyrning 2023/2024
 * 4 Space Indentation
 * Camelcase is used for variable names
 
-## Development environment
+## Development environment standard
 * Windows 10
-* Visual Studio Code
+* Visual Studio Code Version: 1.82.2
+* Selenium 4.11.2
+* Sass 1.66.1
 
 ## Programming Languages
 * HTML5
@@ -18,7 +20,6 @@ Website for NTB Biluthyrning 2023/2024
 * Javascript ES13
 * Bootstrap 5.3.1
 * Python 3.11
-* Selenium 4.11.2
 
 ## Licenses
 
