@@ -118,6 +118,8 @@ class TestingPage(TestCase):
         self.assertIn("Kontakta&nbsp;oss", element.get_attribute("innerHTML"))
         self.assertIn("Hitta&nbsp;hit", element.get_attribute("innerHTML"))
         self.assertIn("Öppettider", element.get_attribute("innerHTML"))
+        # checks that there is no residual product:
+        self.assertNotIn("Adress", element.get_attribute("innerHTML"))
 
     def testFooterTitle(self):
         element = self.browser.find_element(By.CLASS_NAME, "info-section")
