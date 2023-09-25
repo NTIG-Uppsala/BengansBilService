@@ -117,8 +117,10 @@ class TestingPage(TestCase):
     def testNavBarTitle(self):
         element = self.browser.find_element(By.CLASS_NAME, "navbar-nav")
         self.assertIn("Kontakta&nbsp;oss", element.get_attribute("innerHTML"))
-        self.assertIn("Adress", element.get_attribute("innerHTML"))
+        self.assertIn("Hitta hit", element.get_attribute("innerHTML"))
         self.assertIn("Öppettider", element.get_attribute("innerHTML"))
+        # checks that there is no residual product:
+        self.assertNotIn("Adress", element.get_attribute("innerHTML"))
 
     def testFooterTitle(self):
         element = self.browser.find_element(By.CLASS_NAME, "info-section")
