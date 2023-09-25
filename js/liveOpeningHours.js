@@ -264,16 +264,3 @@ function setLiveOpeningHours(date) {
     liveStoreStateHeader(storeIsOpen);
 }
 
-// Updates the header status
-function liveStoreStateHeader(storeIsOpen) {
-    const storeOpenElement = document.getElementById("storeOpen");
-    const storeClosedElement = document.getElementById("storeClosed");
-
-    if (storeIsOpen === false) {
-        storeClosedElement.style.color = "red";
-        storeOpenElement.style.color = "white";
-    } else if (storeIsOpen === true) {
-        storeClosedElement.style.color = "white";
-        storeOpenElement.style.color = "green";
-    }
-}
