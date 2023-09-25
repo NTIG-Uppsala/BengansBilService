@@ -107,8 +107,7 @@ class TestingPage(TestCase):
             )
 
             if is_loaded:
-                print(
-                    f"Image '{image_element.get_attribute('src')}' is loaded.")
+                print(f"Image '{image_element.get_attribute('src')}' is loaded.")
             else:
                 self.fail(
                     f"Image '{image_element.get_attribute('src')}' is not loaded."
@@ -117,7 +116,7 @@ class TestingPage(TestCase):
     def testNavBarTitle(self):
         element = self.browser.find_element(By.CLASS_NAME, "navbar-nav")
         self.assertIn("Kontakta&nbsp;oss", element.get_attribute("innerHTML"))
-        self.assertIn("Hitta hit", element.get_attribute("innerHTML"))
+        self.assertIn("Hitta&nbsp;hit", element.get_attribute("innerHTML"))
         self.assertIn("Öppettider", element.get_attribute("innerHTML"))
         # checks that there is no residual product:
         self.assertNotIn("Adress", element.get_attribute("innerHTML"))
@@ -145,8 +144,7 @@ class TestingPage(TestCase):
         )
 
     def testZipCodeText(self):
-        self.assertIn("Kolla om vår hemleverans når dig",
-                      self.browser.page_source)
+        self.assertIn("Kolla om vår hemleverans når dig", self.browser.page_source)
         self.browser.find_element(By.CLASS_NAME, "checkNumber")
 
     def helperZipCode(self, zipCodeList, message):
@@ -189,16 +187,13 @@ class TestingPage(TestCase):
         self.helperZipCode(zipCodeList3, "Inte ett giltigt postnummer.")
 
     def testIsDateClosed(self):
-        result = self.browser.execute_script(
-            "return isDateClosed(2023, 0, 1);")
+        result = self.browser.execute_script("return isDateClosed(2023, 0, 1);")
         self.assertTrue(result, "Expected date to be closed: 0/1")
-        result = self.browser.execute_script(
-            "return isDateClosed(2023, 0, 2);")
+        result = self.browser.execute_script("return isDateClosed(2023, 0, 2);")
         self.assertFalse(result, "Expected date to be open: 0/2")
 
     def helperLiveOpening(self, date, results):
-        self.browser.execute_script(
-            "setLiveOpeningHours(new Date('" + date + "'))")
+        self.browser.execute_script("setLiveOpeningHours(new Date('" + date + "'))")
         element = self.browser.find_element(By.ID, "storeState")
         self.assertIn(results, element.text)
 
@@ -313,12 +308,10 @@ class TestingPage(TestCase):
         self.assertEqual(firstDate, expectedDate)
 
     def testClosedDaysAutomaticOrder(self):
-        self.helperClosedDaysAutomaticOrder(
-            "2023-09-16T14:00:00", ["12", "24"])
+        self.helperClosedDaysAutomaticOrder("2023-09-16T14:00:00", ["12", "24"])
         self.helperClosedDaysAutomaticOrder("2023-01-02T14:00:00", ["1", "6"])
         self.helperClosedDaysAutomaticOrder("2023-04-13T14:00:00", ["5", "1"])
-        self.helperClosedDaysAutomaticOrder(
-            "2023-12-25T14:00:00", ["12", "26"])
+        self.helperClosedDaysAutomaticOrder("2023-12-25T14:00:00", ["12", "26"])
 
     def testCompanyPrices(self):
         self.browser.execute_script("window.scrollTo(0, 450);")
