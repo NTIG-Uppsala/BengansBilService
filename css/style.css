@@ -18,21 +18,12 @@ body {
     padding: 5px;
 }
 
-#storeOpen {
-    opacity: 1 !important;
+.nav-link {
+    color: white !important;
 }
 
-#storeClosed {
-    opacity: 1 !important;
-}
-
-.sideNavButton {
-    background-color: transparent;
-    border: none;
-}
-
-.navButton:hover {
-    color: lightblue;
+.nav-item :hover {
+    color: rgb(209, 226, 233) !important;
 }
 
 .blackLink {
@@ -42,32 +33,6 @@ body {
 .container {
     margin-bottom: 3%;
     margin-top: 13vh;
-}
-
-.nav-item {
-    text-align: center !important;
-    align-items: center !important;
-    display: flex !important;
-    justify-content: center !important;
-}
-
-.subnav {
-    right: 0 !important;
-    position: absolute !important;
-    top: 0;
-    bottom: 0;
-    margin: auto 0;
-}
-
-.navButton {
-    background-color: transparent;
-    color: white;
-    border: none;
-    margin-left: 1vw;
-    text-decoration: none;
-    font-style: normal;
-    font-size: 2.5rem;
-    text-align: center;
 }
 
 .closedColor {
@@ -217,13 +182,6 @@ iframe {
 }
 
 @media screen and (max-width:991px) {
-    .nav-item {
-        text-align: unset !important;
-        align-items: unset !important;
-        display: unset !important;
-        justify-content: unset !important;
-    }
-
     .navbar-toggler {
         margin: auto auto;
     }
@@ -276,13 +234,6 @@ iframe {
 @media screen and (max-width:1500px) {
     .container {
         margin-bottom: 0;
-    }
-
-}
-
-@media screen and (max-width:1100px) {
-    .navButton {
-        font-size: 2rem;
     }
 
 }
