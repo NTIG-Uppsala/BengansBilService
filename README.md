@@ -1,16 +1,26 @@
 # NTB Biluthyrning
-
-Website for NTB Biluthyrning 2023/2024
-
+Website for NTB Biluthyrning 2023/2024 <br>
 [Link to live website](https://ntig-uppsala.github.io/ntbbiluthyrning/)
 
 ## Standard for coding
 * 4 Space Indentation
-* Camelcase is used for variable names
+* The naming convention used is camelcase
 
-## Development environment
+## Development environment standard
+### Os
 * Windows 10
-* Visual Studio Code
+### Code editor
+* Visual Studio Code Version: 1.82.2
+### Testing
+* Selenium 4.11.2
+### Scss compiler
+* Sass 1.66.1
+
+## Documentation
+### Sass
+* Sass is used in order to customize Bootstrap css using scss
+* To install Sass input "npm install -g sass" into the cmd
+* To compile Sass input "sass ./scss/custom.scss ./css/custom.css"
 
 ## Programming Languages
 * HTML5
@@ -18,10 +28,8 @@ Website for NTB Biluthyrning 2023/2024
 * Javascript ES13
 * Bootstrap 5.3.1
 * Python 3.11
-* Selenium 4.11.2
 
 ## Licenses
-
 ### Fonts
   * [Maven Pro](https://fonts.google.com/specimen/Maven+Pro/about?query=maven+pro)
   

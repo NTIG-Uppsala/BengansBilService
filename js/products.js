@@ -68,7 +68,7 @@ function sortCars(buttonInput) {
             priceClicks = clickCounter(priceClicks); // Updates the clicks
             sortedCars = carsList.sort(function (a, b) {
                 // Sorts the list
-                sortText.innerText = "Pris";
+                sortText.innerText = "Dagspris";
                 if (priceClicks % 2 == 0) {
                     arrows[0].src = "images/arrowdown.svg";
                     return a["price"] - b["price"]; // Orders list so that lowest value comes first
@@ -82,7 +82,7 @@ function sortCars(buttonInput) {
         case "year":
             yearClicks = clickCounter(yearClicks); // Updates the clicks
             sortedCars = carsList.sort(function (a, b) {
-                sortText.innerText = "Årsgång";
+                sortText.innerText = "Årsmodell";
                 if (yearClicks % 2 == 0) {
                     arrows[1].src = "images/arrowdown.svg";
                     return a["year"] - b["year"]; // Orders list so that lowest value comes first
@@ -96,7 +96,7 @@ function sortCars(buttonInput) {
         case "name":
             nameClicks = clickCounter(nameClicks); // Updates the clicks
             sortedCars = carsList.sort(function (a, b) {
-                sortText.innerText = "Modell";
+                sortText.innerText = "Bilar";
                 if (nameClicks % 2 == 0) {
                     arrows[2].src = "images/arrowdown.svg";
                     return a.name.localeCompare(b.name); // Orders list so that earlier letter comes first
