@@ -202,79 +202,79 @@ class TestingPage(TestCase):
 
     def testLiveOpeningHours(self):
         # Monday
-        self.helperLiveOpening("2023-09-11T09:15:00", "Öppnar idag kl 10")
+        self.helperLiveOpening("2023-09-11T09:15:00", "Öppnar idag kl. 10")
         self.helperLiveOpening("2023-09-11T09:30:00", "Öppnar om 30 minuter")
         self.helperLiveOpening("2023-09-11T10:10:00", "Just nu: Öppet")
         self.helperLiveOpening("2023-09-11T12:30:00", "Just nu: Öppet")
         self.helperLiveOpening("2023-09-11T15:45:00", "Stänger snart")
-        self.helperLiveOpening("2023-09-11T16:15:00", "Öppnar tisdag kl 10")
+        self.helperLiveOpening("2023-09-11T16:15:00", "Öppnar tisdag kl. 10")
 
         # Tuesday
-        self.helperLiveOpening("2023-09-12T09:15:00", "Öppnar idag kl 10")
+        self.helperLiveOpening("2023-09-12T09:15:00", "Öppnar idag kl. 10")
         self.helperLiveOpening("2023-09-12T09:30:00", "Öppnar om 30 minuter")
         self.helperLiveOpening("2023-09-12T10:10:00", "Just nu: Öppet")
         self.helperLiveOpening("2023-09-12T12:30:00", "Just nu: Öppet")
         self.helperLiveOpening("2023-09-12T15:45:00", "Stänger snart")
-        self.helperLiveOpening("2023-09-12T16:15:00", "Öppnar onsdag kl 10")
+        self.helperLiveOpening("2023-09-12T16:15:00", "Öppnar onsdag kl. 10")
 
         # Wednesday
-        self.helperLiveOpening("2023-09-13T09:15:00", "Öppnar idag kl 10")
+        self.helperLiveOpening("2023-09-13T09:15:00", "Öppnar idag kl. 10")
         self.helperLiveOpening("2023-09-13T09:30:00", "Öppnar om 30 minuter")
         self.helperLiveOpening("2023-09-13T10:10:00", "Just nu: Öppet")
         self.helperLiveOpening("2023-09-13T12:30:00", "Just nu: Öppet")
         self.helperLiveOpening("2023-09-13T15:45:00", "Stänger snart")
-        self.helperLiveOpening("2023-09-13T16:15:00", "Öppnar torsdag kl 10")
+        self.helperLiveOpening("2023-09-13T16:15:00", "Öppnar torsdag kl. 10")
 
         # Thursday
-        self.helperLiveOpening("2023-09-14T09:15:00", "Öppnar idag kl 10")
+        self.helperLiveOpening("2023-09-14T09:15:00", "Öppnar idag kl. 10")
         self.helperLiveOpening("2023-09-14T09:30:00", "Öppnar om 30 minuter")
         self.helperLiveOpening("2023-09-14T10:10:00", "Just nu: Öppet")
         self.helperLiveOpening("2023-09-14T12:30:00", "Just nu: Öppet")
         self.helperLiveOpening("2023-09-14T15:45:00", "Stänger snart")
-        self.helperLiveOpening("2023-09-14T16:15:00", "Öppnar fredag kl 10")
+        self.helperLiveOpening("2023-09-14T16:15:00", "Öppnar fredag kl. 10")
 
         # Friday
-        self.helperLiveOpening("2023-09-15T09:15:00", "Öppnar idag kl 10")
+        self.helperLiveOpening("2023-09-15T09:15:00", "Öppnar idag kl. 10")
         self.helperLiveOpening("2023-09-15T09:30:00", "Öppnar om 30 minuter")
         self.helperLiveOpening("2023-09-15T10:10:00", "Just nu: Öppet")
         self.helperLiveOpening("2023-09-15T12:30:00", "Just nu: Öppet")
         self.helperLiveOpening("2023-09-15T15:45:00", "Stänger snart")
-        self.helperLiveOpening("2023-09-15T16:15:00", "Öppnar lördag kl 12")
+        self.helperLiveOpening("2023-09-15T16:15:00", "Öppnar lördag kl. 12")
 
         # Saturday
-        self.helperLiveOpening("2023-09-16T09:45:00", "Öppnar idag kl 12")
-        self.helperLiveOpening("2023-09-16T10:30:00", "Öppnar idag kl 12")
+        self.helperLiveOpening("2023-09-16T09:45:00", "Öppnar idag kl. 12")
+        self.helperLiveOpening("2023-09-16T10:30:00", "Öppnar idag kl. 12")
         self.helperLiveOpening("2023-09-16T11:30:00", "Öppnar om 30 minuter")
         self.helperLiveOpening("2023-09-16T12:10:00", "Just nu: Öppet")
         self.helperLiveOpening("2023-09-16T14:00:00", "Just nu: Öppet")
         self.helperLiveOpening("2023-09-16T14:45:00", "Stänger snart")
-        self.helperLiveOpening("2023-09-16T15:10:00", "Öppnar måndag kl 10")
+        self.helperLiveOpening("2023-09-16T15:10:00", "Öppnar måndag kl. 10")
 
         # Sunday
-        self.helperLiveOpening("2023-09-17T09:15:00", "Öppnar måndag kl 10")
-        self.helperLiveOpening("2023-09-17T10:30:00", "Öppnar måndag kl 10")
-        self.helperLiveOpening("2023-09-17T12:10:00", "Öppnar måndag kl 10")
-        self.helperLiveOpening("2023-09-17T14:45:00", "Öppnar måndag kl 10")
-        self.helperLiveOpening("2023-09-17T15:45:00", "Öppnar måndag kl 10")
-        self.helperLiveOpening("2023-09-17T16:45:00", "Öppnar måndag kl 10")
+        self.helperLiveOpening("2023-09-17T09:15:00", "Öppnar måndag kl. 10")
+        self.helperLiveOpening("2023-09-17T10:30:00", "Öppnar måndag kl. 10")
+        self.helperLiveOpening("2023-09-17T12:10:00", "Öppnar måndag kl. 10")
+        self.helperLiveOpening("2023-09-17T14:45:00", "Öppnar måndag kl. 10")
+        self.helperLiveOpening("2023-09-17T15:45:00", "Öppnar måndag kl. 10")
+        self.helperLiveOpening("2023-09-17T16:45:00", "Öppnar måndag kl. 10")
 
         # Night time
-        self.helperLiveOpening("2023-09-13T00:45:00", "Öppnar idag kl 10")
-        self.helperLiveOpening("2023-09-15T23:00:00", "Öppnar lördag kl 12")
+        self.helperLiveOpening("2023-09-13T00:45:00", "Öppnar idag kl. 10")
+        self.helperLiveOpening("2023-09-15T23:00:00", "Öppnar lördag kl. 12")
 
         # Closed days
 
         # New year
-        self.helperLiveOpening("2023-12-30T16:10:00", "Öppnar tisdag kl 10")
-        self.helperLiveOpening("2023-12-31T10:10:00", "Öppnar tisdag kl 10")
-        self.helperLiveOpening("2024-01-01T16:10:00", "Öppnar tisdag kl 10")
-        self.helperLiveOpening("2024-01-06T14:10:00", "Öppnar måndag kl 10")
+        self.helperLiveOpening("2023-12-30T16:10:00", "Öppnar tisdag kl. 10")
+        self.helperLiveOpening("2023-12-31T10:10:00", "Öppnar tisdag kl. 10")
+        self.helperLiveOpening("2024-01-01T16:10:00", "Öppnar tisdag kl. 10")
+        self.helperLiveOpening("2024-01-06T14:10:00", "Öppnar måndag kl. 10")
 
         # Christmas
-        self.helperLiveOpening("2023-12-23T15:50:00", "Öppnar onsdag kl 10")
-        self.helperLiveOpening("2023-12-24T16:50:00", "Öppnar onsdag kl 10")
-        self.helperLiveOpening("2023-12-25T02:50:00", "Öppnar onsdag kl 10")
-        self.helperLiveOpening("2023-12-26T10:50:00", "Öppnar onsdag kl 10")
+        self.helperLiveOpening("2023-12-23T15:50:00", "Öppnar onsdag kl. 10")
+        self.helperLiveOpening("2023-12-24T16:50:00", "Öppnar onsdag kl. 10")
+        self.helperLiveOpening("2023-12-25T02:50:00", "Öppnar onsdag kl. 10")
+        self.helperLiveOpening("2023-12-26T10:50:00", "Öppnar onsdag kl. 10")
 
     def helperProductSort(self, sortOption, expectedFirst, expectedLast, clicks):
         for n in range(clicks):
