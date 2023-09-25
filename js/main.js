@@ -1,10 +1,3 @@
-// Scrolls to the object of the pressed navbar button
-function scrollToInfo(id) {
-    setTimeout(() => {
-        document.getElementById(id).scrollIntoView();
-    }, 500);
-}
-
 // List of accepted zip codes
 zipCodeList = [
     "98132",

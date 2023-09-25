@@ -44,17 +44,13 @@
             <div class="collapse navbar-collapse" id="navbarToggler">
                 <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                     <li class="nav-item ps-1">
-                        <button class="navButton sideNavButton fs-4" data-bs-toggle="collapse"
-                            data-bs-target="#navbarToggler"
-                            onclick="scrollToInfo('contactInfo')">Kontakta&nbsp;oss</button>
+                        <a class="navButton sideNavButton fs-4 nav-link" href="#contactInfo">Kontakta&nbsp;oss</a>
                     </li>
                     <li class="nav-item ps-1">
-                        <button class="navButton sideNavButton fs-4" data-bs-toggle="collapse"
-                            data-bs-target="#navbarToggler" onclick="scrollToInfo('openingHours')">Öppettider</button>
+                        <a class="navButton sideNavButton fs-4 nav-link" href="#openingHours">Öppettider</a>
                     </li>
                     <li class="nav-item ps-1">
-                        <button class="navButton sideNavButton fs-4" data-bs-toggle="collapse"
-                            data-bs-target="#navbarToggler" onclick="scrollToInfo('address')">Adress</button>
+                        <a class="navButton sideNavButton fs-4 nav-link" href="#address">Adress</a>
                     </li>
                 </ul>
             </div>
@@ -139,11 +135,12 @@
         </table>
     </div>
 
-    <div class="container-fluid text-center mt-5d info-section">
+
+    <div class="container-fluid text-center mt-5 info-section">
         <div class="row justify-content-evenly d-flex">
-            <div class="col-sm-6 justify-content-center">
+            <div class="col-sm-6 justify-content-center" id="openingHours">
                 <div class="col-lg">
-                    <h3 class=" mb-3 h3" id="openingHours">Öppettider</h3>
+                    <h3 class=" mb-3 h3">Öppettider</h3>
                     <p class="fs-5" id="storeState"></p>
 
                     <div class="text-start openHours w-75 fs-5">
