@@ -60,6 +60,8 @@ function isValid(d, m, y) {
 }
 
 // Look for next open day
+// ...
+
 function checkNextOpen(
     year,
     month,
@@ -72,9 +74,9 @@ function checkNextOpen(
     let daysTillOpen = 0;
 
     if (dayOfWeek !== 6) {
-        // If not saturday
+        // If not Saturday
 
-        // Checks how many days untill next open day
+        // Checks how many days until next open day
         while (
             isDateClosed(year, month, dayOfMonth + daysTillOpen + 1) ||
             getDayWeekLoop(dayOfWeek + daysTillOpen) == 0 ||
@@ -90,17 +92,13 @@ function checkNextOpen(
         const nextOpenDay = getDayWeekLoop(dayOfWeek, daysTillOpen);
 
         if (nextOpenDay === 5) {
-            //If friday
-            element.innerText = `Öppnar ${days[nextOpenDay + 1]} kl. ${openingHours.saturday.open
-                }`;
-            return false;
+            // If Friday
+            element.innerText = `Öppnar ${days[nextOpenDay + 1]} kl. ${openingHours.saturday.open}`;
         } else {
-            element.innerText = `Öppnar ${days[nextOpenDay + 1]} kl. ${openingHours.weekdays.open
-                }`;
-            return false;
+            element.innerText = `Öppnar ${days[nextOpenDay + 1]} kl. ${openingHours.weekdays.open}`;
         }
     } else if (isDateClosed(year, month, dayOfMonth + 2)) {
-        // If saturday and next monday is closed
+        // If Saturday and next Monday is closed
 
         while (
             isDateClosed(year, month, dayOfMonth + daysTillOpen + 1) ||
@@ -116,18 +114,13 @@ function checkNextOpen(
         const nextOpenDay = getDayWeekLoop(dayOfWeek, daysTillOpen);
 
         if (nextOpenDay === 5) {
-            element.innerText = `Öppnar ${days[nextOpenDay + 1]} kl. ${openingHours.saturday.open
-                }`;
-            return false;
+            element.innerText = `Öppnar ${days[nextOpenDay + 1]} kl. ${openingHours.saturday.open}`;
         } else {
-            element.innerText = `Öppnar ${days[nextOpenDay + 1]} kl. ${openingHours.weekdays.open
-                }`;
-            return false;
+            element.innerText = `Öppnar ${days[nextOpenDay + 1]} kl. ${openingHours.weekdays.open}`;
         }
     } else {
-        // If saturday and the next monday is open
+        // If Saturday and the next Monday is open
         element.innerText = `Öppnar måndag kl. ${openingHours.weekdays.open}`;
-        return false;
     }
 }
 
@@ -142,7 +135,6 @@ function setLiveOpeningHours(date) {
     const element = document.getElementById("storeState");
     const rightNowSpan = document.createElement("span");
     const openSpan = document.createElement("span");
-    let storeIsOpen;
 
     const openingHours = {
         weekdays: { open: 10, close: 16 },
@@ -160,7 +152,7 @@ function setLiveOpeningHours(date) {
     ];
 
     if (isDateClosed(year, month, dayOfMonth)) {
-        storeIsOpen = checkNextOpen(
+        checkNextOpen(
             year,
             month,
             dayOfMonth,
@@ -174,11 +166,9 @@ function setLiveOpeningHours(date) {
         if (hour === openingHours.weekdays.open - 1 && minute >= 30) {
             // 30 min before opening
             element.innerText = `Öppnar om ${60 - minute} minuter`;
-            storeIsOpen = false;
         } else if (hour === openingHours.weekdays.close - 1 && minute >= 45) {
             // 15 min before closing
             element.innerText = `Stänger snart`;
-            storeIsOpen = true;
         } else if (
             hour >= openingHours.weekdays.open &&
             hour < openingHours.weekdays.close
@@ -194,14 +184,12 @@ function setLiveOpeningHours(date) {
 
             element.appendChild(rightNowSpan);
             element.appendChild(openSpan);
-            storeIsOpen = true;
         } else if (hour < openingHours.weekdays.open) {
             // Earlier than one hour before opening
             element.innerText = `Öppnar idag kl. ${openingHours.weekdays.open}`;
-            storeIsOpen = false;
         } else {
             // The store is closed
-            storeIsOpen = checkNextOpen(
+            checkNextOpen(
                 year,
                 month,
                 dayOfMonth,
@@ -215,10 +203,8 @@ function setLiveOpeningHours(date) {
         // Saturday
         if (hour === openingHours.saturday.open - 1 && minute >= 30) {
             element.innerText = `Öppnar om ${60 - minute} minuter`;
-            storeIsOpen = false;
         } else if (hour === openingHours.saturday.close - 1 && minute >= 45) {
             element.innerText = `Stänger snart`;
-            storeIsOpen = true;
         } else if (
             hour >= openingHours.saturday.open &&
             hour < openingHours.saturday.close
@@ -233,12 +219,10 @@ function setLiveOpeningHours(date) {
 
             element.appendChild(rightNowSpan);
             element.appendChild(openSpan);
-            storeIsOpen = true;
         } else if (hour < openingHours.saturday.open) {
             element.innerText = `Öppnar idag kl. ${openingHours.saturday.open}`;
-            storeIsOpen = false;
         } else {
-            storeIsOpen = checkNextOpen(
+            checkNextOpen(
                 year,
                 month,
                 dayOfMonth,
@@ -250,7 +234,7 @@ function setLiveOpeningHours(date) {
         }
     } else if (dayOfWeek == 0) {
         // Sunday
-        storeIsOpen = checkNextOpen(
+        checkNextOpen(
             year,
             month,
             dayOfMonth,
@@ -260,5 +244,4 @@ function setLiveOpeningHours(date) {
             element
         );
     }
-
 }
