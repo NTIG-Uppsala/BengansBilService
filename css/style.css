@@ -156,13 +156,6 @@ iframe {
 #zipCodeCheck {
 	height: auto;
 }
-
-.map{
-    width: 45vw;
-    height: 50vh;
-    
-}
-
 .checkNumber {
 	height: inherit;
 	font-size: 1.2rem;
@@ -186,6 +179,14 @@ iframe {
 	border-color: black;
 	color: black;
 }
+.map{
+    width: 45vw;
+    height: 50vh;
+    padding: 0;
+    
+}
+
+
 
 @media screen and (max-width:991px) {
 	.navbar-toggler {
@@ -214,11 +215,15 @@ iframe {
 
 }
 
-@media screen and (max-width:500px) {
+@media screen and (max-width:570px) {
 	.websiteTitle {
 		font-size: 100%;
 	}
-
+    .map{
+        width: 80vw;
+        height: 50vh;
+        
+    }
 }
 
 @media screen and (max-width:200px) {
