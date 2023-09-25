@@ -197,7 +197,7 @@ function setLiveOpeningHours(date) {
             storeIsOpen = true;
         } else if (hour < openingHours.weekdays.open) {
             // Earlier than one hour before opening
-            element.innerText = `Öppnar idag kl ${openingHours.weekdays.open}`;
+            element.innerText = `Öppnar idag kl. ${openingHours.weekdays.open}`;
             storeIsOpen = false;
         } else {
             // The store is closed
