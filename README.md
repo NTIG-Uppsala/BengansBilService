@@ -7,9 +7,13 @@ Website for NTB Biluthyrning 2023/2024 <br>
 * The naming convention used is camelcase
 
 ## Development environment standard
+### Os
 * Windows 10
+### Code editor
 * Visual Studio Code Version: 1.82.2
+### Testing
 * Selenium 4.11.2
+### Scss compiler
 * Sass 1.66.1
 
 ## Documentation
