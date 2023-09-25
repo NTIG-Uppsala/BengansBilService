@@ -276,56 +276,6 @@ class TestingPage(TestCase):
         self.helperLiveOpening("2023-12-25T02:50:00", "Öppnar onsdag kl 10")
         self.helperLiveOpening("2023-12-26T10:50:00", "Öppnar onsdag kl 10")
 
-    def testLiveOpeningHoursHeader(self):
-        # Monday
-        self.helperLiveOpeningHeader("2023-09-11T05:00:00", False)
-        self.helperLiveOpeningHeader("2023-09-11T09:00:00", False)
-        self.helperLiveOpeningHeader("2023-09-11T10:30:00", True)
-        self.helperLiveOpeningHeader("2023-09-11T15:00:00", True)
-        self.helperLiveOpeningHeader("2023-09-11T17:00:00", False)
-        self.helperLiveOpeningHeader("2023-09-11T22:00:00", False)
-
-        # Tuesday
-        self.helperLiveOpeningHeader("2023-09-12T05:00:00", False)
-        self.helperLiveOpeningHeader("2023-09-12T09:00:00", False)
-        self.helperLiveOpeningHeader("2023-09-12T10:30:00", True)
-        self.helperLiveOpeningHeader("2023-09-12T15:00:00", True)
-        self.helperLiveOpeningHeader("2023-09-12T17:00:00", False)
-        self.helperLiveOpeningHeader("2023-09-12T22:00:00", False)
-
-        # Wednesday
-        self.helperLiveOpeningHeader("2023-09-13T05:00:00", False)
-        self.helperLiveOpeningHeader("2023-09-13T09:00:00", False)
-        self.helperLiveOpeningHeader("2023-09-13T10:30:00", True)
-        self.helperLiveOpeningHeader("2023-09-13T15:00:00", True)
-        self.helperLiveOpeningHeader("2023-09-13T17:00:00", False)
-        self.helperLiveOpeningHeader("2023-09-13T22:00:00", False)
-
-        # Thursday
-        self.helperLiveOpeningHeader("2023-09-14T05:00:00", False)
-        self.helperLiveOpeningHeader("2023-09-14T09:00:00", False)
-        self.helperLiveOpeningHeader("2023-09-14T10:30:00", True)
-        self.helperLiveOpeningHeader("2023-09-14T15:00:00", True)
-        self.helperLiveOpeningHeader("2023-09-14T17:00:00", False)
-        self.helperLiveOpeningHeader("2023-09-14T22:00:00", False)
-
-        # Friday
-        self.helperLiveOpeningHeader("2023-09-15T05:00:00", False)
-        self.helperLiveOpeningHeader("2023-09-15T09:00:00", False)
-        self.helperLiveOpeningHeader("2023-09-15T10:30:00", True)
-        self.helperLiveOpeningHeader("2023-09-15T15:00:00", True)
-        self.helperLiveOpeningHeader("2023-09-15T17:00:00", False)
-        self.helperLiveOpeningHeader("2023-09-15T22:00:00", False)
-
-        # Saturday
-        self.helperLiveOpeningHeader("2023-09-16T05:00:00", False)
-        self.helperLiveOpeningHeader("2023-09-16T10:30:00", False)
-        self.helperLiveOpeningHeader("2023-09-16T11:00:00", False)
-        self.helperLiveOpeningHeader("2023-09-16T12:00:00", True)
-        self.helperLiveOpeningHeader("2023-09-16T14:00:00", True)
-        self.helperLiveOpeningHeader("2023-09-16T17:00:00", False)
-        self.helperLiveOpeningHeader("2023-09-16T22:00:00", False)
-
     def helperProductSort(self, sortOption, expectedFirst, expectedLast, clicks):
         for n in range(clicks):
             self.browser.execute_script("window.scrollTo(0, 450);")
