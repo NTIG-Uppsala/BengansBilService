@@ -214,12 +214,12 @@ iframe {
 
 }
 
-@media screen and (max-width:550px) {
+@media screen and (max-width:570px) {
 	.websiteTitle {
 		font-size: 100%;
 	}
     .map{
-        width: 70vw;
+        width: 80vw;
         height: 50vh;
         
     }
