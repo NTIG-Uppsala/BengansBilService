@@ -107,7 +107,8 @@ class TestingPage(TestCase):
             )
 
             if is_loaded:
-                print(f"Image '{image_element.get_attribute('src')}' is loaded.")
+                print(
+                    f"Image '{image_element.get_attribute('src')}' is loaded.")
             else:
                 self.fail(
                     f"Image '{image_element.get_attribute('src')}' is not loaded."
@@ -144,7 +145,8 @@ class TestingPage(TestCase):
         )
 
     def testZipCodeText(self):
-        self.assertIn("Kolla om vår hemleverans når dig", self.browser.page_source)
+        self.assertIn("Kolla om vår hemleverans når dig",
+                      self.browser.page_source)
         self.browser.find_element(By.CLASS_NAME, "checkNumber")
 
     def helperZipCode(self, zipCodeList, message):
@@ -187,13 +189,16 @@ class TestingPage(TestCase):
         self.helperZipCode(zipCodeList3, "Inte ett giltigt postnummer.")
 
     def testIsDateClosed(self):
-        result = self.browser.execute_script("return isDateClosed(2023, 0, 1);")
+        result = self.browser.execute_script(
+            "return isDateClosed(2023, 0, 1);")
         self.assertTrue(result, "Expected date to be closed: 0/1")
-        result = self.browser.execute_script("return isDateClosed(2023, 0, 2);")
+        result = self.browser.execute_script(
+            "return isDateClosed(2023, 0, 2);")
         self.assertFalse(result, "Expected date to be open: 0/2")
 
     def helperLiveOpening(self, date, results):
-        self.browser.execute_script("setLiveOpeningHours(new Date('" + date + "'))")
+        self.browser.execute_script(
+            "setLiveOpeningHours(new Date('" + date + "'))")
         element = self.browser.find_element(By.ID, "storeState")
         self.assertIn(results, element.text)
 
@@ -273,7 +278,7 @@ class TestingPage(TestCase):
         self.helperLiveOpening("2023-12-25T02:50:00", "Öppnar onsdag kl. 10")
         self.helperLiveOpening("2023-12-26T10:50:00", "Öppnar onsdag kl. 10")
 
-    def helperProductSort(self, sortOption, expectedFirst, expectedLast, clicks):
+    def helperProductSort(self, sortOption, expectedFirst, expectedLast, clicks, expectedFirstChecker):
         for n in range(clicks):
             self.browser.execute_script("window.scrollTo(0, 450);")
             time.sleep(1)
@@ -283,20 +288,22 @@ class TestingPage(TestCase):
             "return Array.from(document.getElementById('productChart').children)"
         )
         self.assertIn(expectedFirst, sortedCarList[1].text)
+        self.assertIn(expectedFirstChecker, sortedCarList[1].text)
+
         self.assertIn(expectedLast, sortedCarList[len(sortedCarList) - 1].text)
 
     def testProductSort(self):
-        self.helperProductSort("price", "800", "250", 1)
+        self.helperProductSort("price", "800", "250", 1, "Audi A6")
 
-        self.helperProductSort("year", "2022", "1999", 1)
+        self.helperProductSort("year", "2022", "1999", 1, "Audi A6")
 
-        self.helperProductSort("name", "Audi A6", "VW Polo", 1)
+        self.helperProductSort("name", "Audi A6", "VW Polo", 1, "800")
 
-        self.helperProductSort("price", "250", "800", 2)
+        self.helperProductSort("price", "250", "800", 2, "VW Polo")
 
-        self.helperProductSort("year", "1999", "2022", 2)
+        self.helperProductSort("year", "1999", "2022", 2, "VW Polo")
 
-        self.helperProductSort("name", "VW Polo", "Audi A6", 2)
+        self.helperProductSort("name", "VW Polo", "Audi A6", 2, "250")
 
     def helperClosedDaysAutomaticOrder(self, date, expectedDate):
         time.sleep(2)
@@ -308,10 +315,12 @@ class TestingPage(TestCase):
         self.assertEqual(firstDate, expectedDate)
 
     def testClosedDaysAutomaticOrder(self):
-        self.helperClosedDaysAutomaticOrder("2023-09-16T14:00:00", ["12", "24"])
+        self.helperClosedDaysAutomaticOrder(
+            "2023-09-16T14:00:00", ["12", "24"])
         self.helperClosedDaysAutomaticOrder("2023-01-02T14:00:00", ["1", "6"])
         self.helperClosedDaysAutomaticOrder("2023-04-13T14:00:00", ["5", "1"])
-        self.helperClosedDaysAutomaticOrder("2023-12-25T14:00:00", ["12", "26"])
+        self.helperClosedDaysAutomaticOrder(
+            "2023-12-25T14:00:00", ["12", "26"])
 
     def testCompanyPrices(self):
         self.browser.execute_script("window.scrollTo(0, 450);")

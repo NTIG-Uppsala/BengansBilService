@@ -157,6 +157,12 @@ iframe {
 	height: auto;
 }
 
+.map{
+    width: 45vw;
+    height: 50vh;
+    
+}
+
 .checkNumber {
 	height: inherit;
 	font-size: 1.2rem;
