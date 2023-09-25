@@ -261,6 +261,4 @@ function setLiveOpeningHours(date) {
         );
     }
 
-    liveStoreStateHeader(storeIsOpen);
 }
-
