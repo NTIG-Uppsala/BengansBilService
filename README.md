@@ -1,7 +1,5 @@
 # NTB Biluthyrning
-
 Website for NTB Biluthyrning 2023/2024
-
 [Link to live website](https://ntig-uppsala.github.io/ntbbiluthyrning/)
 
 ## Standard for coding
@@ -14,6 +12,12 @@ Website for NTB Biluthyrning 2023/2024
 * Selenium 4.11.2
 * Sass 1.66.1
 
+## Documentation
+### Sass
+* Sass is used in order to customize Bootstrap css using scss
+* To install Sass input "npm install -g sass" into the cmd
+* To compile Sass input "sass ./scss/custom.scss ./css/custom.css"
+
 ## Programming Languages
 * HTML5
 * CSS3
@@ -22,7 +26,6 @@ Website for NTB Biluthyrning 2023/2024
 * Python 3.11
 
 ## Licenses
-
 ### Fonts
   * [Maven Pro](https://fonts.google.com/specimen/Maven+Pro/about?query=maven+pro)
   
