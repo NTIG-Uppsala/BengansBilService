@@ -1,10 +1,10 @@
 # NTB Biluthyrning
-Website for NTB Biluthyrning 2023/2024
+Website for NTB Biluthyrning 2023/2024 <br>
 [Link to live website](https://ntig-uppsala.github.io/ntbbiluthyrning/)
 
 ## Standard for coding
 * 4 Space Indentation
-* Camelcase is used for variable names
+* The naming convention used is camelcase
 
 ## Development environment standard
 * Windows 10
