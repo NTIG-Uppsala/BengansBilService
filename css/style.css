@@ -142,8 +142,9 @@ iframe {
 }
 
 .dropdown-toggle {
-	width: 12em !important;
+	width: 13em !important;
 }
+
 
 .dropdown-menu {
 	border-radius: 0 !important;
@@ -256,6 +257,10 @@ iframe {
 	.checkNumber {
 		border-left: 0.1em solid;
 		margin-top: 0.5em;
+	}
+
+	.dropdown-toggle{
+		border-left: 0px!important;
 	}
 
 }
