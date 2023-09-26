@@ -2,14 +2,14 @@ window.setInterval(function () {
     setLiveOpeningHours(new Date());
 }, 30000); //Every 30 sec
 
+// Globally defines the opening hours array
+const openingHours = {
+    weekdays: { open: 10, close: 16 },
+    saturday: { open: 12, close: 15 },
+};
+
 // Checks if the store is closed on the given date
 function isDateClosed(year, month, day) {
-    // Uses the isValid function to see if the month changes and if it does sets the correct values
-    if (!isValid(day, month, year)) {
-        month = (month + 1) % 12;
-        day -= daysInMonth(month - 1, day);
-    }
-
     const closedDays = [
         { month: 0, day: 1 },
         { month: 0, day: 6 },
@@ -20,6 +20,12 @@ function isDateClosed(year, month, day) {
         { month: 11, day: 26 },
         { month: 11, day: 31 },
     ];
+
+    // Uses the isValid function to see if the month changes and if it does sets the correct values
+    if (!isValid(day, month, year)) {
+        month = (month + 1) % 12;
+        day -= daysInMonth(month - 1, day);
+    }
 
     for (const closedDay of closedDays) {
         if (closedDay.month === month && closedDay.day === day) {
@@ -59,8 +65,47 @@ function isValid(d, m, y) {
     return m >= 0 && m < 12 && d > 0 && d <= daysInMonth(m, y);
 }
 
-// Look for next open day
-// ...
+// Gets and changes the opening status
+function getOpeningStatus(year, month, dayOfMonth, dayOfWeek, days, hour, minute, currentOpeningHours, element) {
+    const rightNowSpan = document.createElement("span");
+    const openSpan = document.createElement("span");
+
+    if (hour === currentOpeningHours.open - 1 && minute >= 30) {
+        // 30 min before opening
+        element.innerText = `Öppnar om ${60 - minute} minuter`;
+    } else if (hour === currentOpeningHours.close - 1 && minute >= 45) {
+        // 15 min before closing
+        element.innerText = `Stänger snart`;
+    } else if (
+        hour >= currentOpeningHours.open &&
+        hour < currentOpeningHours.close
+    ) {
+        // The store is open
+        rightNowSpan.innerText = "Just nu: ";
+        rightNowSpan.style.color = "black";
+
+        openSpan.innerText = "Öppet";
+        openSpan.style.color = "green";
+
+        element.innerHTML = "";
+
+        element.appendChild(rightNowSpan);
+        element.appendChild(openSpan);
+    } else if (hour < currentOpeningHours.open) {
+        // Earlier than one hour before opening
+        element.innerText = `Öppnar idag kl. ${currentOpeningHours.open}`;
+    } else {
+        // The store is closed
+        checkNextOpen(
+            year,
+            month,
+            dayOfMonth,
+            dayOfWeek,
+            days,
+            element
+        );
+    };
+};
 
 function checkNextOpen(
     year,
@@ -68,12 +113,11 @@ function checkNextOpen(
     dayOfMonth,
     dayOfWeek,
     days,
-    openingHours,
     element
 ) {
     let daysTillOpen = 0;
 
-    if (dayOfWeek !== 6) {
+    if (dayOfWeek !== 6 || (dayOfWeek == 6 && isDateClosed(year, month, dayOfMonth + 2))) {
         // If not Saturday
 
         // Checks how many days until next open day
@@ -87,7 +131,7 @@ function checkNextOpen(
                 month = (month + 1) % 12;
                 dayOfMonth = 1;
             }
-        }
+        };
 
         const nextOpenDay = getDayWeekLoop(dayOfWeek, daysTillOpen);
 
@@ -97,32 +141,11 @@ function checkNextOpen(
         } else {
             element.innerText = `Öppnar ${days[nextOpenDay + 1]} kl. ${openingHours.weekdays.open}`;
         }
-    } else if (isDateClosed(year, month, dayOfMonth + 2)) {
-        // If Saturday and next Monday is closed
-
-        while (
-            isDateClosed(year, month, dayOfMonth + daysTillOpen + 1) ||
-            getDayWeekLoop(dayOfWeek + daysTillOpen) === 0
-        ) {
-            daysTillOpen++;
-            if (!isValid(dayOfMonth + daysTillOpen, month, year)) {
-                month = (month + 1) % 12;
-                dayOfMonth = 1;
-            }
-        }
-
-        const nextOpenDay = getDayWeekLoop(dayOfWeek, daysTillOpen);
-
-        if (nextOpenDay === 5) {
-            element.innerText = `Öppnar ${days[nextOpenDay + 1]} kl. ${openingHours.saturday.open}`;
-        } else {
-            element.innerText = `Öppnar ${days[nextOpenDay + 1]} kl. ${openingHours.weekdays.open}`;
-        }
     } else {
         // If Saturday and the next Monday is open
         element.innerText = `Öppnar måndag kl. ${openingHours.weekdays.open}`;
-    }
-}
+    };
+};
 
 function setLiveOpeningHours(date) {
     const year = date.getFullYear();
@@ -133,13 +156,6 @@ function setLiveOpeningHours(date) {
     const minute = date.getMinutes();
 
     const element = document.getElementById("storeState");
-    const rightNowSpan = document.createElement("span");
-    const openSpan = document.createElement("span");
-
-    const openingHours = {
-        weekdays: { open: 10, close: 16 },
-        saturday: { open: 12, close: 15 },
-    };
 
     const days = [
         "Nan",
@@ -151,97 +167,39 @@ function setLiveOpeningHours(date) {
         "lördag",
     ];
 
-    if (isDateClosed(year, month, dayOfMonth)) {
+    if (isDateClosed(year, month, dayOfMonth) || dayOfWeek == 0) {
+        // If the date is closed or a Sunday
         checkNextOpen(
             year,
             month,
             dayOfMonth,
             dayOfWeek,
             days,
-            openingHours,
             element
         );
     } else if (dayOfWeek < 6 && dayOfWeek > 0) {
         // Weekday
-        if (hour === openingHours.weekdays.open - 1 && minute >= 30) {
-            // 30 min before opening
-            element.innerText = `Öppnar om ${60 - minute} minuter`;
-        } else if (hour === openingHours.weekdays.close - 1 && minute >= 45) {
-            // 15 min before closing
-            element.innerText = `Stänger snart`;
-        } else if (
-            hour >= openingHours.weekdays.open &&
-            hour < openingHours.weekdays.close
-        ) {
-            // The store is open
-            rightNowSpan.innerText = "Just nu: ";
-            rightNowSpan.style.color = "black";
-
-            openSpan.innerText = "Öppet";
-            openSpan.style.color = "green";
-
-            element.innerHTML = "";
-
-            element.appendChild(rightNowSpan);
-            element.appendChild(openSpan);
-        } else if (hour < openingHours.weekdays.open) {
-            // Earlier than one hour before opening
-            element.innerText = `Öppnar idag kl. ${openingHours.weekdays.open}`;
-        } else {
-            // The store is closed
-            checkNextOpen(
-                year,
-                month,
-                dayOfMonth,
-                dayOfWeek,
-                days,
-                openingHours,
-                element
-            );
-        }
-    } else if (dayOfWeek == 6) {
-        // Saturday
-        if (hour === openingHours.saturday.open - 1 && minute >= 30) {
-            element.innerText = `Öppnar om ${60 - minute} minuter`;
-        } else if (hour === openingHours.saturday.close - 1 && minute >= 45) {
-            element.innerText = `Stänger snart`;
-        } else if (
-            hour >= openingHours.saturday.open &&
-            hour < openingHours.saturday.close
-        ) {
-            rightNowSpan.innerText = "Just nu: ";
-            rightNowSpan.style.color = "black";
-
-            openSpan.innerText = "Öppet";
-            openSpan.style.color = "green";
-
-            element.innerHTML = "";
-
-            element.appendChild(rightNowSpan);
-            element.appendChild(openSpan);
-        } else if (hour < openingHours.saturday.open) {
-            element.innerText = `Öppnar idag kl. ${openingHours.saturday.open}`;
-        } else {
-            checkNextOpen(
-                year,
-                month,
-                dayOfMonth,
-                dayOfWeek,
-                days,
-                openingHours,
-                element
-            );
-        }
-    } else if (dayOfWeek == 0) {
-        // Sunday
-        checkNextOpen(
-            year,
+        getOpeningStatus(year,
             month,
             dayOfMonth,
             dayOfWeek,
             days,
-            openingHours,
+            hour,
+            minute,
+            openingHours.weekdays,
+            element
+        );
+    } else if (dayOfWeek == 6) {
+        // Saturday
+        getOpeningStatus(year,
+            month,
+            dayOfMonth,
+            dayOfWeek,
+            days,
+            hour,
+            minute,
+            openingHours.saturday,
             element
         );
     }
-}
+};
