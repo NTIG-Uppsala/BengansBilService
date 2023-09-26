@@ -61,16 +61,16 @@ function setOpeningStatus(date) {
         displayOpeningStatus(`Öppnar om ${60 - minute} minuter`, "orange");
     } else if (hour < openingTime) { // Closed and more than 30 min until open today
         displayOpeningStatus(`Öppnar idag kl. ${openingTime}`, "orange");
-    } else if (hour === closingTime - 1 && minute >= 45) {  // Open but 15 min or less before closing
+    } else if (hour === closingTime - 1 && minute >= 45) {  // Open and 15 min or less before closing
         displayOpeningStatus("Stänger snart", "orange")
-    } else if (hour >= openingTime && hour < closingTime) {  // Open but more than 15 min before closing
+    } else if (hour >= openingTime && hour < closingTime) {  // Open and more than 15 min before closing
         displayOpeningStatus("Öppet", "green")
     } else { // Has closed for the day
         checkNextOpen(date);
     };
 };
 
-// Displays the store status on the page
+// Displays the opening status on the page
 function displayOpeningStatus(status, color) {
     const element = document.getElementById("storeState");
     if (color === 'orange') {
@@ -94,19 +94,19 @@ function displayOpeningStatus(status, color) {
 
 // Gets the next open day and calls the display function accordingly
 function checkNextOpen(date) {
-    // Move date object forward in time a day at a time until we find a day that store is open
+    // Moves the date object forward in time a day at a time until we find a day when the store is open
     do {
         date.setDate(date.getDate() + 1);
     } while (isDateClosed(date));
 
     const weekdayOfNextOpenDay = date.getDay();
-    const openTimeForThatDay = weekdayOfNextOpenDay === 6 ? openingHours.saturday.open : openingHours.weekdays.open; // Special openings hours on Saturdays
+    const openTimeForThatDay = weekdayOfNextOpenDay === 6 ? openingHours.saturday.open : openingHours.weekdays.open; // Special opening hours on Saturdays
 
     displayOpeningStatus(`Öppnar ${days[weekdayOfNextOpenDay]} kl. ${openTimeForThatDay}`, 'orange')
 };
 
 function setLiveOpeningHours(date) {
-    if (isDateClosed(date)) { // If the date is closed or a Sunday
+    if (isDateClosed(date)) { // If the date is closed or if the date is a Sunday
         checkNextOpen(date);
     } else {
         setOpeningStatus(date);
