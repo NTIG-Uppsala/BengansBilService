@@ -46,3 +46,14 @@ document.addEventListener("DOMContentLoaded", (event) => {
             }
         });
 });
+
+function priceChangeVAT(isFöretag) {
+    // Add the 'btn-toggle-active' class to the clicked button
+    if (isFöretag) {
+        document.getElementById('companyPriceButton').classList.add('btn-toggle-active');
+        document.getElementById('privatePriceButton').classList.remove('btn-toggle-active');
+    } else {
+        document.getElementById('privatePriceButton').classList.add('btn-toggle-active');
+        document.getElementById('companyPriceButton').classList.remove('btn-toggle-active');
+    }
+}

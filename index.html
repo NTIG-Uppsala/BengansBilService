@@ -89,13 +89,16 @@
     <div class="container-sm mt-5">
         <div class="dropdown d-flex justify-content-between">
             <div class="btn-group" role="group" aria-label="Basic outlined example">
-                <button type="button" class="btn btn-outline-primary rounded-0" id="companyPriceButton"
-                    onclick="priceChangeVAT(true)">Företag</button>
-                <button type="button" class="btn btn-outline-primary rounded-0" id="privatePriceButton"
-                    onclick="priceChangeVAT(false)">Privat</button>
+                <input type="radio" class="btn-check" name="price-option" id="companyPriceButton" autocomplete="off">
+                <label class="btn btn-outline-primary rounded-0" for="companyPriceButton"
+                    onclick="priceChangeVAT(true)">Företag</label>
+
+                <input type="radio" class="btn-check" name="price-option" id="privatePriceButton" autocomplete="off">
+                <label class="btn btn-outline-primary rounded-0" for="privatePriceButton"
+                    onclick="priceChangeVAT(false)">Privat</label>
             </div>
-            <button class="btn btn-secondary dropdown-toggle rounded-0" type="button" data-bs-toggle="dropdown"
-                aria-expanded="false">
+
+            <button class="btn dropdown-toggle rounded-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Sortera efter: <span id="currentSorting">Modell</span>
             </button>
             <ul class="dropdown-menu">
