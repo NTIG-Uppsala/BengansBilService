@@ -25,7 +25,7 @@ function isDateClosed(date) {
     const dayOfMonth = date.getDate();
     const dayOfWeek = date.getDay();
 
-    const closedDays = [
+    const closedDays = [ // Array of all closed days months are calculated from 0-11
         { month: 0, dayOfMonth: 1 },
         { month: 0, dayOfMonth: 6 },
         { month: 4, dayOfMonth: 1 },
@@ -36,7 +36,7 @@ function isDateClosed(date) {
         { month: 11, dayOfMonth: 31 },
     ];
 
-    if (dayOfWeek == 0) {
+    if (dayOfWeek == 0) { // If the date is a Sunday
         return true;
     }
 
@@ -49,26 +49,28 @@ function isDateClosed(date) {
 }
 
 // Gets and changes the opening status
-function getOpeningStatus(date) {
+function setOpeningStatus(date) {
     const hour = date.getHours();
     const minute = date.getMinutes();
 
+    // Sets the opening hours and checking for the special case of Saturday
     let openingTime = date.getDay() === 6 ? openingHours.saturday.open : openingHours.weekdays.open;
     let closingTime = date.getDay() === 6 ? openingHours.saturday.close : openingHours.weekdays.close;
 
-    if (hour === openingTime - 1 && minute >= 30) { // closed but max 30 min before opening
+    if (hour === openingTime - 1 && minute >= 30) { // Closed but max 30 min before opening
         displayOpeningStatus(`Öppnar om ${60 - minute} minuter`, "orange");
-    } else if (hour < openingTime) { // closed and more than 30 min until open today
+    } else if (hour < openingTime) { // Closed and more than 30 min until open today
         displayOpeningStatus(`Öppnar idag kl. ${openingTime}`, "orange");
-    } else if (hour === closingTime - 1 && minute >= 45) {  // open but 15 min or less before closing
+    } else if (hour === closingTime - 1 && minute >= 45) {  // Open but 15 min or less before closing
         displayOpeningStatus("Stänger snart", "orange")
-    } else if (hour >= openingTime && hour < closingTime) {  // open but more than 15 min before closing
+    } else if (hour >= openingTime && hour < closingTime) {  // Open but more than 15 min before closing
         displayOpeningStatus("Öppet", "green")
-    } else { // has closed for the day
+    } else { // Has closed for the day
         checkNextOpen(date);
     };
 };
 
+// Displays the store status on the page
 function displayOpeningStatus(status, color) {
     const rightNowSpan = document.createElement("span");
     const statusSpan = document.createElement("span");
@@ -76,7 +78,7 @@ function displayOpeningStatus(status, color) {
     const element = document.getElementById("storeState");
     if (color === 'orange') {
         element.innerText = status;
-    } else {
+    } else { // If the store is opened and more than 15 minutes before closing
         rightNowSpan.innerText = "Just nu: ";
         rightNowSpan.style.color = "black";
 
@@ -90,6 +92,7 @@ function displayOpeningStatus(status, color) {
     }
 }
 
+// Gets the next open day and calls the display function accordingly
 function checkNextOpen(date) {
     // Move date object forward in time a day at a time until we find a day that store is open
     do {
@@ -106,6 +109,6 @@ function setLiveOpeningHours(date) {
     if (isDateClosed(date)) { // If the date is closed or a Sunday
         checkNextOpen(date);
     } else {
-        getOpeningStatus(date);
+        setOpeningStatus(date);
     }
 };
