@@ -144,7 +144,8 @@ function sortProductChart(buttonInput) {
       productChartItems[2].textContent =
         sortedCars[i]["price"] * 0.8 + "\u00A0kr (exkl. moms)";
     } else {
-      productChartItems[2].textContent = sortedCars[i]["price"] + "\u00A0kr";
+      productChartItems[2].textContent =
+        sortedCars[i]["price"] + "\u00A0\u00A0kr (inkl. moms)";
     }
   }
 }
