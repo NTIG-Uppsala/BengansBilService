@@ -148,40 +148,39 @@ function sortProductChart(buttonInput) {
                 sortedCars[i]["price"] + "\u00A0\u00A0kr (inkl. moms)";
         }
     }
+}
+// Changes prices between company and private depending on the button press
+function priceChangeVAT(isCompany) {
+    // Gets the product chart HTML elements rows
+    let productChart = document
+        .getElementById("productChart")
+        .getElementsByTagName("tr");
 
-    // Changes prices between company and private depending on the button press
-    function priceChangeVAT(isCompany) {
-        // Gets the product chart HTML elements rows
-        let productChart = document
-            .getElementById("productChart")
-            .getElementsByTagName("tr");
+    if (isCompany == true) {
+        // Sets the prices to company prices
+        isCompanyPriceGlobal = true; // Modifies the global variable for company price
 
-        if (isCompany == true) {
-            // Sets the prices to company prices
-            isCompanyPriceGlobal = true; // Modifies the global variable for company price
-
-            // Loops through the list and changes the prices correctly
-            for (let i = 0; i < carsList.length; i++) {
-                for (let n = 0; n < carsList.length; n++) {
-                    let elements = Array.from(productChart[i + 1].children);
-                    if (elements[0].innerText == carsList[n]["name"]) {
-                        elements[2].innerText =
-                            carsList[n]["price"] * 0.8 + "\u00A0kr (exkl. moms)";
-                    }
+        // Loops through the list and changes the prices correctly
+        for (let i = 0; i < carsList.length; i++) {
+            for (let n = 0; n < carsList.length; n++) {
+                let elements = Array.from(productChart[i + 1].children);
+                if (elements[0].innerText == carsList[n]["name"]) {
+                    elements[2].innerText =
+                        carsList[n]["price"] * 0.8 + "\u00A0kr (exkl. moms)";
                 }
             }
-        } else if (isCompany == false) {
-            // Sets the prices to private prices
-            isCompanyPriceGlobal = false; // Modifies the global variable for company price
+        }
+    } else if (isCompany == false) {
+        // Sets the prices to private prices
+        isCompanyPriceGlobal = false; // Modifies the global variable for company price
 
-            // Loops through the list and changes the prices correctly
-            for (let i = 0; i < carsList.length; i++) {
-                for (let n = 0; n < carsList.length; n++) {
-                    let elements = Array.from(productChart[i + 1].children);
-                    if (elements[0].innerText == carsList[n]["name"]) {
-                        elements[2].innerText =
-                            carsList[n]["price"] + "\u00A0kr (inkl. moms)";
-                    }
+        // Loops through the list and changes the prices correctly
+        for (let i = 0; i < carsList.length; i++) {
+            for (let n = 0; n < carsList.length; n++) {
+                let elements = Array.from(productChart[i + 1].children);
+                if (elements[0].innerText == carsList[n]["name"]) {
+                    elements[2].innerText =
+                        carsList[n]["price"] + "\u00A0kr (inkl. moms)";
                 }
             }
         }
