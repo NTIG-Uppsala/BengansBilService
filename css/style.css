@@ -160,8 +160,21 @@ iframe {
 	border-radius: 0 !important;
 	border-color: black !important;
 	color: black !important;
+<<<<<<< Updated upstream
 	border: 0.1em solid !important;
 	background-color: #efefef !important;
+=======
+	border: 0.1em solid !important;     /* background-color: transparent !important; */
+}
+
+.btn:hover {
+	background-color: lightGrey !important;
+}
+
+.btn-toggle-active {
+	background-color: #1e549d;     /* Darker background color for active state */
+	color: white;     /* Text color for active state */
+>>>>>>> Stashed changes
 }
 
 .dropdown-item {
@@ -209,6 +222,14 @@ iframe {
 	color: black;
 }
 
+<<<<<<< Updated upstream
+=======
+.map {
+	width: 45vw;
+	height: 50vh;
+}
+
+>>>>>>> Stashed changes
 @media screen and (max-width:991px) {
 	.nav-item {
 		text-align: unset !important;
@@ -248,6 +269,14 @@ iframe {
 		font-size: 100%;
 	}
 
+<<<<<<< Updated upstream
+=======
+	.map {
+		width: 80vw;
+		height: 50vh;
+	}
+
+>>>>>>> Stashed changes
 }
 
 @media screen and (max-width:200px) {
@@ -357,4 +386,15 @@ iframe {
 		font-size: 0.6rem !important;
 	}
 
+<<<<<<< Updated upstream
 }
+=======
+}
+
+@media screen and (max-width:500px) {
+	.btn {
+		font-size: 0.7em !important;
+	}
+
+}
+>>>>>>> Stashed changes

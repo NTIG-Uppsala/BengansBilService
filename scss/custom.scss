@@ -1,4 +1,25 @@
 $primary: #efefef;
 $enable-rounded: false;
+$btn-secondary: #efefef;
+$inactive-color: #3498db;
+
+.btn-group {
+	.btn-custom-secondary:not(.active) {
+		background-color: $inactive-color;
+		color: white;
+		// You can adjust the text color as needed
+	}
+
+}
+
+// Style for active buttons
+.btn-group {
+	.btn-custom-secondary.active {
+		background-color: $active-color;
+		color: white;
+		// You can adjust the text color as needed
+	}
+
+}
 
 @import "../node_modules/bootstrap/scss/bootstrap";
