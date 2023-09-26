@@ -27,16 +27,14 @@
 
 
 
+
     <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top" data-bs-theme="dark">
         <div class="container-fluid">
             <div>
                 <a class="navbar-brand fs-3" href="index.html">
                     NTB Biluthyrning
                 </a> <br class="headerBreak">
-                <span class="fs-5 text-light">
-                    <span id="storeOpen" style="opacity: 0.2;">Öppet</span>&nbsp;/&nbsp;<span id="storeClosed"
-                        style="opacity: 0.2;">Stängt</span>
-                </span>
+
             </div>
             <div>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler"
@@ -44,20 +42,16 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
             </div>
-            <div class="collapse navbar-collapse" id="navbarToggler">
-                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                    <li class="nav-item ps-1">
-                        <button class="navButton sideNavButton fs-4" data-bs-toggle="collapse"
-                            data-bs-target="#navbarToggler"
-                            onclick="scrollToInfo('contactInfo')">Kontakta&nbsp;oss</button>
+            <div class="collapse navbar-collapse justify-content-end " id="navbarToggler">
+                <ul class="navbar-nav ml-auto ">
+                    <li class="nav-item ml-auto ps-1">
+                        <a class="fs-4 nav-link " href="#contactInfo">Kontakta&nbsp;oss</a>
                     </li>
-                    <li class="nav-item ps-1">
-                        <button class="navButton sideNavButton fs-4" data-bs-toggle="collapse"
-                            data-bs-target="#navbarToggler" onclick="scrollToInfo('openingHours')">Öppettider</button>
+                    <li class="nav-item ml-auto ps-1 ">
+                        <a class="fs-4 nav-link" href="#openingHours">Öppettider</a>
                     </li>
-                    <li class="nav-item ps-1">
-                        <button class="navButton sideNavButton fs-4" data-bs-toggle="collapse"
-                            data-bs-target="#navbarToggler" onclick="scrollToInfo('address')">Adress</button>
+                    <li class="nav-item  ps-1">
+                        <a class="fs-4 nav-link  " href="#address">Hitta&nbsp;hit</a>
                     </li>
                 </ul>
             </div>
@@ -97,7 +91,7 @@
 
     <div class="container-sm mt-5">
         <div class="dropdown d-flex justify-content-between">
-            <div class=" btn-group role='group'" aria-label="Basic outlined example">
+            <div class="btn-group" role="group" aria-label="Basic outlined example">
                 <button type="button" class="btn btn-outline-primary rounded-0" id="companyPriceButton"
                     onclick="priceChangeVAT(true)">Företag</button>
                 <button type="button" class="btn btn-outline-primary rounded-0" id="privatePriceButton"
@@ -105,20 +99,20 @@
             </div>
             <button class="btn btn-secondary dropdown-toggle rounded-0" type="button" data-bs-toggle="dropdown"
                 aria-expanded="false">
-                Sortera efter: <span id="currentSorting">Modell</span>
+                Sortera efter: <span id="currentSorting">Bilar</span>
             </button>
             <ul class="dropdown-menu">
                 <li>
-                    <a id="price" class="dropdown-item" onclick="sortCars('price')">Pris <img class="sortArrow"
-                            src="images/arrowdown.svg" alt="Downwards arrow"></a>
+                    <a id="price" class="dropdown-item" onclick="sortProductChart('price')">Dagspris <img
+                            class="sortArrow" src="images/arrowdown.svg" alt="Downwards arrow"></a>
                 </li>
 
                 <li>
-                    <a id="year" class="dropdown-item" onclick="sortCars('year')">Årsgång <img class="sortArrow"
-                            src="images/arrowdown.svg" alt="Downwards arrow"></a>
+                    <a id="year" class="dropdown-item" onclick="sortProductChart('year')">Årsmodell <img
+                            class="sortArrow" src="images/arrowdown.svg" alt="Downwards arrow"></a>
                 </li>
                 <li>
-                    <a id="name" class="dropdown-item" onclick="sortCars('name')">Modell <img class="sortArrow"
+                    <a id="name" class="dropdown-item" onclick="sortProductChart('name')">Bilar <img class="sortArrow"
                             src="images/arrowdown.svg" alt="Downwards arrow"></a>
                 </li>
             </ul>
@@ -142,11 +136,12 @@
         </table>
     </div>
 
-    <div class="container-fluid text-center mt-5d info-section">
+
+    <div class="container-fluid text-center mt-5 info-section">
         <div class="row justify-content-evenly d-flex">
-            <div class="col-sm-6 justify-content-center">
+            <div class="col-sm-6 justify-content-center" id="openingHours">
                 <div class="col-lg">
-                    <h3 class=" mb-3 h3" id="openingHours">Öppettider</h3>
+                    <h3 class=" mb-3 h3">Öppettider</h3>
                     <p class="fs-5" id="storeState"></p>
 
                     <div class="text-start openHours w-75 fs-5">
@@ -193,17 +188,17 @@
             </div>
             <div class="col-sm-6 justify-content-center h6 ">
                 <h3 class="mb-3">Hitta hit</h3>
-                <p>
+                <div>
 
                     <iframe
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2127.594234558012!2d14.134204777783458!3d57.77429073450839!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x465a6dfced2b078d%3A0x5e530219f0ce4a2!2zRmrDpGxsZ2F0YW4gMzIsIDU1NCAzOSBKw7Zua8O2cGluZw!5e0!3m2!1ssv!2sse!4v1693829622306!5m2!1ssv!2sse"
-                        class="w-75" style="border:0; margin-top:0px;" allowfullscreen=""
+                        class="map mt-1" style="border:0; margin-top:0px;" allowfullscreen=""
                         referrerpolicy="no-referrer-when-downgrade"></iframe>
-                <h3 class="h6 " id="address">
-                    <span> Fjällgatan 32H 981 39 Jönköping
-                    </span>
-                </h3>
-                </p>
+                    <h3 class="h6 " id="address">
+                        <span class="fs-5">
+                            Fjällgatan 32H<br> 981 39 Jönköping </span>
+                    </h3>
+                </div>
 
             </div>
 
@@ -216,11 +211,11 @@
 
 
 
-    <div class="container-fluid bg-light pb-2">
-        <div class="container text-center">
+    <div class="container-fluid bg-light pb-1 mt-4">
+        <div class="container text-center my-auto">
             <!--Makes the title hold togheter even on smaller screens-->
             <div class="row">
-                <div class="col-lg my-3">
+                <div class="col-lg py-3">
                     <!--Bootstrap class for colums in the row class-->
 
                     <h3 id="contactInfo">Kontakta&nbsp;oss</h3>
@@ -228,7 +223,7 @@
                     <br>
                     <a href="mailto:info@ntig-uppsala.github.io" class="blackLink">info@ntig&#8209;uppsala.github.io</a>
                     <br>
-                    <div class="social-icons">
+                    <div class="social-icons mt-2">
                         <a href="https://www.facebook.com/ntiuppsala/?locale=sv_SE" target="_blank" class="icon-link"
                             id="Facebook">
                             <img src="images/facebookicon.png" class="bi" alt="Facebook icon">
@@ -251,8 +246,14 @@
     <!--To run bootstrap-->
     <script src="js/bootstrap.bundle.min.js"></script>
 
-    <!--Our javascript-->
-    <script src="js/javascript.js"></script>
+    <!--Our JavaScript-->
+    <script src="js/main.js"></script>
+    <!--Our JavaScript for live opening hours-->
+    <script src="js/liveOpeningHours.js"></script>
+    <!--Our JavaScript for closed days sorting-->
+    <script src="js/sortClosedDays.js"></script>
+    <!--Our JavaScript for products-->
+    <script src="js/products.js"></script>
 </body>
 
 </html>

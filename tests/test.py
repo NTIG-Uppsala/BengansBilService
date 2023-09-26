@@ -107,7 +107,8 @@ class TestingPage(TestCase):
             )
 
             if is_loaded:
-                print(f"Image '{image_element.get_attribute('src')}' is loaded.")
+                print(
+                    f"Image '{image_element.get_attribute('src')}' is loaded.")
             else:
                 self.fail(
                     f"Image '{image_element.get_attribute('src')}' is not loaded."
@@ -116,8 +117,10 @@ class TestingPage(TestCase):
     def testNavBarTitle(self):
         element = self.browser.find_element(By.CLASS_NAME, "navbar-nav")
         self.assertIn("Kontakta&nbsp;oss", element.get_attribute("innerHTML"))
-        self.assertIn("Adress", element.get_attribute("innerHTML"))
+        self.assertIn("Hitta&nbsp;hit", element.get_attribute("innerHTML"))
         self.assertIn("Öppettider", element.get_attribute("innerHTML"))
+        # checks that there is no residual product:
+        self.assertNotIn("Adress", element.get_attribute("innerHTML"))
 
     def testFooterTitle(self):
         element = self.browser.find_element(By.CLASS_NAME, "info-section")
@@ -142,7 +145,8 @@ class TestingPage(TestCase):
         )
 
     def testZipCodeText(self):
-        self.assertIn("Kolla om vår hemleverans når dig", self.browser.page_source)
+        self.assertIn("Kolla om vår hemleverans når dig",
+                      self.browser.page_source)
         self.browser.find_element(By.CLASS_NAME, "checkNumber")
 
     def helperZipCode(self, zipCodeList, message):
@@ -185,156 +189,96 @@ class TestingPage(TestCase):
         self.helperZipCode(zipCodeList3, "Inte ett giltigt postnummer.")
 
     def testIsDateClosed(self):
-        result = self.browser.execute_script("return isDateClosed(2023, 0, 1);")
+        result = self.browser.execute_script(
+            "return isDateClosed(2023, 0, 1);")
         self.assertTrue(result, "Expected date to be closed: 0/1")
-        result = self.browser.execute_script("return isDateClosed(2023, 0, 2);")
+        result = self.browser.execute_script(
+            "return isDateClosed(2023, 0, 2);")
         self.assertFalse(result, "Expected date to be open: 0/2")
 
     def helperLiveOpening(self, date, results):
-        self.browser.execute_script("setLiveOpeningHours(new Date('" + date + "'))")
+        self.browser.execute_script(
+            "setLiveOpeningHours(new Date('" + date + "'))")
         element = self.browser.find_element(By.ID, "storeState")
         self.assertIn(results, element.text)
 
     def testLiveOpeningHours(self):
         # Monday
-        self.helperLiveOpening("2023-09-11T09:15:00", "Öppnar idag kl 10")
+        self.helperLiveOpening("2023-09-11T09:15:00", "Öppnar idag kl. 10")
         self.helperLiveOpening("2023-09-11T09:30:00", "Öppnar om 30 minuter")
         self.helperLiveOpening("2023-09-11T10:10:00", "Just nu: Öppet")
         self.helperLiveOpening("2023-09-11T12:30:00", "Just nu: Öppet")
         self.helperLiveOpening("2023-09-11T15:45:00", "Stänger snart")
-        self.helperLiveOpening("2023-09-11T16:15:00", "Öppnar tisdag kl 10")
+        self.helperLiveOpening("2023-09-11T16:15:00", "Öppnar tisdag kl. 10")
 
         # Tuesday
-        self.helperLiveOpening("2023-09-12T09:15:00", "Öppnar idag kl 10")
+        self.helperLiveOpening("2023-09-12T09:15:00", "Öppnar idag kl. 10")
         self.helperLiveOpening("2023-09-12T09:30:00", "Öppnar om 30 minuter")
         self.helperLiveOpening("2023-09-12T10:10:00", "Just nu: Öppet")
         self.helperLiveOpening("2023-09-12T12:30:00", "Just nu: Öppet")
         self.helperLiveOpening("2023-09-12T15:45:00", "Stänger snart")
-        self.helperLiveOpening("2023-09-12T16:15:00", "Öppnar onsdag kl 10")
+        self.helperLiveOpening("2023-09-12T16:15:00", "Öppnar onsdag kl. 10")
 
         # Wednesday
-        self.helperLiveOpening("2023-09-13T09:15:00", "Öppnar idag kl 10")
+        self.helperLiveOpening("2023-09-13T09:15:00", "Öppnar idag kl. 10")
         self.helperLiveOpening("2023-09-13T09:30:00", "Öppnar om 30 minuter")
         self.helperLiveOpening("2023-09-13T10:10:00", "Just nu: Öppet")
         self.helperLiveOpening("2023-09-13T12:30:00", "Just nu: Öppet")
         self.helperLiveOpening("2023-09-13T15:45:00", "Stänger snart")
-        self.helperLiveOpening("2023-09-13T16:15:00", "Öppnar torsdag kl 10")
+        self.helperLiveOpening("2023-09-13T16:15:00", "Öppnar torsdag kl. 10")
 
         # Thursday
-        self.helperLiveOpening("2023-09-14T09:15:00", "Öppnar idag kl 10")
+        self.helperLiveOpening("2023-09-14T09:15:00", "Öppnar idag kl. 10")
         self.helperLiveOpening("2023-09-14T09:30:00", "Öppnar om 30 minuter")
         self.helperLiveOpening("2023-09-14T10:10:00", "Just nu: Öppet")
         self.helperLiveOpening("2023-09-14T12:30:00", "Just nu: Öppet")
         self.helperLiveOpening("2023-09-14T15:45:00", "Stänger snart")
-        self.helperLiveOpening("2023-09-14T16:15:00", "Öppnar fredag kl 10")
+        self.helperLiveOpening("2023-09-14T16:15:00", "Öppnar fredag kl. 10")
 
         # Friday
-        self.helperLiveOpening("2023-09-15T09:15:00", "Öppnar idag kl 10")
+        self.helperLiveOpening("2023-09-15T09:15:00", "Öppnar idag kl. 10")
         self.helperLiveOpening("2023-09-15T09:30:00", "Öppnar om 30 minuter")
         self.helperLiveOpening("2023-09-15T10:10:00", "Just nu: Öppet")
         self.helperLiveOpening("2023-09-15T12:30:00", "Just nu: Öppet")
         self.helperLiveOpening("2023-09-15T15:45:00", "Stänger snart")
-        self.helperLiveOpening("2023-09-15T16:15:00", "Öppnar lördag kl 12")
+        self.helperLiveOpening("2023-09-15T16:15:00", "Öppnar lördag kl. 12")
 
         # Saturday
-        self.helperLiveOpening("2023-09-16T09:45:00", "Öppnar idag kl 12")
-        self.helperLiveOpening("2023-09-16T10:30:00", "Öppnar idag kl 12")
+        self.helperLiveOpening("2023-09-16T09:45:00", "Öppnar idag kl. 12")
+        self.helperLiveOpening("2023-09-16T10:30:00", "Öppnar idag kl. 12")
         self.helperLiveOpening("2023-09-16T11:30:00", "Öppnar om 30 minuter")
         self.helperLiveOpening("2023-09-16T12:10:00", "Just nu: Öppet")
         self.helperLiveOpening("2023-09-16T14:00:00", "Just nu: Öppet")
         self.helperLiveOpening("2023-09-16T14:45:00", "Stänger snart")
-        self.helperLiveOpening("2023-09-16T15:10:00", "Öppnar måndag kl 10")
+        self.helperLiveOpening("2023-09-16T15:10:00", "Öppnar måndag kl. 10")
 
         # Sunday
-        self.helperLiveOpening("2023-09-17T09:15:00", "Öppnar måndag kl 10")
-        self.helperLiveOpening("2023-09-17T10:30:00", "Öppnar måndag kl 10")
-        self.helperLiveOpening("2023-09-17T12:10:00", "Öppnar måndag kl 10")
-        self.helperLiveOpening("2023-09-17T14:45:00", "Öppnar måndag kl 10")
-        self.helperLiveOpening("2023-09-17T15:45:00", "Öppnar måndag kl 10")
-        self.helperLiveOpening("2023-09-17T16:45:00", "Öppnar måndag kl 10")
+        self.helperLiveOpening("2023-09-17T09:15:00", "Öppnar måndag kl. 10")
+        self.helperLiveOpening("2023-09-17T10:30:00", "Öppnar måndag kl. 10")
+        self.helperLiveOpening("2023-09-17T12:10:00", "Öppnar måndag kl. 10")
+        self.helperLiveOpening("2023-09-17T14:45:00", "Öppnar måndag kl. 10")
+        self.helperLiveOpening("2023-09-17T15:45:00", "Öppnar måndag kl. 10")
+        self.helperLiveOpening("2023-09-17T16:45:00", "Öppnar måndag kl. 10")
 
         # Night time
-        self.helperLiveOpening("2023-09-13T00:45:00", "Öppnar idag kl 10")
-        self.helperLiveOpening("2023-09-15T23:00:00", "Öppnar lördag kl 12")
+        self.helperLiveOpening("2023-09-13T00:45:00", "Öppnar idag kl. 10")
+        self.helperLiveOpening("2023-09-15T23:00:00", "Öppnar lördag kl. 12")
 
         # Closed days
 
         # New year
-        self.helperLiveOpening("2023-12-30T16:10:00", "Öppnar tisdag kl 10")
-        self.helperLiveOpening("2023-12-31T10:10:00", "Öppnar tisdag kl 10")
-        self.helperLiveOpening("2024-01-01T16:10:00", "Öppnar tisdag kl 10")
-        self.helperLiveOpening("2024-01-06T14:10:00", "Öppnar måndag kl 10")
+        self.helperLiveOpening("2023-12-30T16:10:00", "Öppnar tisdag kl. 10")
+        self.helperLiveOpening("2023-12-31T10:10:00", "Öppnar tisdag kl. 10")
+        self.helperLiveOpening("2024-01-01T16:10:00", "Öppnar tisdag kl. 10")
+        self.helperLiveOpening("2024-01-06T14:10:00", "Öppnar måndag kl. 10")
 
         # Christmas
-        self.helperLiveOpening("2023-12-23T15:50:00", "Öppnar onsdag kl 10")
-        self.helperLiveOpening("2023-12-24T16:50:00", "Öppnar onsdag kl 10")
-        self.helperLiveOpening("2023-12-25T02:50:00", "Öppnar onsdag kl 10")
-        self.helperLiveOpening("2023-12-26T10:50:00", "Öppnar onsdag kl 10")
+        self.helperLiveOpening("2023-12-23T15:50:00", "Öppnar onsdag kl. 10")
+        self.helperLiveOpening("2023-12-24T16:50:00", "Öppnar onsdag kl. 10")
+        self.helperLiveOpening("2023-12-25T02:50:00", "Öppnar onsdag kl. 10")
+        self.helperLiveOpening("2023-12-26T10:50:00", "Öppnar onsdag kl. 10")
 
-    def helperLiveOpeningHeader(self, date, expectedResult):
-        self.browser.execute_script("setLiveOpeningHours(new Date('" + date + "'));")
-        headerOpenColor = self.browser.execute_script(
-            "return document.getElementById('storeOpen').style.color;"
-        )
-        result = False
-        if headerOpenColor == "green":
-            result = True
-        else:
-            result = False
-
-        self.assertEqual(expectedResult, result)
-
-    def testLiveOpeningHoursHeader(self):
-        # Monday
-        self.helperLiveOpeningHeader("2023-09-11T05:00:00", False)
-        self.helperLiveOpeningHeader("2023-09-11T09:00:00", False)
-        self.helperLiveOpeningHeader("2023-09-11T10:30:00", True)
-        self.helperLiveOpeningHeader("2023-09-11T15:00:00", True)
-        self.helperLiveOpeningHeader("2023-09-11T17:00:00", False)
-        self.helperLiveOpeningHeader("2023-09-11T22:00:00", False)
-
-        # Tuesday
-        self.helperLiveOpeningHeader("2023-09-12T05:00:00", False)
-        self.helperLiveOpeningHeader("2023-09-12T09:00:00", False)
-        self.helperLiveOpeningHeader("2023-09-12T10:30:00", True)
-        self.helperLiveOpeningHeader("2023-09-12T15:00:00", True)
-        self.helperLiveOpeningHeader("2023-09-12T17:00:00", False)
-        self.helperLiveOpeningHeader("2023-09-12T22:00:00", False)
-
-        # Wednesday
-        self.helperLiveOpeningHeader("2023-09-13T05:00:00", False)
-        self.helperLiveOpeningHeader("2023-09-13T09:00:00", False)
-        self.helperLiveOpeningHeader("2023-09-13T10:30:00", True)
-        self.helperLiveOpeningHeader("2023-09-13T15:00:00", True)
-        self.helperLiveOpeningHeader("2023-09-13T17:00:00", False)
-        self.helperLiveOpeningHeader("2023-09-13T22:00:00", False)
-
-        # Thursday
-        self.helperLiveOpeningHeader("2023-09-14T05:00:00", False)
-        self.helperLiveOpeningHeader("2023-09-14T09:00:00", False)
-        self.helperLiveOpeningHeader("2023-09-14T10:30:00", True)
-        self.helperLiveOpeningHeader("2023-09-14T15:00:00", True)
-        self.helperLiveOpeningHeader("2023-09-14T17:00:00", False)
-        self.helperLiveOpeningHeader("2023-09-14T22:00:00", False)
-
-        # Friday
-        self.helperLiveOpeningHeader("2023-09-15T05:00:00", False)
-        self.helperLiveOpeningHeader("2023-09-15T09:00:00", False)
-        self.helperLiveOpeningHeader("2023-09-15T10:30:00", True)
-        self.helperLiveOpeningHeader("2023-09-15T15:00:00", True)
-        self.helperLiveOpeningHeader("2023-09-15T17:00:00", False)
-        self.helperLiveOpeningHeader("2023-09-15T22:00:00", False)
-
-        # Saturday
-        self.helperLiveOpeningHeader("2023-09-16T05:00:00", False)
-        self.helperLiveOpeningHeader("2023-09-16T10:30:00", False)
-        self.helperLiveOpeningHeader("2023-09-16T11:00:00", False)
-        self.helperLiveOpeningHeader("2023-09-16T12:00:00", True)
-        self.helperLiveOpeningHeader("2023-09-16T14:00:00", True)
-        self.helperLiveOpeningHeader("2023-09-16T17:00:00", False)
-        self.helperLiveOpeningHeader("2023-09-16T22:00:00", False)
-
-    def helperProductSort(self, sortOption, expectedFirst, expectedLast, clicks):
+    def helperProductSort(self, sortOption, expectedFirst, expectedLast, clicks, expectedFirstChecker):
         for n in range(clicks):
             self.browser.execute_script("window.scrollTo(0, 450);")
             time.sleep(1)
@@ -344,20 +288,22 @@ class TestingPage(TestCase):
             "return Array.from(document.getElementById('productChart').children)"
         )
         self.assertIn(expectedFirst, sortedCarList[1].text)
+        self.assertIn(expectedFirstChecker, sortedCarList[1].text)
+
         self.assertIn(expectedLast, sortedCarList[len(sortedCarList) - 1].text)
 
     def testProductSort(self):
-        self.helperProductSort("price", "800", "250", 1)
+        self.helperProductSort("price", "800", "250", 1, "Audi A6")
 
-        self.helperProductSort("year", "2022", "1999", 1)
+        self.helperProductSort("year", "2022", "1999", 1, "Audi A6")
 
-        self.helperProductSort("name", "Audi A6", "VW Polo", 1)
+        self.helperProductSort("name", "Audi A6", "VW Polo", 1, "800")
 
-        self.helperProductSort("price", "250", "800", 2)
+        self.helperProductSort("price", "250", "800", 2, "VW Polo")
 
-        self.helperProductSort("year", "1999", "2022", 2)
+        self.helperProductSort("year", "1999", "2022", 2, "VW Polo")
 
-        self.helperProductSort("name", "VW Polo", "Audi A6", 2)
+        self.helperProductSort("name", "VW Polo", "Audi A6", 2, "250")
 
     def helperClosedDaysAutomaticOrder(self, date, expectedDate):
         time.sleep(2)
@@ -369,12 +315,15 @@ class TestingPage(TestCase):
         self.assertEqual(firstDate, expectedDate)
 
     def testClosedDaysAutomaticOrder(self):
-        self.helperClosedDaysAutomaticOrder("2023-09-16T14:00:00", ["12", "24"])
+        self.helperClosedDaysAutomaticOrder(
+            "2023-09-16T14:00:00", ["12", "24"])
         self.helperClosedDaysAutomaticOrder("2023-01-02T14:00:00", ["1", "6"])
         self.helperClosedDaysAutomaticOrder("2023-04-13T14:00:00", ["5", "1"])
-        self.helperClosedDaysAutomaticOrder("2023-12-25T14:00:00", ["12", "26"])
+        self.helperClosedDaysAutomaticOrder(
+            "2023-12-25T14:00:00", ["12", "26"])
 
     def testCompanyPrices(self):
+        self.browser.execute_script("window.scrollTo(0, 450);")
         self.browser.find_element(By.ID, "companyPriceButton").click()
         productList = self.browser.execute_script(
             "return Array.from(document.getElementById('productChart').children)"

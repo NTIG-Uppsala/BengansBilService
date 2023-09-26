@@ -24,7 +24,6 @@ function vatCalc(carPrice) {
 
 
 
-
 // Runs when the page is loaded
 document.addEventListener("DOMContentLoaded", function () {
     const tableBody = document.getElementById("carList");
@@ -37,11 +36,13 @@ document.addEventListener("DOMContentLoaded", function () {
         const priceCell = document.createElement("td");
 
 
+
         priceCell.textContent = vatCalc(car.price)
         nameCell.textContent = car.name;
         yearCell.textContent = car.year;
         if (isCompanyPriceGlobal == true) {
             withoutVat + "\u00A0kr (exkl. moms)";
+
         } else {
             priceCell.textContent = car.price + "\u00A0kr";
         }

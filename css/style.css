@@ -18,21 +18,12 @@ body {
 	padding: 5px;
 }
 
-#storeOpen {
-	opacity: 1 !important;
+.nav-link {
+	color: white !important;
 }
 
-#storeClosed {
-	opacity: 1 !important;
-}
-
-.sideNavButton {
-	background-color: transparent;
-	border: none;
-}
-
-.navButton:hover {
-	color: lightblue;
+.nav-item:hover {
+	color: rgb(209, 226, 233) !important;
 }
 
 .blackLink {
@@ -44,32 +35,6 @@ body {
 	margin-top: 13vh;
 }
 
-.nav-item {
-	text-align: center !important;
-	align-items: center !important;
-	display: flex !important;
-	justify-content: center !important;
-}
-
-.subnav {
-	right: 0 !important;
-	position: absolute !important;
-	top: 0;
-	bottom: 0;
-	margin: auto 0;
-}
-
-.navButton {
-	background-color: transparent;
-	color: white;
-	border: none;
-	margin-left: 1vw;
-	text-decoration: none;
-	font-style: normal;
-	font-size: 2.5rem;
-	text-align: center;
-}
-
 .closedColor {
 	color: rgb(247, 77, 77);
 }
@@ -78,9 +43,9 @@ body {
 	font-size: 1rem !important;
 }
 
-.icon {
-	width: 36px;
-	height: 36px;
+.bi {
+	width: 30px !important;
+	height: 30px !important;
 }
 
 .chartItem {
@@ -191,7 +156,6 @@ iframe {
 #zipCodeCheck {
 	height: auto;
 }
-
 .checkNumber {
 	height: inherit;
 	font-size: 1.2rem;
@@ -215,15 +179,15 @@ iframe {
 	border-color: black;
 	color: black;
 }
+.map{
+    width: 45vw;
+    height: 50vh;
+
+}
+
+
 
 @media screen and (max-width:991px) {
-	.nav-item {
-		text-align: unset !important;
-		align-items: unset !important;
-		display: unset !important;
-		justify-content: unset !important;
-	}
-
 	.navbar-toggler {
 		margin: auto auto;
 	}
@@ -250,11 +214,15 @@ iframe {
 
 }
 
-@media screen and (max-width:500px) {
+@media screen and (max-width:570px) {
 	.websiteTitle {
 		font-size: 100%;
 	}
-
+    .map{
+        width: 80vw;
+        height: 50vh;
+        
+    }
 }
 
 @media screen and (max-width:200px) {
@@ -276,13 +244,6 @@ iframe {
 @media screen and (max-width:1500px) {
 	.container {
 		margin-bottom: 0;
-	}
-
-}
-
-@media screen and (max-width:1100px) {
-	.navButton {
-		font-size: 2rem;
 	}
 
 }
@@ -372,3 +333,6 @@ iframe {
 	}
 
 }
+
+
+
