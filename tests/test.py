@@ -107,7 +107,8 @@ class TestingPage(TestCase):
             )
 
             if is_loaded:
-                print(f"Image '{image_element.get_attribute('src')}' is loaded.")
+                print(
+                    f"Image '{image_element.get_attribute('src')}' is loaded.")
             else:
                 self.fail(
                     f"Image '{image_element.get_attribute('src')}' is not loaded."
@@ -144,7 +145,8 @@ class TestingPage(TestCase):
         )
 
     def testZipCodeText(self):
-        self.assertIn("Kolla om vår hemleverans når dig", self.browser.page_source)
+        self.assertIn("Kolla om vår hemleverans når dig",
+                      self.browser.page_source)
         self.browser.find_element(By.CLASS_NAME, "checkNumber")
 
     def helperZipCode(self, zipCodeList, message):
@@ -187,7 +189,8 @@ class TestingPage(TestCase):
         self.helperZipCode(zipCodeList3, "Inte ett giltigt postnummer.")
 
     def helperLiveOpening(self, date, results):
-        self.browser.execute_script("setLiveOpeningHours(new Date('" + date + "'))")
+        self.browser.execute_script(
+            "setLiveOpeningHours(new Date('" + date + "'))")
         element = self.browser.find_element(By.ID, "storeState")
         self.assertIn(results, element.text)
 
@@ -284,7 +287,8 @@ class TestingPage(TestCase):
         self.assertIn(expectedFirstChecker, sortedCarList[1].text)
 
         self.assertIn(expectedLast, sortedCarList[len(sortedCarList) - 1].text)
-        self.assertIn(expectedLastChecker, sortedCarList[len(sortedCarList) - 1].text)
+        self.assertIn(expectedLastChecker,
+                      sortedCarList[len(sortedCarList) - 1].text)
 
     def testProductSort(self):
         self.helperProductSort(
@@ -295,15 +299,18 @@ class TestingPage(TestCase):
             "yearDecreasing", "2022", "1999", "Audi A6", "Cadillac Escalade"
         )
 
-        self.helperProductSort("nameDecreasing", "Audi A6", "VW Polo", "800", "Audi A6")
+        self.helperProductSort("nameDecreasing", "Audi A6",
+                               "VW Polo", "800", "Audi A6")
 
-        self.helperProductSort("priceRising", "250", "800", "VW Polo", "Audi A6")
+        self.helperProductSort("priceRising", "250",
+                               "800", "VW Polo", "Audi A6")
 
         self.helperProductSort(
             "yearRising", "1999", "2022", "Cadillac Escalade", "VW Polo"
         )
 
-        self.helperProductSort("nameRising", "VW Polo", "Audi A6", "250", "300")
+        self.helperProductSort("nameRising", "VW Polo",
+                               "Audi A6", "250", "300")
 
     def helperClosedDaysAutomaticOrder(self, date, expectedDate):
         time.sleep(2)
@@ -315,24 +322,26 @@ class TestingPage(TestCase):
         self.assertEqual(firstDate, expectedDate)
 
     def testClosedDaysAutomaticOrder(self):
-        self.helperClosedDaysAutomaticOrder("2023-09-16T14:00:00", ["12", "24"])
+        self.helperClosedDaysAutomaticOrder(
+            "2023-09-16T14:00:00", ["12", "24"])
         self.helperClosedDaysAutomaticOrder("2023-01-02T14:00:00", ["1", "6"])
         self.helperClosedDaysAutomaticOrder("2023-04-13T14:00:00", ["5", "1"])
-        self.helperClosedDaysAutomaticOrder("2023-12-25T14:00:00", ["12", "26"])
+        self.helperClosedDaysAutomaticOrder(
+            "2023-12-25T14:00:00", ["12", "26"])
 
-    def testCompanyPrices(self):
-        self.browser.execute_script("window.scrollTo(0, 450);")
-        self.browser.find_element(By.ID, "companyPriceButton").click()
-        productList = self.browser.execute_script(
-            "return Array.from(document.getElementById('productChart').children)"
-        )
-        self.assertIn("640", productList[1].text)
+        def testCompanyPrices(self):
+            self.browser.execute_script("window.scrollTo(0, 700);")
+            self.browser.find_element(By.ID, "companyPriceButton").click()
+            productList = self.browser.execute_script(
+                "return Array.from(document.getElementById('productChart').children)"
+            )
+            self.assertIn("640", productList[1].text)
 
-        self.browser.find_element(By.ID, "privatePriceButton").click()
-        productList = self.browser.execute_script(
-            "return Array.from(document.getElementById('productChart').children)"
-        )
-        self.assertIn("800", productList[1].text)
+            self.browser.find_element(By.ID, "privatePriceButton").click()
+            productList = self.browser.execute_script(
+                "return Array.from(document.getElementById('productChart').children)"
+            )
+            self.assertIn("800", productList[1].text)
 
 
 # will run if the fil running is a normal python file, always end of file
