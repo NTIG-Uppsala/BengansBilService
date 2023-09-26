@@ -72,7 +72,7 @@ function sortCars(buttonInput) {
   // Checks the sorting type and creates the sorted list
   switch (buttonInput) {
     // Sorts the list by price
-    case "price":
+    case "priceRising":
       sortedCars = carsList.sort(function (a, b) {
         // Sorts the list
         sortText.innerText = "Pris";
@@ -87,7 +87,7 @@ function sortCars(buttonInput) {
       });
       break;
     // Sorts the list by year
-    case "year":
+    case "yearRising":
       sortedCars = carsList.sort(function (a, b) {
         sortText.innerText = "Årsmodell";
         return a["year"] - b["year"]; // Orders list so that lowest value comes first
@@ -102,7 +102,7 @@ function sortCars(buttonInput) {
       break;
 
     // Sorts the list by name alphabetically
-    case "name":
+    case "nameRising":
       sortedCars = carsList.sort(function (a, b) {
         sortText.innerText = "Bilar";
         return a.name.localeCompare(b.name); // Orders list so that earlier letter comes first
