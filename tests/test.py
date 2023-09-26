@@ -268,13 +268,15 @@ class TestingPage(TestCase):
         self.helperLiveOpening("2023-12-26T10:50:00", "Öppnar onsdag kl. 10")
 
     def helperProductSort(
-        self, sortOption, expectedFirst, expectedLast, clicks, expectedFirstChecker
+        self,
+        sortOption,
+        expectedFirst,
+        expectedLast,
+        expectedFirstChecker,
+        expectedLastChecker,
     ):
-        for n in range(clicks):
-            self.browser.execute_script("window.scrollTo(0, 450);")
-            time.sleep(1)
-            self.browser.find_element(By.CLASS_NAME, "dropdown-toggle").click()
-            self.browser.find_element(By.ID, sortOption).click()
+        self.browser.find_element(By.CLASS_NAME, "dropdown-toggle").click()
+        self.browser.find_element(By.ID, sortOption).click()
         sortedCarList = self.browser.execute_script(
             "return Array.from(document.getElementById('productChart').children)"
         )
@@ -282,19 +284,26 @@ class TestingPage(TestCase):
         self.assertIn(expectedFirstChecker, sortedCarList[1].text)
 
         self.assertIn(expectedLast, sortedCarList[len(sortedCarList) - 1].text)
+        self.assertIn(expectedLastChecker, sortedCarList[len(sortedCarList) - 1].text)
 
     def testProductSort(self):
-        self.helperProductSort("price", "800", "250", 1, "Audi A6")
+        self.helperProductSort(
+            "priceDecreasing", "800", "250", "Audi A6", "Renault Kadjar"
+        )
 
-        self.helperProductSort("year", "2022", "1999", 1, "Audi A6")
+        self.helperProductSort(
+            "yearDecreasing", "2022", "1999", "Audi A6", "Cadillac Escalade"
+        )
 
-        self.helperProductSort("name", "Audi A6", "VW Polo", 1, "800")
+        self.helperProductSort("nameDecreasing", "Audi A6", "VW Polo", "800", "Audi A6")
 
-        self.helperProductSort("price", "250", "800", 2, "VW Polo")
+        self.helperProductSort("priceRising", "250", "800", "VW Polo", "Audi A6")
 
-        self.helperProductSort("year", "1999", "2022", 2, "VW Polo")
+        self.helperProductSort(
+            "yearRising", "1999", "2022", "Cadillac Escalade", "VW Polo"
+        )
 
-        self.helperProductSort("name", "VW Polo", "Audi A6", 2, "250")
+        self.helperProductSort("nameRising", "VW Polo", "Audi A6", "250", "300")
 
     def helperClosedDaysAutomaticOrder(self, date, expectedDate):
         time.sleep(2)
