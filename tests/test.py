@@ -318,6 +318,7 @@ class TestingPage(TestCase):
             "return Array.from(document.getElementById('productChart').children)"
         )
         self.assertIn("640", productList[1].text)
+
         self.browser.find_element(By.ID, "privatePriceButton").click()
         productList = self.browser.execute_script(
             "return Array.from(document.getElementById('productChart').children)"
