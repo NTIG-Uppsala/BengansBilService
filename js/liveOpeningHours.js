@@ -10,7 +10,7 @@ const openingHours = {
 
 // Globally defines array of weekday names
 const days = [
-    "Nan",
+    "söndag",
     "måndag",
     "tisdag",
     "onsdag",
@@ -72,13 +72,13 @@ function setOpeningStatus(date) {
 
 // Displays the store status on the page
 function displayOpeningStatus(status, color) {
-    const rightNowSpan = document.createElement("span");
-    const statusSpan = document.createElement("span");
-
     const element = document.getElementById("storeState");
     if (color === 'orange') {
         element.innerText = status;
     } else { // If the store is opened and more than 15 minutes before closing
+        const rightNowSpan = document.createElement("span");
+        const statusSpan = document.createElement("span");
+
         rightNowSpan.innerText = "Just nu: ";
         rightNowSpan.style.color = "black";
 
