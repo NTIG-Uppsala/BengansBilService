@@ -14,24 +14,35 @@ let carsList = [
   { name: "VW Polo", year: "2022", price: 300 },
 ];
 
+function vatCalculation(carPrice) {
+    // percentual modifyer of vat, 0.8 = 80%
+    const vatRate = 0.8;
+    let withoutVat;
+    withoutVat = carPrice * vatRate;
+    return withoutVat;
+};
+
+
+
 // Runs when the page is loaded
 document.addEventListener("DOMContentLoaded", function () {
-  const tableBody = document.getElementById("carList");
+    const tableBody = document.getElementById("carList");
 
-  // Adds the cars to the HTML
-  carsList.forEach(function (car) {
-    const row = document.createElement("tr");
-    const nameCell = document.createElement("td");
-    const yearCell = document.createElement("td");
-    const priceCell = document.createElement("td");
+    // Adds the cars to the HTML
+    carsList.forEach(function (car) {
+        const row = document.createElement("tr");
+        const nameCell = document.createElement("td");
+        const yearCell = document.createElement("td");
+        const priceCell = document.createElement("td");
+        priceCell.textContent = vatCalculation(car.price)
+        nameCell.textContent = car.name;
+        yearCell.textContent = car.year;
+        if (isCompanyPriceGlobal == true) {
+            withoutVat + "\u00A0kr (exkl. moms)";
 
-    nameCell.textContent = car.name;
-    yearCell.textContent = car.year;
-    if (isCompanyPriceGlobal == true) {
-      priceCell.textContent = car.price * 0.8 + "\u00A0kr (exkl. moms)";
-    } else {
-      priceCell.textContent = car.price + "\u00A0kr (inkl. moms)";
-    }
+        } else {
+            priceCell.textContent = car.price + "\u00A0kr";
+        }
 
     row.appendChild(nameCell);
     row.appendChild(yearCell);
