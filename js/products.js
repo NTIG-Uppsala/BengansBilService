@@ -14,7 +14,7 @@ let carsList = [
     { name: "VW Polo", year: "2022", price: 300 },
 ];
 
-function vatCalc(carPrice) {
+function vatCalculation(carPrice) {
     // percentual modifyer of vat, 0.8 = 80%
     const vatRate = 0.8;
     let withoutVat;
@@ -34,10 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const nameCell = document.createElement("td");
         const yearCell = document.createElement("td");
         const priceCell = document.createElement("td");
-
-
-
-        priceCell.textContent = vatCalc(car.price)
+        priceCell.textContent = vatCalculation(car.price)
         nameCell.textContent = car.name;
         yearCell.textContent = car.year;
         if (isCompanyPriceGlobal == true) {
