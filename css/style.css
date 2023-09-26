@@ -126,15 +126,15 @@ iframe {
 	border-color: black !important;
 	color: black !important;
 	border: 0.1em solid !important;
-	background-color: transparent !important;
 }
 
 .btn:hover {
 	background-color: lightGrey !important;
 }
 
-.btn:active {
-	background-color: lightGrey !important;
+.btn-toggle-active {
+	background-color: #1e549d !important;     /* Darker background color for active state */
+	color: white !important;     /* Text color for active state */
 }
 
 .dropdown-item {
@@ -157,6 +157,7 @@ iframe {
 #zipCodeCheck {
 	height: auto;
 }
+
 .checkNumber {
 	height: inherit;
 	font-size: 1.2rem;
@@ -180,13 +181,11 @@ iframe {
 	border-color: black;
 	color: black;
 }
-.map{
-    width: 45vw;
-    height: 50vh;
 
+.map {
+	width: 45vw;
+	height: 50vh;
 }
-
-
 
 @media screen and (max-width:991px) {
 	.navbar-toggler {
@@ -219,11 +218,12 @@ iframe {
 	.websiteTitle {
 		font-size: 100%;
 	}
-    .map{
-        width: 80vw;
-        height: 50vh;
-        
-    }
+
+	.map {
+		width: 80vw;
+		height: 50vh;
+	}
+
 }
 
 @media screen and (max-width:200px) {
