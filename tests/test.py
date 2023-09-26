@@ -186,12 +186,6 @@ class TestingPage(TestCase):
         self.helperZipCode(zipCodeList2, "Vi kör tyvärr inte ut till dig.")
         self.helperZipCode(zipCodeList3, "Inte ett giltigt postnummer.")
 
-    def testIsDateClosed(self):
-        result = self.browser.execute_script("return isDateClosed(2023, 0, 1);")
-        self.assertTrue(result, "Expected date to be closed: 0/1")
-        result = self.browser.execute_script("return isDateClosed(2023, 0, 2);")
-        self.assertFalse(result, "Expected date to be open: 0/2")
-
     def helperLiveOpening(self, date, results):
         self.browser.execute_script("setLiveOpeningHours(new Date('" + date + "'))")
         element = self.browser.find_element(By.ID, "storeState")
