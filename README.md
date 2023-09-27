@@ -48,5 +48,9 @@ Website for NTB Biluthyrning 2023/2024 <br>
 
 ## Licenses
 ### Fonts
-  * [Maven Pro](https://fonts.google.com/specimen/Maven+Pro/about?query=maven+pro)
+  * [Maven Pro](https://fonts.google.com/specimen/Maven+Pro/about?query=maven+pro
+### Images
+  * [lineofcar] (https://pixabay.com/photos/automobile-mercedes-mercedes-benz-1291491/)
+  * [mapcar] (https://unsplash.com/photos/5A8BS9CG-G0?modal=%7B%22tag%22%3A%22Login%22%2C%22value%22%3A%7B%22tag%22%3A%22Like%22%2C%22value%22%3A%7B%22photoId%22%3A%225A8BS9CG-G0%22%2C%22userId%22%3A%22Ov7UOZaHAxA%22%7D%7D%7D
+  * [mountaincar] (https://www.pexels.com/sv-se/foto/man-par-manniskor-berg-1131575/)
   
