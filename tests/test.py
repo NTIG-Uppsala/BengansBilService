@@ -324,8 +324,8 @@ class TestingPage(TestCase):
         self.assertIn(expectedFirst, sortedCarList[0])
         self.assertIn(firstCheck, sortedCarList[0])
 
-        self.assertIn(ExpectedLast, sortedCarList[-1])
-        self.assertIn(lastCheck, sortedCarList[-1])
+        self.assertIn(ExpectedLast, sortedCarList[len(sortedCarList) - 1])
+        self.assertIn(lastCheck, sortedCarList[len(sortedCarList) - 1])
 
     def testSortedList(self):
         self.helperSortedList("nameRising", "Audi A6", "VW Polo", " 800", "300")
