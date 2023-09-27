@@ -296,7 +296,7 @@ class TestingPage(TestCase):
         )
 
         self.helperProductSort(
-            "yearDecreasing", "2011", "1999", "Audi A6", "Cadillac Escalade"
+            "yearDecreasing", "2022", "1999", "Audi A6", "Cadillac Escalade"
         )
 
         self.helperProductSort("nameDecreasing", "Audi A6",
@@ -337,6 +337,15 @@ class TestingPage(TestCase):
         self.helperSortedList("nameRising", "Audi A6",
                               "VW Polo", " 800",  "300")
 
+    def helperClosedDaysAutomaticOrder(self, date, expectedDate):
+        time.sleep(2)
+        self.browser.execute_script("sortClosedDays(new Date('" + date + "'))")
+
+        firstDate = self.browser.execute_script(
+            "return document.getElementById('closedDaysList').getElementsByTagName('li')[0].textContent.match(/[0-9]{1,2}/g)"
+        )
+        self.assertEqual(firstDate, expectedDate)
+
     def testClosedDaysAutomaticOrder(self):
         self.helperClosedDaysAutomaticOrder(
             "2023-09-16T14:00:00", ["12", "24"])
@@ -345,18 +354,36 @@ class TestingPage(TestCase):
         self.helperClosedDaysAutomaticOrder(
             "2023-12-25T14:00:00", ["12", "26"])
 
-    def testCompanyPrices(self):
-        self.browser.execute_script("window.scrollTo(0, 700);")
-        self.browser.find_element(By.ID, "companyPriceButton").click()
+      def testCompanyPrices(self):
+
+        self.browser.execute_script("window.scrollTo(0, 600);")
+
+        time.sleep(0.5)
+
+        self.browser.find_element(By.ID, "companyLabelClick").click()
+
         productList = self.browser.execute_script(
+
             "return Array.from(document.getElementById('productChart').children)"
+
         )
+
+        time.sleep(0.5)
+
         self.assertIn("640", productList[1].text)
 
-        self.browser.find_element(By.ID, "privatePriceButton").click()
+ 
+
+        self.browser.find_element(By.ID, "privateLabelClick").click()
+
         productList = self.browser.execute_script(
+
             "return Array.from(document.getElementById('productChart').children)"
+
         )
+
+        time.sleep(0.5)
+
         self.assertIn("800", productList[1].text)
 
 
