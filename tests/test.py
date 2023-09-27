@@ -341,27 +341,19 @@ class TestingPage(TestCase):
 
     def testCompanyPrices(self):
         self.browser.execute_script("window.scrollTo(0, 600);")
-
         time.sleep(0.5)
-
         self.browser.find_element(By.ID, "companyLabelClick").click()
-
         productList = self.browser.execute_script(
             "return Array.from(document.getElementById('productChart').children)"
         )
-
         time.sleep(0.5)
 
         self.assertIn("640", productList[1].text)
-
         self.browser.find_element(By.ID, "privateLabelClick").click()
-
         productList = self.browser.execute_script(
             "return Array.from(document.getElementById('productChart').children)"
         )
-
         time.sleep(0.5)
-
         self.assertIn("800", productList[1].text)
 
 
