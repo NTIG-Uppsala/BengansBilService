@@ -145,7 +145,6 @@ iframe {
 	width: 13em !important;
 }
 
-
 .dropdown-menu {
 	border-radius: 0 !important;
 }
@@ -187,6 +186,7 @@ iframe {
 	height: 50vh;
 }
 
+/* Responsive */
 @media screen and (max-width:991px) {
 	.navbar-toggler {
 		margin: auto auto;
@@ -194,7 +194,6 @@ iframe {
 
 }
 
-/* Responsive */
 @media screen and (max-width:1000px) {
 	.websiteTitle {
 		font-size: 180%;
@@ -259,8 +258,8 @@ iframe {
 		margin-top: 0.5em;
 	}
 
-	.dropdown-toggle{
-		border-left: 0px!important;
+	.dropdown-toggle {
+		border-left: 0px !important;
 	}
 
 }
