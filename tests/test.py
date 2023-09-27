@@ -34,8 +34,8 @@ class TestingPage(TestCase):
         self.browser.get(path.join((getcwd()), "index.html"))
 
     # After each test
-    # def tearDown(self):
-    # self.browser.get("about:blank")
+    def tearDown(self):
+        self.browser.get("about:blank")
 
     def testNumber(self):
         self.assertIn("0630-555-555", self.browser.page_source)
@@ -125,24 +125,24 @@ class TestingPage(TestCase):
             self.browser.get(path.join((getcwd()), "index.html"))
 
     def testZipCodes(self):
-        zipCodeList1 = [
+        zipCodeListValid = [
             "98132",
             "98140",
             "98147",
         ]
-        zipCodeList2 = [
+        zipCodeListFalse = [
             "12345",
             "55555",
             "92347",
         ]
-        zipCodeList3 = [
+        zipCodeListInvalid = [
             "1234",
             "hej",
             "xxxxx",
         ]
-        self.helperZipCode(zipCodeList1, "Vi kör ut, ring telefonnumret ovan!")
-        self.helperZipCode(zipCodeList2, "Vi kör tyvärr inte ut till dig.")
-        self.helperZipCode(zipCodeList3, "Inte ett giltigt postnummer.")
+        self.helperZipCode(zipCodeListValid, "Vi kör ut, ring telefonnumret ovan!")
+        self.helperZipCode(zipCodeListFalse, "Vi kör tyvärr inte ut till dig.")
+        self.helperZipCode(zipCodeListInvalid, "Inte ett giltigt postnummer.")
 
     def testOpeningHours(self):
         self.assertIn("Öppettider", self.browser.page_source)
@@ -270,6 +270,7 @@ class TestingPage(TestCase):
             self.assertIn(model, self.browser.page_source)
             self.assertIn(str(price), self.browser.page_source)
 
+    # Makes sure previous spelling mistakes are completely removed
     def testWrongCars(self):
         self.assertNotIn("Caddilac", self.browser.page_source)
         self.assertNotIn("Mitsubichi", self.browser.page_source)
@@ -284,15 +285,20 @@ class TestingPage(TestCase):
     ):
         self.browser.find_element(By.CLASS_NAME, "dropdown-toggle").click()
         self.browser.find_element(By.ID, sortOption).click()
+        # Gets the product chart as a list
         sortedCarList = self.browser.execute_script(
             "return Array.from(document.getElementById('productChart').children)"
         )
+
+        # Checks so that the first product is correct [1] is used because the value [0] is the table header
         self.assertIn(expectedFirst, sortedCarList[1].text)
         self.assertIn(expectedFirstChecker, sortedCarList[1].text)
 
+        # Checks so that the last product is correct [1] is used because the value [0] is the table header
         self.assertIn(expectedLast, sortedCarList[len(sortedCarList) - 1].text)
         self.assertIn(expectedLastChecker, sortedCarList[len(sortedCarList) - 1].text)
 
+    # Tests the the sort buttons so that they sort the list correctly
     def testProductSort(self):
         self.helperProductSort(
             "priceDecreasing", "800", "250", "Audi A6", "Renault Kadjar"
@@ -324,11 +330,18 @@ class TestingPage(TestCase):
         self.assertIn(expectedFirst, sortedCarList[0])
         self.assertIn(firstCheck, sortedCarList[0])
 
-        self.assertIn(ExpectedLast, sortedCarList[-1])
-        self.assertIn(lastCheck, sortedCarList[-1])
+        self.assertIn(ExpectedLast, sortedCarList[len(sortedCarList) - 1])
+        self.assertIn(lastCheck, sortedCarList[len(sortedCarList) - 1])
 
+    # Tests the function that sorts the list
     def testSortedList(self):
-        self.helperSortedList("nameRising", "Audi A6", "VW Polo", " 800", "300")
+        self.helperSortedList("nameRising", "Audi A6", "VW Polo", "800", "300")
+        self.helperSortedList(
+            "yearRising", "1999", "2022", "Cadillac Escalade", "VW Polo"
+        )
+        self.helperSortedList(
+            "priceDecreasing", "800", "250", "Audi A6", "Renault Kadjar"
+        )
 
     def testCompanyPrices(self):
         self.browser.execute_script("window.scrollTo(0, 600);")
