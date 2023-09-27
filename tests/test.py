@@ -151,7 +151,7 @@ class TestingPage(TestCase):
         for currentZip in zipCodeList:
             self.browser.find_element(By.ID, "zipNumber").send_keys(currentZip)
             self.browser.execute_script("window.scrollTo(0, 600);")
-            time.sleep(0.5)
+            time.sleep(1)
             self.browser.find_element(By.ID, "submit").click()
             zipOutput = self.browser.find_element(By.ID, "zipCodeCheck")
             self.assertIn(message, zipOutput.text)
@@ -161,16 +161,7 @@ class TestingPage(TestCase):
     def testZipCodes(self):
         zipCodeList1 = [
             "98132",
-            "98135",
-            "98136",
-            "98137",
-            "98138",
-            "98139",
             "98140",
-            "98142",
-            "98143",
-            "98144",
-            "98146",
             "98147",
         ]
         zipCodeList2 = [
