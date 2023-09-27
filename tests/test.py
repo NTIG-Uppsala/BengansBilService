@@ -270,6 +270,7 @@ class TestingPage(TestCase):
             self.assertIn(model, self.browser.page_source)
             self.assertIn(str(price), self.browser.page_source)
 
+    # Makes sure previous spelling mistakes are completely removed
     def testWrongCars(self):
         self.assertNotIn("Caddilac", self.browser.page_source)
         self.assertNotIn("Mitsubichi", self.browser.page_source)
@@ -284,15 +285,20 @@ class TestingPage(TestCase):
     ):
         self.browser.find_element(By.CLASS_NAME, "dropdown-toggle").click()
         self.browser.find_element(By.ID, sortOption).click()
+        # Gets the product chart as a list
         sortedCarList = self.browser.execute_script(
             "return Array.from(document.getElementById('productChart').children)"
         )
+
+        # Checks so that the first product is correct [1] is used because the value [0] is the table header
         self.assertIn(expectedFirst, sortedCarList[1].text)
         self.assertIn(expectedFirstChecker, sortedCarList[1].text)
 
+        # Checks so that the last product is correct [1] is used because the value [0] is the table header
         self.assertIn(expectedLast, sortedCarList[len(sortedCarList) - 1].text)
         self.assertIn(expectedLastChecker, sortedCarList[len(sortedCarList) - 1].text)
 
+    # Tests the the sort buttons so that they sort the list correctly
     def testProductSort(self):
         self.helperProductSort(
             "priceDecreasing", "800", "250", "Audi A6", "Renault Kadjar"
@@ -327,6 +333,7 @@ class TestingPage(TestCase):
         self.assertIn(ExpectedLast, sortedCarList[len(sortedCarList) - 1])
         self.assertIn(lastCheck, sortedCarList[len(sortedCarList) - 1])
 
+    # Tests the function that sorts the list
     def testSortedList(self):
         self.helperSortedList("nameRising", "Audi A6", "VW Polo", "800", "300")
         self.helperSortedList(
