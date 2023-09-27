@@ -296,7 +296,7 @@ class TestingPage(TestCase):
         )
 
         self.helperProductSort(
-            "yearDecreasing", "2022", "1999", "Audi A6", "Cadillac Escalade"
+            "yearDecreasing", "2011", "1999", "Audi A6", "Cadillac Escalade"
         )
 
         self.helperProductSort("nameDecreasing", "Audi A6",
