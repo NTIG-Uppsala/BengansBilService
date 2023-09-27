@@ -49,16 +49,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-// Defines clicks and click counter for the buttons
-// The clicks are later used to check how the cars should be sorted
-let nameClicks = 0;
-let priceClicks = 0;
-let yearClicks = 0;
-function clickCounter(clicks) {
-    clicks += 1;
-    return clicks;
-}
-
 // Sorts the list of cars
 function sortCars(buttonInput) {
     // Defines the variable used to sort the list
@@ -109,13 +99,8 @@ function sortCars(buttonInput) {
     return sortedCars;
 }
 
-// Sorts the pages product chart
-function sortProductChart(buttonInput) {
-    // Gets the product chart HTML elements rows
-    let productChart = document
-        .getElementById("productChart")
-        .getElementsByTagName("tr");
-
+// Sets the dropdowns sorting text
+function displaySortDropdown(buttonInput) {
     // Gets the text that specifies what the list is sorted by
     let sortText = document.getElementById("currentSorting");
 
@@ -134,7 +119,17 @@ function sortProductChart(buttonInput) {
         case "nameDecreasing":
             sortText.innerText = "Bilar";
             break;
-    }
+    };
+};
+
+// Sorts the pages product chart
+function sortProductChart(buttonInput) {
+    // Gets the product chart HTML elements rows
+    let productChart = document
+        .getElementById("productChart")
+        .getElementsByTagName("tr");
+
+    displaySortDropdown(buttonInput);
 
     // Gets the sorted list using the sortCars function
     let sortedCars = sortCars(buttonInput);
