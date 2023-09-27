@@ -125,24 +125,24 @@ class TestingPage(TestCase):
             self.browser.get(path.join((getcwd()), "index.html"))
 
     def testZipCodes(self):
-        zipCodeList1 = [
+        zipCodeListValid = [
             "98132",
             "98140",
             "98147",
         ]
-        zipCodeList2 = [
+        zipCodeListFalse = [
             "12345",
             "55555",
             "92347",
         ]
-        zipCodeList3 = [
+        zipCodeListInvalid = [
             "1234",
             "hej",
             "xxxxx",
         ]
-        self.helperZipCode(zipCodeList1, "Vi kör ut, ring telefonnumret ovan!")
-        self.helperZipCode(zipCodeList2, "Vi kör tyvärr inte ut till dig.")
-        self.helperZipCode(zipCodeList3, "Inte ett giltigt postnummer.")
+        self.helperZipCode(zipCodeListValid, "Vi kör ut, ring telefonnumret ovan!")
+        self.helperZipCode(zipCodeListFalse, "Vi kör tyvärr inte ut till dig.")
+        self.helperZipCode(zipCodeListInvalid, "Inte ett giltigt postnummer.")
 
     def testOpeningHours(self):
         self.assertIn("Öppettider", self.browser.page_source)
