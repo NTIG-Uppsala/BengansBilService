@@ -69,7 +69,7 @@ function setOpeningStatus(date) {
     } else if (hour === closingTime - 1 && minute >= 45) {  // Open and 15 min or less before closing
         displayOpeningStatus("Stänger snart", false);
     } else if (hour >= openingTime && hour < closingTime) {  // Open and more than 15 min before closing
-        displayOpeningStatus("Öppet", true)
+        displayOpeningStatus("Öppet", true);
     } else { // Has closed for the day
         checkNextOpen(date);
     };
@@ -105,11 +105,8 @@ function checkNextOpen(date) {
             ? openingHours.saturday.open
             : openingHours.weekdays.open; // Special opening hours on Saturdays
 
-    displayOpeningStatus(
-        `Öppnar ${days[weekdayOfNextOpenDay]} kl. ${openTimeForThatDay}`,
-        "orange"
-    );
-}
+    displayOpeningStatus(`Öppnar ${days[weekdayOfNextOpenDay]} kl. ${openTimeForThatDay}`, false)
+};
 
 function setLiveOpeningHours(date) {
     if (isDateClosed(date)) {
