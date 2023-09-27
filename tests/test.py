@@ -328,7 +328,13 @@ class TestingPage(TestCase):
         self.assertIn(lastCheck, sortedCarList[len(sortedCarList) - 1])
 
     def testSortedList(self):
-        self.helperSortedList("nameRising", "Audi A6", "VW Polo", " 800", "300")
+        self.helperSortedList("nameRising", "Audi A6", "VW Polo", "800", "300")
+        self.helperSortedList(
+            "yearRising", "1999", "2022", "Cadillac Escalade", "VW Polo"
+        )
+        self.helperSortedList(
+            "priceDecreasing", "800", "250", "Audi A6", "Renault Kadjar"
+        )
 
     def testCompanyPrices(self):
         self.browser.execute_script("window.scrollTo(0, 600);")
