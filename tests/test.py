@@ -34,8 +34,8 @@ class TestingPage(TestCase):
         self.browser.get(path.join((getcwd()), "index.html"))
 
     # After each test
-    # def tearDown(self):
-    # self.browser.get("about:blank")
+    def tearDown(self):
+        self.browser.get("about:blank")
 
     def testNumber(self):
         self.assertIn("0630-555-555", self.browser.page_source)
