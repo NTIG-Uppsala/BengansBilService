@@ -32,11 +32,10 @@ document.addEventListener("DOMContentLoaded", function () {
         const nameCell = document.createElement("td");
         const yearCell = document.createElement("td");
         const priceCell = document.createElement("td");
-        priceCell.textContent = vatCalculation(car.price);
         nameCell.textContent = car.name;
         yearCell.textContent = car.year;
         if (isCompanyPriceGlobal == true) {
-            withoutVat + "\u00A0kr (exkl. moms)";
+            priceCell.textContent = vatCalculation(car.price) + "\u00A0kr (exkl. moms)";
         } else {
             priceCell.textContent = car.price + "\u00A0kr (inkl. moms)";
         }
@@ -143,7 +142,7 @@ function sortProductChart(buttonInput) {
         // Checks if the shown prices should be for company or private consumer
         if (isCompanyPriceGlobal == true) {
             productChartItems[2].textContent =
-                sortedCars[i]["price"] * 0.8 + "\u00A0kr (exkl. moms)";
+                vatCalculation(sortedCars[i]["price"]) + "\u00A0kr (exkl. moms)";
         } else {
             productChartItems[2].textContent =
                 sortedCars[i]["price"] + "\u00A0\u00A0kr (inkl. moms)";
@@ -168,7 +167,7 @@ function priceChangeVAT(isCompany) {
                 let elements = Array.from(productChart[i + 1].children);
                 if (elements[0].innerText == carsList[n]["name"]) {
                     elements[2].innerText =
-                        carsList[n]["price"] * 0.8 + "\u00A0kr (exkl. moms)";
+                        vatCalculation(carsList[n]["price"]) + "\u00A0kr (exkl. moms)";
                 }
             }
         }
