@@ -312,14 +312,30 @@ class TestingPage(TestCase):
         self.helperProductSort("nameRising", "VW Polo",
                                "Audi A6", "250", "300")
 
-    def helperClosedDaysAutomaticOrder(self, date, expectedDate):
-        time.sleep(2)
-        self.browser.execute_script("sortClosedDays(new Date('" + date + "'))")
+    def helperSortedList(self, buttonInput, expectedFirst, ExpectedLast, firstCheck, lastCheck):
+        sortedCarList = self.browser.execute_script(
+            "return sortCars(" + buttonInput + ");")
+        self.assertIn(expectedFirst, sortedCarList[1].text)
+        self.assertIn(firstCheck, sortedCarList[1].text)
 
-        firstDate = self.browser.execute_script(
-            "return document.getElementById('closedDaysList').getElementsByTagName('li')[0].textContent.match(/[0-9]{1,2}/g)"
-        )
-        self.assertEqual(firstDate, expectedDate)
+        self.assertIn(ExpectedLast, sortedCarList[len(sortedCarList)-1].text)
+        self.assertIn(lastCheck, sortedCarList[len(sortedCarList)-1].text)
+
+    def helperSortedList(self, buttonInput, expectedFirst, ExpectedLast, firstCheck, lastCheck):
+        sortedCarList = self.browser.execute_script(
+            "return sortCars('" + buttonInput + "');")
+
+        sortedCarList = [str(item) for item in sortedCarList]
+
+        self.assertIn(expectedFirst, sortedCarList[0])
+        self.assertIn(firstCheck, sortedCarList[0])
+
+        self.assertIn(ExpectedLast, sortedCarList[-1])
+        self.assertIn(lastCheck, sortedCarList[-1])
+
+    def testSortedList(self):
+        self.helperSortedList("nameRising", "Audi A6",
+                              "VW Polo", " 800",  "300")
 
     def testClosedDaysAutomaticOrder(self):
         self.helperClosedDaysAutomaticOrder(
