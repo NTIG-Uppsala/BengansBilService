@@ -354,7 +354,7 @@ class TestingPage(TestCase):
         self.helperClosedDaysAutomaticOrder(
             "2023-12-25T14:00:00", ["12", "26"])
 
-      def testCompanyPrices(self):
+    def testCompanyPrices(self):
 
         self.browser.execute_script("window.scrollTo(0, 600);")
 
@@ -371,8 +371,6 @@ class TestingPage(TestCase):
         time.sleep(0.5)
 
         self.assertIn("640", productList[1].text)
-
- 
 
         self.browser.find_element(By.ID, "privateLabelClick").click()
 
