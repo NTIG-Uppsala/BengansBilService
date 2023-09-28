@@ -71,7 +71,7 @@ function setOpeningStatus(date) {
     } else if (hour >= openingTime && hour < closingTime) {  // Open and more than 15 min before closing
         displayOpeningStatus("Öppet", true);
     } else { // Has closed for the day
-        checkNextOpen(date);
+        checkNextOpenDay(date);
     };
 };
 
@@ -93,7 +93,7 @@ function displayOpeningStatus(status, specialCase) {
 }
 
 // Gets the next open day and calls the display function accordingly
-function checkNextOpen(date) {
+function checkNextOpenDay(date) {
     // Moves the date object forward in time a day at a time until we find a day when the store is open
     do {
         date.setDate(date.getDate() + 1);
@@ -111,7 +111,7 @@ function checkNextOpen(date) {
 function setLiveOpeningHours(date) {
     if (isDateClosed(date)) {
         // If the date is closed or if the date is a Sunday
-        checkNextOpen(date);
+        checkNextOpenDay(date);
     } else {
         setOpeningStatus(date);
     }
