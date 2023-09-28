@@ -19,10 +19,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
     document
         .querySelector("#zipCodeCheck form")
         .addEventListener("submit", (event) => {
-            event.preventDefault(); // Prevents the default action
-
-            // event.submitter.parentNode.querySelector("#number").value
-            // Is what is written in the input
+            event.preventDefault(); // Prevents anything to be in input variable from the start
+            // Gets info from the input form 
             let zipInput =
                 event.submitter.parentNode.querySelector("#zipNumber").value;
             zipInput = zipInput.split(" ").join(""); //removes spaces from string
