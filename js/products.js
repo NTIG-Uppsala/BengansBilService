@@ -148,12 +148,26 @@ function sortProductChart(sortChoice) {
     }
 }
 
+// Changes the active button between company and private
+function changeActiveButton(isCompany) {
+    // Add the 'btn-toggle-active' class to the clicked button
+    if (isCompany) {
+        document.getElementById('companyPriceButton').classList.add('btn-toggle-active');
+        document.getElementById('privatePriceButton').classList.remove('btn-toggle-active');
+    } else {
+        document.getElementById('privatePriceButton').classList.add('btn-toggle-active');
+        document.getElementById('companyPriceButton').classList.remove('btn-toggle-active');
+    }
+}
+
 // Changes prices between company and private depending on the button press
 function priceChangeVAT(isCompany) {
     // Gets the product chart HTML elements rows
     let productChart = document
         .getElementById("productChart")
         .getElementsByTagName("tr");
+
+    changeActiveButton(isCompany);
 
     if (isCompany == true) {
         // Sets the prices to company prices
