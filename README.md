@@ -91,11 +91,11 @@ Our testing uses the Selenium library in conjunction with Python's Unittest modu
 
 ###  Testing with Screenshots:
 
-While we continue to utilize Selenium and Unittest, we use additional modules, including OS, Math, and Time. Selenium for the capturing of screenshots across various screen resolutions. The file must be executed as an Python file and **can not** be started as a normal unitest file.
+While we continue to utilize Selenium and Unittest, we use additional modules, including OS, Math, and Time. Selenium for the capturing of screenshots across various screen resolutions. The file must be executed as a Python file and **can not** be started as a normal unitest file.
 
 ### Testing on GitHub:
 
-GitHub is used to launch live servers for testing purposes. It is utilizing the same "test.py" script. Any test that fails is prevented from being uploaded.
+GitHub is used to launch local instances for testing purposes. It is utilizing the same "test.py" script. Any test that fails is prevented from being uploaded. These tests are run through GitHub actions using the workflow "main-test.yml".
 
 ## Definition of Done
 * Everyone present (at least two) has to agree it is done.
