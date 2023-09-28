@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         tableBody.appendChild(row);
     });
-    sortProductChart("nameRising")
+    sortProductChart(sortOptionGlobal)
 });
 
 // Sorts the list of cars
@@ -119,7 +119,7 @@ function displaySortDropdown(sortChoice) {
 // Sorts the pages product chart
 function sortProductChart(sortChoice) {
 
-    sortChoiceGlobal = sortChoice
+    sortOptionGlobal = sortChoice
 
     // Gets the product chart HTML elements rows
     let productChart = document
@@ -168,7 +168,6 @@ function priceChangeVAT(isCompany) {
         .getElementsByTagName("tr");
 
     changeActiveButton(isCompany);
-
     if (isCompany == true) {
         // Sets the prices to company prices
         isCompanyPriceGlobal = true; // Modifies the global variable for company price
