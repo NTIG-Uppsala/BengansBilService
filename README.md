@@ -83,6 +83,8 @@ Website for NTB Biluthyrning 2023/2024 <br>
 * "sass" is the command used to compile scss
 * "./scss/custom.scss" is the path to the scss file
 * "./css/custom.css" is the path to the css file
+## ISO standard for date
+the ISO standard for displaying dates is ISO:8601, example MM-DD
 
 ## Testing
 ### Testing Without Screenshots:

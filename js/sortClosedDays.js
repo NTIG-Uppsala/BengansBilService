@@ -56,7 +56,7 @@ function sortClosedDays(date) {
         closedDaysList[i].innerHTML = sortedHolidays[i]["text"];
         elementDate = document.createElement("span");
         elementDate.className = "float-end";
-        elementDate.innerHTML = sortedHolidays[i]["date"].replace("-", "/");
+        elementDate.innerHTML = sortedHolidays[i]["date"];
         closedDaysList[i].appendChild(elementDate);
     }
 }
