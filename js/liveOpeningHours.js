@@ -29,16 +29,16 @@ function isDateClosed(date) {
     const month = date.getMonth();
     const dayOfMonth = date.getDate();
 
-    const closedDays = [ // Array of all closed days months are calculated from 0-11
-        { month: 0, dayOfMonth: 1 },
-        { month: 0, dayOfMonth: 6 },
-        { month: 4, dayOfMonth: 1 },
-        { month: 5, dayOfMonth: 6 },
-        { month: 11, dayOfMonth: 24 },
-        { month: 11, dayOfMonth: 25 },
-        { month: 11, dayOfMonth: 26 },
-        { month: 11, dayOfMonth: 31 },
-    ];
+    const closedDays = []; // Array of all closed days months are calculated from 0-11
+
+    // Takes the global list of closed days (defined in sortClosedDays.js) and turns it into a list with dates seperated into day and month
+    closedDaysList.forEach(element => {
+        const [month, day] = element["date"].split('-').map(Number);
+        closedDays.push({ month: month - 1, dayOfMonth: day })
+    });
+
+    console.log(closedDays)
+
     for (const closedDay of closedDays) {
         if (closedDay.month === month && closedDay.dayOfMonth === dayOfMonth) {
             return true;
