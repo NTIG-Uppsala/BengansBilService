@@ -1,5 +1,5 @@
 // Creates a global list for closed days
-let closedDays = [
+let closedDaysList = [
     { text: "Nyårsdagen", date: "1-1", },
     { text: "Trettondedag jul", date: "1-6", },
     { text: "Första maj", date: "5-1", },
@@ -28,7 +28,7 @@ function parseDate(currentDate, closedDate) {
 
 // Creates a list for closed days
 function sortHolidays(date) {
-    let sortedHolidays = closedDays.sort((a, b) => {
+    let sortedHolidays = closedDaysList.sort((a, b) => {
         let dateA = parseDate(date, a.date);
         let dateB = parseDate(date, b.date);
 
@@ -56,7 +56,7 @@ function sortClosedDays(date) {
         closedDaysList[i].innerHTML = sortedHolidays[i]["text"];
         elementDate = document.createElement("span");
         elementDate.className = "float-end";
-        elementDate.innerHTML = sortedHolidays[i]["date"].replace("-", "/");
+        elementDate.innerHTML = sortedHolidays[i]["date"];
         closedDaysList[i].appendChild(elementDate);
     }
 }
