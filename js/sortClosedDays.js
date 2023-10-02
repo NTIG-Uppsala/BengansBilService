@@ -1,7 +1,8 @@
 // Creates a global list for closed days
 let closedDays = [
     { text: "Nyårsdagen", date: "1-1", },
-    { text: "Trettondedag jul", date: "1-6", }, { text: "Första maj", date: "5-1", },
+    { text: "Trettondedag jul", date: "1-6", },
+    { text: "Första maj", date: "5-1", },
     { text: "Sveriges<br>nationaldag&nbsp;", date: "6-6", },
     { text: "Julafton", date: "12-24", },
     { text: "Juldagen", date: "12-25", },
