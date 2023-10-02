@@ -1,0 +1,48 @@
+{
+    "sv": {
+        "UNIVERSAL": {
+            "EMAIL": "info@ntig&#8209;uppsala.github.io",
+            "PHONE": "0630&#8209;555&#8209;555",
+            "STREETNR": "Fjällgatan 32H <br> 981 39 Jönköping"
+        },
+        "holidays": {
+            "CHRISTMAS": "Julafton",
+            "CHRISTMASDAY": "Juldagen",
+            "BOXINGDAY": "Annandag jul",
+            "NEWYEARSEVE": "Nyårsafton",
+            "NEWYEARSDAY": "Nyårsdagen",
+            "EPIPHANY": "Trettondedag jul",
+            "FIRSTMAY": "Första maj",
+            "NATIONALDAY": "Sveriges nationaldag"
+        },
+        "HTMLLANGUAGE": "sv",
+        {
+            "CONTACTUS": "Kontakta&nbsp;oss",
+            "OPENHOURS": "Öppettider",
+            "FINDUS": "Hitta&nbsp;hit",
+            "WELCOME": "Välkommen!<br>Ring&nbsp;",
+            "CALLUS": "<br>vid&nbsp;bokning",
+            "DELIVERYCHECK": "Kolla om vår hemleverans når dig",
+            "ZIPCODE": "Postnummer",
+            "SUBMIT": "Kolla",
+            "COMPANY": "Företag",
+            "PRIVATE": "Privat",
+            "STANDARDSORT": "Sortera efter: <span id='currentSorting'> Bilar",
+            "PRICEINCREASING": "Pris stigande",
+            "PRICEDECREASING": "Pris fallande",
+            "YEARINCREASING": "Årsmodell stigande",
+            "YEARDECREASING": "Årsmodell fallande",
+            "CARSINCREASING": "Bilar stigande",
+            "CARSDECREASING": "Bilar fallande",
+            "CARS": "Bilar",
+            "YEAR": "Årsmodell",
+            "DAYPRICE": "Dagspris",
+            "WEEKDAYS": "Vardagar",
+            "SATURDAY": "Lördag",
+            "SUNDAY": "Söndag&nbsp;Stängt",
+            "CLOSED": "Stängt",
+            "CLOSEDDAYS": "Stängda&nbsp;dagar",
+            "CONTACTUS": "Kontakta&nbsp;oss",
+            "ADRESS": "Adress"
+        }
+    }
