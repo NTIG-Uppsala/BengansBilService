@@ -319,10 +319,10 @@ class TestingPage(TestCase):
         self.helperProductSort("nameRising", "VW Polo", "Audi A6", "250", "300")
 
     def helperSortedList(
-        self, buttonInput, expectedFirst, ExpectedLast, firstCheck, lastCheck
+        self, sortOption, isRising, expectedFirst, ExpectedLast, firstCheck, lastCheck
     ):
         sortedCarList = self.browser.execute_script(
-            "return sortCars('" + buttonInput + "');"
+            "return sortCars('" + sortOption + "'" "," + isRising + ");"
         )
 
         sortedCarList = [str(item) for item in sortedCarList]
@@ -335,12 +335,12 @@ class TestingPage(TestCase):
 
     # Tests the function that sorts the list
     def testSortedList(self):
-        self.helperSortedList("nameRising", "Audi A6", "VW Polo", "800", "300")
+        self.helperSortedList("name", "true", "Audi A6", "VW Polo", "800", "300")
         self.helperSortedList(
-            "yearRising", "1999", "2022", "Cadillac Escalade", "VW Polo"
+            "year", "true", "1999", "2022", "Cadillac Escalade", "VW Polo"
         )
         self.helperSortedList(
-            "priceDecreasing", "800", "250", "Audi A6", "Renault Kadjar"
+            "price", "false", "800", "250", "Audi A6", "Renault Kadjar"
         )
 
     def testCompanyPrices(self):
