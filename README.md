@@ -84,7 +84,7 @@ Website for NTB Biluthyrning 2023/2024 <br>
 * "./scss/custom.scss" is the path to the scss file
 * "./css/custom.css" is the path to the css file
 ## ISO standard for date
-the ISO standard for displaying dates is ISO:8601, example MM-DD
+The ISO standard for displaying dates is ISO:8601, example MM-DD
 (https://www.iso.org/iso-8601-date-and-time-format.html)
 
 ## Testing
