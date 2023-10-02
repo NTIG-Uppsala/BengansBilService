@@ -1,5 +1,5 @@
 let isCompanyPriceGlobal = false; // Sets isCompanyPriceGlobal to false, so that price is with VAT
-let sortOptionGlobal = "nameRising"; // Global variable for sorting 
+let sortOptionObject = {"sortOptionGlobal": "name", "isRisingGlobal": true}; // Global variable for sorting 
 
 // Lists all cars that the company offers
 let carsList = [
@@ -41,52 +41,53 @@ document.addEventListener("DOMContentLoaded", function () {
 
         tableBody.appendChild(row);
     });
-    sortProductChart(sortOptionGlobal)
+    sortProductChart(sortOptionObject["sortOptionGlobal"], sortOptionObject["isRisingGlobal"])
 });
 
 // Sorts the list of cars
-function sortCars(sortChoice) {
+function sortCars(sortChoice, isRising) {
     // Defines the array
     let sortedCars;
     // Checks the sorting type and creates the sorted list
     switch (sortChoice) {
         // Sorts the list by price
-        case "priceRising":
-            sortedCars = carsList.sort(function (a, b) {
-                // Sorts the list
-                return a["price"] - b["price"]; // Orders list so that lowest value comes first
-            });
+        case "price":
+            if (isRising === true){
+                sortedCars = carsList.sort(function (a, b) { // Sorts the list
+                    return a["price"] - b["price"]; // Orders list so that lowest value comes first
+                });  
+            } else if (isRising === false){
+                sortedCars = carsList.sort(function (a, b) {
+                    return b["price"] - a["price"]; // Orders list so that highest value comes first
+                });
+            }  
             break;
 
-        case "priceDecreasing":
-            sortedCars = carsList.sort(function (a, b) {
-                return b["price"] - a["price"]; // Orders list so that highest value comes first
-            });
-            break;
         // Sorts the list by year
-        case "yearRising":
-            sortedCars = carsList.sort(function (a, b) {
-                return a["year"] - b["year"]; // Orders list so that lowest value comes first
-            });
-            break;
-
-        case "yearDecreasing":
-            sortedCars = carsList.sort(function (a, b) {
-                return b["year"] - a["year"]; // Orders list so that highest value comes first
-            });
+        case "year":
+            if (isRising === true){
+                sortedCars = carsList.sort(function (a, b) {
+                    return a["year"] - b["year"]; // Orders list so that lowest value comes first
+                });
+            } else if (isRising === false){
+                sortedCars = carsList.sort(function (a, b) {
+                    return b["year"] - a["year"]; // Orders list so that highest value comes first
+                });
+            }
             break;
 
         // Sorts the list by name alphabetically
-        case "nameRising":
-            sortedCars = carsList.sort(function (a, b) {
-                return a.name.localeCompare(b.name); // Orders list so that earlier letter comes first
-            });
+        case "name":
+            if (isRising === true){
+                sortedCars = carsList.sort(function (a, b) {
+                    return a.name.localeCompare(b.name); // Orders list so that earlier letter comes first
+                });
+            } else if (isRising === false){
+                sortedCars = carsList.sort(function (a, b) {
+                    return b.name.localeCompare(a.name); // Orders list so that later letter comes first
+                });
+            }
             break;
-
-        case "nameDecreasing":
-            sortedCars = carsList.sort(function (a, b) {
-                return b.name.localeCompare(a.name); // Orders list so that later letter comes first
-            });
     }
 
     // Returns the new and sorted list
@@ -117,9 +118,10 @@ function displaySortDropdown(sortChoice) {
 }
 
 // Sorts the pages product chart
-function sortProductChart(sortChoice) {
+function sortProductChart(sortChoice, isRising) {
 
-    sortOptionGlobal = sortChoice
+    sortOptionObject["sortOptionGlobal"] = sortChoice
+    sortOptionObject["isRisingGlobal"] = isRising
 
     // Gets the product chart HTML elements rows
     let productChart = document
@@ -129,7 +131,7 @@ function sortProductChart(sortChoice) {
     displaySortDropdown(sortChoice);
 
     // Gets the sorted list using the sortCars function
-    let sortedCars = sortCars(sortChoice);
+    let sortedCars = sortCars(sortChoice, isRising);
 
     // Reorders the product chart using the sorted list
     for (let i = 0; i < sortedCars.length; i++) {
@@ -171,10 +173,10 @@ function priceChangeVAT(isCompany) {
     if (isCompany == true) {
         // Sets the prices to company prices
         isCompanyPriceGlobal = true; // Modifies the global variable for company price
-        sortProductChart(sortOptionGlobal)
+        sortProductChart(sortOptionObject["sortOptionGlobal"], sortOptionObject["isRisingGlobal"])
     } else if (isCompany == false) {
         // Sets the prices to private prices
         isCompanyPriceGlobal = false; // Modifies the global variable for company price
-        sortProductChart(sortOptionGlobal)
+        sortProductChart(sortOptionObject["sortOptionGlobal"], sortOptionObject["isRisingGlobal"])
     }
 }
