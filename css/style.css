@@ -347,4 +347,8 @@ iframe {
 		font-size: 0.7em !important;
 	}
 
+	#rowFooter {
+		width: 100vw !important;
+	}
+
 }
