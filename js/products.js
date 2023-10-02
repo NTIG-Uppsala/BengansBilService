@@ -140,10 +140,10 @@ function sortProductChart(sortChoice) {
         // Checks if the shown prices should be for company or private consumer
         if (isCompanyPriceGlobal == true) {
             productChartItems[2].textContent =
-                VATRedcution(sortedCars[i]["price"]) + "\u00A0kr (exkl. moms)";
+                Math.ceil(VATRedcution(sortedCars[i]["price"])) + "\u00A0kr (exkl. moms)";
         } else {
             productChartItems[2].textContent =
-                sortedCars[i]["price"] + "\u00A0kr (inkl. moms)";
+                Math.ceil((sortedCars[i]["price"])) + "\u00A0kr (inkl. moms)";
         }
     }
 }
