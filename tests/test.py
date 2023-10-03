@@ -347,17 +347,17 @@ class TestingPage(TestCase):
         time.sleep(0.5)
         self.browser.find_element(By.ID, "companyLabelClick").click()
         productList = self.browser.execute_script(
-            "return Array.from(document.getElementById('productChart').children)"
+            "return Array.from(document.getElementById('productChart').children)[1]"
         )
         time.sleep(0.5)
+        self.assertIn("640", productList.text)
 
-        self.assertIn("640", productList[1].text)
         self.browser.find_element(By.ID, "privateLabelClick").click()
         productList = self.browser.execute_script(
-            "return Array.from(document.getElementById('productChart').children)"
+            "return Array.from(document.getElementById('productChart').children)[1]"
         )
         time.sleep(0.5)
-        self.assertIn("800", productList[1].text)
+        self.assertIn("800", productList.text)
 
 
 # will run if the fil running is a normal python file, always end of file
