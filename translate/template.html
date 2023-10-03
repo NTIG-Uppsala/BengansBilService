@@ -4,16 +4,21 @@
 <head>
     <!--Style-->
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!--To run bootstrap-->
-    <link rel="stylesheet" href="css/custom.css">
+    <link rel="stylesheet" href="../css/custom.css">
 
     <!--Website tab-->
     <title>NTB Biluthyrning</title>
     <!--Favicon/ Website icon-->
-    <link rel="icon" type="image/x-icon" href="images/ntb-favicon.svg">
+    <link rel="icon" type="image/x-icon" href="../images/ntb-favicon.svg">
+
+    <!--Preload JavaScript-->
+    <link rel="preload" href="../translationChanger.js" as="script">
+    <!--JavaScript for translation-->
+    <script src="../translate/translationChanger.js" defer></script>
 </head>
 
 <body onload="setLiveOpeningHours(new Date()); sortClosedDays(new Date());">
@@ -40,13 +45,13 @@
             <div class="collapse navbar-collapse justify-content-end " id="navbarToggler">
                 <ul class="navbar-nav ml-auto ">
                     <li class="nav-item ml-auto ps-1">
-                        <a class="fs-4 nav-link " href="#contactInfo">CONTACTUS</a>
+                        <a class="fs-4 nav-link " href="#contactInfo"><span> CONTACTUS </span></a>
                     </li>
                     <li class="nav-item ml-auto ps-1 ">
-                        <a class="fs-4 nav-link" href="#openingHours">OPENHOURS</a>
+                        <a class="fs-4 nav-link" href="#openingHours"><span> OPENHOURS</span></a>
                     </li>
                     <li class="nav-item  ps-1">
-                        <a class="fs-4 nav-link  " href="#address">FINDUS</a>
+                        <a class="fs-4 nav-link  " href="#address"><span> FINDUS</span></a>
                     </li>
                 </ul>
             </div>
@@ -59,20 +64,21 @@
         <div class="carousel-inner" style="max-height:80vh;">
             <div class="carousel-content display-4">
                 <div class="text-bg-white px-2 text-bg-dark text-white bg-opacity-50 py-2 px-3">
-                    <p>WELCOME<a href="tel:0630555555" id="whiteLink">PHONE</a>CALLUS
+                    <p><span> WELCOME</span><a href="tel:0630555555" id="whiteLink">0630&#8209;555&#8209;555</a><span>
+                            CALLUS</span>
                     </p>
                 </div>
             </div>
 
             <!-- Images in slideshow -->
             <div class="carousel-item active">
-                <img src="images/lineofcar.webp" class="d-block w-100" alt="Cars">
+                <img src="../images/lineofcar.webp" class="d-block w-100" alt="Cars">
             </div>
             <div class="carousel-item">
-                <img src="images/mapcar.webp" class="d-block w-100" alt="Map with a car on it">
+                <img src="../images/mapcar.webp" class="d-block w-100" alt="Map with a car on it">
             </div>
             <div class="carousel-item">
-                <img src="images/mountaincar.webp" class="d-block w-100" alt="A car on a mountain">
+                <img src="../images/mountaincar.webp" class="d-block w-100" alt="A car on a mountain">
             </div>
         </div>
     </div>
@@ -80,7 +86,7 @@
     <!-- Check if we are able to transport to your zipcode -->
     <div id="zipCodeCheck" class="zipInput container-fluid bg-light py-5 mt-0">
         <div id="jsCheck">
-            <p>DELIVERYCHECK</p>
+            <p><span> DELIVERYCHECK</span></p>
             <form><input class="zipCodeInput" type="text" inputmode="numeric" id="zipNumber"
                     placeholder="ZIPCODE"><input class="checkNumber" id="submit" type="submit" value="SUBMIT"></form>
             <p id="output"></p>
@@ -95,39 +101,41 @@
 
                 <!-- Company or private price -->
                 <label class="btn btn-outline-primary rounded-0" for="companyPriceButton" onclick="priceChangeVAT(true)"
-                    id="companyLabelClick">COMPANY</label>
+                    id="companyLabelClick"><span> COMPANY</span></label>
                 <input type="radio" class="btn-check" name="price-option" id="privatePriceButton" checked>
                 <label class="btn btn-outline-primary rounded-0" for="privatePriceButton"
-                    onclick="priceChangeVAT(false)" id="privateLabelClick">PRIVATE</label>
+                    onclick="priceChangeVAT(false)" id="privateLabelClick"><span> PRIVATE</span></label>
 
                 <!-- Adjustable sorting  -->
             </div>
             <button class="btn dropdown-toggle rounded-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                STANDARDSORT</span>
+                <span> STANDARDSORT</span></span>
             </button>
             <ul class="dropdown-menu">
                 <li>
-                    <a id="priceRising" class="dropdown-item"
-                        onclick="sortProductChart('price',true)">PRICEINCREASING</a>
+                    <a id="priceRising" class="dropdown-item" onclick="sortProductChart('price',true)"><span>
+                            PRICEINCREASING</span></a>
                 </li>
                 <li>
-                    <a id="priceDecreasing" class="dropdown-item"
-                        onclick="sortProductChart('price', false)">PRICEDECREASING</a>
+                    <a id="priceDecreasing" class="dropdown-item" onclick="sortProductChart('price', false)"><span>
+                            PRICEDECREASING</span></a>
                 </li>
                 <li>
-                    <a id="yearRising" class="dropdown-item" onclick="sortProductChart('year', true)">YEARINCREASING
+                    <a id="yearRising" class="dropdown-item" onclick="sortProductChart('year', true)"><span>
+                            YEARINCREASING</span>
                     </a>
                 </li>
                 <li>
-                    <a id="yearDecreasing" class="dropdown-item"
-                        onclick="sortProductChart('year', false)">YEARDECREASING</a>
+                    <a id="yearDecreasing" class="dropdown-item" onclick="sortProductChart('year', false)"><span>
+                            YEARDECREASING</span></a>
                 </li>
                 <li>
-                    <a id="nameRising" class="dropdown-item" onclick="sortProductChart('name', true)">CARSINCREASING</a>
+                    <a id="nameRising" class="dropdown-item" onclick="sortProductChart('name', true)"><span>
+                            CARSINCREASING</span></a>
                 </li>
                 <li>
-                    <a id="nameDecreasing" class="dropdown-item"
-                        onclick="sortProductChart('name', false)">CARSDECREASING</a>
+                    <a id="nameDecreasing" class="dropdown-item" onclick="sortProductChart('name', false)"><span>
+                            CARSDECREASING</span></a>
                 </li>
             </ul>
         </div>
@@ -136,9 +144,9 @@
         <table id="productChart" class="table">
             <thead>
                 <tr>
-                    <th scope="col" class="chartItem">CARS</th>
-                    <th scope="col" class="chartItem">YEAR</th>
-                    <th scope="col" class="chartItem">DAYPRICE</th>
+                    <th scope="col" class="chartItem"><span> CARS</span></th>
+                    <th scope="col" class="chartItem"><span> YEAR</span></th>
+                    <th scope="col" class="chartItem"><span> DAYPRICE</span></th>
                 </tr>
             </thead>
             <tbody id="carList">
@@ -153,17 +161,18 @@
                 <div class="col-lg">
 
                     <!-- Open hours  -->
-                    <h3 class=" mb-3 h3">OPENHOURS</h3>
+                    <h3 class=" mb-3 h3"><span> OPENHOURS</span></h3>
                     <p class="fs-5" id="storeState"></p>
-                    <div class="text-start openHours w-75 fs-5">
+                    <div class="text-start OPENHOURS w-75 fs-5">
 
                         <!-- Closed days  -->
-                        <p>WEEKDAYS <span class="text-end textRight">10-16</span></p>
-                        <p>SATURDAY <span class="text-end textRight">12-15</span></p>
-                        <p>SUNDAY<span class="text-end closedColor textRight">CLOSED</span></p>
+                        <p><span> WEEKDAYS</span> <span class="text-end textRight">10-16</span></p>
+                        <p><span> SATURDAY</span> <span class="text-end textRight">12-15</span></p>
+                        <p><span> SUNDAY</span><span class="text-end closedColor textRight"><span> CLOSED</span></span>
+                        </p>
                         <div class="d-flex justify-content-center">
                             <div id="opening-hours" class="flex-grow-1">
-                                <h5 class="pt-3" style="text-align: center;">CLOSEDDAYS</h5>
+                                <h5 class="pt-3" style="text-align: center;"><span> CLOSEDDAYS</span></h5>
                                 <ul id="closedDaysList" class="list-unstyled text-start">
                                     <li class="my-2">
                                         <span class="float-end"></span>
@@ -198,7 +207,7 @@
 
             <!-- Find us/location  -->
             <div class="col-sm-6 justify-content-center h6 ">
-                <h3 class="mb-3">FINDUS</h3>
+                <h3 class="mb-3"><span> FINDUS</span></h3>
                 <div>
 
                     <!-- Live map -->
@@ -219,31 +228,31 @@
             <div id="rowFooter" class="row mx-auto w-50">
                 <div class="col-lg py-3 text-center">
                     <!--Telephone number and mail-->
-                    <h3 id="contactInfo">CONTACTUS</h3>
-                    <a href="tel:0630555555" class="blackLink">PHONE</a>
+                    <h3 id="contactInfo"><span> CONTACTUS </span></h3>
+                    <a href="tel:0630555555" class="blackLink">0630&#8209;555&#8209;555</a>
                     <br>
-                    <a href="mailto:info@ntig-uppsala.github.io" class="blackLink">EMAIL</a>
+                    <a href="mailto:info@ntig-uppsala.github.io" class="blackLink">info@ntig&#8209;uppsala.github.io</a>
                     <br>
 
                     <!-- Social media links with icons  -->
                     <div class="social-icons mt-2">
                         <a href="https://www.facebook.com/ntiuppsala/?locale=sv_SE" target="_blank"
                             class="icon-link px-1" id="Facebook">
-                            <img src="images/facebookicon.png" class="bi" alt="Facebook icon">
+                            <img src="../images/facebookicon.png" class="bi" alt="Facebook icon">
                         </a>
                         <a href="https://twitter.com/ntiuppsala" target="_blank" class="icon-link px-1" id="X">
-                            <img src="images/xicon.png" class="bi" alt="Twitter icon">
+                            <img src="../images/xicon.png" class="bi" alt="Twitter icon">
                         </a>
                         <a href="https://instagram.com/ntiuppsala/" target="_blank" class="icon-link px-1"
                             id="Instagram">
-                            <img src="images/instagramicon.png" class="bi" alt="Instagram icon">
+                            <img src="../images/instagramicon.png" class="bi" alt="Instagram icon">
                         </a>
                     </div>
                 </div>
                 <div class="col py-3">
-                    <h3>ADDRESS</h3>
+                    <h3><span> ADDRESS</span></h3>
                     <span>
-                        STREET
+                        Fjällgatan 32H <br> 981 39 Jönköping
                     </span>
                 </div>
             </div>
@@ -251,19 +260,19 @@
     </div>
 
     <!--To run bootstrap-->
-    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="../js/bootstrap.bundle.min.js"></script>
 
     <!--Our JavaScript-->
-    <script src="js/main.js"></script>
+    <script src="../js/main.js"></script>
 
     <!--JavaScript for live opening hours-->
-    <script src="js/liveOpeningHours.js"></script>
+    <script src="../js/liveOpeningHours.js"></script>
 
     <!--JavaScript for closed days sorting-->
-    <script src="js/sortClosedDays.js"></script>
+    <script src="../js/sortClosedDays.js"></script>
 
     <!--JavaScript for products-->
-    <script src="js/products.js"></script>
+    <script src="../js/products.js"></script>
 </body>
 
 </html>
