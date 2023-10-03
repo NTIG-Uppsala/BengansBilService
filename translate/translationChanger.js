@@ -20,6 +20,14 @@ function getInnerText(x, newText) {
 //Object.keys(ord).length
 
 function changeLanguage(language) {
+    fetch("../translate/template.html")
+        .then(response => response.text())
+        .then(html => {
+            var parser = new DOMParser();
+            var doc = parser.parseFromString(html, 'text/html');
+
+            document.body = doc.body
+        })
     fetch('../translate/translation.json')
         .then(response => {
             return response.json();
@@ -32,4 +40,4 @@ function changeLanguage(language) {
         })
 }
 
-changeLanguage('sv');
+changeLanguage('sv')

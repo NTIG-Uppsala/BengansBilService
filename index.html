@@ -14,6 +14,11 @@
     <title>NTB Biluthyrning</title>
     <!--Favicon/ Website icon-->
     <link rel="icon" type="image/x-icon" href="images/ntb-favicon.svg">
+
+    <!--Preload JavaScript-->
+    <link rel="preload" href="translate/translationChanger.js" as="script">
+    <!--JavaScript for translation-->
+    <script src="translate/translationChanger.js"></script>
 </head>
 
 <body onload="setLiveOpeningHours(new Date()); sortClosedDays(new Date());">
@@ -265,6 +270,7 @@
 
     <!--JavaScript for products-->
     <script src="js/products.js"></script>
+
 </body>
 
 </html>
