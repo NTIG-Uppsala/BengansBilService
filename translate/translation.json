@@ -14,7 +14,7 @@
         "CONTACTUS": "Kontakta&nbsp;oss",
         "OPENHOURS": "Öppettider",
         "FINDUS": "Hitta&nbsp;hit",
-        "WELCOME": "Välkommen!<br>Ring&nbsap;",
+        "WELCOME": "Välkommen!<br>Ring&nbsp;",
         "CALLUS": "<br>vid&nbsp;bokning&nbsp;av<br>hyrbil",
         "DELIVERYCHECK": "Kolla om vår hemleverans når dig",
         "ZIPCODE": "Postnummer",
@@ -33,7 +33,7 @@
         "DAYPRICE": "Dagspris",
         "WEEKDAYS": "Vardagar",
         "SATURDAY": "Lördag",
-        "SUNDAY": "Söndag&nbsp;Stängt",
+        "SUNDAY": "Söndag",
         "CLOSED": "Stängt",
         "CLOSEDDAYS": "Stängda&nbsp;dagar",
         "ADDRESS": "Adress"

@@ -1,0 +1,35 @@
+function getInnerText(x, newText) {
+    let spans = document.getElementsByTagName("span");
+    for (const span of spans) {
+        if (span.textContent.includes(x)) {
+            span.innerHTML = (newText)
+        }
+    }
+
+    let inputs = document.getElementsByTagName("input");
+    for (const input of inputs) {
+        if (input.placeholder.includes(x)) {
+            input.placeholder = (newText)
+        }
+        if (input.value.includes(x)) {
+            input.value = (newText)
+        }
+    }
+}
+// läser längd av obj 
+//Object.keys(ord).length
+
+function changeLanguage(language) {
+    fetch('../translate/translation.json')
+        .then(response => {
+            return response.json();
+        }).then(json => {
+            let languageObject = json[language];
+            let objectByIndex = Object.keys(languageObject)
+            for (let i = 0; i < Object.keys(languageObject).length; i++) {
+                getInnerText(objectByIndex[i], languageObject[objectByIndex[i]])
+            }
+        })
+}
+
+changeLanguage('sv');

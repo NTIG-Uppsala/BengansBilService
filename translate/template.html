@@ -4,16 +4,21 @@
 <head>
     <!--Style-->
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!--To run bootstrap-->
-    <link rel="stylesheet" href="css/custom.css">
+    <link rel="stylesheet" href="../css/custom.css">
 
     <!--Website tab-->
     <title>NTB Biluthyrning</title>
     <!--Favicon/ Website icon-->
-    <link rel="icon" type="image/x-icon" href="images/ntb-favicon.svg">
+    <link rel="icon" type="image/x-icon" href="../images/ntb-favicon.svg">
+
+    <!--Preload JavaScript-->
+    <link rel="preload" href="../translationChanger.js" as="script">
+    <!--JavaScript for translation-->
+    <script src="../translate/translationChanger.js" defer></script>
 </head>
 
 <body onload="setLiveOpeningHours(new Date()); sortClosedDays(new Date());">
@@ -67,13 +72,13 @@
 
             <!-- Images in slideshow -->
             <div class="carousel-item active">
-                <img src="images/lineofcar.webp" class="d-block w-100" alt="Cars">
+                <img src="../images/lineofcar.webp" class="d-block w-100" alt="Cars">
             </div>
             <div class="carousel-item">
-                <img src="images/mapcar.webp" class="d-block w-100" alt="Map with a car on it">
+                <img src="../images/mapcar.webp" class="d-block w-100" alt="Map with a car on it">
             </div>
             <div class="carousel-item">
-                <img src="images/mountaincar.webp" class="d-block w-100" alt="A car on a mountain">
+                <img src="../images/mountaincar.webp" class="d-block w-100" alt="A car on a mountain">
             </div>
         </div>
     </div>
@@ -233,14 +238,14 @@
                     <div class="social-icons mt-2">
                         <a href="https://www.facebook.com/ntiuppsala/?locale=sv_SE" target="_blank"
                             class="icon-link px-1" id="Facebook">
-                            <img src="images/facebookicon.png" class="bi" alt="Facebook icon">
+                            <img src="../images/facebookicon.png" class="bi" alt="Facebook icon">
                         </a>
                         <a href="https://twitter.com/ntiuppsala" target="_blank" class="icon-link px-1" id="X">
-                            <img src="images/xicon.png" class="bi" alt="Twitter icon">
+                            <img src="../images/xicon.png" class="bi" alt="Twitter icon">
                         </a>
                         <a href="https://instagram.com/ntiuppsala/" target="_blank" class="icon-link px-1"
                             id="Instagram">
-                            <img src="images/instagramicon.png" class="bi" alt="Instagram icon">
+                            <img src="../images/instagramicon.png" class="bi" alt="Instagram icon">
                         </a>
                     </div>
                 </div>
@@ -255,19 +260,19 @@
     </div>
 
     <!--To run bootstrap-->
-    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="../js/bootstrap.bundle.min.js"></script>
 
     <!--Our JavaScript-->
-    <script src="js/main.js"></script>
+    <script src="../js/main.js"></script>
 
     <!--JavaScript for live opening hours-->
-    <script src="js/liveOpeningHours.js"></script>
+    <script src="../js/liveOpeningHours.js"></script>
 
     <!--JavaScript for closed days sorting-->
-    <script src="js/sortClosedDays.js"></script>
+    <script src="../js/sortClosedDays.js"></script>
 
     <!--JavaScript for products-->
-    <script src="js/products.js"></script>
+    <script src="../js/products.js"></script>
 </body>
 
 </html>
