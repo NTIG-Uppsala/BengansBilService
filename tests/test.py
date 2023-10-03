@@ -287,12 +287,11 @@ class TestingPage(TestCase):
         self.browser.find_element(By.ID, sortOption).click()
         # Gets the product chart as a list
         sortedCarList = self.browser.execute_script(
-            "return Array.from(document.getElementById('productChart').children)"
+            "return Array.from(document.getElementById('productChart').children)[1].children"
         )
 
-        # Checks so that the first product is correct [1] is used because the value [0] is the table header
-        self.assertIn(expectedFirst, sortedCarList[1].text)
-        self.assertIn(expectedFirstChecker, sortedCarList[1].text)
+        self.assertIn(expectedFirst, sortedCarList[0].text)
+        self.assertIn(expectedFirstChecker, sortedCarList[0].text)
 
         # Checks so that the last product is correct [1] is used because the value [0] is the table header
         self.assertIn(expectedLast, sortedCarList[len(sortedCarList) - 1].text)
@@ -305,18 +304,18 @@ class TestingPage(TestCase):
         )
 
         self.helperProductSort(
-            "yearDecreasing", "2022", "1999", "Audi A6", "Cadillac Escalade"
+            "yearDecreasing", "2022", "1999", "Kia Carens", "Cadillac Escalade"
         )
 
-        self.helperProductSort("nameDecreasing", "Audi A6", "VW Polo", "800", "Audi A6")
+        self.helperProductSort("nameDecreasing", "VW Polo", "Audi A6", "300", "800")
 
-        self.helperProductSort("priceRising", "250", "800", "VW Polo", "Audi A6")
+        self.helperProductSort("priceRising", "250", "800", "Renault Kadjar", "Audi A6")
 
         self.helperProductSort(
-            "yearRising", "1999", "2022", "Cadillac Escalade", "VW Polo"
+            "yearRising", "1999", "2022", "Cadillac Escalade", "Kia Carens"
         )
 
-        self.helperProductSort("nameRising", "VW Polo", "Audi A6", "250", "300")
+        self.helperProductSort("nameRising", "Audi A6", "VW Polo", "800", "300")
 
     def helperSortedList(
         self, sortOption, isRising, expectedFirst, ExpectedLast, firstCheck, lastCheck
