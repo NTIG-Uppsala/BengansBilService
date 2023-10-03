@@ -19,8 +19,8 @@
         "CONTACTUS": "Kontakta&nbsp;oss",
         "OPENHOURS": "Öppettider",
         "FINDUS": "Hitta&nbsp;hit",
-        "WELCOME": "Välkommen!<br>Ring&nbsp;",
-        "CALLUS": "<br>vid&nbsp;bokning",
+        "WELCOME": "Välkommen!<br>Ring&nbsap;",
+        "CALLUS": "<br>vid&nbsp;bokning&nbsp;av<br>hyrbil",
         "DELIVERYCHECK": "Kolla om vår hemleverans når dig",
         "ZIPCODE": "Postnummer",
         "SUBMIT": "Kolla",
@@ -41,6 +41,50 @@
         "SUNDAY": "Söndag&nbsp;Stängt",
         "CLOSED": "Stängt",
         "CLOSEDDAYS": "Stängda&nbsp;dagar",
-        "ADRESS": "Adress"
+        "ADDRESS": "Adress"
+    },
+    "no": {
+        "UNIVERSAL": {
+            "EMAIL": "info@ntig&#8209;uppsala.github.io",
+            "PHONE": "0630&#8209;555&#8209;555",
+            "STREET": "Fjällgatan 32H <br> 981 39 Jönköping"
+        },
+        "holidays": {
+            "CHRISTMAS": "Julaften",
+            "CHRISTMASDAY": "Første juledag",
+            "BOXINGDAY": "Andre juledag",
+            "NEWYEARSEVE": "Nyttårsaften",
+            "NEWYEARSDAY": "Nyttårsdag",
+            "EPIPHANY": "Trettendedag jul",
+            "FIRSTMAY": "Første mai",
+            "NATIONALDAY": "Sveriges nasjonaldag"
+        },
+        "HTMLLANGUAGE": "no",
+        "CONTACTUS": "Kontakt&nbsp;oss",
+        "OPENHOURS": "Åpningstider",
+        "FINDUS": "Finn&nbsp;oss",
+        "WELCOME": "Velkommen!<br>Ring&nbsp;",
+        "CALLUS": "<br>ved&nbsp;booking&nbsp;av<br>leiebil",
+        "DELIVERYCHECK": "Sjekk om hjemleveringen vår når deg",
+        "ZIPCODE": "Postnummer",
+        "SUBMIT": "Sjekk",
+        "COMPANY": "Selskap",
+        "PRIVATE": "Privat",
+        "STANDARDSORT": "Sorter etter: <span id='currentSorting'> Biler",
+        "PRICEINCREASING": "Pris stigende",
+        "PRICEDECREASING": "Pris synkende",
+        "YEARINCREASING": "Årsmodell stigende",
+        "YEARDECREASING": "Årsmodell synkende",
+        "CARSINCREASING": "Biler stigende",
+        "CARSDECREASING": "Biler synkende",
+        "CARS": "Biler",
+        "YEAR": "Årsmodell",
+        "DAYPRICE": "Dagspris",
+        "WEEKDAYS": "Hverdager",
+        "SATURDAY": "Lørdag",
+        "SUNDAY": "Søndag&nbsp;Stengt",
+        "CLOSED": "Stengt",
+        "CLOSEDDAYS": "Stengte&nbsp;dager",
+        "ADDRESS": "Adresse"
     }
 }
