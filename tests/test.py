@@ -359,6 +359,14 @@ class TestingPage(TestCase):
         time.sleep(0.5)
         self.assertIn("800", productList.text)
 
+    def helperLanguageChange(self, language, testCases):
+        self.browser.find_element(By.ID, language).click()
+        self.assertIn(testCases, self.browser.page_source)
+
+    def testLanguageChange(self):
+        self.helperLanguageChange("swedish", "Kolla om vår hemleverans når dig")
+        self.helperLanguageChange("norwegian", "Sjekk om hjemleveringen vår når deg")
+
 
 # will run if the fil running is a normal python file, always end of file
 if __name__ == "__main__":
