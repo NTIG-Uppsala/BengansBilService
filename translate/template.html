@@ -36,6 +36,28 @@
 
             </div>
 
+            <div class="dropdown my-auto" id="languageDropdown">
+                <a class="mx-auto my-auto" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="/images/se.png" alt="" id="activeLang">
+                </a>
+
+                <ul class="dropdown-menu rounded-0 bg-body-tertiary">
+                    <li class="dropdown">
+                        <button class="dropdown-item " href="#" onclick="changeLanguage('no');">
+                            <img src="/images/no.png" alt="" id="no">
+                            No
+                        </button>
+                    </li>
+                    <li class="dropdown">
+                        <button class="dropdown-item  " href="#" onclick="changeLanguage('sv');">
+                            <img src="/images/se.png" alt="" id="sv">
+                            Sv
+                        </button>
+                    </li>
+
+                </ul>
+            </div>
+
             <!-- Toggle menu -->
             <div>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler"
@@ -48,29 +70,6 @@
             <div class="collapse navbar-collapse justify-content-end " id="navbarToggler">
                 <ul class="navbar-nav ml-auto ">
                     <li class="nav-item ml-auto ps-1 mt-2">
-                        <div class="dropdown">
-                            <a class="btn  dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                                <img src="/images/se.png" alt="" id="activeLang">
-                            </a>
-
-                            <ul class="dropdown-menu rounded-0">
-                                <div class="dropdown ">
-                                    <li><button class="dropdown-item " href="#"
-                                            onclick="changeActiveLang('lang1');"><img src="/images/no.png" alt=""
-                                                id="lang1">
-                                            Norska</button>
-                                    </li>
-                                    <div class="dropdown ">
-                                        <div class="dropdown ">
-                                            <li><button class="dropdown-item  " href="#"
-                                                    onclick="changeActiveLang('lang2');"><img src="/images/se.png"
-                                                        alt="" id="lang2">
-                                                    Svenska</button>
-                                            </li>
-
-                            </ul>
-                        </div>
 
                     </li>
                     <li class="nav-item ml-auto ps-1">
