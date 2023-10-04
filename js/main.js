@@ -15,7 +15,7 @@ zipCodeList = [
 ];
 
 //  Runs when the document is fully loaded
-document.addEventListener("DOMContentLoaded", (event) => {
+function activateDeliveryCheck() {
     document
         .querySelector("#zipCodeCheck form")
         .addEventListener("submit", (event) => {
@@ -43,4 +43,4 @@ document.addEventListener("DOMContentLoaded", (event) => {
                     "Vi kör tyvärr inte ut till dig.";
             }
         });
-});
+};

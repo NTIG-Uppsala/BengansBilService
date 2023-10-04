@@ -67,9 +67,10 @@ function changeLanguage(language) {
             var doc = parser.parseFromString(html, 'text/html');
 
             document.body = doc.body
+            document.body.onload = translateTemplate(language);
             document.body.onload = fillProductChart();
             document.body.onload = setLiveOpeningHours(new Date());
             document.body.onload = sortClosedDays(new Date());
-            document.body.onload = translateTemplate(language)
+            document.body.onload = activateDeliveryCheck();
         })
 }
