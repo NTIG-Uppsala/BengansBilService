@@ -23,6 +23,13 @@ function changeList(json, newText) {
             days[i] = newText
         }
     }
+    
+    for (let i = 0; i < closedDaysList.length;i++){
+        if (closedDaysList[i]["text"].includes(json)){
+            closedDaysList[i]["text"] = newText
+        }
+    }
+
 }
 
 function translateTemplate(language) {
@@ -31,9 +38,17 @@ function translateTemplate(language) {
             return response.json();
         }).then(json => {
             let languageObject = json[language];
-            let objectByIndex = Object.keys(languageObject)
-            for (let i = 0; i < Object.keys(languageObject).length; i++) {
-                getInnerText(objectByIndex[i], languageObject[objectByIndex[i]])
+            let languageItemByIndex = Object.keys(languageObject)
+            for (let i = 0; i < languageItemByIndex.length; i++) {
+                getInnerText(languageItemByIndex[i], languageObject[languageItemByIndex[i]])
+            }
+
+            let daysObject = languageObject["days"];
+            let daysItemByIndex = Object.keys(daysObject)            
+            for (let i = 0; i < daysItemByIndex.length; i++) {
+                changeList(daysItemByIndex[i], daysObject[daysItemByIndex[i]])
+            }
+
             }
         })
 }
