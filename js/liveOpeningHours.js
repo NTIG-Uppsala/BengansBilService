@@ -10,13 +10,13 @@ const openingHours = {
 
 // Globally defines array of weekday names
 const days = [
-    "söndag",
-    "måndag",
-    "tisdag",
-    "onsdag",
-    "torsdag",
-    "fredag",
-    "lördag",
+    "SUNDAY",
+    "MONDAY",
+    "TUESDAY",
+    "WEDNESDAY",
+    "THURSDAY",
+    "FRIDAY",
+    "SATURDAY",
 ];
 
 // Checks if the store is closed on the given date
