@@ -49,7 +49,13 @@ function translateTemplate(language) {
                 changeList(daysItemByIndex[i], daysObject[daysItemByIndex[i]])
             }
 
+            let holidayObject = languageObject["holidays"];
+            let holidayItemsByIndex = Object.keys(holidayObject)            
+            for (let i = 0; i < holidayItemsByIndex.length; i++) {
+                changeList(holidayItemsByIndex[i], holidayObject[holidayItemsByIndex[i]])
             }
+
+            sortClosedDays(new Date())
         })
 }
 
