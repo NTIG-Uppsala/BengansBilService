@@ -14,8 +14,8 @@ zipCodeList = [
     "98147",
 ];
 
-//  Runs when the document is fully loaded
-document.addEventListener("DOMContentLoaded", (event) => {
+// Activates the delievery checks submit button
+function activateDeliveryCheck() {
     document
         .querySelector("#zipCodeCheck form")
         .addEventListener("submit", (event) => {
@@ -43,4 +43,4 @@ document.addEventListener("DOMContentLoaded", (event) => {
                     "Vi kör tyvärr inte ut till dig.";
             }
         });
-});
+}
