@@ -146,14 +146,6 @@ iframe {
 	color: white !important;     /* Text color for active state */
 }
 
-.dropdown-toggle {
-	width: 13em !important;
-}
-
-.dropdown-menu {
-	border-radius: 0 !important;
-}
-
 .headerBreak {
 	display: none;
 }
