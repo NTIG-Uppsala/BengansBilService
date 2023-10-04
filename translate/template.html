@@ -16,12 +16,16 @@
     <link rel="icon" type="image/x-icon" href="images/ntb-favicon.svg">
 
     <!--Preload JavaScript-->
-    <!-- <link rel="preload" href="translationChanger.js" as="script"> -->
-    <!--JavaScript for translation-->
-    <!-- <script src="translate/translationChanger.js" defer></script> -->
+    <link rel="preload" href="js/main.js" as="script">
+    <link rel="preload" href="js/products.js" as="script">
+    <link rel="preload" href="js/sortClosedDays.js" as="script">
+    <link rel="preload" href="js/liveOpeningHours.js" as="script">
+    <link rel="preload" href="js/bootstrap.bundle.min.js" as="script">
+    <link rel="preload" href="translate/translationChanger.js" as="script">
 </head>
 
-<body onload="setLiveOpeningHours(new Date()); sortClosedDays(new Date());">
+<body
+    onload="translateTemplate('sv'); fillProductChart(); setLiveOpeningHours(new Date()); sortClosedDays(new Date());">
 
     <!-- Navbar/header -->
     <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top" data-bs-theme="dark">
@@ -273,6 +277,9 @@
 
     <!--JavaScript for products-->
     <script src="js/products.js"></script>
+
+    <!--JavaScript for translation-->
+    <script src="translate/translationChanger.js"></script>
 </body>
 
 </html>

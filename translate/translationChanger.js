@@ -19,15 +19,7 @@ function getInnerText(x, newText) {
 // läser längd av obj 
 //Object.keys(ord).length
 
-function changeLanguage(language) {
-    fetch("../translate/template.html")
-        .then(response => response.text())
-        .then(html => {
-            var parser = new DOMParser();
-            var doc = parser.parseFromString(html, 'text/html');
-
-            document.body = doc.body
-        })
+function translateTemplate(language) {
     fetch('../translate/translation.json')
         .then(response => {
             return response.json();
@@ -40,4 +32,17 @@ function changeLanguage(language) {
         })
 }
 
-changeLanguage('sv')
+function changeLanguage(language) {
+    fetch("../translate/template.html")
+        .then(response => response.text())
+        .then(html => {
+            var parser = new DOMParser();
+            var doc = parser.parseFromString(html, 'text/html');
+
+            document.body = doc.body
+            document.body.onload = fillProductChart();
+            document.body.onload = setLiveOpeningHours(new Date());
+            document.body.onload = sortClosedDays(new Date());
+            document.body.onload = translateTemplate(language)
+        })
+}

@@ -24,27 +24,7 @@ function VATRedcution(carPrice) {
     return withoutVAT;
 }
 
-// Runs when the page is loaded
-document.addEventListener("DOMContentLoaded", function () {
-    const tableBody = document.getElementById("carList");
-
-    // Creates table for products
-    carsList.forEach(function (car) {
-        const row = document.createElement("tr");
-        const nameCell = document.createElement("td");
-        const yearCell = document.createElement("td");
-        const priceCell = document.createElement("td");
-
-        row.appendChild(nameCell);
-        row.appendChild(yearCell);
-        row.appendChild(priceCell);
-
-        tableBody.appendChild(row);
-    });
-    sortProductChart(sortOptionObject["sortOptionGlobal"], sortOptionObject["isRisingGlobal"])
-});
-
-function createProductChart() {
+function fillProductChart() {
     const tableBody = document.getElementById("carList");
 
     // Creates table for products
@@ -62,6 +42,7 @@ function createProductChart() {
     });
     sortProductChart(sortOptionObject["sortOptionGlobal"], sortOptionObject["isRisingGlobal"])
 }
+
 
 // Sorts the list of cars
 function sortCars(sortChoice, isRising) {
