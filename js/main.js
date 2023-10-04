@@ -20,7 +20,7 @@ let zipcodeOutput = {
     "canNotBeDelivered": "CANNOTBEDELIVERED"
 }
 
-// Activates the delievery checks submit button
+// Activates the delivery checks submit button
 function activateDeliveryCheck() {
     document
         .querySelector("#zipCodeCheck form")
