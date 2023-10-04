@@ -18,15 +18,22 @@ function getInnerText(x, newText) {
 }
 
 function changeList(json, newText) {
-    for (let i = 0; i < days.length;i++){
+    for (let i = 0; i < days.length; i++){
         if (days[i].includes(json)){
-            days[i] = newText
+            days[i] = newText;
         }
     }
     
-    for (let i = 0; i < closedDaysList.length;i++){
+    for (let i = 0; i < closedDaysList.length; i++){
         if (closedDaysList[i]["text"].includes(json)){
-            closedDaysList[i]["text"] = newText
+            closedDaysList[i]["text"] = newText;
+        }
+    }
+
+    let dropdownTitlesByIndex = Object.keys(dropdownTitles);
+    for (let i = 0; i < dropdownTitlesByIndex.length; i++) {
+        if (dropdownTitles[dropdownTitlesByIndex[i]].includes(json)){
+            dropdownTitles[dropdownTitlesByIndex[i]] = newText;
         }
     }
 
@@ -38,28 +45,35 @@ function translateTemplate(language) {
             return response.json();
         }).then(json => {
             let languageObject = json[language];
-            let languageItemByIndex = Object.keys(languageObject)
+            let languageItemByIndex = Object.keys(languageObject);
             for (let i = 0; i < languageItemByIndex.length; i++) {
-                getInnerText(languageItemByIndex[i], languageObject[languageItemByIndex[i]])
+                getInnerText(languageItemByIndex[i], languageObject[languageItemByIndex[i]]);
             }
 
             let daysObject = languageObject["days"];
-            let daysItemByIndex = Object.keys(daysObject)            
+            let daysItemByIndex = Object.keys(daysObject);            
             for (let i = 0; i < daysItemByIndex.length; i++) {
-                changeList(daysItemByIndex[i], daysObject[daysItemByIndex[i]])
+                changeList(daysItemByIndex[i], daysObject[daysItemByIndex[i]]);
             }
 
             let holidayObject = languageObject["holidays"];
-            let holidayItemsByIndex = Object.keys(holidayObject)            
+            let holidayItemsByIndex = Object.keys(holidayObject);          
             for (let i = 0; i < holidayItemsByIndex.length; i++) {
-                changeList(holidayItemsByIndex[i], holidayObject[holidayItemsByIndex[i]])
+                changeList(holidayItemsByIndex[i], holidayObject[holidayItemsByIndex[i]]);
             }
 
-            sortClosedDays(new Date())
+            let sortDropdownObject = languageObject["sortDropdown"];
+            let sortItemsByIndex = Object.keys(sortDropdownObject);
+            for (let i = 0; i < sortItemsByIndex.length; i++) {
+                changeList(sortItemsByIndex[i], sortDropdownObject[sortItemsByIndex[i]]);
+            }
+
+            sortClosedDays(new Date());
+            fillProductChart()
         })
 }
 
-function changeLanguage(language) {
+function generateDocument(language) {
     fetch("../translate/template.html")
         .then(response => response.text())
         .then(html => {
@@ -68,9 +82,7 @@ function changeLanguage(language) {
 
             document.body = doc.body
             document.body.onload = translateTemplate(language);
-            document.body.onload = fillProductChart();
             document.body.onload = setLiveOpeningHours(new Date());
-            document.body.onload = sortClosedDays(new Date());
             document.body.onload = activateDeliveryCheck();
         })
 }
