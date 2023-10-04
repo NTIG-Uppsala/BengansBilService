@@ -1,101 +1,119 @@
-function getInnerText(x, newText) {
-    let spans = document.getElementsByTagName("span");
+// Changes the inner text of a HTML element found through looping the JSON
+function changeInnerText(searchWord, newText) {
+    let spans = document.getElementsByTagName("span"); // Gets all span tags from the HTML document
     for (const span of spans) {
-        if (span.textContent.includes(x)) {
-            span.innerHTML = (newText)
+        if (span.textContent.includes(searchWord)) { // Finds the span that matches the given variable (searchWord)
+            span.innerHTML = (newText) // Replaces the search word with the corresponding text
         }
     }
 
-    let inputs = document.getElementsByTagName("input");
+    let inputs = document.getElementsByTagName("input"); // Gets all input tags
     for (const input of inputs) {
-        if (input.placeholder.includes(x)) {
-            input.placeholder = (newText)
+        if (input.placeholder.includes(searchWord)) {
+            input.placeholder = (newText) // Replaces the base text of an input field
         }
-        if (input.value.includes(x)) {
-            input.value = (newText)
+        if (input.value.includes(searchWord)) {
+            input.value = (newText) // Replaces the text of buttons
         }
     }
 }
 
-function changeList(json, newText) {
-    for (let i = 0; i < days.length; i++) {
-        if (days[i].includes(json)) {
-            days[i] = newText;
+// Changes variables in the JavaScript files
+function changeJavaScript(searchWord, newText) {
+    for (let i = 0; i < days.length; i++) { // Loops through the global days array
+        if (days[i].includes(searchWord)) {
+            days[i] = newText; // Replaces the text of the array item if it matches the search word
         }
     }
 
-    for (let i = 0; i < closedDaysList.length; i++) {
-        if (closedDaysList[i]["text"].includes(json)) {
-            closedDaysList[i]["text"] = newText;
+    for (let i = 0; i < closedDaysList.length; i++) { // Loops through the global list of closed days
+        if (closedDaysList[i]["text"].includes(searchWord)) {
+            closedDaysList[i]["text"] = newText; // Replaces the text of the array item if it matches the search word
         }
     }
 
-    let dropdownTitlesByIndex = Object.keys(dropdownTitles);
-    for (let i = 0; i < dropdownTitlesByIndex.length; i++) {
-        if (dropdownTitles[dropdownTitlesByIndex[i]].includes(json)) {
+    let dropdownTitlesByIndex = Object.keys(dropdownTitles); // Gets the dropdown titles object as an array
+    for (let i = 0; i < dropdownTitlesByIndex.length; i++) { // Loops through the array made from dropdown titles
+        // Uses the dropdownTitlesByIndex to get the name of the position in the object to be replaced
+        if (dropdownTitles[dropdownTitlesByIndex[i]].includes(searchWord)) {
             dropdownTitles[dropdownTitlesByIndex[i]] = newText;
         }
     }
-    let zipcodeOutputByIndex = Object.keys(zipcodeOutput);
-    for (let i = 0; i < zipcodeOutputByIndex.length; i++) {
-        if (zipcodeOutput[zipcodeOutputByIndex[i]].includes(json)) {
+
+    let zipcodeOutputByIndex = Object.keys(zipcodeOutput); // Gets the zipcode output object as an array
+    for (let i = 0; i < zipcodeOutputByIndex.length; i++) { // Loops through the array made from zipcode outputs
+        // Uses the zipcodeOutputByIndex to get the name of the position in the object to be replaced
+        if (zipcodeOutput[zipcodeOutputByIndex[i]].includes(searchWord)) {
             zipcodeOutput[zipcodeOutputByIndex[i]] = newText;
         }
     }
 
 }
 
+// Translates the template
 function translateTemplate(language) {
+    // Uses the fetch function to access the translation json
     fetch('../translate/translation.json')
         .then(response => {
             return response.json();
         }).then(json => {
-            let languageObject = json[language];
-            let languageItemByIndex = Object.keys(languageObject);
-            for (let i = 0; i < languageItemByIndex.length; i++) {
-                getInnerText(languageItemByIndex[i], languageObject[languageItemByIndex[i]]);
+            let languageObject = json[language]; // Gets the correct language object
+            let languageItemByIndex = Object.keys(languageObject); // Gets the object as an array
+            for (let i = 0; i < languageItemByIndex.length; i++) { // Loops through the object using the array
+                // Uses the changeInnerText function together with the position name from the languageItemByIndex array
+                changeInnerText(languageItemByIndex[i], languageObject[languageItemByIndex[i]]);
             }
 
-            let daysObject = languageObject["days"];
+            let daysObject = languageObject["days"]; // Gets the object of days
             let daysItemByIndex = Object.keys(daysObject);
             for (let i = 0; i < daysItemByIndex.length; i++) {
-                changeList(daysItemByIndex[i], daysObject[daysItemByIndex[i]]);
+                // Changes the JavaScript days array
+                changeJavaScript(daysItemByIndex[i], daysObject[daysItemByIndex[i]]);
             }
 
-            let holidayObject = languageObject["holidays"];
+            let holidayObject = languageObject["holidays"]; // Gets the closed days
             let holidayItemsByIndex = Object.keys(holidayObject);
             for (let i = 0; i < holidayItemsByIndex.length; i++) {
-                changeList(holidayItemsByIndex[i], holidayObject[holidayItemsByIndex[i]]);
+                // Changes the JavaScript closed days array
+                changeJavaScript(holidayItemsByIndex[i], holidayObject[holidayItemsByIndex[i]]);
             }
 
-            let sortDropdownObject = languageObject["sortDropdown"];
+            let sortDropdownObject = languageObject["sortDropdown"]; // Gets the text for sort dropdown
             let sortItemsByIndex = Object.keys(sortDropdownObject);
             for (let i = 0; i < sortItemsByIndex.length; i++) {
-                changeList(sortItemsByIndex[i], sortDropdownObject[sortItemsByIndex[i]]);
+                // Changes the JavaScript object containing dropdown options
+                changeJavaScript(sortItemsByIndex[i], sortDropdownObject[sortItemsByIndex[i]]);
             }
 
             let zipcodeOutputObject = languageObject["zipcodeOutputs"];
             let zipcodeOutputByIndex = Object.keys(zipcodeOutputObject);
             for (let i = 0; i < zipcodeOutputByIndex.length; i++) {
-                changeList(zipcodeOutputByIndex[i], zipcodeOutputObject[zipcodeOutputByIndex[i]]);
+                // Changes the JavaScript object containing zipcode outputs
+                changeJavaScript(zipcodeOutputByIndex[i], zipcodeOutputObject[zipcodeOutputByIndex[i]]);
             }
 
+            // Calls the functions that needs to be called after the translation is done
             sortClosedDays(new Date());
-            fillProductChart()
+            fillProductChart();
         })
 }
 
+
+// Generates the document with the correct language
 function generateDocument(language) {
+    document.documentElement.lang = language;
+    // Uses fetch to get the template page
     fetch("../translate/template.html")
         .then(response => response.text())
         .then(html => {
-            var parser = new DOMParser();
-            var doc = parser.parseFromString(html, 'text/html');
+            var parser = new DOMParser(); // Defines a parser to turn string into a document element
+            var doc = parser.parseFromString(html, 'text/html'); // Parses the template into a document element
 
-            document.body = doc.body
+            document.body.innerHTML = doc.body.innerHTML // Replaces the current documents content with the template content
+            // Runs the function that needs to load with the website
             document.body.onload = translateTemplate(language);
             document.body.onload = setLiveOpeningHours(new Date());
             document.body.onload = activateDeliveryCheck();
-            document.body.onload = changeActiveLangImage(document.documentElement.lang)
+            document.body.onload = changeActiveLangImage(language)
         })
 }
