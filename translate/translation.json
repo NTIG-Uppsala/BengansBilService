@@ -8,7 +8,7 @@
             "NEWYEARSDAY": "Nyårsdagen",
             "EPIPHANY": "Trettondedag jul",
             "FIRSTMAY": "Första maj",
-            "NATIONALDAY": "Sveriges nationaldag"
+            "NATIONALDAY": "Sveriges<br>nationaldag&nbsp;"
         },
         "days": {
             "SUNDAY": "söndag",
@@ -48,11 +48,6 @@
         "ADDRESS": "Adress"
     },
     "no": {
-        "UNIVERSAL": {
-            "EMAIL": "info@ntig&#8209;uppsala.github.io",
-            "PHONE": "0630&#8209;555&#8209;555",
-            "STREET": "Fjällgatan 32H <br> 981 39 Jönköping"
-        },
         "holidays": {
             "CHRISTMAS": "Julaften",
             "CHRISTMASDAY": "Første juledag",

@@ -17,15 +17,14 @@
 
     <!--Preload JavaScript-->
     <link rel="preload" href="js/main.js" as="script">
+    <link rel="preload" href="translate/translationChanger.js" as="script">
     <link rel="preload" href="js/products.js" as="script">
     <link rel="preload" href="js/sortClosedDays.js" as="script">
     <link rel="preload" href="js/liveOpeningHours.js" as="script">
     <link rel="preload" href="js/bootstrap.bundle.min.js" as="script">
-    <link rel="preload" href="translate/translationChanger.js" as="script">
 </head>
 
-<body
-    onload="translateTemplate('sv'); fillProductChart(); setLiveOpeningHours(new Date()); sortClosedDays(new Date());">
+<body>
 
     <!-- Navbar/header -->
     <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top" data-bs-theme="dark">
@@ -193,7 +192,7 @@
                     <!-- Open hours  -->
                     <h3 class=" mb-3 h3"><span> OPENHOURS</span></h3>
                     <p class="fs-5" id="storeState"></p>
-                    <div class="text-start OPENHOURS w-75 fs-5">
+                    <div class="text-start openHours w-75 fs-5">
 
                         <!-- Closed days  -->
                         <p><span> WEEKDAYS</span> <span class="text-end textRight">10-16</span></p>
@@ -292,6 +291,9 @@
     <!--To run bootstrap-->
     <script src="js/bootstrap.bundle.min.js"></script>
 
+    <!--JavaScript for translation-->
+    <script src="translate/translationChanger.js"></script>
+
     <!--Our JavaScript-->
     <script src="js/main.js"></script>
 
@@ -303,9 +305,6 @@
 
     <!--JavaScript for products-->
     <script src="js/products.js"></script>
-
-    <!--JavaScript for translation-->
-    <script src="translate/translationChanger.js"></script>
 </body>
 
 </html>
