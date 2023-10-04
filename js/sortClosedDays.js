@@ -1,13 +1,13 @@
 // Creates a global list for closed days
-let closedDaysList = [
-    { text: "Nyårsdagen", date: "1-1", },
-    { text: "Trettondedag jul", date: "1-6", },
-    { text: "Första maj", date: "5-1", },
-    { text: "Sveriges<br>nationaldag&nbsp;", date: "6-6", },
-    { text: "Julafton", date: "12-24", },
-    { text: "Juldagen", date: "12-25", },
-    { text: "Annandag jul", date: "12-26", },
-    { text: "Nyårsafton", date: "12-31", },
+const closedDaysList = [
+    { text: "NEWYEARSDAY", date: "1-1", },
+    { text: "EPIPHANY", date: "1-6", },
+    { text: "FIRSTMAY", date: "5-1", },
+    { text: "NATIONALDAY", date: "6-6", },
+    { text: "CHRISTMAS", date: "12-24", },
+    { text: "CHRISTMASDAY", date: "12-25", },
+    { text: "BOXINGDAY", date: "12-26", },
+    { text: "NEWYEARSEVE", date: "12-31", },
 ];
 
 // Function to parse a date string in "MM-DD" format and return a Date object
