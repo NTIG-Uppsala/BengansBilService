@@ -1,6 +1,8 @@
 let isCompanyPriceGlobal = false; // Sets isCompanyPriceGlobal to false, so that price is with VAT
 let sortOptionObject = { "sortOptionGlobal": "name", "isRisingGlobal": true }; // Global variable for sorting 
 
+let dropdownTitles = { name: "CARS", price: "DAYPRICE", year: "YEAR", }
+
 // Lists all cars that the company offers
 let carsList = [
     { name: "Audi A6", year: "2011", price: 800 },
@@ -100,19 +102,16 @@ function displaySortDropdown(sortChoice) {
     let sortText = document.getElementById("currentSorting");
 
     switch (sortChoice) {
-        case "priceRising":
-        case "priceDecreasing":
-            sortText.innerText = "Pris";
+        case "price":
+            sortText.innerText = dropdownTitles["price"];
             break;
 
-        case "yearRising":
-        case "yearDecreasing":
-            sortText.innerText = "Årsmodell";
+        case "year":
+            sortText.innerText = dropdownTitles["year"];
             break;
 
-        case "nameRising":
-        case "nameDecreasing":
-            sortText.innerText = "Bilar";
+        case "name":
+            sortText.innerText = dropdownTitles["name"];
             break;
     }
 }
