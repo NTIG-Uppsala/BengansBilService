@@ -36,6 +36,12 @@ function changeList(json, newText) {
             dropdownTitles[dropdownTitlesByIndex[i]] = newText;
         }
     }
+    let zipcodeOutputByIndex = Object.keys(zipcodeOutput);
+    for (let i = 0; i < zipcodeOutputByIndex.length; i++) {
+        if (zipcodeOutput[zipcodeOutputByIndex[i]].includes(json)){
+            zipcodeOutput[zipcodeOutputByIndex[i]] = newText;
+        }
+    }
 
 }
 
@@ -66,6 +72,12 @@ function translateTemplate(language) {
             let sortItemsByIndex = Object.keys(sortDropdownObject);
             for (let i = 0; i < sortItemsByIndex.length; i++) {
                 changeList(sortItemsByIndex[i], sortDropdownObject[sortItemsByIndex[i]]);
+            }
+
+            let zipcodeOutputObject = languageObject["zipcodeOutputs"];
+            let zipcodeOutputByIndex = Object.keys(zipcodeOutputObject);
+            for (let i = 0; i < zipcodeOutputByIndex.length; i++) {
+                changeList(zipcodeOutputByIndex[i], zipcodeOutputObject[zipcodeOutputByIndex[i]]);
             }
 
             sortClosedDays(new Date());

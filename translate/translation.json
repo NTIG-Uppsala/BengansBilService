@@ -24,6 +24,11 @@
             "YEAR": "Årsmodell",
             "DAYPRICE": "Dagspris"
         },
+        "zipcodeOutputs": {
+            "INVALID": "Inte ett giltigt postnummer.",
+            "CANBEDELIVERED": "Vi kör ut, ring telefonnumret ovan!",
+            "CANNOTBEDELIVERED": "Vi kör tyvärr inte ut till dig."
+        },
         "HTMLLANGUAGE": "sv",
         "CONTACTUS": "Kontakta&nbsp;oss",
         "OPENHOURS": "Öppettider",
@@ -76,6 +81,11 @@
             "CARS": "Biler",
             "YEAR": "Årsmodell",
             "DAYPRICE": "Dagspris"
+        },
+        "zipcodeOutputs": {
+            "INVALID": "Ikke et gyldig postnummer.",
+            "CANBEDELIVERED": "Vi kjører ut, ring telefonnummeret over!",
+            "CANNOTBEDELIVERED": "Beklager, vi leverer ikke til deg."
         },
         "HTMLLANGUAGE": "no",
         "CONTACTUS": "Kontakt&nbsp;oss",

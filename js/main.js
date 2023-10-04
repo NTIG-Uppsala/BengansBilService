@@ -1,5 +1,5 @@
 // List of accepted zip codes
-zipCodeList = [
+let zipCodeList = [
     "98132",
     "98135",
     "98136",
@@ -13,6 +13,12 @@ zipCodeList = [
     "98146",
     "98147",
 ];
+
+let zipcodeOutput = {
+    "invalid" : "INVALID",
+    "canBeDelivered" : "CANBEDELIVERED",
+    "canNotBeDelivered" : "CANNOTBEDELIVERED"
+}
 
 //  Runs when the document is fully loaded
 function activateDeliveryCheck() {
@@ -28,19 +34,19 @@ function activateDeliveryCheck() {
             if (zipInput.match(/\D/) != null) {
                 // If there are no numbers
                 document.querySelector("#output").innerHTML =
-                    "Inte ett giltigt postnummer.";
+                    zipcodeOutput["invalid"];
             } else if (zipInput.length != 5) {
                 // If there are more or less then 5 numbers
                 document.querySelector("#output").innerHTML =
-                    "Inte ett giltigt postnummer.";
+                    zipcodeOutput["invalid"];
             } else if (zipCodeList.includes(zipInput)) {
                 // If the zip code is valid
                 document.querySelector("#output").innerHTML =
-                    "Vi kör ut, ring telefonnumret ovan!";
+                    zipcodeOutput["canBeDelivered"];
             } else {
                 // If the zip code is invalid
                 document.querySelector("#output").innerHTML =
-                    "Vi kör tyvärr inte ut till dig.";
+                zipcodeOutput["canNotBeDelivered"];
             }
         });
 };
