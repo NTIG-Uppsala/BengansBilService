@@ -96,5 +96,6 @@ function generateDocument(language) {
             document.body.onload = translateTemplate(language);
             document.body.onload = setLiveOpeningHours(new Date());
             document.body.onload = activateDeliveryCheck();
+            document.body.onload = changeActiveLangImage(document.documentElement.lang)
         })
 }

@@ -51,12 +51,20 @@ function activateDeliveryCheck() {
         });
 };
 
-function changeActiveLang(lang) {
+function changeActiveLangImage(language) {
     active = document.getElementById("activeLang");
-    replace = document.getElementById(lang).src;
+    replaceSrc = document.getElementById(language).src;
 
-    if (active != replace) {
-        active.src = replace;
-        replace = active.src;
-    }
+    active.src = replaceSrc;
 };
+
+function changeLanguage(language) {
+    if (document.documentElement.lang !== language) { // If the submitted language is not the same as the current language
+        document.documentElement.lang = language
+
+        generateDocument(language)
+    } else { // If the language is the same as the pressed button
+        // Stops the function
+        return;
+    }
+}
