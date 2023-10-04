@@ -37,8 +37,6 @@ function isDateClosed(date) {
         closedDays.push({ month: month - 1, dayOfMonth: day })
     });
 
-    console.log(closedDays)
-
     for (const closedDay of closedDays) {
         if (closedDay.month === month && closedDay.dayOfMonth === dayOfMonth) {
             return true;
