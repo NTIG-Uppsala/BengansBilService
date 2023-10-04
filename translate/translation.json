@@ -8,7 +8,26 @@
             "NEWYEARSDAY": "Nyårsdagen",
             "EPIPHANY": "Trettondedag jul",
             "FIRSTMAY": "Första maj",
-            "NATIONALDAY": "Sveriges nationaldag"
+            "NATIONALDAY": "Sveriges<br>nationaldag&nbsp;"
+        },
+        "days": {
+            "SUNDAY": "söndag",
+            "MONDAY": "måndag",
+            "TUESDAY": "tisdag",
+            "WEDNESDAY": "onsdag",
+            "THURSDAY": "torsdag",
+            "FRIDAY": "fredag",
+            "SATURDAY": "lördag"
+        },
+        "sortDropdown": {
+            "CARS": "Bilar",
+            "YEAR": "Årsmodell",
+            "DAYPRICE": "Dagspris"
+        },
+        "zipcodeOutputs": {
+            "INVALID": "Inte ett giltigt postnummer.",
+            "CANBEDELIVERED": "Vi kör ut, ring telefonnumret ovan!",
+            "CANNOTBEDELIVERED": "Vi kör tyvärr inte ut till dig."
         },
         "HTMLLANGUAGE": "sv",
         "CONTACTUS": "Kontakta&nbsp;oss",
@@ -21,7 +40,7 @@
         "SUBMIT": "Kolla",
         "COMPANY": "Företag",
         "PRIVATE": "Privat",
-        "STANDARDSORT": "Sortera efter: <span id='currentSorting'> Bilar",
+        "STANDARDSORT": "Sortera efter: ",
         "PRICEINCREASING": "Pris stigande",
         "PRICEDECREASING": "Pris fallande",
         "YEARINCREASING": "Årsmodell stigande",
@@ -39,11 +58,6 @@
         "ADDRESS": "Adress"
     },
     "no": {
-        "UNIVERSAL": {
-            "EMAIL": "info@ntig&#8209;uppsala.github.io",
-            "PHONE": "0630&#8209;555&#8209;555",
-            "STREET": "Fjällgatan 32H <br> 981 39 Jönköping"
-        },
         "holidays": {
             "CHRISTMAS": "Julaften",
             "CHRISTMASDAY": "Første juledag",
@@ -53,6 +67,25 @@
             "EPIPHANY": "Trettendedag jul",
             "FIRSTMAY": "Første mai",
             "NATIONALDAY": "Sveriges nasjonaldag"
+        },
+        "days": {
+            "SUNDAY": "søndag",
+            "MONDAY": "mandag",
+            "TUESDAY": "tirsdag",
+            "WEDNESDAY": "onsdag",
+            "THURSDAY": "torsdag",
+            "FRIDAY": "fredag",
+            "SATURDAY": "lørdag"
+        },
+        "sortDropdown": {
+            "CARS": "Biler",
+            "YEAR": "Årsmodell",
+            "DAYPRICE": "Dagspris"
+        },
+        "zipcodeOutputs": {
+            "INVALID": "Ikke et gyldig postnummer.",
+            "CANBEDELIVERED": "Vi kjører ut, ring telefonnummeret over!",
+            "CANNOTBEDELIVERED": "Beklager, vi leverer ikke til deg."
         },
         "HTMLLANGUAGE": "no",
         "CONTACTUS": "Kontakt&nbsp;oss",
@@ -65,7 +98,7 @@
         "SUBMIT": "Sjekk",
         "COMPANY": "Selskap",
         "PRIVATE": "Privat",
-        "STANDARDSORT": "Sorter etter: <span id='currentSorting'> Biler",
+        "STANDARDSORT": "Sorter etter: ",
         "PRICEINCREASING": "Pris stigende",
         "PRICEDECREASING": "Pris synkende",
         "YEARINCREASING": "Årsmodell stigende",

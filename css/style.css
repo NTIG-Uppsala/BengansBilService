@@ -8,6 +8,7 @@ body {
 }
 
 @font-face {
+
 	/* License: .../fonts/MavenPro/OFL.txt */
 	font-family: "Maven Pro";
 	font-style: normal;
@@ -142,22 +143,7 @@ iframe {
 }
 
 .btn-toggle-active {
-	background-color: #1e549d !important;
-	/* Darker background color for active state */
-	color: white !important;
-	/* Text color for active state */
-}
-
-.dropdown-item {
-	color: black !important;
-}
-
-.dropdown-toggle {
-	width: 13em !important;
-}
-
-.dropdown-menu {
-	border-radius: 0 !important;
+	color: white !important;     /* Text color for active state */
 }
 
 .headerBreak {
