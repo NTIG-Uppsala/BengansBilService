@@ -44,3 +44,13 @@ function activateDeliveryCheck() {
             }
         });
 };
+
+function changeActiveLang(lang) {
+    active = document.getElementById("activeLang");
+    replace = document.getElementById(lang).src;
+
+    if (active != replace) {
+        active.src = replace;
+        replace = active.src;
+    }
+};
