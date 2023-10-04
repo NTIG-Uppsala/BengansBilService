@@ -10,6 +10,15 @@
             "FIRSTMAY": "Första maj",
             "NATIONALDAY": "Sveriges nationaldag"
         },
+        "days": {
+            "SUNDAY": "söndag",
+            "MONDAY": "måndag",
+            "TUESDAY": "tisdag",
+            "WEDNESDAY": "onsdag",
+            "THURSDAY": "torsdag",
+            "FRIDAY": "fredag",
+            "SATURDAY": "lördag"
+        },
         "HTMLLANGUAGE": "sv",
         "CONTACTUS": "Kontakta&nbsp;oss",
         "OPENHOURS": "Öppettider",
@@ -53,6 +62,15 @@
             "EPIPHANY": "Trettendedag jul",
             "FIRSTMAY": "Første mai",
             "NATIONALDAY": "Sveriges nasjonaldag"
+        },
+        "days": {
+            "SUNDAY": "søndag",
+            "MONDAY": "mandag",
+            "TUESDAY": "tirsdag",
+            "WEDNESDAY": "onsdag",
+            "THURSDAY": "torsdag",
+            "FRIDAY": "fredag",
+            "SATURDAY": "lørdag"
         },
         "HTMLLANGUAGE": "no",
         "CONTACTUS": "Kontakt&nbsp;oss",

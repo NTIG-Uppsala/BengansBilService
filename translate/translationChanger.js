@@ -16,8 +16,14 @@ function getInnerText(x, newText) {
         }
     }
 }
-// läser längd av obj 
-//Object.keys(ord).length
+
+function changeList(json, newText) {
+    for (let i = 0; i < days.length;i++){
+        if (days[i].includes(json)){
+            days[i] = newText
+        }
+    }
+}
 
 function translateTemplate(language) {
     fetch('../translate/translation.json')
