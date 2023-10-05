@@ -1,4 +1,5 @@
 import time
+from multiprocessing.connection import wait
 from os import getcwd, path
 from unittest import TestCase, main
 
@@ -31,15 +32,17 @@ class TestingPage(TestCase):
 
     # Before each test
     def setUp(self):
-        self.browser.get(path.join((getcwd()), "index.html"))
+        self.browser.get("http://localhost:8000/index.html")
+        time.sleep(5)
 
     # After each test
+
     def tearDown(self):
         self.browser.get("about:blank")
 
     def testNumber(self):
-        self.assertIn("0630-555-555", self.browser.page_source)
-        self.browser.find_element(By.LINK_TEXT, "0630-555-555")
+        element = self.browser.find_element(By.LINK_TEXT, "0630‑555‑555")
+        self.assertEqual("0630‑555‑555", element.text)
 
     def testLinkNumber(self):
         self.assertIn("0630555555", self.browser.page_source)
@@ -64,19 +67,20 @@ class TestingPage(TestCase):
 
     def testNavBarTitle(self):
         element = self.browser.find_element(By.CLASS_NAME, "navbar-nav")
-        self.assertIn("Kontakta&nbsp;oss", element.get_attribute("innerHTML"))
-        self.assertIn("Hitta&nbsp;hit", element.get_attribute("innerHTML"))
-        self.assertIn("Öppettider", element.get_attribute("innerHTML"))
-        # checks that there is no residual product:
-        self.assertNotIn("Adress", element.get_attribute("innerHTML"))
+        element_text = element.text
+        self.assertIn("Kontakta oss", element_text)
+        self.assertIn("Hitta hit", element_text)
+        self.assertIn("Öppettider", element_text)
+        self.assertNotIn("Adress", element_text)
 
     def testNotTitle(self):
         self.assertNotIn("Bengans Biluthyrning", self.browser.page_source)
 
     def testFooterTitle(self):
         element = self.browser.find_element(By.CLASS_NAME, "info-section")
-        self.assertIn("Hitta hit", element.get_attribute("innerHTML"))
-        self.assertIn("Öppettider", element.get_attribute("innerHTML"))
+        element_text = element.text
+        self.assertIn("Hitta hit", element_text)
+        self.assertIn("Öppettider", element_text)
 
     def testAddress(self):
         self.assertIn("Fjällgatan 32H", self.browser.page_source)
@@ -122,7 +126,7 @@ class TestingPage(TestCase):
             zipOutput = self.browser.find_element(By.ID, "zipCodeCheck")
             self.assertIn(message, zipOutput.text)
             self.browser.get("about:blank")
-            self.browser.get(path.join((getcwd()), "index.html"))
+            self.browser.get("http://127.0.0.1:8000/index.html")
 
     def testZipCodes(self):
         zipCodeCanBeDelivered = [
@@ -358,6 +362,18 @@ class TestingPage(TestCase):
         )
         time.sleep(0.5)
         self.assertIn("800", productList.text)
+
+    def helperLanguageChange(self, language, testCases):
+        self.browser.find_element(By.ID, "activeLang").click()
+        time.sleep(1)
+        self.browser.find_element(By.ID, language).click()
+        testCaseZip = self.browser.find_element(By.ID, "deliveryCheck")
+
+        self.assertIn(testCases, self.browser.page_source)
+
+    def testLanguageChange(self):
+        self.helperLanguageChange("no", "Sjekk om hjemleveringen vår når deg")
+        self.helperLanguageChange("sv", "Kolla om vår hemleverans når dig")
 
 
 # will run if the fil running is a normal python file, always end of file

@@ -1,0 +1,138 @@
+{
+    "sv": {
+        "holidays": {
+            "CHRISTMAS": "Julafton",
+            "CHRISTMASDAY": "Juldagen",
+            "BOXINGDAY": "Annandag jul",
+            "NEWYEARSEVE": "Nyårsafton",
+            "NEWYEARSDAY": "Nyårsdagen",
+            "EPIPHANY": "Trettondedag jul",
+            "FIRSTMAY": "Första maj",
+            "NATIONALDAY": "Sveriges<br>nationaldag&nbsp;"
+        },
+        "days": {
+            "SUNDAY": "söndag",
+            "MONDAY": "måndag",
+            "TUESDAY": "tisdag",
+            "WEDNESDAY": "onsdag",
+            "THURSDAY": "torsdag",
+            "FRIDAY": "fredag",
+            "SATURDAY": "lördag"
+        },
+        "sortDropdown": {
+            "CARS": "Bilar",
+            "YEAR": "Årsmodell",
+            "DAYPRICE": "Dagspris"
+        },
+        "zipcodeOutputs": {
+            "INVALID": "Inte ett giltigt postnummer.",
+            "CANBEDELIVERED": "Vi kör ut, ring telefonnumret ovan!",
+            "CANNOTBEDELIVERED": "Vi kör tyvärr inte ut till dig."
+        },
+        "liveOpeningHoursText": {
+            "OPENSIN": "Öppnar om",
+            "MINUTES": "minuter",
+            "OPENSTODAY": "Öppnar idag kl.",
+            "CLOSESSOON": "Stänger snart",
+            "OPEN": "Öppet",
+            "OPENS": "Öppnar",
+            "RIGHTNOW": "Just nu: ",
+            "TIME": "kl."
+        },
+        "HTMLLANGUAGE": "sv",
+        "CONTACTUS": "Kontakta&nbsp;oss",
+        "OPENHOURS": "Öppettider",
+        "FINDUS": "Hitta&nbsp;hit",
+        "WELCOME": "Välkommen!<br>Ring&nbsp;",
+        "CALLUS": "<br>vid&nbsp;bokning&nbsp;av<br>hyrbil",
+        "DELIVERYCHECK": "Kolla om vår hemleverans når dig",
+        "ZIPCODE": "Postnummer",
+        "SUBMIT": "Kolla",
+        "COMPANY": "Företag",
+        "PRIVATE": "Privat",
+        "STANDARDSORT": "Sortera efter: ",
+        "PRICEINCREASING": "Pris stigande",
+        "PRICEDECREASING": "Pris fallande",
+        "YEARINCREASING": "Årsmodell stigande",
+        "YEARDECREASING": "Årsmodell fallande",
+        "CARSINCREASING": "Bilar stigande",
+        "CARSDECREASING": "Bilar fallande",
+        "CARS": "Bilar",
+        "YEAR": "Årsmodell",
+        "DAYPRICE": "Dagspris",
+        "WEEKDAYS": "Vardagar",
+        "SATURDAY": "Lördag",
+        "SUNDAY": "Söndag",
+        "CLOSED": "Stängt",
+        "CLOSEDDAYS": "Stängda&nbsp;dagar",
+        "ADDRESS": "Adress"
+    },
+    "no": {
+        "holidays": {
+            "CHRISTMAS": "Julaften",
+            "CHRISTMASDAY": "Første juledag",
+            "BOXINGDAY": "Andre juledag",
+            "NEWYEARSEVE": "Nyttårsaften",
+            "NEWYEARSDAY": "Nyttårsdag",
+            "EPIPHANY": "Trettendedag jul",
+            "FIRSTMAY": "Første mai",
+            "NATIONALDAY": "Sveriges<br>nasjonaldag&nbsp;"
+        },
+        "days": {
+            "SUNDAY": "søndag",
+            "MONDAY": "mandag",
+            "TUESDAY": "tirsdag",
+            "WEDNESDAY": "onsdag",
+            "THURSDAY": "torsdag",
+            "FRIDAY": "fredag",
+            "SATURDAY": "lørdag"
+        },
+        "sortDropdown": {
+            "CARS": "Biler",
+            "YEAR": "Årsmodell",
+            "DAYPRICE": "Dagspris"
+        },
+        "zipcodeOutputs": {
+            "INVALID": "Ikke et gyldig postnummer.",
+            "CANBEDELIVERED": "Vi kjører ut, ring telefonnummeret over!",
+            "CANNOTBEDELIVERED": "Beklager, vi leverer ikke til deg."
+        },
+        "liveOpeningHoursText": {
+            "OPENSIN": "Åpner om",
+            "MINUTES": "minutter",
+            "OPENSTODAY": "Åpner i dag kl.",
+            "CLOSESSOON": "Stenger snart",
+            "OPEN": "Åpent",
+            "OPENS": "Åpner",
+            "RIGHTNOW": "Akkurat nå: ",
+            "TIME": "kl."
+        },
+        "HTMLLANGUAGE": "no",
+        "CONTACTUS": "Kontakt&nbsp;oss",
+        "OPENHOURS": "Åpningstider",
+        "FINDUS": "Finn&nbsp;oss",
+        "WELCOME": "Velkommen!<br>Ring&nbsp;",
+        "CALLUS": "<br>ved&nbsp;booking&nbsp;av<br>leiebil",
+        "DELIVERYCHECK": "Sjekk om hjemleveringen vår når deg",
+        "ZIPCODE": "Postnummer",
+        "SUBMIT": "Sjekk",
+        "COMPANY": "Selskap",
+        "PRIVATE": "Privat",
+        "STANDARDSORT": "Sorter etter: ",
+        "PRICEINCREASING": "Pris stigende",
+        "PRICEDECREASING": "Pris synkende",
+        "YEARINCREASING": "Årsmodell stigende",
+        "YEARDECREASING": "Årsmodell synkende",
+        "CARSINCREASING": "Biler stigende",
+        "CARSDECREASING": "Biler synkende",
+        "CARS": "Biler",
+        "YEAR": "Årsmodell",
+        "DAYPRICE": "Dagspris (sek)",
+        "WEEKDAYS": "Hverdager",
+        "SATURDAY": "Lørdag",
+        "SUNDAY": "Søndag&nbsp;Stengt",
+        "CLOSED": "Stengt",
+        "CLOSEDDAYS": "Stengte&nbsp;dager",
+        "ADDRESS": "Adresse"
+    }
+}

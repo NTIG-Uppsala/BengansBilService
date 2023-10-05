@@ -8,6 +8,7 @@ body {
 }
 
 @font-face {
+
 	/* License: .../fonts/MavenPro/OFL.txt */
 	font-family: "Maven Pro";
 	font-style: normal;
@@ -142,22 +143,8 @@ iframe {
 }
 
 .btn-toggle-active {
-	background-color: #1e549d !important;
-	/* Darker background color for active state */
 	color: white !important;
 	/* Text color for active state */
-}
-
-.dropdown-item {
-	color: black !important;
-}
-
-.dropdown-toggle {
-	width: 13em !important;
-}
-
-.dropdown-menu {
-	border-radius: 0 !important;
 }
 
 .headerBreak {
@@ -195,6 +182,16 @@ iframe {
 .map {
 	width: 45vw;
 	height: 50vh;
+}
+
+#languageDropdown .dropdown-menu {
+	border: 0;
+	margin-left: 0 !important;
+	padding: 0;
+}
+
+#languageDropdown .dropdown-menu .dropdown :hover {
+	background-color: darkslategray;
 }
 
 /* Responsive */

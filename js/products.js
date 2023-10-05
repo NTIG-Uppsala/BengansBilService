@@ -1,5 +1,7 @@
 let isCompanyPriceGlobal = false; // Sets isCompanyPriceGlobal to false, so that price is with VAT
-let sortOptionObject = {"sortOptionGlobal": "name", "isRisingGlobal": true}; // Global variable for sorting 
+let sortOptionObject = { "sortOptionGlobal": "name", "isRisingGlobal": true }; // Global variable for sorting 
+
+let dropdownTitles = { CARS: "CARS", DAYPRICE: "DAYPRICE", YEAR: "YEAR", }
 
 // Lists all cars that the company offers
 let carsList = [
@@ -24,8 +26,7 @@ function VATRedcution(carPrice) {
     return withoutVAT;
 }
 
-// Runs when the page is loaded
-document.addEventListener("DOMContentLoaded", function () {
+function fillProductChart() {
     const tableBody = document.getElementById("carList");
 
     // Creates table for products
@@ -42,7 +43,8 @@ document.addEventListener("DOMContentLoaded", function () {
         tableBody.appendChild(row);
     });
     sortProductChart(sortOptionObject["sortOptionGlobal"], sortOptionObject["isRisingGlobal"])
-});
+}
+
 
 // Sorts the list of cars
 function sortCars(sortChoice, isRising) {
@@ -52,24 +54,24 @@ function sortCars(sortChoice, isRising) {
     switch (sortChoice) {
         // Sorts the list by price
         case "price":
-            if (isRising === true){
+            if (isRising === true) {
                 sortedCars = carsList.sort(function (a, b) { // Sorts the list
                     return a["price"] - b["price"]; // Orders list so that lowest value comes first
-                });  
-            } else if (isRising === false){
+                });
+            } else if (isRising === false) {
                 sortedCars = carsList.sort(function (a, b) {
                     return b["price"] - a["price"]; // Orders list so that highest value comes first
                 });
-            }  
+            }
             break;
 
         // Sorts the list by year
         case "year":
-            if (isRising === true){
+            if (isRising === true) {
                 sortedCars = carsList.sort(function (a, b) {
                     return a["year"] - b["year"]; // Orders list so that lowest value comes first
                 });
-            } else if (isRising === false){
+            } else if (isRising === false) {
                 sortedCars = carsList.sort(function (a, b) {
                     return b["year"] - a["year"]; // Orders list so that highest value comes first
                 });
@@ -78,11 +80,11 @@ function sortCars(sortChoice, isRising) {
 
         // Sorts the list by name alphabetically
         case "name":
-            if (isRising === true){
+            if (isRising === true) {
                 sortedCars = carsList.sort(function (a, b) {
                     return a.name.localeCompare(b.name); // Orders list so that earlier letter comes first
                 });
-            } else if (isRising === false){
+            } else if (isRising === false) {
                 sortedCars = carsList.sort(function (a, b) {
                     return b.name.localeCompare(a.name); // Orders list so that later letter comes first
                 });
@@ -100,19 +102,16 @@ function displaySortDropdown(sortChoice) {
     let sortText = document.getElementById("currentSorting");
 
     switch (sortChoice) {
-        case "priceRising":
-        case "priceDecreasing":
-            sortText.innerText = "Pris";
+        case "price":
+            sortText.innerText = dropdownTitles["DAYPRICE"];
             break;
 
-        case "yearRising":
-        case "yearDecreasing":
-            sortText.innerText = "Årsmodell";
+        case "year":
+            sortText.innerText = dropdownTitles["YEAR"];
             break;
 
-        case "nameRising":
-        case "nameDecreasing":
-            sortText.innerText = "Bilar";
+        case "name":
+            sortText.innerText = dropdownTitles["CARS"];
             break;
     }
 }

@@ -1,13 +1,61 @@
 // Creates a global list for closed days
-let closedDaysList = [
-    { text: "Nyårsdagen", date: "1-1", },
-    { text: "Trettondedag jul", date: "1-6", },
-    { text: "Första maj", date: "5-1", },
-    { text: "Sveriges<br>nationaldag&nbsp;", date: "6-6", },
-    { text: "Julafton", date: "12-24", },
-    { text: "Juldagen", date: "12-25", },
-    { text: "Annandag jul", date: "12-26", },
-    { text: "Nyårsafton", date: "12-31", },
+const closedDaysList = [
+    {
+        content: {
+            variable: "NEWYEARSDAY",
+            text: "NEWYEARSDAY"
+        },
+        date: "1-1"
+    },
+    {
+        content: {
+            variable: "EPIPHANY",
+            text: "EPIPHANY"
+        },
+        date: "1-6"
+    },
+    {
+        content: {
+            variable: "FIRSTMAY",
+            text: "FIRSTMAY"
+        },
+        date: "5-1"
+    },
+    {
+        content: {
+            variable: "NATIONALDAY",
+            text: "NATIONALDAY"
+        },
+        date: "6-6"
+    },
+    {
+        content: {
+            variable: "CHRISTMAS",
+            text: "CHRISTMAS"
+        },
+        date: "12-24"
+    },
+    {
+        content: {
+            variable: "CHRISTMASDAY",
+            text: "CHRISTMASDAY"
+        },
+        date: "12-25"
+    },
+    {
+        content: {
+            variable: "BOXINGDAY",
+            text: "BOXINGDAY"
+        },
+        date: "12-26"
+    },
+    {
+        content: {
+            variable: "NEWYEARSEVE",
+            text: "NEWYEARSEVE"
+        },
+        date: "12-31"
+    },
 ];
 
 // Function to parse a date string in "MM-DD" format and return a Date object
@@ -47,16 +95,16 @@ function sortClosedDays(date) {
     let sortedHolidays = sortHolidays(date)
 
     // Gets the HTML list
-    let closedDaysList = document
+    let closedDaysListElement = document
         .getElementById("closedDaysList")
         .getElementsByTagName("li");
 
     // Sets the value
     for (let i = 0; i < sortedHolidays.length; i++) {
-        closedDaysList[i].innerHTML = sortedHolidays[i]["text"];
+        closedDaysListElement[i].innerHTML = sortedHolidays[i]["content"]["text"];
         elementDate = document.createElement("span");
         elementDate.className = "float-end";
         elementDate.innerHTML = sortedHolidays[i]["date"];
-        closedDaysList[i].appendChild(elementDate);
+        closedDaysListElement[i].appendChild(elementDate);
     }
 }

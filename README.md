@@ -83,21 +83,31 @@ Website for NTB Biluthyrning 2023/2024 <br>
 * "sass" is the command used to compile scss
 * "./scss/custom.scss" is the path to the scss file
 * "./css/custom.css" is the path to the css file
+### Language 
+#### Add the translation
+* Go to the translation.json in the translate folder
+* To add another language to the website first copy the list of words from the translation.json file that starts with the initials of the language it is intended for and ends with a "}" after "ADDRESS".
+* Change the words to their counterparts in the language that will be added and paste them into the new list.
+#### Implement the translation
+* Go to the template.html file where there is a div class that has the id "languageDropdown".
+* Underneath are already existing "li"-tag sections which can be copied and changed to fit the new language that is going to be added by switching out the flag image.
+* Change the argument of the changeLanguage() function in the "onclick" as well as the id to the initials of the language.
+* Get a folder of all countries flags from the link below
+* [Every country's flag is available here](https://flagpedia.net/download) 
+* Choose the map of vector images as shown below so that every image will be in the right format and size. <br>
+![Download of vector images](readmeImages/vectorImages.png)
+* To see the newly added language open the index and select the language in the language menu in order to translate the website.
+
 ## ISO standard for date
-The ISO standard for displaying dates is ISO:8601, example MM-DD
-(https://www.iso.org/iso-8601-date-and-time-format.html)
+* The ISO standard for displaying dates is ISO:8601, example MM-DD
+* [Link to ISO standard](https://www.iso.org/iso-8601-date-and-time-format.html)
 
 ## Testing
 ### Testing Without Screenshots:
-
 Our testing uses the Selenium library in conjunction with Python's Unittest module. The testing process is initiated through the execution of the "test.py" script.
-
 ###  Testing with Screenshots:
-
 While we continue to utilize Selenium and Unittest, we use additional modules, including OS, Math, and Time. Selenium for the capturing of screenshots across various screen resolutions. The file must be executed as a Python file and **can not** be started as a normal unitest file.
-
 ### Testing on GitHub:
-
 GitHub is used to launch local instances for testing purposes. It is utilizing the same "test.py" script. Any test that fails is prevented from being uploaded. These tests are run through GitHub actions using the workflow "main-test.yml".
 
 ## Definition of Done
@@ -124,4 +134,5 @@ GitHub is used to launch local instances for testing purposes. It is utilizing t
   * [lineofcar](https://pixabay.com/photos/automobile-mercedes-mercedes-benz-1291491/)
   * [mapcar](https://unsplash.com/photos/5A8BS9CG-G0?modal=%7B%22tag%22%3A%22Login%22%2C%22value%22%3A%7B%22tag%22%3A%22Like%22%2C%22value%22%3A%7B%22photoId%22%3A%225A8BS9CG-G0%22%2C%22userId%22%3A%22Ov7UOZaHAxA%22%7D%7D%7D)
   * [mountaincar](https://www.pexels.com/sv-se/foto/man-par-manniskor-berg-1131575/)
+  * [Flag images](https://flagpedia.net/about)
   

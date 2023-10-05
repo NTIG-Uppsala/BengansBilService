@@ -1,5 +1,5 @@
 // List of accepted zip codes
-zipCodeList = [
+let zipCodeList = [
     "98132",
     "98135",
     "98136",
@@ -14,8 +14,14 @@ zipCodeList = [
     "98147",
 ];
 
-//  Runs when the document is fully loaded
-document.addEventListener("DOMContentLoaded", (event) => {
+let zipcodeOutput = {
+    "INVALID": "INVALID",
+    "CANBEDELIVERED": "CANBEDELIVERED",
+    "CANNOTBEDELIVERED": "CANNOTBEDELIVERED"
+}
+
+// Activates the delivery checks submit button
+function activateDeliveryCheck() {
     document
         .querySelector("#zipCodeCheck form")
         .addEventListener("submit", (event) => {
@@ -28,19 +34,32 @@ document.addEventListener("DOMContentLoaded", (event) => {
             if (zipInput.match(/\D/) != null) {
                 // If there are no numbers
                 document.querySelector("#output").innerHTML =
-                    "Inte ett giltigt postnummer.";
+                    zipcodeOutput["INVALID"];
             } else if (zipInput.length != 5) {
                 // If there are more or less then 5 numbers
                 document.querySelector("#output").innerHTML =
-                    "Inte ett giltigt postnummer.";
+                    zipcodeOutput["INVALID"];
             } else if (zipCodeList.includes(zipInput)) {
                 // If the zip code is valid
                 document.querySelector("#output").innerHTML =
-                    "Vi kör ut, ring telefonnumret ovan!";
+                    zipcodeOutput["CANBEDELIVERED"];
             } else {
                 // If the zip code is invalid
                 document.querySelector("#output").innerHTML =
-                    "Vi kör tyvärr inte ut till dig.";
+                    zipcodeOutput["CANNOTBEDELIVERED"];
             }
         });
-});
+};
+
+function changeActiveLangImage(language) {
+    active = document.getElementById("activeLang");
+    replaceSrc = document.getElementById(language).src;
+
+    active.src = replaceSrc;
+};
+
+function changeLanguage(language) {
+    if (document.documentElement.lang !== language) { // If the submitted language is not the same as the current language
+        generateDocument(language)
+    }
+}
