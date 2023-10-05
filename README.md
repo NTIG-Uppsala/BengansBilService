@@ -87,9 +87,10 @@ Website for NTB Biluthyrning 2023/2024 <br>
 * To add another language to the website first copy the list of words from the translation.json file that starts with the initials of the language it is intended for and ends with a "}" after adress.
 * Change the words to their counterparts in whatever language that are going to be added and paste in the new list.
 * Then go to the template.html file where there is a div class that has the id "languageDropdown".
-* Underneath are already existing "li-class" sections which can be copied and changed to fit whatever language that is going to be added by switching out the initials and the flag image. 
+* Underneath are already existing "li-class" sections which can be copied and changed to fit whatever language that is going to be added by switching out the flag image, "onclick" initials and the id. 
 * Every country's flag is available [here](https://flagpedia.net/download), every image is in the right format and size.
 * Previous two instructions adds a new selectable language in the translation menu.
+* Select new language in the translation menu in order to translate the website.
 
 ## ISO standard for date
 The ISO standard for displaying dates is ISO:8601, example MM-DD
