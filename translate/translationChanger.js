@@ -93,11 +93,17 @@ function translateTemplate(language) {
             }
 
             // Calls the functions that needs to be called after the translation is done
-            sortClosedDays(new Date());
-            fillProductChart();
+            pageSetup();
+            changeActiveLangImage(language);
         })
 }
 
+function pageSetup() {
+    fillProductChart();
+    activateDeliveryCheck();
+    sortClosedDays(new Date());
+    setLiveOpeningHours(new Date());
+}
 
 // Generates the document with the correct language
 function generateDocument(language) {
@@ -112,8 +118,5 @@ function generateDocument(language) {
             document.body.innerHTML = doc.body.innerHTML // Replaces the current documents content with the template content
             // Runs the function that needs to load with the website
             document.body.onload = translateTemplate(language);
-            document.body.onload = setLiveOpeningHours(new Date());
-            document.body.onload = activateDeliveryCheck();
-            document.body.onload = changeActiveLangImage(language)
         })
 }
