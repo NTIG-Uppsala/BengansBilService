@@ -8,4 +8,17 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: pip install selenium
-      - run: python -m unittest discover -s tests
+      - name: startServer
+        run: |
+          python -m http.server 8000 
+          $env:SERVER_PID = $LASTEXITCODE  # Store the server's process ID in an environment variable
+          Start-Sleep -Seconds 5  
+
+      - name: Run Tests
+        run: |
+          python -m unittest discover -s tests
+
+      - name: Stop Python HTTP Server
+        run: |
+          # Stop the server using the stored process ID
+          Stop-Process -Id $env:SERVER_PID
