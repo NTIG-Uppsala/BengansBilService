@@ -15,9 +15,9 @@ let zipCodeList = [
 ];
 
 let zipcodeOutput = {
-    "invalid": "INVALID",
-    "canBeDelivered": "CANBEDELIVERED",
-    "canNotBeDelivered": "CANNOTBEDELIVERED"
+    "INVALID": "INVALID",
+    "CANBEDELIVERED": "CANBEDELIVERED",
+    "CANNOTBEDELIVERED": "CANNOTBEDELIVERED"
 }
 
 // Activates the delivery checks submit button
@@ -34,19 +34,19 @@ function activateDeliveryCheck() {
             if (zipInput.match(/\D/) != null) {
                 // If there are no numbers
                 document.querySelector("#output").innerHTML =
-                    zipcodeOutput["invalid"];
+                    zipcodeOutput["INVALID"];
             } else if (zipInput.length != 5) {
                 // If there are more or less then 5 numbers
                 document.querySelector("#output").innerHTML =
-                    zipcodeOutput["invalid"];
+                    zipcodeOutput["INVALID"];
             } else if (zipCodeList.includes(zipInput)) {
                 // If the zip code is valid
                 document.querySelector("#output").innerHTML =
-                    zipcodeOutput["canBeDelivered"];
+                    zipcodeOutput["CANBEDELIVERED"];
             } else {
                 // If the zip code is invalid
                 document.querySelector("#output").innerHTML =
-                    zipcodeOutput["canNotBeDelivered"];
+                    zipcodeOutput["CANNOTBEDELIVERED"];
             }
         });
 };
