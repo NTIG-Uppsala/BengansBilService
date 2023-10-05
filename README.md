@@ -86,6 +86,12 @@ Website for NTB Biluthyrning 2023/2024 <br>
 ## ISO standard for date
 The ISO standard for displaying dates is ISO:8601, example MM-DD
 (https://www.iso.org/iso-8601-date-and-time-format.html)
+### Language 
+* To add another language to the website first copy the list of words from the translation.json file and change the words to their counterparts in whatever language that are going to be added.
+* Then go to the template.html file where there is a div class that has the id "languageDropdown".
+* Underneath are already existing "li-class" sections which can be copied and changed to fit whatever language that is going to be added by switching out the initials and the flag image. 
+* These are what add the buttons in the selection menu.
+
 
 ## Testing
 ### Testing Without Screenshots:
