@@ -94,8 +94,11 @@ Website for NTB Biluthyrning 2023/2024 <br>
 * Change the argument of the changeLanguage() function in the "onclick" as well as the id to the initials of the language.
 * Get a folder of all countries flags from the link below
 * [Every country's flag is available here](https://flagpedia.net/download) 
-* Choose the map of vector images as shown below so that every image will be in the right format and size. <br>
-![Download of vector images](readmeImages/vectorImages.png)
+* Choose the folder of bitmap images as shown below so that every image will be in the right format and size. <br>
+![Bitmap images](readmeImages/bitmapImages.png)
+* Then choose the images that is 40px wide as pngs as shown below <br>
+![40px download](readmeImages/imageSize.png)
+* Add the image to the image folder and add it as src to the new "li"-elements "img"-element
 * To see the newly added language open the index and select the language in the language menu in order to translate the website.
 
 ## ISO standard for date
