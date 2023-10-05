@@ -8,7 +8,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: pip install selenium
-      - run: python -m http.server 8000 
+      - run: python -m http.server
       - run: $env:SERVER_PID = $LASTEXITCODE
       - run: Start-Sleep -Seconds 5  
       - run: python -m unittest discover -s tests
