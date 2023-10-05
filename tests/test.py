@@ -32,7 +32,7 @@ class TestingPage(TestCase):
 
     # Before each test
     def setUp(self):
-        self.browser.get("http://127.0.0.1:8000/index.html")
+        self.browser.get("http://localhost:8000/index.html")
         time.sleep(5)
 
     # After each test
