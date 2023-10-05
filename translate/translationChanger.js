@@ -21,21 +21,23 @@ function changeInnerText(searchWord, newText) {
 // Changes variables in the JavaScript files
 function changeJavaScript(searchWord, newText) {
     for (let i = 0; i < days.length; i++) { // Loops through the global days array
-        if (days[i].includes(searchWord)) {
-            days[i] = newText; // Replaces the text of the array item if it matches the search word
+        if (days[i]["variable"].includes(searchWord)) {
+            days[i]["text"] = newText; // Replaces the text of the array item if it matches the search word
+        }
+    }
         }
     }
 
     for (let i = 0; i < closedDaysList.length; i++) { // Loops through the global list of closed days
-        if (closedDaysList[i]["text"].includes(searchWord)) {
-            closedDaysList[i]["text"] = newText; // Replaces the text of the array item if it matches the search word
+        if (closedDaysList[i]["content"]["variable"].includes(searchWord)) {
+            closedDaysList[i]["content"]["text"] = newText; // Replaces the text of the array item if it matches the search word
         }
     }
 
     let dropdownTitlesByIndex = Object.keys(dropdownTitles); // Gets the dropdown titles object as an array
     for (let i = 0; i < dropdownTitlesByIndex.length; i++) { // Loops through the array made from dropdown titles
         // Uses the dropdownTitlesByIndex to get the name of the position in the object to be replaced
-        if (dropdownTitles[dropdownTitlesByIndex[i]].includes(searchWord)) {
+        if (dropdownTitlesByIndex[i].includes(searchWord)) {
             dropdownTitles[dropdownTitlesByIndex[i]] = newText;
         }
     }
@@ -43,7 +45,7 @@ function changeJavaScript(searchWord, newText) {
     let zipcodeOutputByIndex = Object.keys(zipcodeOutput); // Gets the zipcode output object as an array
     for (let i = 0; i < zipcodeOutputByIndex.length; i++) { // Loops through the array made from zipcode outputs
         // Uses the zipcodeOutputByIndex to get the name of the position in the object to be replaced
-        if (zipcodeOutput[zipcodeOutputByIndex[i]].includes(searchWord)) {
+        if (zipcodeOutputByIndex[i].includes(searchWord)) {
             zipcodeOutput[zipcodeOutputByIndex[i]] = newText;
         }
     }
