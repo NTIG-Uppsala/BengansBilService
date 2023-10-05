@@ -99,8 +99,8 @@ Website for NTB Biluthyrning 2023/2024 <br>
 * To see the newly added language open the index and select the language in the language menu in order to translate the website.
 
 ## ISO standard for date
-The ISO standard for displaying dates is ISO:8601, example MM-DD
-(https://www.iso.org/iso-8601-date-and-time-format.html)
+* The ISO standard for displaying dates is ISO:8601, example MM-DD
+* [Link to ISO standard](https://www.iso.org/iso-8601-date-and-time-format.html)
 
 ## Testing
 ### Testing Without Screenshots:
