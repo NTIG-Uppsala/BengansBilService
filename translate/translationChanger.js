@@ -69,7 +69,7 @@ function translateCategory(object) {
 // Translates the template
 function translateTemplate(language) {
     // Uses the fetch function to access the translation json
-    fetch('../translate/translation.json')
+    fetch('translate/translation.json')
         .then(response => {
             return response.json();
         }).then(json => {
@@ -112,7 +112,7 @@ function pageSetup() {
 function generateDocument(language) {
     document.documentElement.lang = language;
     // Uses fetch to get the template page
-    fetch("../translate/template.html")
+    fetch("translate/template.html")
         .then(response => response.text())
         .then(html => {
             var parser = new DOMParser(); // Defines a parser to turn string into a document element
