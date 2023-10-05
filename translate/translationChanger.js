@@ -25,6 +25,12 @@ function changeJavaScript(searchWord, newText) {
             days[i]["text"] = newText; // Replaces the text of the array item if it matches the search word
         }
     }
+
+    let liveOpeningTextByIndex = Object.keys(liveOpeningHoursTextContent); // Gets the dropdown titles object as an array
+    for (let i = 0; i < liveOpeningTextByIndex.length; i++) { // Loops through the array made from dropdown titles
+        // Uses the dropdownTitlesByIndex to get the name of the position in the object to be replaced
+        if (liveOpeningTextByIndex[i].includes(searchWord)) {
+            liveOpeningHoursTextContent[liveOpeningTextByIndex[i]] = newText;
         }
     }
 
@@ -76,6 +82,9 @@ function translateTemplate(language) {
 
             let daysObject = languageObject["days"]; // Gets the object of days
             translateCategory(daysObject);
+
+            let liveOpeningHoursTextObject = languageObject["liveOpeningHoursText"]; // Gets the object of liveOpeningHoursText
+            translateCategory(liveOpeningHoursTextObject);
 
             let holidayObject = languageObject["holidays"]; // Gets the closed days
             translateCategory(holidayObject);
