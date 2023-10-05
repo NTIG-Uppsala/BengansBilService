@@ -50,6 +50,14 @@ function changeJavaScript(searchWord, newText) {
 
 }
 
+function translateCategory(object) {
+    let itemByIndex = Object.keys(object);
+    for (let i = 0; i < itemByIndex.length; i++) {
+        // Changes the JavaScript
+        changeJavaScript(itemByIndex[i], object[itemByIndex[i]]);
+    }
+}
+
 // Translates the template
 function translateTemplate(language) {
     // Uses the fetch function to access the translation json
@@ -65,32 +73,16 @@ function translateTemplate(language) {
             }
 
             let daysObject = languageObject["days"]; // Gets the object of days
-            let daysItemByIndex = Object.keys(daysObject);
-            for (let i = 0; i < daysItemByIndex.length; i++) {
-                // Changes the JavaScript days array
-                changeJavaScript(daysItemByIndex[i], daysObject[daysItemByIndex[i]]);
-            }
+            translateCategory(daysObject);
 
             let holidayObject = languageObject["holidays"]; // Gets the closed days
-            let holidayItemsByIndex = Object.keys(holidayObject);
-            for (let i = 0; i < holidayItemsByIndex.length; i++) {
-                // Changes the JavaScript closed days array
-                changeJavaScript(holidayItemsByIndex[i], holidayObject[holidayItemsByIndex[i]]);
-            }
+            translateCategory(holidayObject);
 
             let sortDropdownObject = languageObject["sortDropdown"]; // Gets the text for sort dropdown
-            let sortItemsByIndex = Object.keys(sortDropdownObject);
-            for (let i = 0; i < sortItemsByIndex.length; i++) {
-                // Changes the JavaScript object containing dropdown options
-                changeJavaScript(sortItemsByIndex[i], sortDropdownObject[sortItemsByIndex[i]]);
-            }
+            translateCategory(sortDropdownObject);
 
             let zipcodeOutputObject = languageObject["zipcodeOutputs"];
-            let zipcodeOutputByIndex = Object.keys(zipcodeOutputObject);
-            for (let i = 0; i < zipcodeOutputByIndex.length; i++) {
-                // Changes the JavaScript object containing zipcode outputs
-                changeJavaScript(zipcodeOutputByIndex[i], zipcodeOutputObject[zipcodeOutputByIndex[i]]);
-            }
+            translateCategory(zipcodeOutputObject);
 
             // Calls the functions that needs to be called after the translation is done
             pageSetup();
