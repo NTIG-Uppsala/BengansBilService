@@ -84,19 +84,23 @@ Website for NTB Biluthyrning 2023/2024 <br>
 * "./scss/custom.scss" is the path to the scss file
 * "./css/custom.css" is the path to the css file
 ### Language 
-* To add another language to the website first copy the list of words from the translation.json file that starts with the initials of the language it is intended for and ends with a "}" after adress.
-* Change the words to their counterparts in whatever language that are going to be added and paste in the new list.
-* Then go to the template.html file where there is a div class that has the id "languageDropdown".
-* Underneath are already existing "li-class" sections which can be copied and changed to fit whatever language that is going to be added by switching out the flag image, "onclick" initials and the id. 
-* Every country's flag is available [here](https://flagpedia.net/download), every image is in the right format and size.
-* Previous two instructions adds a new selectable language in the translation menu.
-* Select new language in the translation menu in order to translate the website.
+#### Add the translation
+* Go to the translation.json in the translate folder
+* To add another language to the website first copy the list of words from the translation.json file that starts with the initials of the language it is intended for and ends with a "}" after "ADDRESS".
+* Change the words to their counterparts in the language that will be added and paste them into the new list.
+#### Implement the translation
+* Go to the template.html file where there is a div class that has the id "languageDropdown".
+* Underneath are already existing "li"-tag sections which can be copied and changed to fit the new language that is going to be added by switching out the flag image.
+* Change the argument of the changeLanguage() function in the "onclick" as well as the id to the initials of the language.
+* Get a folder of all countries flags from the link below
+* [Every country's flag is available here](https://flagpedia.net/download) 
+* Choose the map of vector images as shown below so that every image will be in the right format and size. <br>
+![Download of vector images](readmeImages/vectorImages.png)
+* To see the newly added language open the index and select the language in the language menu in order to translate the website.
 
 ## ISO standard for date
 The ISO standard for displaying dates is ISO:8601, example MM-DD
 (https://www.iso.org/iso-8601-date-and-time-format.html)
-
-
 
 ## Testing
 ### Testing Without Screenshots:
