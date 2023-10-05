@@ -65,13 +65,13 @@
 
                     </li>
                     <li class="nav-item ml-auto ps-1">
-                        <a class="fs-4 nav-link " href="#contactInfo"><span> CONTACTUS </span></a>
+                        <a class="fs-4 nav-link " href="#contactInfo"><span>CONTACTUS</span></a>
                     </li>
                     <li class="nav-item ml-auto ps-1 ">
-                        <a class="fs-4 nav-link" href="#openingHours"><span> OPENHOURS</span></a>
+                        <a class="fs-4 nav-link" href="#openingHours"><span>OPENHOURS</span></a>
                     </li>
                     <li class="nav-item  ps-1">
-                        <a class="fs-4 nav-link  " href="#address"><span> FINDUS</span></a>
+                        <a class="fs-4 nav-link  " href="#address"><span>FINDUS</span></a>
                     </li>
                 </ul>
             </div>
@@ -84,8 +84,10 @@
         <div class="carousel-inner" style="max-height:80vh;">
             <div class="carousel-content display-4">
                 <div class="text-bg-white px-2 text-bg-dark text-white bg-opacity-50 py-2 px-3">
-                    <p><span> WELCOME</span><a href="tel:0630555555" id="whiteLink">0630&#8209;555&#8209;555</a><span>
-                            CALLUS</span>
+                    <p>
+                        <span>WELCOME</span>
+                        <a href="tel:0630555555" id="whiteLink">0630&#8209;555&#8209;555</a>
+                        <span>CALLUS</span>
                     </p>
                 </div>
             </div>
@@ -106,7 +108,7 @@
     <!-- Check if we are able to transport to your zipcode -->
     <div id="zipCodeCheck" class="zipInput container-fluid bg-light py-5 mt-0">
         <div id="jsCheck">
-            <p id="deliveryCheck"><span> DELIVERYCHECK</span></p>
+            <p id="deliveryCheck"><span>DELIVERYCHECK</span></p>
             <form><input class="zipCodeInput" type="text" inputmode="numeric" id="zipNumber"
                     placeholder="ZIPCODE"><input class="checkNumber" id="submit" type="submit" value="SUBMIT"></form>
             <p id="output"></p>
@@ -121,41 +123,41 @@
 
                 <!-- Company or private price -->
                 <label class="btn btn-outline-primary rounded-0" for="companyPriceButton" onclick="priceChangeVAT(true)"
-                    id="companyLabelClick"><span> COMPANY</span></label>
+                    id="companyLabelClick"><span>COMPANY</span></label>
                 <input type="radio" class="btn-check" name="price-option" id="privatePriceButton" checked>
                 <label class="btn btn-outline-primary rounded-0" for="privatePriceButton"
-                    onclick="priceChangeVAT(false)" id="privateLabelClick"><span> PRIVATE</span></label>
+                    onclick="priceChangeVAT(false)" id="privateLabelClick"><span>PRIVATE</span></label>
 
                 <!-- Adjustable sorting  -->
             </div>
             <button class="btn dropdown-toggle rounded-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <span> STANDARDSORT</span><span id="currentSorting"></span>
+                <span>STANDARDSORT</span><span id="currentSorting"></span>
             </button>
             <ul class="dropdown-menu">
                 <li>
-                    <a id="priceRising" class="dropdown-item" onclick="sortProductChart('price',true)"><span>
-                            PRICEINCREASING</span></a>
+                    <a id="priceRising" class="dropdown-item" onclick="sortProductChart('price',true)">
+                        <span>PRICEINCREASING</span></a>
                 </li>
                 <li>
-                    <a id="priceDecreasing" class="dropdown-item" onclick="sortProductChart('price', false)"><span>
-                            PRICEDECREASING</span></a>
+                    <a id="priceDecreasing" class="dropdown-item" onclick="sortProductChart('price', false)">
+                        <span>PRICEDECREASING</span></a>
                 </li>
                 <li>
-                    <a id="yearRising" class="dropdown-item" onclick="sortProductChart('year', true)"><span>
-                            YEARINCREASING</span>
+                    <a id="yearRising" class="dropdown-item" onclick="sortProductChart('year', true)">
+                        <span>YEARINCREASING</span>
                     </a>
                 </li>
                 <li>
-                    <a id="yearDecreasing" class="dropdown-item" onclick="sortProductChart('year', false)"><span>
-                            YEARDECREASING</span></a>
+                    <a id="yearDecreasing" class="dropdown-item" onclick="sortProductChart('year', false)">
+                        <span>YEARDECREASING</span></a>
                 </li>
                 <li>
-                    <a id="nameRising" class="dropdown-item" onclick="sortProductChart('name', true)"><span>
-                            CARSINCREASING</span></a>
+                    <a id="nameRising" class="dropdown-item" onclick="sortProductChart('name', true)">
+                        <span>CARSINCREASING</span></a>
                 </li>
                 <li>
-                    <a id="nameDecreasing" class="dropdown-item" onclick="sortProductChart('name', false)"><span>
-                            CARSDECREASING</span></a>
+                    <a id="nameDecreasing" class="dropdown-item" onclick="sortProductChart('name', false)">
+                        <span>CARSDECREASING</span></a>
                 </li>
             </ul>
         </div>
@@ -164,9 +166,9 @@
         <table id="productChart" class="table">
             <thead>
                 <tr>
-                    <th scope="col" class="chartItem"><span> CARS</span></th>
-                    <th scope="col" class="chartItem"><span> YEAR</span></th>
-                    <th scope="col" class="chartItem"><span> DAYPRICE</span></th>
+                    <th scope="col" class="chartItem"><span>CARS</span></th>
+                    <th scope="col" class="chartItem"><span>YEAR</span></th>
+                    <th scope="col" class="chartItem"><span>DAYPRICE</span></th>
                 </tr>
             </thead>
             <tbody id="carList">
@@ -181,18 +183,18 @@
                 <div class="col-lg">
 
                     <!-- Open hours  -->
-                    <h3 class=" mb-3 h3"><span> OPENHOURS</span></h3>
+                    <h3 class=" mb-3 h3"><span>OPENHOURS</span></h3>
                     <p class="fs-5" id="storeState"></p>
                     <div class="text-start openHours w-75 fs-5">
 
                         <!-- Closed days  -->
-                        <p><span> WEEKDAYS</span> <span class="text-end textRight">10-16</span></p>
-                        <p><span> SATURDAY</span> <span class="text-end textRight">12-15</span></p>
-                        <p><span> SUNDAY</span><span class="text-end closedColor textRight"><span> CLOSED</span></span>
+                        <p><span>WEEKDAYS</span> <span class="text-end textRight">10-16</span></p>
+                        <p><span>SATURDAY</span> <span class="text-end textRight">12-15</span></p>
+                        <p><span>SUNDAY</span><span class="text-end closedColor textRight"><span>CLOSED</span></span>
                         </p>
                         <div class="d-flex justify-content-center">
                             <div id="opening-hours" class="flex-grow-1">
-                                <h5 class="pt-3" style="text-align: center;"><span> CLOSEDDAYS</span></h5>
+                                <h5 class="pt-3" style="text-align: center;"><span>CLOSEDDAYS</span></h5>
                                 <ul id="closedDaysList" class="list-unstyled text-start">
                                     <li class="my-2">
                                         <span class="float-end"></span>
@@ -227,7 +229,7 @@
 
             <!-- Find us/location  -->
             <div class="col-sm-6 justify-content-center h6 ">
-                <h3 class="mb-3"><span> FINDUS</span></h3>
+                <h3 class="mb-3"><span>FINDUS</span></h3>
                 <div>
 
                     <!-- Live map -->
@@ -248,7 +250,7 @@
             <div id="rowFooter" class="row mx-auto w-50">
                 <div class="col-lg py-3 text-center">
                     <!--Telephone number and mail-->
-                    <h3 id="contactInfo"><span> CONTACTUS </span></h3>
+                    <h3 id="contactInfo"><span>CONTACTUS</span></h3>
                     <a href="tel:0630555555" class="blackLink">0630&#8209;555&#8209;555</a>
                     <br>
                     <a href="mailto:info@ntig-uppsala.github.io" class="blackLink">info@ntig&#8209;uppsala.github.io</a>
@@ -270,7 +272,7 @@
                     </div>
                 </div>
                 <div class="col py-3">
-                    <h3><span> ADDRESS</span></h3>
+                    <h3><span>ADDRESS</span></h3>
                     <span>
                         Fjällgatan 32H <br> 981 39 Jönköping
                     </span>
