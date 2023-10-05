@@ -8,4 +8,14 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: pip install selenium
+      - run: python -m http.server 8000 &  sleep 5  
       - run: python -m unittest discover -s tests
+      - run: pkill -f "python -m http.server"
+
+       
+
+   
+
+   
+        
+      
