@@ -84,9 +84,11 @@ Website for NTB Biluthyrning 2023/2024 <br>
 * "./scss/custom.scss" is the path to the scss file
 * "./css/custom.css" is the path to the css file
 ### Language 
-* To add another language to the website first copy the list of words from the translation.json file and change the words to their counterparts in whatever language that are going to be added.
+* To add another language to the website first copy the list of words from the translation.json file that starts with the initials of the language it is intended for and ends with a "}" after adress.
+* Change the words to their counterparts in whatever language that are going to be added and paste in the new list.
 * Then go to the template.html file where there is a div class that has the id "languageDropdown".
 * Underneath are already existing "li-class" sections which can be copied and changed to fit whatever language that is going to be added by switching out the initials and the flag image. 
+* Every country's flag is available [here](https://flagpedia.net/download), every image is in the right format and size.
 * These are what add the buttons in the selection menu.
 
 ## ISO standard for date
