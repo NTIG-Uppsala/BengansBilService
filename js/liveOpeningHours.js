@@ -8,15 +8,27 @@ const openingHours = {
     saturday: { open: 12, close: 15 },
 };
 
+// Globally defines the text needed for the live opening hours
+const liveOpeningHoursTextContent = {
+    OPENSIN: "OPENSIN",
+    MINUTES: "MINUTES",
+    OPENSTODAY: "OPENSTODAY",
+    CLOSESSOON: "CLOSESSOON",
+    OPEN: "OPEN",
+    OPENS: "OPENS",
+    RIGHTNOW: "RIGHTNOW",
+    TIME: "TIME"
+}
+
 // Globally defines array of weekday names
 const days = [
-    "SUNDAY",
-    "MONDAY",
-    "TUESDAY",
-    "WEDNESDAY",
-    "THURSDAY",
-    "FRIDAY",
-    "SATURDAY",
+    { variable: "SUNDAY", name: "SUNDAY" },
+    { variable: "MONDAY", name: "MONDAY" },
+    { variable: "TUESDAY", name: "TUESDAY" },
+    { variable: "WEDNESDAY", name: "WEDNESDAY" },
+    { variable: "THURSDAY", name: "THURSDAY" },
+    { variable: "FRIDAY", name: "FRIDAY" },
+    { variable: "SATURDAY", name: "SATURDAY" },
 ];
 
 // Checks if the store is closed on the given date
@@ -61,13 +73,13 @@ function setOpeningStatus(date) {
             : openingHours.weekdays.close;
 
     if (hour === openingTime - 1 && minute >= 30) { // Closed but max 30 min before opening
-        displayOpeningStatus(`Öppnar om ${60 - minute} minuter`, false);
+        displayOpeningStatus(`${liveOpeningHoursTextContent["OPENSIN"]} ${60 - minute} ${liveOpeningHoursTextContent[MINUTES]}`, false);
     } else if (hour < openingTime) { // Closed and more than 30 min until open today
-        displayOpeningStatus(`Öppnar idag kl. ${openingTime}`, false);
+        displayOpeningStatus(`${liveOpeningHoursTextContent["OPENSTODAY"]} ${openingTime}`, false);
     } else if (hour === closingTime - 1 && minute >= 45) {  // Open and 15 min or less before closing
-        displayOpeningStatus("Stänger snart", false);
+        displayOpeningStatus(`${liveOpeningHoursTextContent["CLOSESSOON"]}`, false);
     } else if (hour >= openingTime && hour < closingTime) {  // Open and more than 15 min before closing
-        displayOpeningStatus("Öppet", true);
+        displayOpeningStatus(`${liveOpeningHoursTextContent["OPEN"]}`, true);
     } else { // Has closed for the day
         checkNextOpenDay(date);
     };
@@ -84,7 +96,7 @@ function displayOpeningStatus(status, specialCase) {
         openSpan.innerText = status;
         openSpan.style.color = 'green';
 
-        element.innerHTML = "Just nu: ";
+        element.innerHTML = liveOpeningHoursTextContent["RIGHTNOW"];
 
         element.append(openSpan);
     }
@@ -103,7 +115,7 @@ function checkNextOpenDay(date) {
             ? openingHours.saturday.open
             : openingHours.weekdays.open; // Special opening hours on Saturdays
 
-    displayOpeningStatus(`Öppnar ${days[weekdayOfNextOpenDay]} kl. ${openTimeForThatDay}`, false)
+    displayOpeningStatus(`${liveOpeningHoursTextContent["OPENS"]} ${days[weekdayOfNextOpenDay]["name"]} ${liveOpeningHoursTextContent["TIME"]} ${openTimeForThatDay}`, false)
 };
 
 function setLiveOpeningHours(date) {
