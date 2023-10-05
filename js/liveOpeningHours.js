@@ -73,7 +73,7 @@ function setOpeningStatus(date) {
             : openingHours.weekdays.close;
 
     if (hour === openingTime - 1 && minute >= 30) { // Closed but max 30 min before opening
-        displayOpeningStatus(`${liveOpeningHoursTextContent["OPENSIN"]} ${60 - minute} ${liveOpeningHoursTextContent[MINUTES]}`, false);
+        displayOpeningStatus(`${liveOpeningHoursTextContent["OPENSIN"]} ${60 - minute} ${liveOpeningHoursTextContent["MINUTES"]}`, false);
     } else if (hour < openingTime) { // Closed and more than 30 min until open today
         displayOpeningStatus(`${liveOpeningHoursTextContent["OPENSTODAY"]} ${openingTime}`, false);
     } else if (hour === closingTime - 1 && minute >= 45) {  // Open and 15 min or less before closing
