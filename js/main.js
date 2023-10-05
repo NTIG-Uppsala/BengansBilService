@@ -61,8 +61,5 @@ function changeActiveLangImage(language) {
 function changeLanguage(language) {
     if (document.documentElement.lang !== language) { // If the submitted language is not the same as the current language
         generateDocument(language)
-    } else { // If the language is the same as the pressed button
-        // Stops the function
-        return;
     }
 }
