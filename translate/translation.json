@@ -29,6 +29,16 @@
             "CANBEDELIVERED": "Vi kör ut, ring telefonnumret ovan!",
             "CANNOTBEDELIVERED": "Vi kör tyvärr inte ut till dig."
         },
+        "liveOpeningHoursText": {
+            "OPENSIN": "Öppnar om",
+            "MINUTES": "minuter",
+            "OPENSTODAY": "Öppnar idag kl.",
+            "CLOSESSOON": "Stänger snart",
+            "OPEN": "Öppet",
+            "OPENS": "Öppnar",
+            "RIGHTNOW": "Just nu: ",
+            "TIME": "kl."
+        },
         "HTMLLANGUAGE": "sv",
         "CONTACTUS": "Kontakta&nbsp;oss",
         "OPENHOURS": "Öppettider",
@@ -66,7 +76,7 @@
             "NEWYEARSDAY": "Nyttårsdag",
             "EPIPHANY": "Trettendedag jul",
             "FIRSTMAY": "Første mai",
-            "NATIONALDAY": "Sveriges nasjonaldag"
+            "NATIONALDAY": "Sveriges<br>nasjonaldag&nbsp;"
         },
         "days": {
             "SUNDAY": "søndag",
@@ -86,6 +96,16 @@
             "INVALID": "Ikke et gyldig postnummer.",
             "CANBEDELIVERED": "Vi kjører ut, ring telefonnummeret over!",
             "CANNOTBEDELIVERED": "Beklager, vi leverer ikke til deg."
+        },
+        "liveOpeningHoursText": {
+            "OPENSIN": "Åpner om",
+            "MINUTES": "minutter",
+            "OPENSTODAY": "Åpner i dag kl.",
+            "CLOSESSOON": "Stenger snart",
+            "OPEN": "Åpent",
+            "OPENS": "Åpner",
+            "RIGHTNOW": "Akkurat nå: ",
+            "TIME": "kl."
         },
         "HTMLLANGUAGE": "no",
         "CONTACTUS": "Kontakt&nbsp;oss",
@@ -107,7 +127,7 @@
         "CARSDECREASING": "Biler synkende",
         "CARS": "Biler",
         "YEAR": "Årsmodell",
-        "DAYPRICE": "Dagspris",
+        "DAYPRICE": "Dagspris (sek)",
         "WEEKDAYS": "Hverdager",
         "SATURDAY": "Lørdag",
         "SUNDAY": "Søndag&nbsp;Stengt",
