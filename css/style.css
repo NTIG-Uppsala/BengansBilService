@@ -3,8 +3,13 @@
 	padding: 0;
 }
 
+html {
+	overflow-x: hidden;
+}
+
 body {
 	background-color: white;
+	overflow-x: hidden;
 }
 
 @font-face {
@@ -266,10 +271,6 @@ iframe {
 		margin-top: 0.5em;
 	}
 
-	.dropdown-toggle {
-		border-left: 0px !important;
-	}
-
 }
 
 @media screen and (max-width:350px) {
@@ -300,7 +301,12 @@ iframe {
 		width: 15px;
 		margin-bottom: 10%;
 	}
+}
 
+@media screen and (max-width: 270) {
+	.dropdown-toggle {
+		border-left: 0px !important;
+	}
 }
 
 @media screen and (max-width:1920px) {

@@ -52,10 +52,10 @@ function activateDeliveryCheck() {
 };
 
 function changeActiveLangImage(language) {
-    active = document.getElementById("activeLang");
-    replaceSrc = document.getElementById(language).src;
+    let active = document.getElementById("activeLang");
+    let replace = document.getElementById(language);
 
-    active.src = replaceSrc;
+    active.innerText = replace.innerText
 };
 
 function changeLanguage(language) {
